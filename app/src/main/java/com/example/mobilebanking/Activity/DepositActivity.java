@@ -68,7 +68,7 @@ public class DepositActivity extends AppCompatActivity {
             public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
                 progressDoalog.dismiss();
                 Response responseData = response.body();
-                String message = responseData.getSuccess() == null ? "Sorry, Invalid username or password" : responseData.getSuccess();
+                String message = responseData.getMessage() == null ? "Sorry, Invalid username or password" : responseData.getMessage();
                 Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
             }
 

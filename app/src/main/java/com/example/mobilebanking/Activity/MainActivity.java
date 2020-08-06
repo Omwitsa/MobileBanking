@@ -65,19 +65,12 @@ public class MainActivity extends AppCompatActivity {
         call.enqueue(new Callback<Response>() {
             @Override
             public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
-                Response responseData = response.body();
-                String message = responseData.getSuccess() == null ? "Sorry, An error occurred" : responseData.getSuccess();
-                if (message.equals(Constants.SUCCESS)){
 
-                }
-                else {
-                    Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
-                }
             }
 
             @Override
             public void onFailure(Call<Response> call, Throwable t) {
-                Toast.makeText(getApplicationContext(), "Sorry, An error occurred", Toast.LENGTH_LONG).show();
+
             }
         });
     }
@@ -90,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
                 progressDoalog.dismiss();
                 Response responseData = response.body();
-                String message = responseData.getSuccess() == null ? "Sorry, Invalid username or password" : responseData.getSuccess();
+                String message = responseData.getMessage() == null ? "Sorry, Invalid username or password" : responseData.getMessage();
                 if (message.equals(Constants.SUCCESS)){
                     Intent homeIntent = new Intent(getApplicationContext(), HomeActivity.class);
                     startActivity(homeIntent);
