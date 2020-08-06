@@ -83,13 +83,12 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
                 progressDoalog.dismiss();
                 Response responseData = response.body();
-                String message = responseData.getMessage() == null ? "Sorry, Invalid username or password" : responseData.getMessage();
-                if (message.equals(Constants.SUCCESS)){
+                if (responseData.getSuccess().equals(Constants.SUCCESS)){
                     Intent homeIntent = new Intent(getApplicationContext(), HomeActivity.class);
                     startActivity(homeIntent);
                 }
                 else {
-                    Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), responseData.getMessage(), Toast.LENGTH_LONG).show();
                 }
             }
 
