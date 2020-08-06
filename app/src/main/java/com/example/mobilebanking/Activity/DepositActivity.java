@@ -17,6 +17,7 @@ import com.example.mobilebanking.R;
 import com.example.mobilebanking.Rest.ApiClient;
 import com.example.mobilebanking.Rest.ApiInterface;
 import com.example.mobilebanking.Utilities.Constants;
+import com.example.mobilebanking.myactivities.MainActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -78,5 +79,11 @@ public class DepositActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Sorry, An error occurred", Toast.LENGTH_LONG).show();
             }
         });
+        Print();
+    }
+
+    private void Print() {
+        Intent registerIntent = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(registerIntent);
     }
 }
