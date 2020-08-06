@@ -1,7 +1,4 @@
-package Pockdata;
-
-
-import Pockdata.PostMessage.ReturnType;
+package com.example.mobilebanking.Pockdata;
 
 public class PostMessage {
 

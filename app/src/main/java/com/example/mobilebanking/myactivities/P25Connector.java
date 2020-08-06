@@ -1,7 +1,7 @@
 package com.example.mobilebanking.myactivities;
 
 
-import util.StringUtil;
+import com.example.mobilebanking.Util.StringUtil;
 
 import java.io.IOException;
 import java.io.InputStream;

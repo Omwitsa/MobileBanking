@@ -1,11 +1,11 @@
-package Pockdata;
+package com.example.mobilebanking.Pockdata;
 
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-import Pockdata.PostMessage.ReturnType;
+import com.example.mobilebanking.Pockdata.PostMessage.ReturnType;
 
 
 public class Function {

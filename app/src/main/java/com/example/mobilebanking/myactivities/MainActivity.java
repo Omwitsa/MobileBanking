@@ -30,7 +30,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import Pockdata.PocketPos;
+import com.example.mobilebanking.Pockdata.PocketPos;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -436,8 +436,8 @@ public class MainActivity extends AppCompatActivity {
 
         showMessage("Collection Details", buffer.toString());
         long milis1 = System.currentTimeMillis();
-        String date1 = util.DateUtil.timeMilisToString(milis1, "dd-MM-yyyy");
-        String time1 = util.DateUtil.timeMilisToString(milis1, "  HH:mm a");
+        String date1 = com.example.mobilebanking.Util.DateUtil.timeMilisToString(milis1, "dd-MM-yyyy");
+        String time1 = com.example.mobilebanking.Util.DateUtil.timeMilisToString(milis1, "  HH:mm a");
 
         StringBuilder content2Sb = new StringBuilder();
         content2Sb.append("\n" + "Amtech Technologies Limited"+ "\n" + "MILK RECEIPT" + "\n");
@@ -453,7 +453,7 @@ public class MainActivity extends AppCompatActivity {
         content2Sb.append("www.amtechafrica.com" + "\n");
         content2Sb.append("--------------------------" + "\n");
 
-        byte[] content2Byte = util.Printer.printfont(content2Sb.toString(), util.FontDefine.FONT_32PX, util.FontDefine.Align_LEFT, (byte) 0x1A,
+        byte[] content2Byte = com.example.mobilebanking.Util.Printer.printfont(content2Sb.toString(), com.example.mobilebanking.Util.FontDefine.FONT_32PX, com.example.mobilebanking.Util.FontDefine.Align_LEFT, (byte) 0x1A,
                 PocketPos.LANGUAGE_ENGLISH);
         byte[] totalByte = new byte[content2Byte.length];
         int offset = 0;

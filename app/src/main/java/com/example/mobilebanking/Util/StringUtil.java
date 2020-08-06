@@ -1,7 +1,7 @@
-package util;
+package com.example.mobilebanking.Util;
 
 
-import util.StringUtil;
+import com.example.mobilebanking.Util.StringUtil;
 
 /**
  * Copyright 2006 - 2008 BLUEBAMBOO International Inc. 
