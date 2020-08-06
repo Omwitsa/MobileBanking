@@ -63,7 +63,7 @@ public class RegisterActivity extends AppCompatActivity {
             public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
                 progressDoalog.dismiss();
                 Response responseBody = response.body();
-                String message = responseBody.getSuccess() == null ? "Sorry, An error occurred" : responseBody.getSuccess();
+                String message = responseBody.getMessage() == null ? "Sorry, An error occurred" : responseBody.getMessage();
                 if (message.equals(Constants.SUCCESS)){
                     Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(mainIntent);
