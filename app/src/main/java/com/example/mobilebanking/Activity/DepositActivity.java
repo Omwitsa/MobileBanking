@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -27,6 +28,7 @@ import retrofit2.Callback;
 public class DepositActivity extends AppCompatActivity {
     ProgressDialog progressDoalog;
     ApiInterface apiService;
+    static SQLiteDatabase db;
     @BindView(R.id.amount) EditText amount;
     @BindView(R.id.pin) EditText pin;
     @BindView(R.id.sNo) EditText sNo;
@@ -44,9 +46,16 @@ public class DepositActivity extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                progressDoalog.setMessage("Please wait...");
-                progressDoalog.show();
-                deposit();
+//                progressDoalog.setMessage("Please wait...");
+//                progressDoalog.show();
+//                deposit();
+                Intent intent = new Intent(getApplicationContext(), FingeprintActivity.class);
+                intent.putExtra("operation", "deposit");
+                intent.putExtra("amount", amount.getText().toString());
+                intent.putExtra("fingurePrint", "");
+                intent.putExtra("supplierNo", sNo.getText().toString());
+                intent.putExtra("pin", pin.getText().toString());
+                startActivity(intent);
             }
         });
 
@@ -83,7 +92,12 @@ public class DepositActivity extends AppCompatActivity {
     }
 
     private void Print() {
-        Intent registerIntent = new Intent(getApplicationContext(), MainActivity.class);
-        startActivity(registerIntent);
+        Double depositAmount = Double.parseDouble(amount.getText().toString());
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        intent.putExtra("amount", depositAmount);
+        intent.putExtra("fingurePrint", "");
+        intent.putExtra("supplierNo", sNo.getText().toString());
+        intent.putExtra("pin", pin.getText().toString());
+        startActivity(intent);
     }
 }
