@@ -3,6 +3,7 @@ package com.example.mobilebanking.Activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -18,6 +19,12 @@ import com.example.mobilebanking.Rest.ApiClient;
 import com.example.mobilebanking.Rest.ApiInterface;
 import com.example.mobilebanking.Utilities.Constants;
 import com.example.mobilebanking.myactivities.MainActivity;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.regex.Pattern;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -25,6 +32,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 
 public class DepositActivity extends AppCompatActivity {
+    SQLiteDatabase db;
     ProgressDialog progressDoalog;
     ApiInterface apiService;
     @BindView(R.id.amount) EditText amount;
@@ -33,6 +41,7 @@ public class DepositActivity extends AppCompatActivity {
     @BindView(R.id.submit) Button submit;
     @BindView(R.id.back) Button back;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,13 +49,29 @@ public class DepositActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         apiService = ApiClient.getClient().create(ApiInterface.class);
         progressDoalog = new ProgressDialog(DepositActivity.this);
+        db = openOrCreateDatabase("MobileDB", Context.MODE_PRIVATE, null);
+        db.execSQL("CREATE TABLE IF NOT EXISTS deposits(Amount VARCHAR,Pin VARCHAR,Supp VARCHAR,datepp DATETIME, status VARCHAR);");
+
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                progressDoalog.setMessage("Please wait...");
-                progressDoalog.show();
-                deposit();
+                String bal = amount.getText().toString();
+                String Pinn = pin.getText().toString();
+                String SupNo = sNo.getText().toString();
+                if (bal.isEmpty() && Pinn.isEmpty() && SupNo.isEmpty() ) {
+                    //Snackbar.make(getView(), "Field(s) are empty !", Snackbar.LENGTH_LONG).show();
+                    Toast.makeText(DepositActivity.this, "Fields are empty", Toast.LENGTH_LONG).show();
+                }else if(Pinn.length()>4){
+                    //Snackbar.make(getView(), "Password should have a minimum of 8 characters", Snackbar.LENGTH_LONG).show();
+                    Toast.makeText(DepositActivity.this, "Pin shoud have a maximum of 4 characters", Toast.LENGTH_LONG).show();
+                }else {
+
+                    insertDataToSqlite(bal, Pinn, SupNo);
+
+                }
+
+
             }
         });
 
@@ -58,6 +83,45 @@ public class DepositActivity extends AppCompatActivity {
             }
         });
     }
+
+
+    public void insertDataToSqlite(String bal, String pinn, String supNo) {
+
+        Calendar cc = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String date_pp = sdf.format(cc.getTime());
+
+//
+//
+//            //db.rawQuery("SELECT * FROM deposits", null);
+//        Cursor c = db.rawQuery("SELECT * FROM deposits ", null);
+//        if (c.getCount() == 0) {
+//            Toast.makeText(getApplicationContext(), "No record Found", Toast.LENGTH_LONG).show();
+//            return;
+//        }
+//        else{
+//            while (c.moveToNext()) {
+//                StringBuffer buffer = new StringBuffer();
+//
+//                buffer.append(c.getString(0) + "\t" + c.getString(1) + " \t" + c.getString(2)  +"\n");
+//                Toast.makeText(getApplicationContext(), "No record Found", Toast.LENGTH_LONG).show();
+//
+//            }
+//        }
+            db.execSQL("INSERT INTO deposits VALUES('" + bal + "','"  + pinn+ "','" + supNo + "','" + date_pp + "','0');");
+
+             Toast.makeText(getApplicationContext(), "Saved successfully", Toast.LENGTH_LONG).show();
+        //progressDoalog.setMessage("Please wait...");
+        //progressDoalog.show();
+             deposit();
+
+
+
+    }
+
+
+
+
 
     private void deposit() {
         Double depositAmount = Double.parseDouble(amount.getText().toString());
@@ -78,12 +142,19 @@ public class DepositActivity extends AppCompatActivity {
                 progressDoalog.dismiss();
                 Toast.makeText(getApplicationContext(), "Sorry, An error occurred", Toast.LENGTH_LONG).show();
             }
+            //Cursor c = db.rawQuery("SELECT * FROM MobileDB  ", null);
         });
+
+
         Print();
     }
 
     private void Print() {
         Intent registerIntent = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(registerIntent);
+    }
+    private SQLiteDatabase getWritableDatabase() {
+        // TODO Auto-generated method stub
+        return null;
     }
 }
