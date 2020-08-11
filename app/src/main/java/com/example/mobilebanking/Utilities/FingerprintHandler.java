@@ -6,6 +6,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.sqlite.SQLiteDatabase;
 import android.hardware.fingerprint.FingerprintManager;
 import android.os.CancellationSignal;
 import android.widget.TextView;
@@ -22,11 +23,15 @@ import com.example.mobilebanking.Rest.ApiClient;
 import com.example.mobilebanking.Rest.ApiInterface;
 import com.example.mobilebanking.myactivities.MainActivity;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 
 public class FingerprintHandler extends FingerprintManager.AuthenticationCallback {
     private Context context;
+    static SQLiteDatabase db;
     private  DepositModel _deposit;
     ApiInterface apiService;
     ProgressDialog progressDoalog;
@@ -36,6 +41,8 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
         _deposit = deposit;
         apiService = ApiClient.getClient().create(ApiInterface.class);
         progressDoalog = new ProgressDialog(context);
+        db = context.openOrCreateDatabase("MobileDB", Context.MODE_PRIVATE, null);
+        db.execSQL("CREATE TABLE IF NOT EXISTS deposits(Amount VARCHAR,Pin VARCHAR,Supp VARCHAR,datepp DATETIME, status VARCHAR);");
     }
 
     public void startAuth(FingerprintManager manager, FingerprintManager.CryptoObject cryptoObject) {
@@ -63,7 +70,7 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
 
     @Override
     public void onAuthenticationSucceeded(FingerprintManager.AuthenticationResult result) {
-        deposit();
+        insertDataToSqlite(_deposit.getAmount().toString(), _deposit.getPin(), _deposit.getsNo());
     }
 
     public void update(String e, Boolean success){
@@ -72,6 +79,36 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
         if(success){
             textView.setTextColor(ContextCompat.getColor(context,R.color.colorPrimaryDark));
         }
+    }
+
+    public void insertDataToSqlite(String bal, String pinn, String supNo) {
+        Calendar cc = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String date_pp = sdf.format(cc.getTime());
+
+//
+//
+//            //db.rawQuery("SELECT * FROM deposits", null);
+//        Cursor c = db.rawQuery("SELECT * FROM deposits ", null);
+//        if (c.getCount() == 0) {
+//            Toast.makeText(getApplicationContext(), "No record Found", Toast.LENGTH_LONG).show();
+//            return;
+//        }
+//        else{
+//            while (c.moveToNext()) {
+//                StringBuffer buffer = new StringBuffer();
+//
+//                buffer.append(c.getString(0) + "\t" + c.getString(1) + " \t" + c.getString(2)  +"\n");
+//                Toast.makeText(getApplicationContext(), "No record Found", Toast.LENGTH_LONG).show();
+//
+//            }
+//        }
+        db.execSQL("INSERT INTO deposits VALUES('" + bal + "','"  + pinn+ "','" + supNo + "','" + date_pp + "','0');");
+
+        Toast.makeText(context, "Saved successfully", Toast.LENGTH_LONG).show();
+        //progressDoalog.setMessage("Please wait...");
+        //progressDoalog.show();
+        deposit();
     }
 
     private void deposit() {

@@ -3,6 +3,7 @@ package com.example.mobilebanking.Activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -19,6 +20,12 @@ import com.example.mobilebanking.Rest.ApiClient;
 import com.example.mobilebanking.Rest.ApiInterface;
 import com.example.mobilebanking.Utilities.Constants;
 import com.example.mobilebanking.myactivities.MainActivity;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.regex.Pattern;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -28,7 +35,6 @@ import retrofit2.Callback;
 public class DepositActivity extends AppCompatActivity {
     ProgressDialog progressDoalog;
     ApiInterface apiService;
-    static SQLiteDatabase db;
     @BindView(R.id.amount) EditText amount;
 //    @BindView(R.id.pin) EditText pin;
 //    @BindView(R.id.sNo) EditText sNo;
@@ -46,21 +52,30 @@ public class DepositActivity extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                progressDoalog.setMessage("Please wait...");
-//                progressDoalog.show();
-//                deposit();
-//                String sno = sNo.getText().toString();
-//                String pin = pin.getText().toString();
-                String sno = "";
-                String pin = "";
+                String bal = amount.getText().toString();
+//                String Pinn = pin.getText().toString();
+//                String SupNo = sNo.getText().toString();
+                String Pinn = "";
+                String SupNo = "";
 
-                Intent intent = new Intent(getApplicationContext(), FingeprintActivity.class);
-                intent.putExtra("operation", "deposit");
-                intent.putExtra("amount", amount.getText().toString());
-                intent.putExtra("fingurePrint", "");
-                intent.putExtra("supplierNo", sno);
-                intent.putExtra("pin", pin);
-                startActivity(intent);
+                if (bal.isEmpty() && Pinn.isEmpty() && SupNo.isEmpty() ) {
+                    //Snackbar.make(getView(), "Field(s) are empty !", Snackbar.LENGTH_LONG).show();
+                    Toast.makeText(DepositActivity.this, "Fields are empty", Toast.LENGTH_LONG).show();
+                }else if(Pinn.length()>4){
+                    //Snackbar.make(getView(), "Password should have a minimum of 8 characters", Snackbar.LENGTH_LONG).show();
+                    Toast.makeText(DepositActivity.this, "Pin shoud have a maximum of 4 characters", Toast.LENGTH_LONG).show();
+                }else {
+
+//                    insertDataToSqlite(bal, Pinn, SupNo);
+
+                    Intent intent = new Intent(getApplicationContext(), FingeprintActivity.class);
+                    intent.putExtra("operation", "deposit");
+                    intent.putExtra("amount", bal);
+                    intent.putExtra("fingurePrint", "");
+                    intent.putExtra("supplierNo", SupNo);
+                    intent.putExtra("pin", Pinn);
+                    startActivity(intent);
+                }
             }
         });
 
@@ -96,8 +111,8 @@ public class DepositActivity extends AppCompatActivity {
                 progressDoalog.dismiss();
                 Toast.makeText(getApplicationContext(), "Sorry, An error occurred", Toast.LENGTH_LONG).show();
             }
+            //Cursor c = db.rawQuery("SELECT * FROM MobileDB  ", null);
         });
-        Print();
     }
 
     private void Print() {
@@ -113,5 +128,9 @@ public class DepositActivity extends AppCompatActivity {
         intent.putExtra("supplierNo", sno);
         intent.putExtra("pin", pin);
         startActivity(intent);
+    }
+    private SQLiteDatabase getWritableDatabase() {
+        // TODO Auto-generated method stub
+        return null;
     }
 }
