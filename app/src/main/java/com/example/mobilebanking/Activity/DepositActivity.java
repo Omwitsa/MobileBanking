@@ -30,8 +30,8 @@ public class DepositActivity extends AppCompatActivity {
     ApiInterface apiService;
     static SQLiteDatabase db;
     @BindView(R.id.amount) EditText amount;
-    @BindView(R.id.pin) EditText pin;
-    @BindView(R.id.sNo) EditText sNo;
+//    @BindView(R.id.pin) EditText pin;
+//    @BindView(R.id.sNo) EditText sNo;
     @BindView(R.id.submit) Button submit;
     @BindView(R.id.back) Button back;
 
@@ -49,12 +49,17 @@ public class DepositActivity extends AppCompatActivity {
 //                progressDoalog.setMessage("Please wait...");
 //                progressDoalog.show();
 //                deposit();
+//                String sno = sNo.getText().toString();
+//                String pin = pin.getText().toString();
+                String sno = "";
+                String pin = "";
+
                 Intent intent = new Intent(getApplicationContext(), FingeprintActivity.class);
                 intent.putExtra("operation", "deposit");
                 intent.putExtra("amount", amount.getText().toString());
                 intent.putExtra("fingurePrint", "");
-                intent.putExtra("supplierNo", sNo.getText().toString());
-                intent.putExtra("pin", pin.getText().toString());
+                intent.putExtra("supplierNo", sno);
+                intent.putExtra("pin", pin);
                 startActivity(intent);
             }
         });
@@ -69,8 +74,12 @@ public class DepositActivity extends AppCompatActivity {
     }
 
     private void deposit() {
+//        String sno = sNo.getText().toString();
+//        String pin = pin.getText().toString();
+        String sno = "";
+        String pin = "";
         Double depositAmount = Double.parseDouble(amount.getText().toString());
-        DepositModel depositModel = new DepositModel("deposit", depositAmount, "", pin.getText().toString(), sNo.getText().toString());
+        DepositModel depositModel = new DepositModel("deposit", depositAmount, "", pin, sno);
         Call<Response> call = apiService.deposit(depositModel);
 
         call.enqueue(new Callback<Response>() {
@@ -92,12 +101,17 @@ public class DepositActivity extends AppCompatActivity {
     }
 
     private void Print() {
+//        String sno = sNo.getText().toString();
+//        String pin = pin.getText().toString();
+        String sno = "";
+        String pin = "";
+
         Double depositAmount = Double.parseDouble(amount.getText().toString());
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         intent.putExtra("amount", depositAmount);
         intent.putExtra("fingurePrint", "");
-        intent.putExtra("supplierNo", sNo.getText().toString());
-        intent.putExtra("pin", pin.getText().toString());
+        intent.putExtra("supplierNo", sno);
+        intent.putExtra("pin", pin);
         startActivity(intent);
     }
 }
