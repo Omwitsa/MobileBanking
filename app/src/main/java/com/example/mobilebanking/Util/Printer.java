@@ -1,6 +1,6 @@
-package util;
+package com.example.mobilebanking.Util;
 
-import Pockdata.PocketPos;
+import com.example.mobilebanking.Pockdata.PocketPos;
 
 public class Printer {
 	

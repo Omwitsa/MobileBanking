@@ -9,6 +9,8 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface ApiInterface {
     @POST("webservice/k-pillar/users.php")
@@ -26,12 +28,6 @@ public interface ApiInterface {
     @POST("webservice/k-pillar/transactions.php")
     Call<Response> withdraw(@Body DepositModel depositModel);
 
-    @GET("webservice/k-pillar/users.php")
-    Call<Response> getMembers();
-
-//    @POST("users/new")
-//    Call<Example> createUser(@Body Example example);
-
-//    @GET("movie/{id}")
-//    Call<Example> getExamples(@Path("id") int id, @Query("api_key") String apiKey);
+//    @GET("webservice/k-pillar/users.php")
+//    Call<Response> getMembers(@Path("id") int id, @Query("api_key") String apiKey);
 }

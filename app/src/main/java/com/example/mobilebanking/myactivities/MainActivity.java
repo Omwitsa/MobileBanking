@@ -21,64 +21,43 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
-
-import com.example.mobilebanking.R;
-
-import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-
-import Pockdata.PocketPos;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import com.example.mobilebanking.Pockdata.PocketPos;
+import com.example.mobilebanking.R;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
-//
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_main);
-//    }
-
     private Button mEnableBtn, mPrintReceiptBtn;
     private static Button mConnectBtn;
     private Spinner mDeviceSp;
-
-
     StringBuffer buffer;
-//    HttpResponse response;
-//    HttpClient httpclient;
-//    List<NameValuePair> nameValuePairs;
     ProgressDialog dialog = null;
-    TextView tv;
     static SQLiteDatabase db;
-
     private ProgressDialog mProgressDlg, mConnectingDlg;
-
     private BluetoothAdapter mBluetoothAdapter;
-
     private P25Connector mConnector;
+    TextView tv;
     String qty1 = "";// =getIntent().getStringExtra("qty").toString();
     String sno1 = "";
     String pin1 = "";
-
     MainActivity mainActivity;
     public static String company, userrrrr, branchhh;
-
     private ArrayList<BluetoothDevice> mDeviceList = new ArrayList<BluetoothDevice>();
     String comp;
-
     private static BluetoothSocket mSocket;
     BluetoothDevice selectDevice = null;
+//    HttpResponse response;
+//    HttpClient httpclient;
+//    List<NameValuePair> nameValuePairs;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_main2);
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         myToolbar.setTitle("Print Report");
@@ -93,15 +72,12 @@ public class MainActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-
-
         mConnectBtn = (Button) findViewById(R.id.btn_connect);
         mEnableBtn = (Button) findViewById(R.id.btn_enable);
         mPrintReceiptBtn = (Button) findViewById(R.id.btn_print_receipt);
         mDeviceSp = (Spinner) findViewById(R.id.sp_device);
-
-
         tv = (TextView) findViewById(R.id.tv);
+
         qty1 = "2342";//getIntent().getStringExtra("qty").toString();
         sno1 = "234234";//getIntent().getStringExtra("sno").toString();
         pin1 = "A345455345G";// getIntent().getStringExtra("pin").toString();
@@ -189,8 +165,6 @@ public class MainActivity extends AppCompatActivity {
             mPrintReceiptBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View arg0) {
-
-
                     printStruk();
                     dialog = ProgressDialog.show(MainActivity.this, "",
                             "submitting collection Online, please wait...", true);
@@ -204,8 +178,6 @@ public class MainActivity extends AppCompatActivity {
                             dialog.dismiss();
                         }
                     }).start();
-
-
                 }
             });
         }
@@ -357,7 +329,7 @@ public class MainActivity extends AppCompatActivity {
         } catch (P25ConnectionException e) {
             e.printStackTrace();
         }
-        db.execSQL("UPDATE CollectionDB set status='1' where status='0';");
+        //db.execSQL("UPDATE CollectionDB set status='1' where status='0';");
     }
 
 
@@ -414,6 +386,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void printStruk() {
+        StringBuffer buffer = new StringBuffer();
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            String amount = extras.getString("amount");
+            String fingurePrint = extras.getString("fingurePrint");
+            String supplierNo = extras.getString("supplierNo");
+            String pin = extras.getString("pin");
+
+            buffer.append("Supplier No    :" + supplierNo + "\n");
+            buffer.append("Amount       :" + amount + "\n");
+        }
 
 //        Cursor c = db.rawQuery("SELECT * FROM CollectionDB WHERE status='0'", null);
 //        if (c.getCount() == 0) {
@@ -421,23 +404,18 @@ public class MainActivity extends AppCompatActivity {
 //            return;
 //        }
 
-        StringBuffer buffer = new StringBuffer();
+
         MainActivity ma = new MainActivity();
 //        company = ma.company;
 ////        userrrrr = ma.logedInUser;
 ////        branchhh = ma.branch;
-//
-//        while (c.moveToNext()) {
-//            buffer.append("Supplier No    :" + c.getString(0) + "\n");
-//            buffer.append("Quantity       :" + c.getString(1) + " KGs\n");
-//            buffer.append("Station Name    :" + branchhh + "\n");
-//            buffer.append("Received By    :" + userrrrr + "\n");
-//        }
+
+
 
         showMessage("Collection Details", buffer.toString());
         long milis1 = System.currentTimeMillis();
-        String date1 = util.DateUtil.timeMilisToString(milis1, "dd-MM-yyyy");
-        String time1 = util.DateUtil.timeMilisToString(milis1, "  HH:mm a");
+        String date1 = com.example.mobilebanking.Util.DateUtil.timeMilisToString(milis1, "dd-MM-yyyy");
+        String time1 = com.example.mobilebanking.Util.DateUtil.timeMilisToString(milis1, "  HH:mm a");
 
         StringBuilder content2Sb = new StringBuilder();
         content2Sb.append("\n" + "Amtech Technologies Limited"+ "\n" + "MILK RECEIPT" + "\n");
@@ -453,7 +431,7 @@ public class MainActivity extends AppCompatActivity {
         content2Sb.append("www.amtechafrica.com" + "\n");
         content2Sb.append("--------------------------" + "\n");
 
-        byte[] content2Byte = util.Printer.printfont(content2Sb.toString(), util.FontDefine.FONT_32PX, util.FontDefine.Align_LEFT, (byte) 0x1A,
+        byte[] content2Byte = com.example.mobilebanking.Util.Printer.printfont(content2Sb.toString(), com.example.mobilebanking.Util.FontDefine.FONT_32PX, com.example.mobilebanking.Util.FontDefine.Align_LEFT, (byte) 0x1A,
                 PocketPos.LANGUAGE_ENGLISH);
         byte[] totalByte = new byte[content2Byte.length];
         int offset = 0;
@@ -463,8 +441,6 @@ public class MainActivity extends AppCompatActivity {
         sendData(senddata);
 
     }
-
-
 
     public void showMessage(String title, String message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);

@@ -1,4 +1,4 @@
-package util;
+package com.example.mobilebanking.Util;
 
 /*
  * Copyright ?2007-2011 Blue Bamboo Ltd. 

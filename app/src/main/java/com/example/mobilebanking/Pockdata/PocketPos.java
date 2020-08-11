@@ -1,9 +1,9 @@
-package Pockdata;
+package com.example.mobilebanking.Pockdata;
 
 import android.util.Log;
 
-import util.NumberUtil;
-import util.StringUtil;
+import com.example.mobilebanking.Util.NumberUtil;
+import com.example.mobilebanking.Util.StringUtil;
 
 
 /**

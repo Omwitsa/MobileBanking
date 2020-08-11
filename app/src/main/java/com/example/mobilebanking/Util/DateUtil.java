@@ -1,4 +1,4 @@
-package util;
+package com.example.mobilebanking.Util;
 
 import java.text.SimpleDateFormat;
 import java.text.ParseException;

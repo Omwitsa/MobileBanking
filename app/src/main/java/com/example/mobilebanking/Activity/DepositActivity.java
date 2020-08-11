@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -32,7 +33,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 
 public class DepositActivity extends AppCompatActivity {
-    SQLiteDatabase db;
     ProgressDialog progressDoalog;
     ApiInterface apiService;
     @BindView(R.id.amount) EditText amount;
@@ -49,9 +49,6 @@ public class DepositActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         apiService = ApiClient.getClient().create(ApiInterface.class);
         progressDoalog = new ProgressDialog(DepositActivity.this);
-        db = openOrCreateDatabase("MobileDB", Context.MODE_PRIVATE, null);
-        db.execSQL("CREATE TABLE IF NOT EXISTS deposits(Amount VARCHAR,Pin VARCHAR,Supp VARCHAR,datepp DATETIME, status VARCHAR);");
-
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,11 +64,16 @@ public class DepositActivity extends AppCompatActivity {
                     Toast.makeText(DepositActivity.this, "Pin shoud have a maximum of 4 characters", Toast.LENGTH_LONG).show();
                 }else {
 
-                    insertDataToSqlite(bal, Pinn, SupNo);
+//                    insertDataToSqlite(bal, Pinn, SupNo);
 
+                    Intent intent = new Intent(getApplicationContext(), FingeprintActivity.class);
+                    intent.putExtra("operation", "deposit");
+                    intent.putExtra("amount", bal);
+                    intent.putExtra("fingurePrint", "");
+                    intent.putExtra("supplierNo", SupNo);
+                    intent.putExtra("pin", Pinn);
+                    startActivity(intent);
                 }
-
-
             }
         });
 
@@ -83,45 +85,6 @@ public class DepositActivity extends AppCompatActivity {
             }
         });
     }
-
-
-    public void insertDataToSqlite(String bal, String pinn, String supNo) {
-
-        Calendar cc = Calendar.getInstance();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String date_pp = sdf.format(cc.getTime());
-
-//
-//
-//            //db.rawQuery("SELECT * FROM deposits", null);
-//        Cursor c = db.rawQuery("SELECT * FROM deposits ", null);
-//        if (c.getCount() == 0) {
-//            Toast.makeText(getApplicationContext(), "No record Found", Toast.LENGTH_LONG).show();
-//            return;
-//        }
-//        else{
-//            while (c.moveToNext()) {
-//                StringBuffer buffer = new StringBuffer();
-//
-//                buffer.append(c.getString(0) + "\t" + c.getString(1) + " \t" + c.getString(2)  +"\n");
-//                Toast.makeText(getApplicationContext(), "No record Found", Toast.LENGTH_LONG).show();
-//
-//            }
-//        }
-            db.execSQL("INSERT INTO deposits VALUES('" + bal + "','"  + pinn+ "','" + supNo + "','" + date_pp + "','0');");
-
-             Toast.makeText(getApplicationContext(), "Saved successfully", Toast.LENGTH_LONG).show();
-        //progressDoalog.setMessage("Please wait...");
-        //progressDoalog.show();
-             deposit();
-
-
-
-    }
-
-
-
-
 
     private void deposit() {
         Double depositAmount = Double.parseDouble(amount.getText().toString());
@@ -144,14 +107,16 @@ public class DepositActivity extends AppCompatActivity {
             }
             //Cursor c = db.rawQuery("SELECT * FROM MobileDB  ", null);
         });
-
-
-        Print();
     }
 
     private void Print() {
-        Intent registerIntent = new Intent(getApplicationContext(), MainActivity.class);
-        startActivity(registerIntent);
+        Double depositAmount = Double.parseDouble(amount.getText().toString());
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        intent.putExtra("amount", depositAmount);
+        intent.putExtra("fingurePrint", "");
+        intent.putExtra("supplierNo", sNo.getText().toString());
+        intent.putExtra("pin", pin.getText().toString());
+        startActivity(intent);
     }
     private SQLiteDatabase getWritableDatabase() {
         // TODO Auto-generated method stub
