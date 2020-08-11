@@ -115,23 +115,43 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
     }
 
     private void deposit(DepositModel _deposit) {
-        Call<Response> call = apiService.deposit(_deposit);
+        if (_deposit.getOperation().equals("deposit")){
+            Call<Response> call = apiService.deposit(_deposit);
+            call.enqueue(new Callback<Response>() {
+                @Override
+                public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
+                    progressDoalog.dismiss();
+                    Response responseData = response.body();
+                    String message = responseData.getMessage() == null ? "Sorry, Invalid username or password" : responseData.getMessage();
+                    Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+                }
 
-        call.enqueue(new Callback<Response>() {
-            @Override
-            public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
-                progressDoalog.dismiss();
-                Response responseData = response.body();
-                String message = responseData.getMessage() == null ? "Sorry, Invalid username or password" : responseData.getMessage();
-                Toast.makeText(context, message, Toast.LENGTH_LONG).show();
-            }
+                @Override
+                public void onFailure(Call<Response> call, Throwable t) {
+                    progressDoalog.dismiss();
+                    Toast.makeText(context, "Sorry, An error occurred", Toast.LENGTH_LONG).show();
+                }
+            });
+        }
+        else if (_deposit.getOperation().equals("withdraw")){
+            Call<Response> call = apiService.withdraw(_deposit);
+            call.enqueue(new Callback<Response>() {
+                @Override
+                public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
+                    progressDoalog.dismiss();
+                    Response responseData = response.body();
+                    String message = responseData.getMessage() == null ? "Sorry, Invalid username or password" : responseData.getMessage();
+                    Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+                }
 
-            @Override
-            public void onFailure(Call<Response> call, Throwable t) {
-                progressDoalog.dismiss();
-                Toast.makeText(context, "Sorry, An error occurred", Toast.LENGTH_LONG).show();
-            }
-        });
+                @Override
+                public void onFailure(Call<Response> call, Throwable t) {
+                    progressDoalog.dismiss();
+                    Toast.makeText(context, "Sorry, An error occurred", Toast.LENGTH_LONG).show();
+                }
+            });
+        }
+
         Print();
     }
 
