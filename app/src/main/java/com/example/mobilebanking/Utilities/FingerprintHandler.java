@@ -70,7 +70,7 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
 
     @Override
     public void onAuthenticationSucceeded(FingerprintManager.AuthenticationResult result) {
-        insertDataToSqlite(_deposit.getAmount().toString(), _deposit.getPin(), _deposit.getsNo());
+        insertDataToSqlite(_deposit);
     }
 
     public void update(String e, Boolean success){
@@ -81,7 +81,10 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
         }
     }
 
-    public void insertDataToSqlite(String bal, String pinn, String supNo) {
+    public void insertDataToSqlite(DepositModel _deposit) {
+        String bal = _deposit.getAmount().toString();
+        String pinn = _deposit.getPin();
+        String supNo = _deposit.getsNo();
         Calendar cc = Calendar.getInstance();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String date_pp = sdf.format(cc.getTime());
@@ -108,10 +111,10 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
         Toast.makeText(context, "Saved successfully", Toast.LENGTH_LONG).show();
         //progressDoalog.setMessage("Please wait...");
         //progressDoalog.show();
-        deposit();
+        deposit(_deposit);
     }
 
-    private void deposit() {
+    private void deposit(DepositModel _deposit) {
         Call<Response> call = apiService.deposit(_deposit);
 
         call.enqueue(new Callback<Response>() {
