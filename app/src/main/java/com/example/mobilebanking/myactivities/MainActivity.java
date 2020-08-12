@@ -24,6 +24,8 @@ import android.widget.Toast;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
+import com.example.mobilebanking.Model.DepositModel;
 import com.example.mobilebanking.Pockdata.PocketPos;
 import com.example.mobilebanking.R;
 import java.lang.reflect.Method;
@@ -81,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
         qty1 = "2342";//getIntent().getStringExtra("qty").toString();
         sno1 = "234234";//getIntent().getStringExtra("sno").toString();
         pin1 = "A345455345G";// getIntent().getStringExtra("pin").toString();
-        db = openOrCreateDatabase("CollectionDB", Context.MODE_PRIVATE, null);
+        db = openOrCreateDatabase("MobileDB", Context.MODE_PRIVATE, null);
 
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 
@@ -323,13 +325,21 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void sendData(byte[] bytes) {
+    private void sendData(byte[] bytes, String transaction, String supplierNo) {
         try {
             mConnector.sendData(bytes);
         } catch (P25ConnectionException e) {
             e.printStackTrace();
         }
-        //db.execSQL("UPDATE CollectionDB set status='1' where status='0';");
+        if(transaction.equals("deposit")){
+            db.execSQL("UPDATE deposits set status='1' where status='0' and Supp='"+supplierNo+"' ;");
+        }
+        else if (transaction.equals("withdraw")){
+            db.execSQL("UPDATE withdrawals set status='1' where status='0'and Supp='"+supplierNo+"';");
+        }
+        else {
+
+        }
     }
 
 
@@ -388,16 +398,17 @@ public class MainActivity extends AppCompatActivity {
     private void printStruk() {
         StringBuffer buffer = new StringBuffer();
         Bundle extras = getIntent().getExtras();
+        String transaction = "";
+        String supplierNo = "";
         if (extras != null) {
             String amount = extras.getString("amount");
-            String transaction = extras.getString("transaction");
+            transaction = extras.getString("transaction");
             String fingurePrint = extras.getString("fingurePrint");
-            String supplierNo = extras.getString("supplierNo");
+            supplierNo = extras.getString("supplierNo");
             String pin = extras.getString("pin");
             buffer.append( transaction.toUpperCase()+" RECEIPT" + "\n");
             buffer.append("Member No    :" + supplierNo + "\n");
             buffer.append("Amount       :" + amount + "\n");
-
 
         }
 
@@ -442,7 +453,7 @@ public class MainActivity extends AppCompatActivity {
         System.arraycopy(content2Byte, 0, totalByte, offset, content2Byte.length);
         offset += content2Byte.length;
         byte[] senddata = PocketPos.FramePack(PocketPos.FRAME_TOF_PRINT, totalByte, 0, totalByte.length);
-        sendData(senddata);
+        sendData(senddata, transaction, supplierNo);
 
     }
 

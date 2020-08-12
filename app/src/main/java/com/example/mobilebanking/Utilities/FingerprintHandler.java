@@ -149,6 +149,7 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
                 @Override
                 public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
                     progressDoalog.dismiss();
+
                     Response responseData = response.body();
                     String message = responseData.getMessage() == null ? "Sorry, Invalid username or password" : responseData.getMessage();
                     Toast.makeText(context, message, Toast.LENGTH_LONG).show();
@@ -161,6 +162,7 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
                 }
             });
         }
+
 
         Print();
     }
