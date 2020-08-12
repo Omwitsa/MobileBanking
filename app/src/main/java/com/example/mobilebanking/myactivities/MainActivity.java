@@ -390,9 +390,11 @@ public class MainActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             String amount = extras.getString("amount");
+            String transaction = extras.getString("transaction");
             String fingurePrint = extras.getString("fingurePrint");
             String supplierNo = extras.getString("supplierNo");
             String pin = extras.getString("pin");
+            buffer.append( transaction.toUpperCase()+" RECEIPT" + "\n");
             buffer.append("Member No    :" + supplierNo + "\n");
             buffer.append("Amount       :" + amount + "\n");
 

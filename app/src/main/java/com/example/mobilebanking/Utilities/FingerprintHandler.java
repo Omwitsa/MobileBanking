@@ -42,6 +42,7 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
         apiService = ApiClient.getClient().create(ApiInterface.class);
         progressDoalog = new ProgressDialog(context);
         db = context.openOrCreateDatabase("MobileDB", Context.MODE_PRIVATE, null);
+        db.execSQL("CREATE TABLE IF NOT EXISTS withdrawals(Amount VARCHAR,Pin VARCHAR,Supp VARCHAR,datepp DATETIME, status VARCHAR);");
         db.execSQL("CREATE TABLE IF NOT EXISTS deposits(Amount VARCHAR,Pin VARCHAR,Supp VARCHAR,datepp DATETIME, status VARCHAR);");
     }
 
@@ -89,7 +90,7 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String date_pp = sdf.format(cc.getTime());
 
-//
+
 //
 //            //db.rawQuery("SELECT * FROM deposits", null);
 //        Cursor c = db.rawQuery("SELECT * FROM deposits ", null);
@@ -106,7 +107,16 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
 //
 //            }
 //        }
-        db.execSQL("INSERT INTO deposits VALUES('" + bal + "','"  + pinn+ "','" + supNo + "','" + date_pp + "','0');");
+        if (_deposit.getOperation().equals("deposit")){
+            db.execSQL("INSERT INTO deposits VALUES('" + bal + "','"  + pinn+ "','" + supNo + "','" + date_pp + "','0');");
+        }
+        else if (_deposit.getOperation().equals("withdraw")){
+            db.execSQL("INSERT INTO withdrawals VALUES('" + bal + "','"  + pinn+ "','" + supNo + "','" + date_pp + "','0');");
+        }
+        else {
+
+        }
+
 
         Toast.makeText(context, "Saved successfully", Toast.LENGTH_LONG).show();
         //progressDoalog.setMessage("Please wait...");
@@ -157,6 +167,7 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
 
     private void Print() {
         Intent intent = new Intent(context, MainActivity.class);
+        intent.putExtra("transaction", _deposit.getOperation());
         intent.putExtra("amount", _deposit.getAmount().toString());
         intent.putExtra("fingurePrint", "");
         intent.putExtra("supplierNo", _deposit.getsNo());
