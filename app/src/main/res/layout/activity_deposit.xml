@@ -62,21 +62,20 @@
 <!--            android:textColorHint="@color/textcardColor"-->
 <!--            android:textColorHighlight="@color/textcardColor"/>-->
 
-<!--        <EditText-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_margin="10dp"-->
-<!--            android:padding="15dp"-->
-<!--            android:background="@drawable/editshape"-->
-<!--            android:id="@+id/sNo"-->
-<!--            android:drawablePadding="10dp"-->
-<!--            android:hint="Supplier Number"-->
-<!--            android:textColor="@color/textcardColor"-->
-<!--            android:textColorHint="@color/textcardColor"-->
-<!--            android:textColorHighlight="@color/textcardColor"/>-->
-
-
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:padding="15dp"
+            android:background="@drawable/editshape"
+            android:id="@+id/sNo"
+            android:drawablePadding="10dp"
+            android:hint="Member Number"
+            android:textColor="@color/textcardColor"
+            android:textColorHint="@color/textcardColor"
+            android:textColorHighlight="@color/textcardColor"/>
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

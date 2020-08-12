@@ -37,7 +37,7 @@ public class DepositActivity extends AppCompatActivity {
     ApiInterface apiService;
     @BindView(R.id.amount) EditText amount;
 //    @BindView(R.id.pin) EditText pin;
-//    @BindView(R.id.sNo) EditText sNo;
+    @BindView(R.id.sNo) EditText sNo;
     @BindView(R.id.submit) Button submit;
     @BindView(R.id.back) Button back;
 
@@ -53,10 +53,9 @@ public class DepositActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String bal = amount.getText().toString();
+                String SupNo = sNo.getText().toString();
 //                String Pinn = pin.getText().toString();
-//                String SupNo = sNo.getText().toString();
                 String Pinn = "";
-                String SupNo = "";
 
                 if (bal.isEmpty() && Pinn.isEmpty() && SupNo.isEmpty() ) {
                     //Snackbar.make(getView(), "Field(s) are empty !", Snackbar.LENGTH_LONG).show();
@@ -88,47 +87,6 @@ public class DepositActivity extends AppCompatActivity {
         });
     }
 
-    private void deposit() {
-//        String sno = sNo.getText().toString();
-//        String pin = pin.getText().toString();
-        String sno = "";
-        String pin = "";
-        Double depositAmount = Double.parseDouble(amount.getText().toString());
-        DepositModel depositModel = new DepositModel("deposit", depositAmount, "", pin, sno);
-        Call<Response> call = apiService.deposit(depositModel);
-
-        call.enqueue(new Callback<Response>() {
-            @Override
-            public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
-                progressDoalog.dismiss();
-                Response responseData = response.body();
-                String message = responseData.getMessage() == null ? "Sorry, Invalid username or password" : responseData.getMessage();
-                Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
-            }
-
-            @Override
-            public void onFailure(Call<Response> call, Throwable t) {
-                progressDoalog.dismiss();
-                Toast.makeText(getApplicationContext(), "Sorry, An error occurred", Toast.LENGTH_LONG).show();
-            }
-            //Cursor c = db.rawQuery("SELECT * FROM MobileDB  ", null);
-        });
-    }
-
-    private void Print() {
-//        String sno = sNo.getText().toString();
-//        String pin = pin.getText().toString();
-        String sno = "";
-        String pin = "";
-
-        Double depositAmount = Double.parseDouble(amount.getText().toString());
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-        intent.putExtra("amount", depositAmount);
-        intent.putExtra("fingurePrint", "");
-        intent.putExtra("supplierNo", sno);
-        intent.putExtra("pin", pin);
-        startActivity(intent);
-    }
     private SQLiteDatabase getWritableDatabase() {
         // TODO Auto-generated method stub
         return null;
