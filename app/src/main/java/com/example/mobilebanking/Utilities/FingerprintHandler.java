@@ -137,7 +137,7 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
 
     private void Print() {
         Intent intent = new Intent(context, MainActivity.class);
-        intent.putExtra("amount", _deposit.getAmount());
+        intent.putExtra("amount", _deposit.getAmount().toString());
         intent.putExtra("fingurePrint", "");
         intent.putExtra("supplierNo", _deposit.getsNo());
         intent.putExtra("pin", _deposit.getPin());

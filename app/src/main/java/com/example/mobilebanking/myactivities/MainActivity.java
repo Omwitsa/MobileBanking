@@ -393,9 +393,10 @@ public class MainActivity extends AppCompatActivity {
             String fingurePrint = extras.getString("fingurePrint");
             String supplierNo = extras.getString("supplierNo");
             String pin = extras.getString("pin");
-
-            buffer.append("Supplier No    :" + supplierNo + "\n");
+            buffer.append("Member No    :" + supplierNo + "\n");
             buffer.append("Amount       :" + amount + "\n");
+
+
         }
 
 //        Cursor c = db.rawQuery("SELECT * FROM CollectionDB WHERE status='0'", null);
@@ -412,19 +413,20 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        showMessage("Collection Details", buffer.toString());
+        showMessage("", buffer.toString());
         long milis1 = System.currentTimeMillis();
         String date1 = com.example.mobilebanking.Util.DateUtil.timeMilisToString(milis1, "dd-MM-yyyy");
         String time1 = com.example.mobilebanking.Util.DateUtil.timeMilisToString(milis1, "  HH:mm a");
 
         StringBuilder content2Sb = new StringBuilder();
-        content2Sb.append("\n" + "Amtech Technologies Limited"+ "\n" + "MILK RECEIPT" + "\n");
+        content2Sb.append("\n" + "K-PILLAR SACCO SOCIETY LIMITED"+ "\n");
         content2Sb.append("-----------------------------" + "\n");
         content2Sb.append("" + buffer.toString() + "" + "\n");
+
         content2Sb.append("--------------------------" + "\n");
         content2Sb.append("Date:" + date1 + "" + "," + "Time:" + time1 + "" + "\n");
         content2Sb.append("--------------------------" + "\n");
-        content2Sb.append("MILK FOR HEALTH AND WEALTH" + "\n");
+        content2Sb.append("Thankyou for your Patronage" + "\n");
         content2Sb.append("--------------------------" + "\n");
         content2Sb.append("DESIGNED & DEVELOPED BY" + "\n");
         content2Sb.append("AMTECH TECHNOLOGIES LTD" + "\n");
