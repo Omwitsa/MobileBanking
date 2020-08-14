@@ -13,13 +13,16 @@ public class DepositModel {
     private String pin;
     @SerializedName("sNo")
     private  String sNo;
+    @SerializedName("status")
+    private  String status;
 
-    public DepositModel(String operation, Double amount, String fingerePrint, String pin, String sNo) {
+    public DepositModel(String operation, Double amount, String fingerePrint, String pin, String sNo, String status) {
         this.operation = operation;
         this.amount = amount;
         this.fingerePrint = fingerePrint;
         this.pin = pin;
         this.sNo = sNo;
+        this.status = status;
     }
 
     public String getOperation() {
@@ -60,5 +63,13 @@ public class DepositModel {
 
     public void setsNo(String sNo) {
         this.sNo = sNo;
+    }
+
+    public String isStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }
