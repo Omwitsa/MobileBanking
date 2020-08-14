@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
     private void seedUser() {
         String username = "CoopAdmin";
         String password = "Coop@2020";
-        MemberModel memberModel = new MemberModel(username, password, "userRegister");
+        MemberModel memberModel = new MemberModel(username, password);
         Call<Response> call = apiService.createUser(memberModel);
         call.enqueue(new Callback<Response>() {
             @Override
@@ -76,8 +76,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void Login() {
-        MemberModel memberModel = new MemberModel(username.getText().toString(), password.getText().toString(), "login");
-        Call<Response> call = apiService.getMember(memberModel);
+        MemberModel memberModel = new MemberModel(username.getText().toString(), password.getText().toString());
+        Call<Response> call = apiService.login(memberModel);
         call.enqueue(new Callback<Response>() {
             @Override
             public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {

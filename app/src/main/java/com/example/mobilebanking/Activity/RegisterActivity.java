@@ -56,8 +56,9 @@ public class RegisterActivity extends AppCompatActivity {
 
     private void register() {
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        ClientModel clientModel = new ClientModel("clientRegister", pin.getText().toString(), "", sNo.getText().toString());
-        Call<Response> call = apiService.createClient(clientModel);
+        // pin.getText().toString(), "", sNo.getText().toString()
+        ClientModel clientModel = new ClientModel("", sNo.getText().toString(), pin.getText().toString());
+        Call<Response> call = apiService.registerFingerPrints(clientModel);
         call.enqueue(new Callback<Response>() {
             @Override
             public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {

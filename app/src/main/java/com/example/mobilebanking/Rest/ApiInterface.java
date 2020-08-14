@@ -13,19 +13,19 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface ApiInterface {
-    @POST("webservice/k-pillar/users.php")
-    Call<Response> getMember(@Body MemberModel memberModel);
+    @POST("webservice/users/login")
+    Call<Response> login(@Body MemberModel memberModel);
 
-    @POST("webservice/k-pillar/users.php")
-    Call<Response> createClient(@Body ClientModel clientModel);
+    @POST("webservice/users/registerFingerPrints")
+    Call<Response> registerFingerPrints(@Body ClientModel clientModel);
 
-    @POST("webservice/k-pillar/users.php")
+    @POST("webservice/users/seedAdminUser")
     Call<Response> createUser(@Body MemberModel memberModel);
 
-    @POST("webservice/k-pillar/transactions.php")
+    @POST("webservice/transacions/deposit")
     Call<Response> deposit(@Body DepositModel depositModel);
 
-    @POST("webservice/k-pillar/transactions.php")
+    @POST("webservice/transacions/withdraw")
     Call<Response> withdraw(@Body DepositModel depositModel);
 
 //    @GET("webservice/k-pillar/users.php")

@@ -7,13 +7,10 @@ public class MemberModel {
     private String usercode;
     @SerializedName("password")
     private  String password;
-    @SerializedName("operation")
-    private  String operation;
 
-    public MemberModel(String usercode, String password, String operation) {
+    public MemberModel(String usercode, String password) {
         this.usercode = usercode;
         this.password = password;
-        this.operation = operation;
     }
 
     public String getUsercode() {
@@ -30,13 +27,5 @@ public class MemberModel {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getOperation() {
-        return operation;
-    }
-
-    public void setOperation(String operation) {
-        this.operation = operation;
     }
 }
