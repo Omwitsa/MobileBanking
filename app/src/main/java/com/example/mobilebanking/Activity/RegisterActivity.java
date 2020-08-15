@@ -56,7 +56,6 @@ public class RegisterActivity extends AppCompatActivity {
 
     private void register() {
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        // pin.getText().toString(), "", sNo.getText().toString()
         ClientModel clientModel = new ClientModel("", sNo.getText().toString(), pin.getText().toString());
         Call<Response> call = apiService.registerFingerPrints(clientModel);
         call.enqueue(new Callback<Response>() {

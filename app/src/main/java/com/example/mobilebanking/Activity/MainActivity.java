@@ -7,16 +7,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.mobilebanking.Model.Response;
 import com.example.mobilebanking.Model.MemberModel;
 import com.example.mobilebanking.R;
 import com.example.mobilebanking.Rest.ApiClient;
 import com.example.mobilebanking.Rest.ApiInterface;
-import com.example.mobilebanking.Utilities.Constants;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import retrofit2.Call;
@@ -83,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
                 progressDoalog.dismiss();
                 Response responseData = response.body();
-                if (responseData.getSuccess().equals(Constants.SUCCESS)){
+                if (responseData.isSuccess()){
                     Intent homeIntent = new Intent(getApplicationContext(), HomeActivity.class);
                     startActivity(homeIntent);
                 }

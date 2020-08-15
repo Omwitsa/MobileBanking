@@ -2,7 +2,7 @@ package com.example.mobilebanking.Model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class DepositModel {
+public class TransactionModel {
     @SerializedName("operation")
     private  String operation;
     @SerializedName("amount")
@@ -16,7 +16,7 @@ public class DepositModel {
     @SerializedName("status")
     private  String status;
 
-    public DepositModel(String operation, Double amount, String fingerePrint, String pin, String sNo, String status) {
+    public TransactionModel(String operation, Double amount, String fingerePrint, String pin, String sNo, String status) {
         this.operation = operation;
         this.amount = amount;
         this.fingerePrint = fingerePrint;
@@ -65,7 +65,7 @@ public class DepositModel {
         this.sNo = sNo;
     }
 
-    public String isStatus() {
+    public String getStatus() {
         return status;
     }
 

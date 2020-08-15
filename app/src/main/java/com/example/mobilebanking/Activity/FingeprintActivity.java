@@ -30,7 +30,7 @@ import javax.crypto.KeyGenerator;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
 
-import com.example.mobilebanking.Model.DepositModel;
+import com.example.mobilebanking.Model.TransactionModel;
 import com.example.mobilebanking.R;
 import com.example.mobilebanking.Utilities.FingerprintHandler;
 
@@ -41,7 +41,7 @@ public class FingeprintActivity extends AppCompatActivity {
     private Cipher cipher;
     private TextView textView;
     private TextView operationMsg;
-    DepositModel deposit;
+    TransactionModel transaction;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,12 +80,12 @@ public class FingeprintActivity extends AppCompatActivity {
                             String pin = extras.getString("pin");
                             String operation = extras.getString("operation");
 
-                            deposit = new DepositModel(operation, depositAmount, fingurePrint, pin, supplierNo, "0");
+                            transaction = new TransactionModel(operation, depositAmount, fingurePrint, pin, supplierNo, "0");
                         }
 
                         if (cipherInit()) {
                             FingerprintManager.CryptoObject cryptoObject = new FingerprintManager.CryptoObject(cipher);
-                            FingerprintHandler helper = new FingerprintHandler(this, deposit);
+                            FingerprintHandler helper = new FingerprintHandler(this, transaction);
                             helper.startAuth(fingerprintManager, cryptoObject);
                         }
                     }

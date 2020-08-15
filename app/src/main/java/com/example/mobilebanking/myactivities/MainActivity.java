@@ -25,7 +25,6 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import com.example.mobilebanking.Model.DepositModel;
 import com.example.mobilebanking.Pockdata.PocketPos;
 import com.example.mobilebanking.R;
 import java.lang.reflect.Method;
@@ -341,7 +340,6 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
-
 
     public void autosynch() {
 

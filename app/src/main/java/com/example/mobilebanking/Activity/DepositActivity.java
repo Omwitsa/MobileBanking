@@ -1,9 +1,7 @@
 package com.example.mobilebanking.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -11,26 +9,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import com.example.mobilebanking.Model.DepositModel;
-import com.example.mobilebanking.Model.MemberModel;
-import com.example.mobilebanking.Model.Response;
 import com.example.mobilebanking.R;
 import com.example.mobilebanking.Rest.ApiClient;
 import com.example.mobilebanking.Rest.ApiInterface;
-import com.example.mobilebanking.Utilities.Constants;
-import com.example.mobilebanking.myactivities.MainActivity;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.regex.Pattern;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import retrofit2.Call;
-import retrofit2.Callback;
 
 public class DepositActivity extends AppCompatActivity {
     ProgressDialog progressDoalog;

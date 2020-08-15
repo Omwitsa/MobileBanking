@@ -11,34 +11,29 @@ import android.hardware.fingerprint.FingerprintManager;
 import android.os.CancellationSignal;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-
-import com.example.mobilebanking.Activity.DepositActivity;
-import com.example.mobilebanking.Model.DepositModel;
 import com.example.mobilebanking.Model.Response;
+import com.example.mobilebanking.Model.TransactionModel;
 import com.example.mobilebanking.R;
 import com.example.mobilebanking.Rest.ApiClient;
 import com.example.mobilebanking.Rest.ApiInterface;
 import com.example.mobilebanking.myactivities.MainActivity;
-
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 
 public class FingerprintHandler extends FingerprintManager.AuthenticationCallback {
     private Context context;
     static SQLiteDatabase db;
-    private  DepositModel _deposit;
+    private TransactionModel _transaction;
     ApiInterface apiService;
     ProgressDialog progressDoalog;
 
-    public FingerprintHandler(Context mContext, DepositModel deposit) {
+    public FingerprintHandler(Context mContext, TransactionModel transaction) {
         context = mContext;
-        _deposit = deposit;
+        _transaction = transaction;
         apiService = ApiClient.getClient().create(ApiInterface.class);
         progressDoalog = new ProgressDialog(context);
         db = context.openOrCreateDatabase("MobileDB", Context.MODE_PRIVATE, null);
@@ -71,7 +66,7 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
 
     @Override
     public void onAuthenticationSucceeded(FingerprintManager.AuthenticationResult result) {
-        insertDataToSqlite(_deposit);
+        insertDataToSqlite(_transaction);
     }
 
     public void update(String e, Boolean success){
@@ -82,10 +77,10 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
         }
     }
 
-    public void insertDataToSqlite(DepositModel _deposit) {
-        String bal = _deposit.getAmount().toString();
-        String pinn = _deposit.getPin();
-        String supNo = _deposit.getsNo();
+    public void insertDataToSqlite(TransactionModel _transaction) {
+        String bal = _transaction.getAmount().toString();
+        String pinn = _transaction.getPin();
+        String supNo = _transaction.getsNo();
         Calendar cc = Calendar.getInstance();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String date_pp = sdf.format(cc.getTime());
@@ -107,10 +102,10 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
 //
 //            }
 //        }
-        if (_deposit.getOperation().equals("deposit")){
+        if (_transaction.getOperation().equals("deposit")){
             db.execSQL("INSERT INTO deposits VALUES('" + bal + "','"  + pinn+ "','" + supNo + "','" + date_pp + "','0');");
         }
-        else if (_deposit.getOperation().equals("withdraw")){
+        else if (_transaction.getOperation().equals("withdraw")){
             db.execSQL("INSERT INTO withdrawals VALUES('" + bal + "','"  + pinn+ "','" + supNo + "','" + date_pp + "','0');");
         }
         else {
@@ -121,12 +116,12 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
         Toast.makeText(context, "Saved successfully", Toast.LENGTH_LONG).show();
         //progressDoalog.setMessage("Please wait...");
         //progressDoalog.show();
-        deposit(_deposit);
+        deposit(_transaction);
     }
 
-    private void deposit(DepositModel _deposit) {
-        if (_deposit.getOperation().equals("deposit")){
-            Call<Response> call = apiService.deposit(_deposit);
+    private void deposit(TransactionModel _transaction) {
+        if (_transaction.getOperation().equals("deposit")){
+            Call<Response> call = apiService.deposit(_transaction);
             call.enqueue(new Callback<Response>() {
                 @Override
                 public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
@@ -143,8 +138,8 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
                 }
             });
         }
-        else if (_deposit.getOperation().equals("withdraw")){
-            Call<Response> call = apiService.withdraw(_deposit);
+        else if (_transaction.getOperation().equals("withdraw")){
+            Call<Response> call = apiService.withdraw(_transaction);
             call.enqueue(new Callback<Response>() {
                 @Override
                 public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
@@ -169,11 +164,11 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
 
     private void Print() {
         Intent intent = new Intent(context, MainActivity.class);
-        intent.putExtra("transaction", _deposit.getOperation());
-        intent.putExtra("amount", _deposit.getAmount().toString());
+        intent.putExtra("transaction", _transaction.getOperation());
+        intent.putExtra("amount", _transaction.getAmount().toString());
         intent.putExtra("fingurePrint", "");
-        intent.putExtra("supplierNo", _deposit.getsNo());
-        intent.putExtra("pin", _deposit.getPin());
+        intent.putExtra("supplierNo", _transaction.getsNo());
+        intent.putExtra("pin", _transaction.getPin());
         context.startActivity(intent);
     }
 }

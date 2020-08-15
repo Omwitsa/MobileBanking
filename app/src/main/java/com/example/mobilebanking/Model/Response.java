@@ -1,14 +1,18 @@
 package com.example.mobilebanking.Model;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Response {
-    private String success;
+    @SerializedName("Success")
+    private boolean success;
+    @SerializedName("Message")
     private String message;
 
-    public String getSuccess() {
+    public boolean isSuccess() {
         return success;
     }
 
-    public void setSuccess(String success) {
+    public void setSuccess(boolean success) {
         this.success = success;
     }
 
