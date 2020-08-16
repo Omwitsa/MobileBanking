@@ -2,6 +2,7 @@ package com.example.mobilebanking.Activity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -55,9 +56,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void seedUser() {
+        String machineId = android.os.Build.MANUFACTURER + ":" + android.os.Build.MODEL + ":" + Build.SERIAL;
         String username = "CoopAdmin";
         String password = "Coop@2020";
-        MemberModel memberModel = new MemberModel(username, password);
+        MemberModel memberModel = new MemberModel(username, password, machineId);
         Call<Response> call = apiService.createUser(memberModel);
         call.enqueue(new Callback<Response>() {
             @Override
@@ -73,7 +75,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void Login() {
-        MemberModel memberModel = new MemberModel(username.getText().toString(), password.getText().toString());
+        String machineId = android.os.Build.MANUFACTURER + ":" + android.os.Build.MODEL + ":" + Build.SERIAL;
+        MemberModel memberModel = new MemberModel(username.getText().toString(), password.getText().toString(), machineId);
         Call<Response> call = apiService.login(memberModel);
         call.enqueue(new Callback<Response>() {
             @Override

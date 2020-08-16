@@ -60,7 +60,6 @@ public class WithdrawActivity extends AppCompatActivity {
                     intent.putExtra("fingurePrint", "");
                     intent.putExtra("supplierNo", SupNo);
                     intent.putExtra("pin", Pinn);
-                    intent.putExtra("Machine_name", Machineid);
                     startActivity(intent);
                 }
             }
