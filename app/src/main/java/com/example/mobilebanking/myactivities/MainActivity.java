@@ -25,6 +25,8 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.example.mobilebanking.Activity.HomeActivity;
+import com.example.mobilebanking.Activity.WithdrawActivity;
 import com.example.mobilebanking.Model.DepositModel;
 import com.example.mobilebanking.Pockdata.PocketPos;
 import com.example.mobilebanking.R;
@@ -455,7 +457,10 @@ public class MainActivity extends AppCompatActivity {
         byte[] senddata = PocketPos.FramePack(PocketPos.FRAME_TOF_PRINT, totalByte, 0, totalByte.length);
         sendData(senddata, transaction, supplierNo);
 
+        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+        startActivity(intent);
     }
+
 
     public void showMessage(String title, String message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);

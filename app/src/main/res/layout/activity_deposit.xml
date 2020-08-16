@@ -70,7 +70,7 @@
             android:background="@drawable/editshape"
             android:id="@+id/sNo"
             android:drawablePadding="10dp"
-            android:hint="Member Number"
+            android:hint="Account  Number"
             android:textColor="@color/textcardColor"
             android:textColorHint="@color/textcardColor"
             android:textColorHighlight="@color/textcardColor"/>

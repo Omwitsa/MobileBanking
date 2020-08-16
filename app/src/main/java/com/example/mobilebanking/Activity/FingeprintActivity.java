@@ -79,8 +79,9 @@ public class FingeprintActivity extends AppCompatActivity {
                             String supplierNo = extras.getString("supplierNo");
                             String pin = extras.getString("pin");
                             String operation = extras.getString("operation");
+                            String Machineid=extras.getString("Machine_name");
 
-                            deposit = new DepositModel(operation, depositAmount, fingurePrint, pin, supplierNo, "0");
+                            deposit = new DepositModel(operation, depositAmount, fingurePrint, pin, supplierNo, "0",Machineid);
                         }
 
                         if (cipherInit()) {

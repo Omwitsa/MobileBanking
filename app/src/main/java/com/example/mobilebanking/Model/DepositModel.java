@@ -15,14 +15,18 @@ public class DepositModel {
     private  String sNo;
     @SerializedName("status")
     private  String status;
+    @SerializedName("Machineid")
+    private  String Machineid;
+    //String Machineid
 
-    public DepositModel(String operation, Double amount, String fingerePrint, String pin, String sNo, String status) {
+    public DepositModel(String operation, Double amount, String fingerePrint, String pin, String sNo, String status,String Machineid) {
         this.operation = operation;
         this.amount = amount;
         this.fingerePrint = fingerePrint;
         this.pin = pin;
         this.sNo = sNo;
         this.status = status;
+        this.Machineid=Machineid;
     }
 
     public String getOperation() {
@@ -71,5 +75,12 @@ public class DepositModel {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+    public String isMachineid() {
+        return Machineid;
+    }
+
+    public void setMachineid(String Machineid) {
+        this.Machineid = Machineid;
     }
 }

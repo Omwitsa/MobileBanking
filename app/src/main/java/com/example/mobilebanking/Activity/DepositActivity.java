@@ -6,6 +6,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -48,6 +49,8 @@ public class DepositActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         apiService = ApiClient.getClient().create(ApiInterface.class);
         progressDoalog = new ProgressDialog(DepositActivity.this);
+        //getting device model and serial number
+        String Machineid = android.os.Build.MODEL+""+ Build.SERIAL;
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,6 +76,7 @@ public class DepositActivity extends AppCompatActivity {
                     intent.putExtra("fingurePrint", "");
                     intent.putExtra("supplierNo", SupNo);
                     intent.putExtra("pin", Pinn);
+                    intent.putExtra("Machine_name", Machineid);
                     startActivity(intent);
                 }
             }
