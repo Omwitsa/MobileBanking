@@ -2,9 +2,7 @@ package com.example.mobilebanking.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-
 import android.os.Bundle;
-
 import android.Manifest;
 import android.annotation.TargetApi;
 import android.app.KeyguardManager;
@@ -14,7 +12,6 @@ import android.os.Build;
 import android.security.keystore.KeyGenParameterSpec;
 import android.security.keystore.KeyPermanentlyInvalidatedException;
 import android.security.keystore.KeyProperties;
-import android.os.Bundle;
 import android.widget.TextView;
 import java.io.IOException;
 import java.security.InvalidAlgorithmParameterException;
@@ -29,7 +26,6 @@ import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
-
 import com.example.mobilebanking.Model.TransactionModel;
 import com.example.mobilebanking.R;
 import com.example.mobilebanking.Utilities.FingerprintHandler;
@@ -79,8 +75,9 @@ public class FingeprintActivity extends AppCompatActivity {
                             String supplierNo = extras.getString("supplierNo");
                             String pin = extras.getString("pin");
                             String operation = extras.getString("operation");
+                            String Machineid=extras.getString("Machine_name");
 
-                            transaction = new TransactionModel(operation, depositAmount, fingurePrint, pin, supplierNo, "0");
+                            transaction = new TransactionModel(operation, depositAmount, fingurePrint, pin, supplierNo, "0", Machineid);
                         }
 
                         if (cipherInit()) {

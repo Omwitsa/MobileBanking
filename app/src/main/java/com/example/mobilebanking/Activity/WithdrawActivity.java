@@ -3,6 +3,7 @@ package com.example.mobilebanking.Activity;
 import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -31,6 +32,8 @@ public class WithdrawActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         apiService = ApiClient.getClient().create(ApiInterface.class);
         progressDoalog = new ProgressDialog(WithdrawActivity.this);
+        //getting device model and serial number
+        String Machineid = android.os.Build.MANUFACTURER + " " + android.os.Build.MODEL+""+ Build.SERIAL;
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,6 +60,7 @@ public class WithdrawActivity extends AppCompatActivity {
                     intent.putExtra("fingurePrint", "");
                     intent.putExtra("supplierNo", SupNo);
                     intent.putExtra("pin", Pinn);
+                    intent.putExtra("Machine_name", Machineid);
                     startActivity(intent);
                 }
             }

@@ -4,14 +4,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.mobilebanking.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
 
 public class HomeActivity extends AppCompatActivity {
     @BindView(R.id.deposit) CardView deposit;
@@ -23,10 +26,13 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         ButterKnife.bind(this);
 
+
+
         deposit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), DepositActivity.class);
+
                 startActivity(intent);
             }
         });
@@ -35,6 +41,7 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), WithdrawActivity.class);
+
                 startActivity(intent);
             }
         });
