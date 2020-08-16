@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        btnSignup.setEnabled(false);
         btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
