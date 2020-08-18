@@ -15,14 +15,17 @@ public class TransactionModel {
     private  String sNo;
     @SerializedName("status")
     private  String status;
+    @SerializedName("machineID")
+    private  String machineID;
 
-    public TransactionModel(String operation, Double amount, String fingerePrint, String pin, String sNo, String status) {
+    public TransactionModel(String operation, Double amount, String fingerePrint, String pin, String sNo, String status, String machineID) {
         this.operation = operation;
         this.amount = amount;
         this.fingerePrint = fingerePrint;
         this.pin = pin;
         this.sNo = sNo;
         this.status = status;
+        this.machineID = machineID;
     }
 
     public String getOperation() {
@@ -71,5 +74,13 @@ public class TransactionModel {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getMachineID() {
+        return machineID;
+    }
+
+    public void setMachineID(String machineID) {
+        this.machineID = machineID;
     }
 }

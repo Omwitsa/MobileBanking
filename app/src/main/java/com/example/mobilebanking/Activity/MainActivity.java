@@ -1,7 +1,9 @@
 package com.example.mobilebanking.Activity;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -20,6 +22,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 
 public class MainActivity extends AppCompatActivity {
+    public static final String MyPREFERENCES = "POSDETAILS" ;
+    SharedPreferences sharedpreferences;
     ProgressDialog progressDoalog;
     ApiInterface apiService;
     @BindView(R.id.username) EditText username;
@@ -27,15 +31,20 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.btnLogin) Button btnLogin;
     @BindView(R.id.btnSignup) Button btnSignup;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        apiService = ApiClient.getClient().create(ApiInterface.class);
+        progressDoalog = new ProgressDialog(MainActivity.this);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        apiService = ApiClient.getClient().create(ApiInterface.class);
         seedUser();
+        btnSignup.setEnabled(false);
 
-        progressDoalog = new ProgressDialog(MainActivity.this);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -45,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnSignup.setEnabled(false);
         btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -57,6 +65,10 @@ public class MainActivity extends AppCompatActivity {
 
     private void seedUser() {
         String machineId = android.os.Build.MANUFACTURER + ":" + android.os.Build.MODEL + ":" + Build.SERIAL;
+        SharedPreferences.Editor editor = sharedpreferences.edit();
+        editor.putString("machine_id", machineId);
+        editor.commit();
+
         String username = "CoopAdmin";
         String password = "Coop@2020";
         MemberModel memberModel = new MemberModel(username, password, machineId);
