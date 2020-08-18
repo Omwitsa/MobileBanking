@@ -2,6 +2,9 @@ package com.example.mobilebanking.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.Manifest;
 import android.annotation.TargetApi;
@@ -38,11 +41,14 @@ public class FingeprintActivity extends AppCompatActivity {
     private TextView textView;
     private TextView operationMsg;
     TransactionModel transaction;
+    public static final String MyPREFERENCES = "POSDETAILS" ;
+    SharedPreferences sharedpreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fingeprint);
 
+        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         // Initializing both Android Keyguard Manager and Fingerprint Manager
         KeyguardManager keyguardManager = (KeyguardManager) getSystemService(KEYGUARD_SERVICE);
         FingerprintManager fingerprintManager = (FingerprintManager) getSystemService(FINGERPRINT_SERVICE);
@@ -76,7 +82,8 @@ public class FingeprintActivity extends AppCompatActivity {
                             String pin = extras.getString("pin");
                             String operation = extras.getString("operation");
 
-                            transaction = new TransactionModel(operation, depositAmount, fingurePrint, pin, supplierNo, "0");
+                            String machineId = sharedpreferences.getString("machine_id", "");
+                            transaction = new TransactionModel(operation, depositAmount, fingurePrint, pin, supplierNo, "0", machineId);
                         }
 
                         if (cipherInit()) {

@@ -31,14 +31,9 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
     private TransactionModel _transaction;
     ApiInterface apiService;
     ProgressDialog progressDoalog;
-    public static final String MyPREFERENCES = "POSDETAILS" ;
-    SharedPreferences sharedpreferences;
 
     public FingerprintHandler(Context mContext, TransactionModel transaction) {
         context = mContext;
-        sharedpreferences = context.getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-        String machineId = sharedpreferences.getString("machine_id", "");
-        transaction.setMachineID(machineId);
 
         _transaction = transaction;
         apiService = ApiClient.getClient().create(ApiInterface.class);
