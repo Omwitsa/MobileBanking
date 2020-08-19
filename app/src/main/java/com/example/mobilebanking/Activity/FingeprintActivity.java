@@ -83,7 +83,8 @@ public class FingeprintActivity extends AppCompatActivity {
                             String operation = extras.getString("operation");
 
                             String machineId = sharedpreferences.getString("machine_id", "");
-                            transaction = new TransactionModel(operation, depositAmount, fingurePrint, pin, supplierNo, "0", machineId);
+                            String auditID = sharedpreferences.getString("loggedInUser", "");
+                            transaction = new TransactionModel(operation, depositAmount, fingurePrint, pin, supplierNo, "0", machineId, auditID);
                         }
 
                         if (cipherInit()) {

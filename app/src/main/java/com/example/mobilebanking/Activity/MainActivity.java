@@ -89,6 +89,10 @@ public class MainActivity extends AppCompatActivity {
     private void Login() {
         String machineId = android.os.Build.MANUFACTURER + ":" + android.os.Build.MODEL + ":" + Build.SERIAL;
         MemberModel memberModel = new MemberModel(username.getText().toString(), password.getText().toString(), machineId);
+        SharedPreferences.Editor editor = sharedpreferences.edit();
+        editor.putString("loggedInUser", memberModel.getUsercode());
+        editor.commit();
+
         Call<Response> call = apiService.login(memberModel);
         call.enqueue(new Callback<Response>() {
             @Override
