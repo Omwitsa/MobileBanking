@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         editor.putString("machine_id", machineId);
         editor.commit();
 
-        String username = "CoopAdmin";
+        String username = "PosAgent";
         String password = "Coop@2020";
         MemberModel memberModel = new MemberModel(username, password, machineId);
         Call<Response> call = apiService.createUser(memberModel);

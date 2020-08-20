@@ -405,8 +405,8 @@ public class MainActivity extends AppCompatActivity {
             supplierNo = extras.getString("supplierNo");
             String pin = extras.getString("pin");
             buffer.append( transaction.toUpperCase()+" RECEIPT" + "\n");
-            buffer.append("Member No    :" + supplierNo + "\n");
-            buffer.append("Amount       :" + amount + "\n");
+            buffer.append("Account No:" + supplierNo + "\n");
+            buffer.append("Amount    :" + amount + "\n");
 
         }
 
