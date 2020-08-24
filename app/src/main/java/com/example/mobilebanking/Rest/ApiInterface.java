@@ -1,5 +1,6 @@
 package com.example.mobilebanking.Rest;
 
+import com.example.mobilebanking.Model.AgentMember;
 import com.example.mobilebanking.Model.ClientModel;
 import com.example.mobilebanking.Model.Response;
 import com.example.mobilebanking.Model.MemberModel;
@@ -17,6 +18,9 @@ public interface ApiInterface {
 
     @POST("webservice/users/seedAdminUser")
     Call<Response> createUser(@Body MemberModel memberModel);
+
+    @POST("webservice/users/registerAgentMember")
+    Call<Response> registerAgentMember(@Body AgentMember agentMember);
 
     @POST("webservice/transacions/deposit")
     Call<Response> deposit(@Body TransactionModel transactionModel);

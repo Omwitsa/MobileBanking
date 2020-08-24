@@ -152,4 +152,5 @@ This current collection button takes you to searching of the scale device, that 
     <string name="title_activity_home">Fingerprint</string>
     <string name="activity_home_desc">You have successfully logged in with fingerprint authentication</string>
     <string name="activity_home_note">Close and re-open the app to see the fingerprint auth screen again</string>
+    <string name="title_activity_agent_member">AgentMember</string>
 </resources>
