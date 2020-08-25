@@ -123,16 +123,16 @@ This current collection button takes you to searching of the scale device, that 
     <string name="container_prompt">Choose a container</string>
     <string name="container_comp">Choose a company</string>
     <string name="time_prompt">Choose a Time</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="bucket">1.5 Kg</string>
-    <string name="title_activity_main2">Main2Activity</string>
-    <string name="title_fingerprint">Fingureprint Authodication</string>
+<!--    <string name="hello_blank_fragment">Hello blank fragment</string>-->
+<!--    <string name="bucket">1.5 Kg</string>-->
+<!--    <string name="title_activity_main2">Main2Activity</string>-->
+<!--    <string name="title_fingerprint">Fingureprint Authodication</string>-->
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="desc_fingerprint">Please place your fingertip on the scanner to verify your identity</string>
-    <string name="title_activity_home">Fingerprint</string>
-    <string name="activity_home_desc">You have successfully logged in with fingerprint authentication</string>
-    <string name="activity_home_note">Close and re-open the app to see the fingerprint auth screen again</string>
+<!--    &lt;!&ndash; TODO: Remove or change this placeholder text &ndash;&gt;-->
+<!--    <string name="desc_fingerprint">Please place your fingertip on the scanner to verify your identity</string>-->
+<!--    <string name="title_activity_home">Fingerprint</string>-->
+<!--    <string name="activity_home_desc">You have successfully logged in with fingerprint authentication</string>-->
+<!--    <string name="activity_home_note">Close and re-open the app to see the fingerprint auth screen again</string>-->
     <string-array name="language">
         <item>English</item>
         <item>Chinese</item>
@@ -152,8 +152,7 @@ This current collection button takes you to searching of the scale device, that 
         <item>1.5</item>
 
     </string-array>
-<<<<<<< HEAD
-=======
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -165,5 +164,4 @@ This current collection button takes you to searching of the scale device, that 
     <string name="activity_home_desc">You have successfully logged in with fingerprint authentication</string>
     <string name="activity_home_note">Close and re-open the app to see the fingerprint auth screen again</string>
     <string name="title_activity_agent_member">AgentMember</string>
->>>>>>> d3875cbd8418150ad4aa7a7ed131a290811b7368
 </resources>
