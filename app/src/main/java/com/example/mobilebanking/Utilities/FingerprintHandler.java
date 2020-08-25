@@ -171,6 +171,8 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
                 public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
                     progressDoalog.dismiss();
                     Response responseData = response.body();
+                    Double balance = Double.parseDouble(responseData.getMessage());
+                    _transaction.setAmount(balance);
                     Toast.makeText(context, responseData.getMessage(), Toast.LENGTH_LONG).show();
                 }
 
