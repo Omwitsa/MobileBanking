@@ -17,6 +17,7 @@ public class HomeActivity extends AppCompatActivity {
     @BindView(R.id.deposit) CardView deposit;
     @BindView(R.id.withdraw) CardView withdraw;
     @BindView(R.id.member_register) CardView memberRegister;
+    @BindView(R.id.balance_enquiry) CardView balanceEnquiry;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +45,14 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), AgentMemberActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        balanceEnquiry.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), BalanceActivity.class);
                 startActivity(intent);
             }
         });

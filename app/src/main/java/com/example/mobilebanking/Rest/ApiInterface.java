@@ -28,6 +28,9 @@ public interface ApiInterface {
     @POST("webservice/transacions/withdraw")
     Call<Response> withdraw(@Body TransactionModel transactionModel);
 
+    @POST("webservice/transacions/balance")
+    Call<Response> getBalance(@Body TransactionModel transactionModel);
+
 //    @GET("webservice/k-pillar/users.php")
 //    Call<Response> getMembers(@Path("id") int id, @Query("api_key") String apiKey);
 }
