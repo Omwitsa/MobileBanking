@@ -123,10 +123,10 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
         Toast.makeText(context, "Saved successfully", Toast.LENGTH_LONG).show();
         //progressDoalog.setMessage("Please wait...");
         //progressDoalog.show();
-        deposit(_transaction);
+        transact(_transaction);
     }
 
-    private void deposit(TransactionModel _transaction) {
+    private void transact(TransactionModel _transaction) {
         if (_transaction.getOperation().equals("deposit")){
             Call<Response> call = apiService.deposit(_transaction);
             call.enqueue(new Callback<Response>() {
@@ -164,7 +164,23 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
                 }
             });
         }
+        else if (_transaction.getOperation().equals("balance")){
+            Call<Response> call = apiService.getBalance(_transaction);
+            call.enqueue(new Callback<Response>() {
+                @Override
+                public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
+                    progressDoalog.dismiss();
+                    Response responseData = response.body();
+                    Toast.makeText(context, responseData.getMessage(), Toast.LENGTH_LONG).show();
+                }
 
+                @Override
+                public void onFailure(Call<Response> call, Throwable t) {
+                    progressDoalog.dismiss();
+                    Toast.makeText(context, "Sorry, An error occurred", Toast.LENGTH_LONG).show();
+                }
+            });
+        }
 
         Print();
     }

@@ -9,9 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+<<<<<<< HEAD
         <activity android:name=".myactivities.Reports">
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
+=======
+        <activity android:name=".Activity.BalanceActivity"></activity>
+        <activity android:name=".Activity.AgentMemberActivity" />
+>>>>>>> d3875cbd8418150ad4aa7a7ed131a290811b7368
         <activity android:name=".Activity.FingeprintActivity" />
         <activity android:name=".Activity.WithdrawActivity" />
         <activity android:name=".Activity.DepositActivity" />
