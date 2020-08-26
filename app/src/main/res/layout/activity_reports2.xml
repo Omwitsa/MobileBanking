@@ -16,7 +16,7 @@
         android:minHeight="@dimen/abc_action_bar_default_height_material"
         android:background="?attr/colorPrimary"
         app:popupTheme="@style/AppTheme.PopupOverlay"
-        app:title="@string/app_name"/>
+        app:title="Agency Banking"/>
 
 
     <RelativeLayout
@@ -87,7 +87,16 @@
         android:textColor="@color/tabteal"
         android:layout_margin="30dp"
         android:enabled="true"
-        android:text="Print DairyReport" />
+        android:text="Print Deposits" />
+    <Button
+        android:id="@+id/btn_print_receiptd1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/GREEN"
+        android:textColor="@color/tabteal"
+        android:layout_margin="30dp"
+        android:enabled="true"
+        android:text="Print Withdrawals" />
     <TextView
         android:id="@+id/tvd"
         android:layout_width="match_parent"

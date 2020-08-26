@@ -1,5 +1,6 @@
 package com.example.mobilebanking.Activity;
 
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -7,22 +8,27 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.mobilebanking.Model.AgentMember;
-import com.example.mobilebanking.Model.ClientModel;
 import com.example.mobilebanking.Model.Response;
 import com.example.mobilebanking.R;
 import com.example.mobilebanking.Rest.ApiClient;
 import com.example.mobilebanking.Rest.ApiInterface;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
+import androidx.appcompat.app.AppCompatActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Callback;
+
+import static java.util.Calendar.DATE;
 
 public class AgentMemberActivity extends AppCompatActivity {
     ProgressDialog progressDoalog;
@@ -36,6 +42,9 @@ public class AgentMemberActivity extends AppCompatActivity {
     @BindView(R.id.gender) EditText gender;
     @BindView(R.id.submit) Button submit;
     @BindView(R.id.back) Button back;
+    public static EditText Transsdate;
+    public String tomorrow = "";
+    public String yesterday = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +53,9 @@ public class AgentMemberActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         progressDoalog = new ProgressDialog(AgentMemberActivity.this);
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        Transsdate 			= (EditText) findViewById(R.id.Transsdate);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Transsdate.setText(sdf.format(new Date()));
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,7 +81,47 @@ public class AgentMemberActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-    }
+        Transsdate.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+
+                SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+                final Calendar calendar = Calendar.getInstance();
+                calendar.add(  DATE,1);
+                tomorrow = df.format(calendar.getTime());
+                calendar.add(DATE,-2);
+                yesterday = df.format(calendar.getTime());
+
+
+                int yy = calendar.get(Calendar.YEAR);
+                int mm = calendar.get(Calendar.MONTH)+1;
+                int dd = calendar.get(Calendar.DAY_OF_MONTH);
+                DatePickerDialog datePicker = new DatePickerDialog(AgentMemberActivity.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+
+                        String monthString = String.valueOf(monthOfYear);
+                        if (monthString.length() == 1) {
+                            monthString = "0" + monthString;
+                        }
+                        String dayOfMonthString = String.valueOf(dayOfMonth);
+                        if (dayOfMonthString.length() == 1) {
+                            dayOfMonthString = "0" + dayOfMonthString;
+                        }
+
+                        Transsdate.setText(new StringBuilder().append(year).append("-")
+                                .append(monthString).append("-").append(dayOfMonthString).append(" "));
+
+                        Transsdate.setText(new StringBuilder().append(year).append("-")
+                                .append(monthString).append("-").append(dayOfMonthString).append(" "));
+                    }
+                }, yy, mm, dd);
+                datePicker.show();
+            }
+        });
+    };
+
 
     private void register(AgentMember member) {
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
