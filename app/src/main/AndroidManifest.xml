@@ -2,6 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.mobilebanking">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,11 +14,11 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".Activity.AdvanceActivity"></activity>
         <activity android:name=".myactivities.Reports">
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
-
-        <activity android:name=".Activity.BalanceActivity"></activity>
+        <activity android:name=".Activity.BalanceActivity" />
         <activity android:name=".Activity.AgentMemberActivity" />
         <activity android:name=".Activity.FingeprintActivity" />
         <activity android:name=".Activity.WithdrawActivity" />
@@ -30,10 +35,5 @@
             </intent-filter>
         </activity>
     </application>
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
-    <uses-permission android:name="android.permission.BLUETOOTH" />
-
-    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
 
 </manifest>

@@ -36,7 +36,6 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
 
     public FingerprintHandler(Context mContext, TransactionModel transaction) {
         context = mContext;
-
         _transaction = transaction;
         apiService = ApiClient.getClient().create(ApiInterface.class);
         progressDoalog = new ProgressDialog(context);
@@ -173,6 +172,23 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
                     Response responseData = response.body();
                     Double balance = Double.parseDouble(responseData.getMessage());
                     _transaction.setAmount(balance);
+                    Toast.makeText(context, responseData.getMessage(), Toast.LENGTH_LONG).show();
+                }
+
+                @Override
+                public void onFailure(Call<Response> call, Throwable t) {
+                    progressDoalog.dismiss();
+                    Toast.makeText(context, "Sorry, An error occurred", Toast.LENGTH_LONG).show();
+                }
+            });
+        }
+        else if (_transaction.getOperation().equals("advance")){
+            Call<Response> call = apiService.applyAdvance(_transaction);
+            call.enqueue(new Callback<Response>() {
+                @Override
+                public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
+                    progressDoalog.dismiss();
+                    Response responseData = response.body();
                     Toast.makeText(context, responseData.getMessage(), Toast.LENGTH_LONG).show();
                 }
 

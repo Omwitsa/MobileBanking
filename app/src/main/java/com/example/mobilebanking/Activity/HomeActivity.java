@@ -19,6 +19,7 @@ public class HomeActivity extends AppCompatActivity {
     @BindView(R.id.member_register) CardView memberRegister;
     @BindView(R.id.balance_enquiry) CardView balanceEnquiry;
     @BindView(R.id.report) CardView report;
+    @BindView(R.id.advance) CardView advance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,9 +31,6 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), DepositActivity.class);
-
-
-
                 startActivity(intent);
             }
         });
@@ -60,10 +58,19 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         report.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Reports.class);
+                startActivity(intent);
+            }
+        });
+
+        advance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), AdvanceActivity.class);
                 startActivity(intent);
             }
         });

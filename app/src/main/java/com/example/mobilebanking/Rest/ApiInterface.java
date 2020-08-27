@@ -31,6 +31,9 @@ public interface ApiInterface {
     @POST("webservice/transacions/balance")
     Call<Response> getBalance(@Body TransactionModel transactionModel);
 
+    @POST("webservice/transacions/applyAdvance")
+    Call<Response> applyAdvance(@Body TransactionModel transactionModel);
+
 //    @GET("webservice/k-pillar/users.php")
 //    Call<Response> getMembers(@Path("id") int id, @Query("api_key") String apiKey);
 }
