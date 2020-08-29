@@ -30,6 +30,7 @@ import retrofit2.Callback;
 public class FingerprintHandler extends FingerprintManager.AuthenticationCallback {
     private Context context;
     static SQLiteDatabase db;
+    Double balancex;
     private TransactionModel _transaction;
     ApiInterface apiService;
     ProgressDialog progressDoalog;
@@ -170,8 +171,7 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
                 public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
                     progressDoalog.dismiss();
                     Response responseData = response.body();
-                    Double balance = Double.parseDouble(responseData.getMessage());
-                    _transaction.setAmount(balance);
+                    Print(responseData.getMessage());
                     Toast.makeText(context, responseData.getMessage(), Toast.LENGTH_LONG).show();
                 }
 
@@ -181,6 +181,8 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
                     Toast.makeText(context, "Sorry, An error occurred", Toast.LENGTH_LONG).show();
                 }
             });
+            //printbalance();
+
         }
         else if (_transaction.getOperation().equals("advance")){
             Call<Response> call = apiService.applyAdvance(_transaction);
@@ -200,13 +202,21 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
             });
         }
 
-        Print();
+        if (!_transaction.getOperation().equals("balance")){
+            Print("");
+        }
     }
 
-    private void Print() {
+
+
+
+    private void Print(String amount) {
+        amount = amount.isEmpty() ? _transaction.getAmount().toString() : amount;
+        Double damount=Double.parseDouble(amount);
+        amount= String.format("%.2f", damount);
         Intent intent = new Intent(context, MainActivity.class);
         intent.putExtra("transaction", _transaction.getOperation());
-        intent.putExtra("amount", _transaction.getAmount().toString());
+        intent.putExtra("amount", amount);
         intent.putExtra("fingurePrint", "");
         intent.putExtra("supplierNo", _transaction.getsNo());
         intent.putExtra("pin", _transaction.getPin());

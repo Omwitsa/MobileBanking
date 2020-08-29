@@ -1,7 +1,5 @@
 package com.example.mobilebanking.Activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +11,7 @@ import com.example.mobilebanking.R;
 import com.example.mobilebanking.Rest.ApiClient;
 import com.example.mobilebanking.Rest.ApiInterface;
 
+import androidx.appcompat.app.AppCompatActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
