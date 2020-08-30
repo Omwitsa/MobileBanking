@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Activity.AdvanceActivity"></activity>
-        <activity android:name=".myactivities.Reports">
+        <activity android:name=".myactivities.Reports"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity android:name=".Activity.BalanceActivity" />

@@ -11,17 +11,14 @@ import android.hardware.fingerprint.FingerprintManager;
 import android.os.CancellationSignal;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.mobilebanking.Model.Response;
 import com.example.mobilebanking.Model.TransactionModel;
 import com.example.mobilebanking.R;
 import com.example.mobilebanking.Rest.ApiClient;
 import com.example.mobilebanking.Rest.ApiInterface;
 import com.example.mobilebanking.myactivities.MainActivity;
-
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import retrofit2.Call;
@@ -30,7 +27,6 @@ import retrofit2.Callback;
 public class FingerprintHandler extends FingerprintManager.AuthenticationCallback {
     private Context context;
     static SQLiteDatabase db;
-    Double balancex;
     private TransactionModel _transaction;
     ApiInterface apiService;
     ProgressDialog progressDoalog;
@@ -181,8 +177,6 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
                     Toast.makeText(context, "Sorry, An error occurred", Toast.LENGTH_LONG).show();
                 }
             });
-            //printbalance();
-
         }
         else if (_transaction.getOperation().equals("advance")){
             Call<Response> call = apiService.applyAdvance(_transaction);
@@ -206,9 +200,6 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
             Print("");
         }
     }
-
-
-
 
     private void Print(String amount) {
         amount = amount.isEmpty() ? _transaction.getAmount().toString() : amount;

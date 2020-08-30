@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.mobilebanking.Model.AgentMember;
@@ -39,10 +40,10 @@ public class AgentMemberActivity extends AppCompatActivity {
     @BindView(R.id.othername) EditText othername;
     @BindView(R.id.idno) EditText idno;
     @BindView(R.id.mobile) EditText mobile;
-    @BindView(R.id.gender) EditText gender;
+    @BindView(R.id.gender) Spinner gender;
+    @BindView(R.id.dob) EditText dob;
     @BindView(R.id.submit) Button submit;
     @BindView(R.id.back) Button back;
-    public static EditText Transsdate;
     public String tomorrow = "";
     public String yesterday = "";
 
@@ -53,9 +54,8 @@ public class AgentMemberActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         progressDoalog = new ProgressDialog(AgentMemberActivity.this);
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-        Transsdate 			= (EditText) findViewById(R.id.Transsdate);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        Transsdate.setText(sdf.format(new Date()));
+        dob.setText(sdf.format(new Date()));
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,7 +66,7 @@ public class AgentMemberActivity extends AppCompatActivity {
                 String otherName = othername.getText().toString();
                 String idNo = idno.getText().toString();
                 String Mobile = mobile.getText().toString();
-                String Gender = gender.getText().toString();
+                String Gender = gender.getSelectedItem().toString();
                 String agentId = sharedpreferences.getString("loggedInUser", "");
 
                 AgentMember member = new AgentMember(Surname, otherName, idNo, Mobile, Gender, null, "", "", agentId);
@@ -81,7 +81,8 @@ public class AgentMemberActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        Transsdate.setOnClickListener(new View.OnClickListener() {
+
+        dob.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
@@ -110,10 +111,10 @@ public class AgentMemberActivity extends AppCompatActivity {
                             dayOfMonthString = "0" + dayOfMonthString;
                         }
 
-                        Transsdate.setText(new StringBuilder().append(year).append("-")
+                        dob.setText(new StringBuilder().append(year).append("-")
                                 .append(monthString).append("-").append(dayOfMonthString).append(" "));
 
-                        Transsdate.setText(new StringBuilder().append(year).append("-")
+                        dob.setText(new StringBuilder().append(year).append("-")
                                 .append(monthString).append("-").append(dayOfMonthString).append(" "));
                     }
                 }, yy, mm, dd);

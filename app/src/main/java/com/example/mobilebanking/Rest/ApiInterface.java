@@ -5,6 +5,9 @@ import com.example.mobilebanking.Model.ClientModel;
 import com.example.mobilebanking.Model.Response;
 import com.example.mobilebanking.Model.MemberModel;
 import com.example.mobilebanking.Model.TransactionModel;
+
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
@@ -33,6 +36,9 @@ public interface ApiInterface {
 
     @POST("webservice/transacions/applyAdvance")
     Call<Response> applyAdvance(@Body TransactionModel transactionModel);
+
+    @POST("webservice/transacions/sychTransactions")
+    Call<Response> sychTransactions(@Body List<TransactionModel> transactionModel);
 
 //    @GET("webservice/k-pillar/users.php")
 //    Call<Response> getMembers(@Path("id") int id, @Query("api_key") String apiKey);
