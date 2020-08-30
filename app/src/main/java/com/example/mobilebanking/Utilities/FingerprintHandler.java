@@ -43,6 +43,7 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
         db = context.openOrCreateDatabase("MobileDB", Context.MODE_PRIVATE, null);
         db.execSQL("CREATE TABLE IF NOT EXISTS withdrawals(Amount VARCHAR,Pin VARCHAR,Supp VARCHAR,datepp DATETIME, status VARCHAR,transdate  VARCHAR);");
         db.execSQL("CREATE TABLE IF NOT EXISTS deposits(Amount VARCHAR,Pin VARCHAR,Supp VARCHAR,datepp DATETIME, status VARCHAR,transdate  VARCHAR);");
+        db.execSQL("CREATE TABLE IF NOT EXISTS advance(Amount VARCHAR,Pin VARCHAR,Supp VARCHAR,datepp DATETIME, status VARCHAR,transdate  VARCHAR);");
         //db.execSQL("ALTER TABLE withdrawals  ADD transdate  varchar");
     }
 
@@ -83,7 +84,7 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
     }
 
     public void insertDataToSqlite(TransactionModel _transaction) {
-        String bal = _transaction.getAmount().toString();
+        String bal = String.format("%.2f", _transaction.getAmount());
         String pinn = _transaction.getPin();
         String supNo = _transaction.getsNo();
         Calendar cc = Calendar.getInstance();
@@ -116,6 +117,10 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
         else if (_transaction.getOperation().equals("withdraw")){
             db.execSQL("INSERT INTO withdrawals VALUES('" + bal + "','"  + pinn+ "','" + supNo + "','" + date_pp + "','0','" + trans + "');");
             Toast.makeText(context, "Withdrawal saved successfully", Toast.LENGTH_LONG).show();
+        }
+        else if (_transaction.getOperation().equals("advance")){
+            db.execSQL("INSERT INTO advance VALUES('" + bal + "','"  + pinn+ "','" + supNo + "','" + date_pp + "','0','" + trans + "');");
+            Toast.makeText(context, "Advance saved successfully", Toast.LENGTH_LONG).show();
         }
         else {
 
@@ -206,9 +211,6 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
             Print("");
         }
     }
-
-
-
 
     private void Print(String amount) {
         amount = amount.isEmpty() ? _transaction.getAmount().toString() : amount;

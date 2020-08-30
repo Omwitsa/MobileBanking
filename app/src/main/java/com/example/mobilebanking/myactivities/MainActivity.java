@@ -23,7 +23,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.mobilebanking.Activity.HomeActivity;
-import com.example.mobilebanking.Pockdata.PocketPos;
 import com.example.mobilebanking.R;
 
 import java.lang.reflect.Method;
@@ -38,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
     private Button mEnableBtn, mPrintReceiptBtn;
     private static Button mConnectBtn;
     private Spinner mDeviceSp;
-    StringBuffer buffer;
     ProgressDialog dialog = null;
     static SQLiteDatabase db;
     private ProgressDialog mProgressDlg, mConnectingDlg;
@@ -169,8 +167,22 @@ public class MainActivity extends AppCompatActivity {
             mPrintReceiptBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View arg0) {
-                    //printbalance();
-                    printStruk();
+                    Bundle extras = getIntent().getExtras();
+                    String transaction = extras == null ? "" : extras.getString("transaction");
+                    String supplierNo = extras == null ? "" : extras.getString("supplierNo");
+
+                    StringBuffer buffer = getAgencyPrintData(extras);
+                    Printer printer = new Printer(buffer, mConnector, db, transaction, supplierNo);
+                    printer.print();
+
+                    buffer = getCustomerPrintData(extras);
+                    printer = new Printer(buffer, mConnector, db, transaction, supplierNo);
+                    printer.print();
+
+                    showMessage("", buffer.toString());
+                    Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                    startActivity(intent);
+
                     dialog = ProgressDialog.show(MainActivity.this, "",
                             "submitting collection Online, please wait...", true);
                     new Thread(new Runnable() {
@@ -328,22 +340,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void sendData(byte[] bytes, String transaction, String supplierNo) {
-        try {
-            mConnector.sendData(bytes);
-        } catch (P25ConnectionException e) {
-            e.printStackTrace();
-        }
-        if(transaction.equals("deposit")){
-            db.execSQL("UPDATE deposits set status='1' where status='0' and Supp='"+supplierNo+"' ;");
-        }
-        else if (transaction.equals("withdraw")){
-            db.execSQL("UPDATE withdrawals set status='1' where status='0'and Supp='"+supplierNo+"';");
-        }
-        else {
 
-        }
-    }
 
     public void autosynch() {
 
@@ -397,137 +394,45 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void printStruk() {
+    private StringBuffer getAgencyPrintData(Bundle extras){
         StringBuffer buffer = new StringBuffer();
-        Bundle extras = getIntent().getExtras();
-        String transaction = "";
-        String supplierNo = "";
         if (extras != null) {
             String amount = extras.getString("amount");
-            transaction = extras.getString("transaction");
+            String transaction = extras.getString("transaction");
             String fingurePrint = extras.getString("fingurePrint");
-            supplierNo = extras.getString("supplierNo");
+            String supplierNo = extras.getString("supplierNo");
             String pin = extras.getString("pin");
+
+            buffer.append("Agent Copy \n");
+            buffer.append("----------------------------- \n");
             buffer.append( transaction.toUpperCase()+" RECEIPT" + "\n");
             buffer.append("Account No:" + supplierNo + "\n");
             buffer.append("Amount    :" + amount + "\n");
-
         }
 
-//        Cursor c = db.rawQuery("SELECT * FROM CollectionDB WHERE status='0'", null);
-//        if (c.getCount() == 0) {
-//            showMessage("Record Message", "No records found");
-//            return;
-//        }
-
-
-        MainActivity ma = new MainActivity();
-//        company = ma.company;
-////        userrrrr = ma.logedInUser;
-////        branchhh = ma.branch;
-
-
-
-        showMessage("", buffer.toString());
-        long milis1 = System.currentTimeMillis();
-        String date1 = com.example.mobilebanking.Util.DateUtil.timeMilisToString(milis1, "dd-MM-yyyy");
-        String time1 = com.example.mobilebanking.Util.DateUtil.timeMilisToString(milis1, "  HH:mm a");
-
-        StringBuilder content2Sb = new StringBuilder();
-        content2Sb.append("                           " + "\n");
-        content2Sb.append("\n" + "K-PILLAR SACCO SOCIETY LIMITED"+ "\n");
-        content2Sb.append("\n" + "Agent Copy"+ "\n");
-        content2Sb.append("-----------------------------" + "\n");
-        content2Sb.append("" + buffer.toString() + "" + "\n");
-        content2Sb.append("--------------------------" + "\n");
-        content2Sb.append("Date:" + date1 + "" + "," + "Time:" + time1 + "" + "\n");
-        content2Sb.append("--------------------------" + "\n");
-        content2Sb.append("Thankyou for your Patronage" + "\n");
-        content2Sb.append("--------------------------" + "\n");
-        content2Sb.append("DESIGNED & DEVELOPED BY" + "\n");
-        content2Sb.append("AMTECH TECHNOLOGIES LTD" + "\n");
-        content2Sb.append("www.amtechafrica.com" + "\n");
-        content2Sb.append("--------------------------" + "\n");
-        content2Sb.append("                           " + "\n");
-        content2Sb.append("                           " + "\n");
-        content2Sb.append("                           " + "\n");
-        content2Sb.append("                           " + "\n");
-        content2Sb.append("                           " + "\n");
-
-        byte[] content2Byte = com.example.mobilebanking.Util.Printer.printfont(content2Sb.toString(), com.example.mobilebanking.Util.FontDefine.FONT_32PX, com.example.mobilebanking.Util.FontDefine.Align_LEFT, (byte) 0x1A,
-                PocketPos.LANGUAGE_ENGLISH);
-        byte[] totalByte = new byte[content2Byte.length];
-        int offset = 0;
-        System.arraycopy(content2Byte, 0, totalByte, offset, content2Byte.length);
-        offset += content2Byte.length;
-        byte[] senddata = PocketPos.FramePack(PocketPos.FRAME_TOF_PRINT, totalByte, 0, totalByte.length);
-        sendData(senddata, transaction, supplierNo);
-        Agentcopy();
-
-
+        return buffer;
     }
 
-
-    private void Agentcopy() {
-
+    private StringBuffer getCustomerPrintData(Bundle extras){
         StringBuffer buffer = new StringBuffer();
-        Bundle extras = getIntent().getExtras();
-        String transaction = "";
-        String supplierNo = "";
         if (extras != null) {
             String amount = extras.getString("amount");
-            transaction = extras.getString("transaction");
+            String transaction = extras.getString("transaction");
             String fingurePrint = extras.getString("fingurePrint");
-            supplierNo = extras.getString("supplierNo");
+            String supplierNo = extras.getString("supplierNo");
             String pin = extras.getString("pin");
+
+            buffer.append("Customer Copy \n");
+            buffer.append("----------------------------- \n");
             buffer.append( transaction.toUpperCase()+" RECEIPT" + "\n");
             buffer.append("Account No:" + supplierNo + "\n");
             buffer.append("Amount    :" + amount + "\n");
-
         }
 
-        MainActivity ma = new MainActivity();
-
-        showMessage("", buffer.toString());
-        long milis1 = System.currentTimeMillis();
-        String date1 = com.example.mobilebanking.Util.DateUtil.timeMilisToString(milis1, "dd-MM-yyyy");
-        String time1 = com.example.mobilebanking.Util.DateUtil.timeMilisToString(milis1, "  HH:mm a");
-
-        StringBuilder content2Sb = new StringBuilder();
-        content2Sb.append("                           " + "\n");
-        content2Sb.append("\n" + "K-PILLAR SACCO SOCIETY LIMITED"+ "\n");
-        content2Sb.append("\n" + "Customer Copy"+ "\n");
-        content2Sb.append("-----------------------------" + "\n");
-        content2Sb.append("" + buffer.toString() + "" + "\n");
-        content2Sb.append("--------------------------" + "\n");
-        content2Sb.append("Date:" + date1 + "" + "," + "Time:" + time1 + "" + "\n");
-        //content2Sb.append("Date:" + balancex + "" +  "\n");
-        content2Sb.append("--------------------------" + "\n");
-        content2Sb.append("Thankyou for your Patronage" + "\n");
-        content2Sb.append("--------------------------" + "\n");
-        content2Sb.append("DESIGNED & DEVELOPED BY" + "\n");
-        content2Sb.append("AMTECH TECHNOLOGIES LTD" + "\n");
-        content2Sb.append("www.amtechafrica.com" + "\n");
-        content2Sb.append("                           " + "\n");
-        content2Sb.append("                           " + "\n");
-        content2Sb.append("                           " + "\n");
-        content2Sb.append("                           " + "\n");
-        content2Sb.append("                           " + "\n");
-
-        byte[] content2Byte = com.example.mobilebanking.Util.Printer.printfont(content2Sb.toString(), com.example.mobilebanking.Util.FontDefine.FONT_32PX, com.example.mobilebanking.Util.FontDefine.Align_LEFT, (byte) 0x1A,
-                PocketPos.LANGUAGE_ENGLISH);
-        byte[] totalByte = new byte[content2Byte.length];
-        int offset = 0;
-        System.arraycopy(content2Byte, 0, totalByte, offset, content2Byte.length);
-        offset += content2Byte.length;
-        byte[] senddata = PocketPos.FramePack(PocketPos.FRAME_TOF_PRINT, totalByte, 0, totalByte.length);
-        sendData(senddata, transaction, supplierNo);
-        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-        startActivity(intent);
+        return buffer;
     }
 
-
-    public void showMessage(String title, String message) {
+   public void showMessage(String title, String message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setCancelable(true);
         builder.setTitle(title);

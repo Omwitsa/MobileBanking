@@ -4,18 +4,19 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import androidx.appcompat.app.AppCompatActivity;
-import com.example.mobilebanking.Model.Response;
+
 import com.example.mobilebanking.Model.MemberModel;
+import com.example.mobilebanking.Model.Response;
 import com.example.mobilebanking.R;
 import com.example.mobilebanking.Rest.ApiClient;
 import com.example.mobilebanking.Rest.ApiInterface;
+
+import androidx.appcompat.app.AppCompatActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import retrofit2.Call;
@@ -64,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void seedUser() {
-        String machineId = android.os.Build.MANUFACTURER + ":" + android.os.Build.MODEL + ":" + Build.SERIAL;
+        String machineId = android.os.Build.SERIAL;
         SharedPreferences.Editor editor = sharedpreferences.edit();
         editor.putString("machine_id", machineId);
         editor.commit();
@@ -87,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void Login() {
-        String machineId = android.os.Build.MANUFACTURER + ":" + android.os.Build.MODEL + ":" + Build.SERIAL;
+        String machineId = android.os.Build.SERIAL;
         MemberModel memberModel = new MemberModel(username.getText().toString(), password.getText().toString(), machineId);
         SharedPreferences.Editor editor = sharedpreferences.edit();
         editor.putString("loggedInUser", memberModel.getUsercode());
