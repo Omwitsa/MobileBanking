@@ -79,7 +79,7 @@ public class FingeprintActivity extends AppCompatActivity {
                     }else{
                         generateKey();
                         if (extras != null) {
-                            Double depositAmount = Double.parseDouble(extras.getString("amount"));
+                            Double transactionAmount = Double.parseDouble(extras.getString("amount"));
                             String fingurePrint = extras.getString("fingurePrint");
                             String supplierNo = extras.getString("supplierNo");
                             String pin = extras.getString("pin");
@@ -87,7 +87,7 @@ public class FingeprintActivity extends AppCompatActivity {
 
                             String machineId = sharedpreferences.getString("machine_id", "");
                             String auditID = sharedpreferences.getString("loggedInUser", "");
-                            transaction = new TransactionModel(operation, depositAmount, fingurePrint, pin, supplierNo, "0", machineId, auditID);
+                            transaction = new TransactionModel(operation, transactionAmount, fingurePrint, pin, supplierNo, "0", machineId, auditID);
                         }
 
                         if (cipherInit()) {

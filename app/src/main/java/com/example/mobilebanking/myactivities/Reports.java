@@ -26,11 +26,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.mobilebanking.Pockdata.PocketPos;
 import com.example.mobilebanking.R;
 import com.example.mobilebanking.Util.DateUtil;
-import com.example.mobilebanking.Util.FontDefine;
-import com.example.mobilebanking.Util.Printer;
 
 import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
@@ -46,7 +43,7 @@ import static java.util.Calendar.DATE;
 
 public class Reports extends AppCompatActivity implements View.OnClickListener {
     SQLiteDatabase db;
-    private Button mConnectBtn, mEnableBtn, mPrintReceiptBtn,PrintReceiptBtn;
+    private Button mConnectBtn, mEnableBtn, mPrintReceiptBtn,PrintReceiptBtn,PrintAdvance;
     private Spinner mDeviceSp;
     //public static String Dayshift;
     public static EditText Transsdate;
@@ -100,8 +97,10 @@ public class Reports extends AppCompatActivity implements View.OnClickListener {
     mEnableBtn			= (Button) findViewById(R.id.btn_enabled);
     mPrintReceiptBtn 	= (Button) findViewById(R.id.btn_print_receiptd);
     PrintReceiptBtn 	= (Button) findViewById(R.id.btn_print_receiptd1);
+    PrintAdvance 	= (Button) findViewById(R.id.btn_print_advance);
     mDeviceSp 			= (Spinner) findViewById(R.id.sp_deviced);
     //final Spinner spinner = (Spinner) findViewById(R.id.Dayshift);
+
 
     Transsdate 			= (EditText) findViewById(R.id.Transsdate);
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -233,7 +232,14 @@ public class Reports extends AppCompatActivity implements View.OnClickListener {
         mPrintReceiptBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
-                printStruk();
+                String myDate =(Transsdate.getText().toString());
+                myDate =  myDate.trim();
+                Cursor c = db.rawQuery("SELECT * FROM deposits WHERE   transdate ='"+myDate+"'  ", null);
+                Cursor c1 = db.rawQuery("SELECT sum(Amount) FROM deposits WHERE  transdate ='"+myDate+"'", null);
+                StringBuffer buffer = getReportData(c, c1, "Deposited");
+                com.example.mobilebanking.myactivities.Printer printer = new com.example.mobilebanking.myactivities.Printer(buffer, mConnector, db, "", "");
+                printer.print();
+                //printStruk();
                 dialog = ProgressDialog.show(Reports.this, "",
                         "Clearing the collection/data from phone memory", true);
                 new Thread(new Runnable() {
@@ -245,12 +251,44 @@ public class Reports extends AppCompatActivity implements View.OnClickListener {
                 }).start();
             }
         });
-            PrintReceiptBtn.setOnClickListener(new View.OnClickListener() {
+
+        PrintReceiptBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                String myDate =(Transsdate.getText().toString());
+                myDate =  myDate.trim();
+                Cursor c = db.rawQuery("SELECT * FROM withdrawals WHERE   transdate ='"+myDate+"'  ", null);
+                Cursor c1 = db.rawQuery("SELECT sum(Amount) FROM withdrawals WHERE  transdate ='"+myDate+"'", null);
+                StringBuffer buffer = getReportData(c, c1, "Withdrawn");
+                com.example.mobilebanking.myactivities.Printer printer = new com.example.mobilebanking.myactivities.Printer(buffer, mConnector, db, "", "");
+                printer.print();
+
+                //printStruk1();
+                dialog = ProgressDialog.show(Reports.this, "",
+                        "Clearing the collection/data from phone memory", true);
+                new Thread(new Runnable() {
+                    public void run() {
+                        //sendToDB();
+                        //DailyReportsActivity.this.finish();
+                        dialog.dismiss();
+                    }
+                }).start();
+            }
+        });
+
+            PrintAdvance.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View arg0) {
-                    printStruk1();
-                    dialog = ProgressDialog.show(Reports.this, "",
-                            "Clearing the collection/data from phone memory", true);
+                    String myDate =(Transsdate.getText().toString());
+                    myDate =  myDate.trim();
+                    Cursor c = db.rawQuery("SELECT * FROM advance WHERE   transdate ='"+myDate+"'  ", null);
+                    Cursor c1 = db.rawQuery("SELECT sum(Amount) FROM advance WHERE  transdate ='"+myDate+"'", null);
+                    StringBuffer buffer = getReportData(c, c1, "Advance");
+                    com.example.mobilebanking.myactivities.Printer printer = new com.example.mobilebanking.myactivities.Printer(buffer, mConnector, db, "", "");
+                    printer.print();
+
+                    //printStruk1();
+                    dialog = ProgressDialog.show(Reports.this, "", "Clearing the collection/data from phone memory", true);
                     new Thread(new Runnable() {
                         public void run() {
                             //sendToDB();
@@ -273,6 +311,33 @@ public class Reports extends AppCompatActivity implements View.OnClickListener {
 
     registerReceiver(mReceiver, filter);
 }
+
+    private StringBuffer getReportData(Cursor c, Cursor c1, String operation) {
+        StringBuffer buffer = new StringBuffer();
+        buffer.append(operation +" Transactions\n");
+        buffer.append(" Amount      Account Number\n");
+        while (c.moveToNext()) {
+            buffer.append(c.getString(0) + "\t" + c.getString(2) + " \n" );
+        }
+        String d = null;
+        //Double ammt=Double.parseDouble(amm);
+        double amm= Double.parseDouble(d);
+
+
+        while (c1.moveToNext()) {
+            amm = Double.parseDouble(c1.getString(0));
+            //double d= Double.parseDouble(d);
+            //amm= String.valueOf(Double.valueOf(String.format("%.2f", c1.getString(0))));
+        }
+
+        showMessage("Transaction Total +"+ amm +"", buffer.toString());
+        int count=c.getCount();
+        buffer.append("-------------------------- \n");
+        buffer.append("Customers Served : "+count+ "\n");
+        buffer.append("Total amount "+operation+ ": "+amm+ "\n");
+
+        return buffer;
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -466,238 +531,6 @@ public class Reports extends AppCompatActivity implements View.OnClickListener {
         });
     }
 
-    private void printStruk1() {
-        try {
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-
-
-            String myDate =(Transsdate.getText().toString());
-            myDate =  myDate.trim();
-
-            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd ");
-            final Calendar calendar = Calendar.getInstance();
-            calendar.add(  DATE,1);
-            tomorrow = df.format(calendar.getTime());
-            calendar.add(DATE,-2);
-            yesterday = df.format(calendar.getTime());
-
-            int yy = calendar.get(Calendar.YEAR);
-            int mm = calendar.get(Calendar.MONTH)+1;
-            int dd = calendar.get(Calendar.DAY_OF_MONTH);
-            //Dayshift = spinner.getSelectedItem().toString();
-            //Dayshift="";
-            //myDate.setText(sdf.format(new Date()));
-
-            Cursor c = db.rawQuery("SELECT * FROM withdrawals WHERE   transdate ='"+myDate+"'  ", null);
-            //
-             //Cursor c = db.rawQuery("SELECT * FROM deposits WHERE   datepp ='2020-08-12 13:54:10'", null);
-            if (c.getCount() == 0) {
-                showMessage("Transactions", "No Record found");
-                mPrintReceiptBtn.setEnabled(true);
-                return ;
-            }
-            StringBuffer buffer = new StringBuffer();
-            String amm = null;
-
-
-            while (c.moveToNext()) {
-
-                buffer.append(c.getString(0) + "\t" + c.getString(2) + " \n" );
-
-            }
-            Cursor c1 = db.rawQuery("SELECT sum(Amount) FROM withdrawals WHERE  transdate ='"+myDate+"'", null);
-            while (c1.moveToNext()) {
-
-                amm = c1.getString(0);
-                ;
-
-            }
-            showMessage("Transaction Total +"+ amm +"", buffer.toString());
-
-            Date dNow = new Date();
-            SimpleDateFormat ft = new SimpleDateFormat("E yyyy.MM.dd 'at' hh:mm:ss");
-            long milis1 = System.currentTimeMillis();
-
-            String date1 = DateUtil.timeMilisToString(milis1, "MMM dd, yyyy hh:mm:ss");
-            String time1 = DateUtil.timeMilisToString(milis1, "hh:mm a");
-            Calendar b = Calendar.getInstance();
-            //SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            String date = sdf.format(b.getTime());
-            int count=c.getCount();
-
-            MainActivity ma=new MainActivity();
-
-            String titleStr =  "\n" + "K-PILLAR SACCO" +"\n" + "WITHDRAWALS  TRANSACTIONS " + "\n";
-
-            StringBuilder content2Sb = new StringBuilder();
-
-            //content2Sb.append("Suppliers Served : "+numberOfRows+ "\n");
-            content2Sb.append("##############################" + "\n");
-            content2Sb.append("Total Amount  : "+amm+ "\n");
-            content2Sb.append("Amount   AccountNumber      " + "\n");
-            content2Sb.append("" +buffer.toString() + "" + "\n");
-            content2Sb.append("--------------------------" + "\n");
-            content2Sb.append("Total amount Withdrawn : "+amm+ "\n");
-            content2Sb.append("Customers Served : "+count+ "\n");
-            content2Sb.append("                         " + "\n");
-            content2Sb.append("--------------------------" + "\n");
-            content2Sb.append("##############################" + "\n");
-            content2Sb.append("--------------------------" + "\n");
-            content2Sb.append("--------------------------" + "\n");
-            content2Sb.append("Date :" +date1+"\n");
-            content2Sb.append("Agent  No : 5  "+"\n");
-            content2Sb.append("Signature____________________  "+"\n");
-            content2Sb.append("                         " + "\n");
-            content2Sb.append("                         " + "\n");
-            content2Sb.append("--------------------------" + "\n");
-            content2Sb.append("--------------------------" + "\n");
-            content2Sb.append("MILK FOR HEALTH AND WEALTH" + "\n");
-            content2Sb.append("--------------------------" + "\n");
-            content2Sb.append("DESIGNED & DEVELOPED BY" + "\n");
-            content2Sb.append("AMTECH TECHNOLOGIES LTD" + "\n");
-            content2Sb.append("www.amtechafrica.com" + "\n");
-
-            long milis = System.currentTimeMillis();
-            byte[] titleByte = Printer.printfont(titleStr, FontDefine.FONT_32PX, FontDefine.Align_CENTER,
-                    (byte) 0x1A, PocketPos.LANGUAGE_ENGLISH);
-            byte[] content2Byte = Printer.printfont(content2Sb.toString(), FontDefine.FONT_32PX, FontDefine.Align_LEFT,
-                    (byte) 0x1A, PocketPos.LANGUAGE_ENGLISH);
-            byte[] totalByte = new byte[titleByte.length + content2Byte.length];
-            int offset = 0;
-            System.arraycopy(titleByte, 0, totalByte, offset, titleByte.length);
-            offset += titleByte.length;
-            System.arraycopy(content2Byte, 0, totalByte, offset, content2Byte.length);
-            offset += content2Byte.length;
-            byte[] senddata = PocketPos.FramePack(PocketPos.FRAME_TOF_PRINT, totalByte, 0, totalByte.length);
-            sendData(senddata);
-
-        }catch (Exception e){
-            e.printStackTrace();
-            Toast.makeText(this, "No New Records Found", Toast.LENGTH_LONG).show();
-            finish();
-
-        }
-
-
-        return;
-
-    }
-    private void printStruk() {
-        try {
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-
-
-            String myDate =(Transsdate.getText().toString());
-            myDate =  myDate.trim();
-
-            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd ");
-            final Calendar calendar = Calendar.getInstance();
-            calendar.add(  DATE,1);
-            tomorrow = df.format(calendar.getTime());
-            calendar.add(DATE,-2);
-            yesterday = df.format(calendar.getTime());
-
-            int yy = calendar.get(Calendar.YEAR);
-            int mm = calendar.get(Calendar.MONTH)+1;
-            int dd = calendar.get(Calendar.DAY_OF_MONTH);
-            //Dayshift = spinner.getSelectedItem().toString();
-            //Dayshift="";
-            //myDate.setText(sdf.format(new Date()));
-
-            Cursor c = db.rawQuery("SELECT * FROM deposits WHERE   transdate ='"+myDate+"'  ", null);
-            //
-            //Cursor c = db.rawQuery("SELECT * FROM deposits WHERE   datepp ='2020-08-12 13:54:10'", null);
-            if (c.getCount() == 0) {
-                showMessage("Transactions", "No Record found");
-                mPrintReceiptBtn.setEnabled(true);
-                return ;
-            }
-            StringBuffer buffer = new StringBuffer();
-            String amm = null;
-
-
-            while (c.moveToNext()) {
-
-                buffer.append(c.getString(0) + "\t" + c.getString(2) + " \n" );
-
-            }
-            Cursor c1 = db.rawQuery("SELECT sum(Amount) FROM deposits WHERE  transdate ='"+myDate+"'", null);
-            while (c1.moveToNext()) {
-
-                amm = c1.getString(0);
-                ;
-
-            }
-            showMessage("Transaction Total +"+ amm +"", buffer.toString());
-
-            Date dNow = new Date();
-            SimpleDateFormat ft = new SimpleDateFormat("E yyyy.MM.dd 'at' hh:mm:ss");
-            long milis1 = System.currentTimeMillis();
-
-            String date1 = DateUtil.timeMilisToString(milis1, "MMM dd, yyyy hh:mm:ss");
-            String time1 = DateUtil.timeMilisToString(milis1, "hh:mm a");
-            Calendar b = Calendar.getInstance();
-            //SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            String date = sdf.format(b.getTime());
-            int count=c.getCount();
-
-            MainActivity ma=new MainActivity();
-
-            String titleStr =  "\n" + "K-PILLAR SACCO" +"\n" + "DEPOSITS  TRANSACTIONS " + "\n";
-
-            StringBuilder content2Sb = new StringBuilder();
-
-            //content2Sb.append("Suppliers Served : "+numberOfRows+ "\n");
-            content2Sb.append("##############################" + "\n");
-            content2Sb.append("Total Amount  : "+amm+ "\n");
-            content2Sb.append("Amount   AccountNumber      " + "\n");
-            content2Sb.append("" +buffer.toString() + "" + "\n");
-            content2Sb.append("--------------------------" + "\n");
-            content2Sb.append("Total amount deposited : "+amm+ "\n");
-            content2Sb.append("Customers Served : "+count+ "\n");
-            content2Sb.append("                         " + "\n");
-            content2Sb.append("--------------------------" + "\n");
-            content2Sb.append("##############################" + "\n");
-            content2Sb.append("--------------------------" + "\n");
-            content2Sb.append("--------------------------" + "\n");
-            content2Sb.append("Date :" +date1+"\n");
-            content2Sb.append("Agent  No : 5  "+"\n");
-            content2Sb.append("Signature____________________  "+"\n");
-            content2Sb.append("                         " + "\n");
-            content2Sb.append("                         " + "\n");
-            content2Sb.append("--------------------------" + "\n");
-            content2Sb.append("--------------------------" + "\n");
-            content2Sb.append("MILK FOR HEALTH AND WEALTH" + "\n");
-            content2Sb.append("--------------------------" + "\n");
-            content2Sb.append("DESIGNED & DEVELOPED BY" + "\n");
-            content2Sb.append("AMTECH TECHNOLOGIES LTD" + "\n");
-            content2Sb.append("www.amtechafrica.com" + "\n");
-
-            long milis = System.currentTimeMillis();
-            byte[] titleByte = Printer.printfont(titleStr, FontDefine.FONT_32PX, FontDefine.Align_CENTER,
-                    (byte) 0x1A, PocketPos.LANGUAGE_ENGLISH);
-            byte[] content2Byte = Printer.printfont(content2Sb.toString(), FontDefine.FONT_32PX, FontDefine.Align_LEFT,
-                    (byte) 0x1A, PocketPos.LANGUAGE_ENGLISH);
-            byte[] totalByte = new byte[titleByte.length + content2Byte.length];
-            int offset = 0;
-            System.arraycopy(titleByte, 0, totalByte, offset, titleByte.length);
-            offset += titleByte.length;
-            System.arraycopy(content2Byte, 0, totalByte, offset, content2Byte.length);
-            offset += content2Byte.length;
-            byte[] senddata = PocketPos.FramePack(PocketPos.FRAME_TOF_PRINT, totalByte, 0, totalByte.length);
-            sendData(senddata);
-
-        }catch (Exception e){
-            e.printStackTrace();
-            Toast.makeText(this, "No New Records Found", Toast.LENGTH_LONG).show();
-            finish();
-
-        }
-
-
-        return;
-
-    }
     public void showMessage(String title,String message)
     {
         Builder builder=new Builder(this);
