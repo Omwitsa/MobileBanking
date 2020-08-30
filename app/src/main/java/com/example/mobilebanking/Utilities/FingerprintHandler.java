@@ -111,16 +111,16 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
 //        }
         if (_transaction.getOperation().equals("deposit")){
             db.execSQL("INSERT INTO deposits VALUES('" + bal + "','"  + pinn+ "','" + supNo + "','" + date_pp + "','0','" + trans + "');");
+            Toast.makeText(context, "Deposit saved successfully", Toast.LENGTH_LONG).show();
         }
         else if (_transaction.getOperation().equals("withdraw")){
             db.execSQL("INSERT INTO withdrawals VALUES('" + bal + "','"  + pinn+ "','" + supNo + "','" + date_pp + "','0','" + trans + "');");
+            Toast.makeText(context, "Withdrawal saved successfully", Toast.LENGTH_LONG).show();
         }
         else {
 
         }
 
-
-        Toast.makeText(context, "Saved successfully", Toast.LENGTH_LONG).show();
         //progressDoalog.setMessage("Please wait...");
         //progressDoalog.show();
         transact(_transaction);
