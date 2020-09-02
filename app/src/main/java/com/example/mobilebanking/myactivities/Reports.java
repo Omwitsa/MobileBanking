@@ -26,7 +26,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.mobilebanking.Model.Response;
+import com.example.mobilebanking.Model.TransactionModel;
 import com.example.mobilebanking.R;
+import com.example.mobilebanking.Rest.ApiClient;
+import com.example.mobilebanking.Rest.ApiInterface;
 import com.example.mobilebanking.Util.DateUtil;
 
 import java.lang.reflect.Method;
@@ -34,27 +38,31 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
+import retrofit2.Call;
+
 import static java.util.Calendar.DATE;
 
 public class Reports extends AppCompatActivity implements View.OnClickListener {
     SQLiteDatabase db;
-    private Button mConnectBtn, mEnableBtn, mPrintReceiptBtn,PrintReceiptBtn,PrintAdvance;
+    private Button mConnectBtn, mEnableBtn, mPrintReceiptBtn,PrintReceiptBtn,PrintAdvance, btn_synch;
     private Spinner mDeviceSp;
     //public static String Dayshift;
     public static EditText Transsdate;
     public String tomorrow = "";
     public String yesterday = "";
     StringBuffer buffer;
+    ApiInterface apiService;
 
     ProgressDialog dialog = null;
     TextView tv;
 
-    private ProgressDialog mProgressDlg, mConnectingDlg;
+    private ProgressDialog mProgressDlg, mConnectingDlg, progressDoalog;
 
     private BluetoothAdapter mBluetoothAdapter;
 
@@ -91,7 +99,7 @@ public class Reports extends AppCompatActivity implements View.OnClickListener {
 
     //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     //getSupportActionBar().setDisplayShowHomeEnabled(false);
-
+        apiService = ApiClient.getClient().create(ApiInterface.class);
     db=openOrCreateDatabase("MobileDB", Context.MODE_PRIVATE, null);
     mConnectBtn			= (Button) findViewById(R.id.btn_connectd);
     mEnableBtn			= (Button) findViewById(R.id.btn_enabled);
@@ -99,7 +107,8 @@ public class Reports extends AppCompatActivity implements View.OnClickListener {
     PrintReceiptBtn 	= (Button) findViewById(R.id.btn_print_receiptd1);
     PrintAdvance 	= (Button) findViewById(R.id.btn_print_advance);
     mDeviceSp 			= (Spinner) findViewById(R.id.sp_deviced);
-    //final Spinner spinner = (Spinner) findViewById(R.id.Dayshift);
+    btn_synch			= (Button) findViewById(R.id.btn_synch);
+        //final Spinner spinner = (Spinner) findViewById(R.id.Dayshift);
 
 
     Transsdate 			= (EditText) findViewById(R.id.Transsdate);
@@ -140,6 +149,7 @@ public class Reports extends AppCompatActivity implements View.OnClickListener {
         });
 
         mConnectingDlg 	= new ProgressDialog(this);
+        progressDoalog = new ProgressDialog(this);;
         mConnectingDlg.setMessage("Connecting...");
         mConnectingDlg.setCancelable(false);
 
@@ -187,6 +197,15 @@ public class Reports extends AppCompatActivity implements View.OnClickListener {
                 connect();
             }
         });
+
+        btn_synch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                List<TransactionModel> transsctions = new List<TransactionModel>();
+//                Call<Response> call = apiService.sychTransactions(transsctions);
+            }
+        });
+
         Transsdate.setOnClickListener(new View.OnClickListener() {
 
             @Override

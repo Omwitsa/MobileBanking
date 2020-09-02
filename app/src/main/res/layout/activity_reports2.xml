@@ -101,6 +101,16 @@
         android:layout_margin="30dp"
         android:enabled="true"
         android:text="Print Advance" />
+
+    <Button
+        android:id="@+id/btn_synch"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/GREEN"
+        android:textColor="@color/tabteal"
+        android:layout_margin="30dp"
+        android:enabled="true"
+        android:text="Test Synch" />
     <TextView
         android:id="@+id/tvd"
         android:layout_width="match_parent"
