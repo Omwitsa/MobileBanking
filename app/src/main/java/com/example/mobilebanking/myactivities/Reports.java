@@ -226,7 +226,7 @@ public class Reports extends AppCompatActivity implements View.OnClickListener {
                     @Override
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
 
-                        String monthString = String.valueOf(monthOfYear);
+                        String monthString = String.valueOf((monthOfYear)+1);
                         if (monthString.length() == 1) {
                             monthString = "0" + monthString;
                         }
@@ -254,6 +254,11 @@ public class Reports extends AppCompatActivity implements View.OnClickListener {
                 String myDate =(Transsdate.getText().toString());
                 myDate =  myDate.trim();
                 Cursor c = db.rawQuery("SELECT * FROM deposits WHERE   transdate ='"+myDate+"'  ", null);
+                if (c.getCount() == 0) {
+                    showMessage("Message", "No Transactions found");
+                    mPrintReceiptBtn.setEnabled(true);
+                    return ;
+                }
                 Cursor c1 = db.rawQuery("SELECT sum(Amount) FROM deposits WHERE  transdate ='"+myDate+"'", null);
                 StringBuffer buffer = getReportData(c, c1, "Deposited");
                 com.example.mobilebanking.myactivities.Printer printer = new com.example.mobilebanking.myactivities.Printer(buffer, mConnector, db, "", "");
@@ -277,6 +282,11 @@ public class Reports extends AppCompatActivity implements View.OnClickListener {
                 String myDate =(Transsdate.getText().toString());
                 myDate =  myDate.trim();
                 Cursor c = db.rawQuery("SELECT * FROM withdrawals WHERE   transdate ='"+myDate+"'  ", null);
+                if (c.getCount() == 0) {
+                    showMessage("Message", "No Transactions found");
+                    PrintReceiptBtn.setEnabled(true);
+                    return ;
+                }
                 Cursor c1 = db.rawQuery("SELECT sum(Amount) FROM withdrawals WHERE  transdate ='"+myDate+"'", null);
                 StringBuffer buffer = getReportData(c, c1, "Withdrawn");
                 com.example.mobilebanking.myactivities.Printer printer = new com.example.mobilebanking.myactivities.Printer(buffer, mConnector, db, "", "");
@@ -301,6 +311,11 @@ public class Reports extends AppCompatActivity implements View.OnClickListener {
                     String myDate =(Transsdate.getText().toString());
                     myDate =  myDate.trim();
                     Cursor c = db.rawQuery("SELECT * FROM advance WHERE   transdate ='"+myDate+"'  ", null);
+                    if (c.getCount() == 0) {
+                        showMessage("Message", "No Transactions found");
+                        PrintAdvance.setEnabled(true);
+                        return ;
+                    }
                     Cursor c1 = db.rawQuery("SELECT sum(Amount) FROM advance WHERE  transdate ='"+myDate+"'", null);
                     StringBuffer buffer = getReportData(c, c1, "Advance");
                     com.example.mobilebanking.myactivities.Printer printer = new com.example.mobilebanking.myactivities.Printer(buffer, mConnector, db, "", "");
@@ -338,15 +353,11 @@ public class Reports extends AppCompatActivity implements View.OnClickListener {
         while (c.moveToNext()) {
             buffer.append(c.getString(0) + "\t" + c.getString(2) + " \n" );
         }
-        String d = null;
-        //Double ammt=Double.parseDouble(amm);
-        double amm= Double.parseDouble(d);
-
+        String amm = null;
 
         while (c1.moveToNext()) {
-            amm = Double.parseDouble(c1.getString(0));
-            //double d= Double.parseDouble(d);
-            //amm= String.valueOf(Double.valueOf(String.format("%.2f", c1.getString(0))));
+            amm = String.format("%.2f", Double.parseDouble(c1.getString(0)));
+
         }
 
         showMessage("Transaction Total +"+ amm +"", buffer.toString());
