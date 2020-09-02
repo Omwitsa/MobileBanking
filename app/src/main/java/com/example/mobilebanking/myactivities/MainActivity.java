@@ -11,7 +11,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.os.Bundle;
@@ -27,13 +26,14 @@ import com.example.mobilebanking.R;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Set;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity<versionNumber> extends AppCompatActivity {
     private Button mEnableBtn, mPrintReceiptBtn;
     private static Button mConnectBtn;
     private Spinner mDeviceSp;
@@ -43,18 +43,12 @@ public class MainActivity extends AppCompatActivity {
     private BluetoothAdapter mBluetoothAdapter;
     private P25Connector mConnector;
     TextView tv;
-    String qty1 = "";// =getIntent().getStringExtra("qty").toString();
-    String sno1 = "";
-    String pin1 = "";
-    MainActivity mainActivity;
-    public static String company, userrrrr, branchhh;
+   int Receiptno;
     private ArrayList<BluetoothDevice> mDeviceList = new ArrayList<BluetoothDevice>();
-    String comp;
     private static BluetoothSocket mSocket;
     BluetoothDevice selectDevice = null;
-//    HttpResponse response;
-//    HttpClient httpclient;
-//    List<NameValuePair> nameValuePairs;
+
+
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -80,9 +74,6 @@ public class MainActivity extends AppCompatActivity {
         mDeviceSp = (Spinner) findViewById(R.id.sp_device);
         tv = (TextView) findViewById(R.id.tv);
 
-        qty1 = "2342";//getIntent().getStringExtra("qty").toString();
-        sno1 = "234234";//getIntent().getStringExtra("sno").toString();
-        pin1 = "A345455345G";// getIntent().getStringExtra("pin").toString();
         db = openOrCreateDatabase("MobileDB", Context.MODE_PRIVATE, null);
 
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -187,9 +178,6 @@ public class MainActivity extends AppCompatActivity {
                             "submitting collection Online, please wait...", true);
                     new Thread(new Runnable() {
                         public void run() {
-                            //sendToDB();
-                            //SocketApplication app = (SocketApplication) getApplicationContext();
-                            //app.setDevice(null);
                             MainActivity.this.finish();
                             //socket.close();
                             dialog.dismiss();
@@ -209,6 +197,8 @@ public class MainActivity extends AppCompatActivity {
         registerReceiver(mReceiver, filter);
 
     }
+
+
 
     public void setSupportActionBar(Toolbar myToolbar) {
     }
@@ -323,8 +313,6 @@ public class MainActivity extends AppCompatActivity {
             showDisonnected();
         }
 
-
-        //my code
     }
 
     private void createBond(BluetoothDevice device) throws Exception {
@@ -339,60 +327,15 @@ public class MainActivity extends AppCompatActivity {
             throw e;
         }
     }
+    int min = 1;
+    int max = 10000;
+
+    Random r = new Random();
+    int i1 = r.nextInt(max - min + 1) + min;
+    String version = "MG001POS" + i1;
 
 
 
-    public void autosynch() {
-
-        db = openOrCreateDatabase("CollectionDB", Context.MODE_PRIVATE, null);
-        db.execSQL("CREATE TABLE IF NOT EXISTS CollectionDB(supplier VARCHAR," +
-                "quantity VARCHAR,branch VARCHAR,datep DATETIME,date DATETIME, auditId VARCHAR,shift VARCHAR, status VARCHAR,transdate VARCHAR);");
-
-        Cursor c = db.rawQuery("SELECT * FROM CollectionDB WHERE status='0'", null);
-
-        if (c.getCount() == 0) {
-            showMessage("Collection Message", "No new collection found");
-            return;
-        } else {
-
-            dialog = ProgressDialog.show(MainActivity.this, "",
-                    " Detecting new collection, please wait...", true);
-            dialog.setCancelable(true);
-
-            new Thread(new Runnable() {
-                public void run() {
-
-
-                    //MainPrintActivity.this.finish();
-
-                    //showAlert();
-                    dialog.dismiss();
-
-                }
-            }).start();
-        }
-    }
-
-
-
-    public void showAlert() {
-        MainActivity.this.runOnUiThread(new Runnable() {
-            public void run() {
-                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                builder.setTitle("Success.");
-                builder.setMessage("Milk Collection submited Successfully.")
-                        .setCancelable(false)
-                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-
-                            }
-                        });
-                AlertDialog alert = builder.create();
-                alert.show();
-            }
-        });
-
-    }
 
     private StringBuffer getAgencyPrintData(Bundle extras){
         StringBuffer buffer = new StringBuffer();
@@ -406,6 +349,7 @@ public class MainActivity extends AppCompatActivity {
             buffer.append("Agent Copy \n");
             buffer.append("----------------------------- \n");
             buffer.append( transaction.toUpperCase()+" RECEIPT" + "\n");
+            buffer.append("ReceiptNumber : "+version+ "\n");
             buffer.append("Account No:" + supplierNo + "\n");
             buffer.append("Amount    :" + amount + "\n");
         }
@@ -414,6 +358,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private StringBuffer getCustomerPrintData(Bundle extras){
+
         StringBuffer buffer = new StringBuffer();
         if (extras != null) {
             String amount = extras.getString("amount");
@@ -425,6 +370,7 @@ public class MainActivity extends AppCompatActivity {
             buffer.append("Customer Copy \n");
             buffer.append("----------------------------- \n");
             buffer.append( transaction.toUpperCase()+" RECEIPT" + "\n");
+            buffer.append("ReceiptNumber : "+version+ "\n");
             buffer.append("Account No:" + supplierNo + "\n");
             buffer.append("Amount    :" + amount + "\n");
         }

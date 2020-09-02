@@ -64,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+
     private void seedUser() {
         String machineId = android.os.Build.SERIAL;
         SharedPreferences.Editor editor = sharedpreferences.edit();

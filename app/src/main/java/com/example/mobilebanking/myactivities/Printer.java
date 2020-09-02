@@ -18,6 +18,7 @@ public class Printer {
         _db = db;
     }
 
+
     public  void print(){
         long milis1 = System.currentTimeMillis();
         String date1 = com.example.mobilebanking.Util.DateUtil.timeMilisToString(milis1, "dd-MM-yyyy");

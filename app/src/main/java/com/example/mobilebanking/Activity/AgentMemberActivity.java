@@ -100,21 +100,21 @@ public class AgentMemberActivity extends AppCompatActivity {
                 int dd = calendar.get(Calendar.DAY_OF_MONTH);
                 DatePickerDialog datePicker = new DatePickerDialog(AgentMemberActivity.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
-                    public void onDateSet(DatePicker view, int yy, int mm, int dd) {
+                    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
 
-                        String monthString = String.valueOf(mm);
+                        String monthString = String.valueOf((monthOfYear)+1);
                         if (monthString.length() == 1) {
                             monthString = "0" + monthString;
                         }
-                        String dayOfMonthString = String.valueOf(dd);
+                        String dayOfMonthString = String.valueOf(dayOfMonth);
                         if (dayOfMonthString.length() == 1) {
                             dayOfMonthString = "0" + dayOfMonthString;
                         }
 
-                        dob.setText(new StringBuilder().append(yy).append("-")
+                        dob.setText(new StringBuilder().append(year).append("-")
                                 .append(monthString).append("-").append(dayOfMonthString).append(" "));
 
-                        dob.setText(new StringBuilder().append(yy).append("-")
+                        dob.setText(new StringBuilder().append(year).append("-")
                                 .append(monthString).append("-").append(dayOfMonthString).append(" "));
                     }
                 }, yy, mm, dd);

@@ -89,23 +89,6 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
         SimpleDateFormat ff = new SimpleDateFormat("yyyy-MM-dd");
         String trans= ff.format(cc.getTime());
 
-
-//
-//            //db.rawQuery("SELECT * FROM deposits", null);
-//        Cursor c = db.rawQuery("SELECT * FROM deposits ", null);
-//        if (c.getCount() == 0) {
-//            Toast.makeText(getApplicationContext(), "No record Found", Toast.LENGTH_LONG).show();
-//            return;
-//        }
-//        else{
-//            while (c.moveToNext()) {
-//                StringBuffer buffer = new StringBuffer();
-//
-//                buffer.append(c.getString(0) + "\t" + c.getString(1) + " \t" + c.getString(2)  +"\n");
-//                Toast.makeText(getApplicationContext(), "No record Found", Toast.LENGTH_LONG).show();
-//
-//            }
-//        }
         if (_transaction.getOperation().equals("deposit")){
             db.execSQL("INSERT INTO deposits VALUES('" + bal + "','"  + pinn+ "','" + supNo + "','" + date_pp + "','0','" + trans + "');");
             Toast.makeText(context, "Deposit saved successfully", Toast.LENGTH_LONG).show();
@@ -122,8 +105,6 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
 
         }
 
-        //progressDoalog.setMessage("Please wait...");
-        //progressDoalog.show();
         transact(_transaction);
     }
 
