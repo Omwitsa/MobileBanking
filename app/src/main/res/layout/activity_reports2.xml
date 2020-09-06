@@ -82,25 +82,9 @@
         android:textColor="@color/tabteal"
         android:layout_margin="30dp"
         android:enabled="true"
-        android:text="Print Deposits" />
-    <Button
-        android:id="@+id/btn_print_receiptd1"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/GREEN"
-        android:textColor="@color/tabteal"
-        android:layout_margin="30dp"
-        android:enabled="true"
-        android:text="Print Withdrawals" />
-    <Button
-        android:id="@+id/btn_print_advance"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/GREEN"
-        android:textColor="@color/tabteal"
-        android:layout_margin="30dp"
-        android:enabled="true"
-        android:text="Print Advance" />
+        android:text="Daily Report" />
+
+
 
     <Button
         android:id="@+id/btn_synch"

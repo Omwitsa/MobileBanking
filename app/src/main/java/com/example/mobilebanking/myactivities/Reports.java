@@ -26,8 +26,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.mobilebanking.Model.Response;
-import com.example.mobilebanking.Model.TransactionModel;
 import com.example.mobilebanking.R;
 import com.example.mobilebanking.Rest.ApiClient;
 import com.example.mobilebanking.Rest.ApiInterface;
@@ -38,13 +36,10 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 import java.util.Set;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-
-import retrofit2.Call;
 
 import static java.util.Calendar.DATE;
 
@@ -74,10 +69,6 @@ public class Reports extends AppCompatActivity implements View.OnClickListener {
     long milis1 = System.currentTimeMillis();
     String date1 = DateUtil.timeMilisToString(milis1, "yyyy-MM-dd");
 
-    /*Calendar c = Calendar.getInstance();
-    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-    String date1 = sdf.format(c.getTime());
-*/
     private ArrayList<BluetoothDevice> mDeviceList = new ArrayList<BluetoothDevice>();
 
 
@@ -86,26 +77,11 @@ public class Reports extends AppCompatActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reports2);
 
-        //Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
-        //myToolbar.setTitle("AllClientsActivity Daily Collection");
-        //setSupportActionBar(myToolbar);
-
-        //myToolbar.setNavigationOnClickListener(new View.OnClickListener(){
-            //@Override
-            //public void onClick(View view){
-                //finish();
-            //}
-
-
-    //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    //getSupportActionBar().setDisplayShowHomeEnabled(false);
         apiService = ApiClient.getClient().create(ApiInterface.class);
     db=openOrCreateDatabase("MobileDB", Context.MODE_PRIVATE, null);
     mConnectBtn			= (Button) findViewById(R.id.btn_connectd);
     mEnableBtn			= (Button) findViewById(R.id.btn_enabled);
     mPrintReceiptBtn 	= (Button) findViewById(R.id.btn_print_receiptd);
-    PrintReceiptBtn 	= (Button) findViewById(R.id.btn_print_receiptd1);
-    PrintAdvance 	= (Button) findViewById(R.id.btn_print_advance);
     mDeviceSp 			= (Spinner) findViewById(R.id.sp_deviced);
     btn_synch			= (Button) findViewById(R.id.btn_synch);
         //final Spinner spinner = (Spinner) findViewById(R.id.Dayshift);
@@ -260,39 +236,29 @@ public class Reports extends AppCompatActivity implements View.OnClickListener {
                     return ;
                 }
                 Cursor c1 = db.rawQuery("SELECT sum(Amount) FROM deposits WHERE  transdate ='"+myDate+"'", null);
-                StringBuffer buffer = getReportData(c, c1, "Deposited");
-                com.example.mobilebanking.myactivities.Printer printer = new com.example.mobilebanking.myactivities.Printer(buffer, mConnector, db, "", "");
-                printer.print();
-                //printStruk();
-                dialog = ProgressDialog.show(Reports.this, "",
-                        "Clearing the collection/data from phone memory", true);
-                new Thread(new Runnable() {
-                    public void run() {
-                        //sendToDB();
-                        //DailyReportsActivity.this.finish();
-                        dialog.dismiss();
-                    }
-                }).start();
-            }
-        });
 
-        PrintReceiptBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View arg0) {
-                String myDate =(Transsdate.getText().toString());
-                myDate =  myDate.trim();
-                Cursor c = db.rawQuery("SELECT * FROM withdrawals WHERE   transdate ='"+myDate+"'  ", null);
-                if (c.getCount() == 0) {
+                //com.example.mobilebanking.myactivities.Printer printer = new com.example.mobilebanking.myactivities.Printer(buffer, mConnector, db, "", "");
+                //printer.print();
+                //printStruk();
+                Cursor c2 = db.rawQuery("SELECT * FROM withdrawals WHERE   transdate ='"+myDate+"'  ", null);
+                if (c2.getCount() == 0) {
                     showMessage("Message", "No Transactions found");
                     PrintReceiptBtn.setEnabled(true);
                     return ;
                 }
-                Cursor c1 = db.rawQuery("SELECT sum(Amount) FROM withdrawals WHERE  transdate ='"+myDate+"'", null);
-                StringBuffer buffer = getReportData(c, c1, "Withdrawn");
+                Cursor c3 = db.rawQuery("SELECT sum(Amount) FROM withdrawals WHERE  transdate ='"+myDate+"'", null);
+                Cursor c4 = db.rawQuery("SELECT * FROM advance WHERE   transdate ='"+myDate+"'  ", null);
+                if (c4.getCount() == 0) {
+                    showMessage("Message", "No Transactions found");
+                    PrintAdvance.setEnabled(true);
+                    return ;
+
+                }
+                Cursor c5 = db.rawQuery("SELECT sum(Amount) FROM advance WHERE  transdate ='"+myDate+"'", null);
+                //StringBuffer buffer1 = getReportData(c2, c3, "Withdrawn");
+                StringBuffer buffer = getReportData(c, c1, c2, c3, c4, c5, "Deposited");
                 com.example.mobilebanking.myactivities.Printer printer = new com.example.mobilebanking.myactivities.Printer(buffer, mConnector, db, "", "");
                 printer.print();
-
-                //printStruk1();
                 dialog = ProgressDialog.show(Reports.this, "",
                         "Clearing the collection/data from phone memory", true);
                 new Thread(new Runnable() {
@@ -305,33 +271,8 @@ public class Reports extends AppCompatActivity implements View.OnClickListener {
             }
         });
 
-            PrintAdvance.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View arg0) {
-                    String myDate =(Transsdate.getText().toString());
-                    myDate =  myDate.trim();
-                    Cursor c = db.rawQuery("SELECT * FROM advance WHERE   transdate ='"+myDate+"'  ", null);
-                    if (c.getCount() == 0) {
-                        showMessage("Message", "No Transactions found");
-                        PrintAdvance.setEnabled(true);
-                        return ;
-                    }
-                    Cursor c1 = db.rawQuery("SELECT sum(Amount) FROM advance WHERE  transdate ='"+myDate+"'", null);
-                    StringBuffer buffer = getReportData(c, c1, "Advance");
-                    com.example.mobilebanking.myactivities.Printer printer = new com.example.mobilebanking.myactivities.Printer(buffer, mConnector, db, "", "");
-                    printer.print();
 
-                    //printStruk1();
-                    dialog = ProgressDialog.show(Reports.this, "", "Clearing the collection/data from phone memory", true);
-                    new Thread(new Runnable() {
-                        public void run() {
-                            //sendToDB();
-                            //DailyReportsActivity.this.finish();
-                            dialog.dismiss();
-                        }
-                    }).start();
-                }
-            });
+
     }
 
 
@@ -346,9 +287,9 @@ public class Reports extends AppCompatActivity implements View.OnClickListener {
     registerReceiver(mReceiver, filter);
 }
 
-    private StringBuffer getReportData(Cursor c, Cursor c1, String operation) {
+    private StringBuffer getReportData(Cursor c, Cursor c1, Cursor c2, Cursor c3, Cursor c4, Cursor c5, String operation) {
         StringBuffer buffer = new StringBuffer();
-        buffer.append(operation +" Transactions\n");
+        buffer.append(operation+"  Transactions\n");
         buffer.append(" Amount      Account Number\n");
         while (c.moveToNext()) {
             buffer.append(c.getString(0) + "\t" + c.getString(2) + " \n" );
@@ -361,10 +302,52 @@ public class Reports extends AppCompatActivity implements View.OnClickListener {
         }
 
         showMessage("Transaction Total +"+ amm +"", buffer.toString());
-        int count=c.getCount();
+        int count=c2.getCount();
         buffer.append("-------------------------- \n");
         buffer.append("Customers Served : "+count+ "\n");
         buffer.append("Total amount "+operation+ ": "+amm+ "\n");
+        buffer.append("############################### \n");
+
+        //Advance
+        buffer.append("Advance  Transactions\n");
+        buffer.append(" Amount      Account Number\n");
+        while (c4.moveToNext()) {
+            buffer.append(c4.getString(0) + "\t" + c4.getString(2) + " \n" );
+        }
+        String ammnt = null;
+
+        while (c5.moveToNext()) {
+            ammnt = String.format("%.2f", Double.parseDouble(c5.getString(0)));
+
+        }
+
+        showMessage("Transaction Total +"+ ammnt +"", buffer.toString());
+        int count2=c4.getCount();
+        buffer.append("-------------------------- \n");
+        buffer.append("Customers Served : "+count2+ "\n");
+        buffer.append("Total amount Advanced "+ammnt+ "\n");
+        buffer.append("------------------------------ \n");
+        //withdrwals
+        buffer.append("Withdrawal  Transactions\n");
+        buffer.append(" Amount      Account Number\n");
+        while (c2.moveToNext()) {
+            buffer.append(c2.getString(0) + "\t" + c2.getString(2) + " \n" );
+        }
+        String ammn = null;
+
+        while (c3.moveToNext()) {
+            ammn = String.format("%.2f", Double.parseDouble(c3.getString(0)));
+
+        }
+
+        showMessage("Transaction Total +"+ ammn +"", buffer.toString());
+        int count1=c2.getCount();
+        buffer.append("-------------------------- \n");
+        buffer.append("Customers Served : "+count1+ "\n");
+        buffer.append("Total amount withdrwan "+ammn+ "\n");
+        buffer.append("------------------------------ \n");
+        buffer.append("############################### \n");
+
 
         return buffer;
     }
