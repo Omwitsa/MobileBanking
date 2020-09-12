@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.example.mobilebanking.Model.ProductModel;
 import com.example.mobilebanking.Model.TransactionModel;
@@ -18,12 +17,10 @@ import com.example.mobilebanking.R;
 import com.example.mobilebanking.Rest.ApiClient;
 import com.example.mobilebanking.Rest.ApiInterface;
 
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.annotation.RequiresApi;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -46,7 +43,7 @@ public class ProductsActivity extends Activity implements AdapterView.OnItemSele
 
         // Spinner click listener
         spinner.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
-        List<String> val = new ArrayList<String>();
+        //List<String> val = new ArrayList<String>();
 
         String accountNo = sharedpreferences.getString("account_no", "");
         TransactionModel transaction = new TransactionModel("", 0.0, "", "", accountNo, "", "", "");
@@ -56,7 +53,7 @@ public class ProductsActivity extends Activity implements AdapterView.OnItemSele
             @Override
             public void onResponse(Call<List<ProductModel>> call, Response<List<ProductModel>> response) {
                 List<ProductModel> products = response.body();
-                ArrayList<String> productDescriptions = new ArrayList<String>();
+                List<String>  productDescriptions = new ArrayList<String>();
                 products.forEach(p -> productDescriptions.add(p.getDescription()));
                 ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(ProductsActivity.this, android.R.layout.simple_spinner_item, productDescriptions);
                 dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

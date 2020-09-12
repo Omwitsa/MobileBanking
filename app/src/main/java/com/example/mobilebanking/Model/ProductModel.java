@@ -1,7 +1,11 @@
 package com.example.mobilebanking.Model;
 
+import com.google.gson.annotations.SerializedName;
+
 public class ProductModel {
+    @SerializedName("ProductID")
     private String productID;
+    @SerializedName("Description")
     private String description;
 
     public String getProductID() {
