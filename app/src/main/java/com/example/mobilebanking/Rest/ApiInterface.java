@@ -2,6 +2,7 @@ package com.example.mobilebanking.Rest;
 
 import com.example.mobilebanking.Model.AgentMember;
 import com.example.mobilebanking.Model.ClientModel;
+import com.example.mobilebanking.Model.ProductModel;
 import com.example.mobilebanking.Model.Response;
 import com.example.mobilebanking.Model.MemberModel;
 import com.example.mobilebanking.Model.TransactionModel;
@@ -11,6 +12,8 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface ApiInterface {
     @POST("webservice/users/login")
@@ -39,6 +42,9 @@ public interface ApiInterface {
 
     @POST("webservice/transacions/sychTransactions")
     Call<Response> sychTransactions(@Body List<TransactionModel> transactionModel);
+
+    @POST("webservice/transacions/fetchAdvanceProducts")
+    Call<List<ProductModel>> getAdvanceProcucts(@Body TransactionModel transactionModel);
 
 //    @GET("webservice/k-pillar/users.php")
 //    Call<Response> getMembers(@Path("id") int id, @Query("api_key") String apiKey);

@@ -32,8 +32,6 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.btnLogin) Button btnLogin;
     @BindView(R.id.btnSignup) Button btnSignup;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
@@ -63,7 +61,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
 
     private void seedUser() {
         String machineId = android.os.Build.SERIAL;

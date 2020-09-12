@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.sqlite.SQLiteDatabase;
 import android.hardware.fingerprint.FingerprintManager;
@@ -30,10 +31,13 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
     private TransactionModel _transaction;
     ApiInterface apiService;
     ProgressDialog progressDoalog;
+    public static final String MyPREFERENCES = "POSDETAILS" ;
+    SharedPreferences sharedpreferences;
 
     public FingerprintHandler(Context mContext, TransactionModel transaction) {
         context = mContext;
         _transaction = transaction;
+        sharedpreferences = mContext.getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         apiService = ApiClient.getClient().create(ApiInterface.class);
         progressDoalog = new ProgressDialog(context);
         db = context.openOrCreateDatabase("MobileDB", Context.MODE_PRIVATE, null);
@@ -68,6 +72,9 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
 
     @Override
     public void onAuthenticationSucceeded(FingerprintManager.AuthenticationResult result) {
+        SharedPreferences.Editor editor = sharedpreferences.edit();
+        editor.putString("account_no", _transaction.getsNo());
+        editor.commit();
         insertDataToSqlite(_transaction);
     }
 
