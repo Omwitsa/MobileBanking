@@ -145,6 +145,24 @@ This current collection button takes you to searching of the scale device, that 
     <string name="activity_home_desc">You have successfully logged in with fingerprint authentication</string>
     <string name="activity_home_note">Close and re-open the app to see the fingerprint auth screen again</string>
     <string name="title_activity_agent_member">AgentMember</string>
+
+    <!-- global settings view-->
+    <string name="lable_device_type">Device Type</string>
+    <string name="lable_usb_device">USB Device</string>
+    <string name="lable_enabled_led">Enabled LED</string>
+    <string name="lable_anti_spoofing">Anti Spoofing</string>
+    <string name="btn_open_device">Open Device</string>
+    <string name="btn_close_device">Close Device</string>
+    <string name="sp_device_type_auto">AUTO</string>
+    <string name="sp_device_type_a400">A400</string>
+    <string name="sp_device_type_a600">A600</string>
+    <string name="sp_usb_device_auto">AUTO</string>
+    <!-- Device Type Spinner -->
+    <string-array name="device_type">
+        <item>AUTO</item>
+        <item>A400</item>
+        <item>A600</item>
+    </string-array>
     <string-array name="language">
         <item>English</item>
         <item>Chinese</item>

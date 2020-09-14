@@ -58,4 +58,8 @@
     <color name="textPrimary">#f5f5f5</color>
     <color name="textPrimaryDark">#95aab4</color>
     <color name="errorText">#ff7878</color>
+    <color name="background_tab_pressed">#ffffffff</color>
+    <color name="theme">#1D9F9A</color>
+    <color name="disable">#98a4a4</color>
+    <color name="press">#81bfbf</color>
 </resources>

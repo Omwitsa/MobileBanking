@@ -48,18 +48,18 @@ public class ProductsActivity extends Activity implements AdapterView.OnItemSele
         String accountNo = sharedpreferences.getString("account_no", "");
         TransactionModel transaction = new TransactionModel("", 0.0, "", "", accountNo, "", "", "");
         Call<List<ProductModel>> call = apiService.getAdvanceProcucts(transaction);
+
         call.enqueue(new Callback<List<ProductModel>>() {
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onResponse(Call<List<ProductModel>> call, Response<List<ProductModel>> response) {
                 List<ProductModel> products = response.body();
-                List<String>  productDescriptions = new ArrayList<String>();
+                List<String> productDescriptions = new ArrayList<String>();
                 products.forEach(p -> productDescriptions.add(p.getDescription()));
                 ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(ProductsActivity.this, android.R.layout.simple_spinner_item, productDescriptions);
                 dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 dataAdapter = new ArrayAdapter<String>(ProductsActivity.this, android.R.layout.simple_spinner_item, productDescriptions);
                 spinner.setAdapter(dataAdapter);
-                //Toast.makeText(ProductsActivity.this, val.toString(), Toast.LENGTH_SHORT).show();
             }
 
             @Override
