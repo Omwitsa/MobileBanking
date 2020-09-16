@@ -67,6 +67,9 @@
     <string name="options_clear">Clear</string>
     <string name="options_exit">Exit</string>
     <string name="text_scan_devices">Scan Devices</string>
+    <string name="select_file">Select File</string>
+    <string name="btn_stop_identify">Stop Identify</string>
+    <string name="btn_start_identify">Start Identify</string>
 
     <string name="text_stop_scan">Scan Devices</string>
     <string name="text_list_paired_devices">Paired Devices</string>
@@ -157,6 +160,8 @@ This current collection button takes you to searching of the scale device, that 
     <string name="sp_device_type_a400">A400</string>
     <string name="sp_device_type_a600">A600</string>
     <string name="sp_usb_device_auto">AUTO</string>
+
+    <string name="msg_select_a_finger">Select a finger!</string>
     <!-- Device Type Spinner -->
     <string-array name="device_type">
         <item>AUTO</item>
@@ -172,6 +177,18 @@ This current collection button takes you to searching of the scale device, that 
         <item>PM</item>
         <item>PM2</item>
     </string-array>
+    <string-array name="image_format">
+        <item>BMP</item>
+        <item>WSQ</item>
+        <item>RAW</item>
+        <item>ISO 19794-4:2005</item>
+        <item>ANSI 381-2004</item>
+    </string-array>
+    <string-array name="feature_format">
+        <item>Aratek Bione</item>
+        <item>ISO 19794-2:2005</item>
+        <item>ANSI 378-2004</item>
+    </string-array>
     <string-array name="shift_array">
         <item>Male</item>
         <item>Female</item>
@@ -181,5 +198,24 @@ This current collection button takes you to searching of the scale device, that 
         <item>0</item>
         <item>1.5</item>
 
+    </string-array>
+    <string-array name="finger_position">
+        <item>Left Thumb</item>
+        <item>Left Index Finger</item>
+        <item>Left Middle Finger</item>
+        <item>Left Ring Finger</item>
+        <item>Left Little Finger</item>
+        <item>Right Thumb</item>
+        <item>Right Index Finger</item>
+        <item>Right Middle Finger</item>
+        <item>Right Ring Finger</item>
+        <item>Right Little Finger</item>
+    </string-array>
+    <string-array name="security_level">
+        <item>Level1</item>
+        <item>Level2</item>
+        <item>Level3</item>
+        <item>Level4</item>
+        <item>Level5</item>
     </string-array>
 </resources>
