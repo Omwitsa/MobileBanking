@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-768383963/Amtech-MobileBanking.iml" filepath="$PROJECT_DIR$/.idea/modules/-768383963/Amtech-MobileBanking.iml" group="MobileBanking" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/-768383963/MobileBanking.iml" filepath="$PROJECT_DIR$/.idea/modules/-768383963/MobileBanking.iml" group="MobileBanking" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MobileBanking-app.iml" filepath="$PROJECT_DIR$/.idea/modules/MobileBanking-app.iml" group="MobileBanking/app" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app.iml" group="MobileBanking/app" />
     </modules>
   </component>
