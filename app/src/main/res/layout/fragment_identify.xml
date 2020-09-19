@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fadeScrollbars="true"
-    tools:context="com.aratek.trustfinger.fragment.IdentifyFragment">
+    tools:context="com.example.mobilebanking.Fingerprint.fragment.IdentifyFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -323,7 +323,7 @@
                 android:layout_height="400px"
                 android:background="@android:color/white">
 
-                <com.aratek.trustfinger.widget.MyListView
+                <com.example.mobilebanking.Fingerprint.widget.MyListView
                     android:id="@+id/lv_user_list"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"

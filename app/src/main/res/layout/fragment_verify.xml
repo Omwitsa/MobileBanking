@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fadeScrollbars="true"
-    tools:context="com.aratek.trustfinger.fragment.VerifyFragment">
+    tools:context="com.example.mobilebanking.Fingerprint.fragment.VerifyFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -134,7 +134,7 @@
                     android:layout_height="240px"
                     android:background="@android:color/white">
 
-                    <com.aratek.trustfinger.widget.MyListView
+                    <com.example.mobilebanking.Fingerprint.widget.MyListView
                         android:id="@+id/lv_user_list"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -336,7 +336,7 @@
                 android:gravity="bottom"
                 android:orientation="horizontal">
 
-                <com.aratek.trustfinger.widget.FingerView
+                <com.example.mobilebanking.Fingerprint.widget.FingerView
                     android:id="@+id/fv_left_lilttle"
                     android:layout_width="0dp"
                     android:layout_height="80dp"
@@ -345,7 +345,7 @@
                     android:scaleType="fitXY"
                     android:src="@drawable/f5_normal" />
 
-                <com.aratek.trustfinger.widget.FingerView
+                <com.example.mobilebanking.Fingerprint.widget.FingerView
                     android:id="@+id/fv_left_ring"
                     android:layout_width="0dp"
                     android:layout_height="90dp"
@@ -354,7 +354,7 @@
                     android:scaleType="fitXY"
                     android:src="@drawable/f4_normal" />
 
-                <com.aratek.trustfinger.widget.FingerView
+                <com.example.mobilebanking.Fingerprint.widget.FingerView
                     android:id="@+id/fv_left_middle"
                     android:layout_width="0dp"
                     android:layout_height="100dp"
@@ -363,7 +363,7 @@
                     android:scaleType="fitXY"
                     android:src="@drawable/f3_normal" />
 
-                <com.aratek.trustfinger.widget.FingerView
+                <com.example.mobilebanking.Fingerprint.widget.FingerView
                     android:id="@+id/fv_left_index"
                     android:layout_width="0dp"
                     android:layout_height="110dp"
@@ -372,7 +372,7 @@
                     android:scaleType="fitXY"
                     android:src="@drawable/f2_normal" />
 
-                <com.aratek.trustfinger.widget.FingerView
+                <com.example.mobilebanking.Fingerprint.widget.FingerView
                     android:id="@+id/fv_left_thumb"
                     android:layout_width="0dp"
                     android:layout_height="60dp"
@@ -391,7 +391,7 @@
                 android:gravity="bottom"
                 android:orientation="horizontal">
 
-                <com.aratek.trustfinger.widget.FingerView
+                <com.example.mobilebanking.Fingerprint.widget.FingerView
                     android:id="@+id/fv_right_thumb"
                     android:layout_width="0dp"
                     android:layout_height="60dp"
@@ -400,7 +400,7 @@
                     android:scaleType="fitXY"
                     android:src="@drawable/f1_normal" />
 
-                <com.aratek.trustfinger.widget.FingerView
+                <com.example.mobilebanking.Fingerprint.widget.FingerView
                     android:id="@+id/fv_right_index"
                     android:layout_width="0dp"
                     android:layout_height="110dp"
@@ -410,7 +410,7 @@
                     android:scaleType="fitXY"
                     android:src="@drawable/f2_normal" />
 
-                <com.aratek.trustfinger.widget.FingerView
+                <com.example.mobilebanking.Fingerprint.widget.FingerView
                     android:id="@+id/fv_right_middle"
                     android:layout_width="0dp"
                     android:layout_height="100dp"
@@ -420,7 +420,7 @@
                     android:scaleType="fitXY"
                     android:src="@drawable/f3_normal" />
 
-                <com.aratek.trustfinger.widget.FingerView
+                <com.example.mobilebanking.Fingerprint.widget.FingerView
                     android:id="@+id/fv_right_ring"
                     android:layout_width="0dp"
                     android:layout_height="90dp"
@@ -430,7 +430,7 @@
                     android:scaleType="fitXY"
                     android:src="@drawable/f4_normal" />
 
-                <com.aratek.trustfinger.widget.FingerView
+                <com.example.mobilebanking.Fingerprint.widget.FingerView
                     android:id="@+id/fv_right_little"
                     android:layout_width="0dp"
                     android:layout_height="80dp"

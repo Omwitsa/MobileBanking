@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.aratek.trustfinger.fragment.DeviceInfoFragment">
+    tools:context="com.example.mobilebanking.Fingerprint.fragment.DeviceInfoFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
