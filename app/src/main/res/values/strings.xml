@@ -94,6 +94,19 @@
     <string name="lable_list_similarity">Similarity</string>
     <string name="no_results">No results</string>
 
+    <!-- tab lable -->
+    <string-array name="tabs_name">
+        <item>Capture</item>
+        <item>Enroll</item>
+        <item>Verify</item>
+        <item>Identify</item>
+        <item>Device Info</item>
+    </string-array>
+
+    <!-- msg -->
+    <string name="msg_click_open_device_button">Click Open Device Button</string>
+    <string name="msg_select_a_finger">Select a finger!</string>
+
     <!-- Capture -->
     <string name="lable_auto_save">Auto Save</string>
     <string name="lable_storage_path">Storage Path</string>
@@ -214,7 +227,6 @@ This current collection button takes you to searching of the scale device, that 
     <string name="sp_device_type_a600">A600</string>
     <string name="sp_usb_device_auto">AUTO</string>
 
-    <string name="msg_select_a_finger">Select a finger!</string>
     <!-- Device Type Spinner -->
     <string-array name="device_type">
         <item>AUTO</item>
