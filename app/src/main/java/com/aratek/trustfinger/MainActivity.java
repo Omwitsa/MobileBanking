@@ -451,8 +451,6 @@ public class MainActivity extends FragmentActivity implements DeviceOpenListener
             }
         });
 
-
-
         isDeviceOpened = false;
         mButton_openClose.setText(getString(R.string.btn_open_device));
         mButton_openClose.setOnClickListener(new View.OnClickListener() {
@@ -489,10 +487,6 @@ public class MainActivity extends FragmentActivity implements DeviceOpenListener
                                 .RED);
                         e.printStackTrace();
                     }
-
-
-
-
                 }
                 else {
                     int position = mViewPager.getCurrentItem();
@@ -523,13 +517,8 @@ public class MainActivity extends FragmentActivity implements DeviceOpenListener
                             }
                         }
 
-
                         mButton_openClose.setTextColor(Color.parseColor("#1D9F9A"));
                         mTrustFingerDevice.close();
-
-
-
-
 
                         mTrustFingerDevice = null;
                         isDeviceOpened = false;
@@ -899,7 +888,4 @@ public class MainActivity extends FragmentActivity implements DeviceOpenListener
         }
         return super.onKeyDown(keyCode, event);
     }
-
-
-
 }
