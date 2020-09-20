@@ -23,6 +23,7 @@ array feature_format
 array finger_position
 array image_format
 array security_level
+array shift_array
 array tabs_name
 attr actionBarDivider
 attr actionBarItemBackground
@@ -1005,7 +1006,6 @@ id customPanel
 id decor_content_parent
 id default_activity_button
 id deposit
-id desc
 id design_bottom_sheet
 id design_menu_item_action_area
 id design_menu_item_action_area_stub
@@ -1020,13 +1020,13 @@ id dialog_sp_finger_position
 id dimensions
 id direct
 id disableHome
+id dob
 id edit_query
 id editingZone
 id end
 id end_padder
 id enterAlways
 id enterAlwaysCollapsed
-id errorText
 id et_image_quality_threshold
 id et_user_first_name
 id et_user_id
@@ -1052,14 +1052,15 @@ id fv_right_little
 id fv_right_middle
 id fv_right_ring
 id fv_right_thumb
+id gender
 id ghost_view
 id gone
 id groups
-id headerLayout
 id home
 id homeAsUp
 id icon
 id icon_group
+id idno
 id ifRoom
 id image
 id info
@@ -1091,6 +1092,7 @@ id member_register
 id message
 id middle
 id mini
+id mobile
 id multiply
 id my_toolbar
 id navigation_header_container
@@ -1100,7 +1102,7 @@ id normal
 id notification_background
 id notification_main_column
 id notification_main_column_container
-id operationMsg
+id othername
 id packed
 id parallax
 id parent
@@ -1169,6 +1171,7 @@ id status_bar_latest_event_content
 id submenuarrow
 id submit
 id submit_area
+id surname
 id sv_content
 id tabLayout
 id tabMode
@@ -1285,7 +1288,6 @@ layout activity_balance
 layout activity_deposit
 layout activity_fingeprint
 layout activity_home
-layout activity_main
 layout activity_main2
 layout activity_print
 layout activity_products

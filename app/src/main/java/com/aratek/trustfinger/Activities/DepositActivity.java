@@ -11,7 +11,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.aratek.trustfinger.MainActivity;
 import com.aratek.trustfinger.R;
 import com.aratek.trustfinger.Rest.ApiClient;
 import com.aratek.trustfinger.Rest.ApiInterface;
@@ -52,7 +51,7 @@ public class DepositActivity extends AppCompatActivity {
 
 //                    insertDataToSqlite(bal, Pinn, SupNo);
 
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), FingeprintActivity.class);
                     intent.putExtra("operation", "deposit");
                     intent.putExtra("amount", bal);
                     intent.putExtra("fingurePrint", "");

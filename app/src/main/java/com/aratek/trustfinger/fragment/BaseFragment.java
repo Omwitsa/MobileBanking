@@ -4,8 +4,9 @@ import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 
-import com.aratek.trustfinger.MainActivity;
+import com.aratek.trustfinger.Activities.FingeprintActivity;
 import com.aratek.trustfinger.utils.MyApplication;
 import com.aratek.trustfinger.sdk.DeviceModel;
 import com.aratek.trustfinger.sdk.LedIndex;
@@ -28,7 +29,7 @@ public abstract class BaseFragment extends Fragment {
     public abstract void setDatas(TrustFingerDevice device);
 
     public void handleMsg(String msg, int color) {
-        ((MainActivity) getActivity()).handleMsg(msg, color);
+        ((FingeprintActivity) getActivity()).handleMsg(msg, color);
     }
 
     @Override
