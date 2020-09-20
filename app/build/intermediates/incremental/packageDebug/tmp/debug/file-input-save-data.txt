@@ -1,0 +1,19 @@
+#Internal package file, do not edit.
+#Sun Sep 20 15:42:30 EAT 2020
+1.base=D\:\\SourceCode\\Amtech\\MobileBanking\\app\\build\\intermediates\\transforms\\mergeJniLibs\\debug\\0
+2.path=classes.dex
+0.baseType=DIRECTORY
+3.baseType=DIRECTORY
+2.base=D\:\\SourceCode\\Amtech\\MobileBanking\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\out
+3.set=NATIVE_RESOURCE
+2.set=DEX
+1.baseType=DIRECTORY
+3.path=lib/armeabi-v7a/libWSQ_library_android.so
+count=4
+1.set=NATIVE_RESOURCE
+0.path=lib/armeabi-v7a/libTrustFinger.so
+3.base=D\:\\SourceCode\\Amtech\\MobileBanking\\app\\build\\intermediates\\transforms\\mergeJniLibs\\debug\\0
+0.set=NATIVE_RESOURCE
+0.base=D\:\\SourceCode\\Amtech\\MobileBanking\\app\\build\\intermediates\\transforms\\mergeJniLibs\\debug\\0
+2.baseType=DIRECTORY
+1.path=lib/armeabi-v7a/libTrustFingerAlg.so

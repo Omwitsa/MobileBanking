@@ -1,0 +1,41 @@
+package com.aratek.trustfinger.Activities;
+
+import android.app.ListActivity;
+import android.bluetooth.BluetoothAdapter;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+
+import com.aratek.trustfinger.R;
+
+import java.util.Locale;
+
+public class MyListActivity extends ListActivity {
+    private BluetoothAdapter _bluetooth = BluetoothAdapter.getDefaultAdapter();
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        refresh();
+        _bluetooth.enable();
+    }
+
+    public void refresh() {
+        SharedPreferences settings = getSharedPreferences("locale", 0);
+        int position = settings.getInt("Locale", 1);
+        Locale locale2;
+        Configuration config = new Configuration();
+        //if (position == 0) {
+        locale2 = Locale.ENGLISH;
+        Locale.setDefault(locale2);
+        config.locale = locale2;
+        //} else if (position == 1) {
+        ///	locale2 = Locale.CHINA;
+        //	Locale.setDefault(locale2);
+        //config.locale = locale2;
+        //	}
+        getBaseContext().getResources().updateConfiguration(config,
+                getBaseContext().getResources().getDisplayMetrics());
+    }
+}
