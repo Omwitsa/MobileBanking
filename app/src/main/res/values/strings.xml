@@ -142,7 +142,7 @@
 
     <!-- Enroll -->
     <string name="lable_image_quality_threshold">Image Quality Threshold</string>
-    <string name="lable_user_id">User ID</string>
+    <string name="lable_user_id">ID No.</string>
     <string name="lable_user_first_name">FirstName</string>
     <string name="lable_user_last_name">LastName</string>
     <string name="btn_start_enroll">Start Enroll</string>

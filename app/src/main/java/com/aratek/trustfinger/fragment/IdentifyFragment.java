@@ -1,6 +1,8 @@
 package com.aratek.trustfinger.fragment;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -36,6 +38,7 @@ import android.widget.ProgressBar;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.aratek.trustfinger.Model.TransactionModel;
 import com.aratek.trustfinger.utils.Config;
 import com.aratek.trustfinger.R;
 import com.aratek.trustfinger.adapter.MyRankListAdapter;
@@ -50,6 +53,7 @@ import com.aratek.trustfinger.sdk.TrustFingerException;
 import com.aratek.trustfinger.sdk.VerifyResult;
 import com.aratek.trustfinger.utils.DBHelper;
 import com.aratek.trustfinger.utils.MediaPlayerHelper;
+import com.aratek.trustfinger.utils.Transaction;
 import com.aratek.trustfinger.widget.MyListView;
 
 import java.util.ArrayList;
@@ -88,6 +92,10 @@ public class IdentifyFragment extends BaseFragment {
     private long startTime, endTime;
     private LargestFingerData largestFingerData = new LargestFingerData();
     private LedCallback callback;
+    private Transaction transaction;
+    TransactionModel transactionModel;
+    public static final String MyPREFERENCES = "POSDETAILS" ;
+    SharedPreferences sharedpreferences;
     public void setLedCallback(LedCallback callback){
         this.callback = callback;
     }
@@ -100,6 +108,17 @@ public class IdentifyFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         if (root == null) {
+            sharedpreferences = getActivity().getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+            Bundle extras = getActivity().getIntent().getExtras();
+            String operation = extras.getString("operation");
+            Double amount = Double.parseDouble(extras.getString("amount"));
+            String status = "0";
+            String machineId = sharedpreferences.getString("machine_id", "");
+            String auditId = sharedpreferences.getString("loggedInUser", "");
+
+            transactionModel = new TransactionModel(operation, amount, "", "", "65690100082185", status, machineId, auditId);
+            transaction = new Transaction(getActivity(), transactionModel);
+
             root = inflater.inflate(R.layout.fragment_identify, container, false);
             sv = (ScrollView) root.findViewById(R.id.sv_content);
             mImageView_fingerprint = (ImageView) root.findViewById(R.id.iv_fingerprint);
@@ -631,6 +650,7 @@ public class IdentifyFragment extends BaseFragment {
             mIdentifyTask = null;
             isIdentifing = false;
             mIsDone = true;
+            transaction.transact(transactionModel);
             return null;
         }
 

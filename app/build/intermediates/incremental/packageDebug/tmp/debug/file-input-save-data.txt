@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Sun Sep 20 18:17:37 EAT 2020
+#Sun Sep 20 20:24:39 EAT 2020
 1.base=D\:\\SourceCode\\Amtech\\MobileBanking\\app\\build\\intermediates\\transforms\\mergeJniLibs\\debug\\0
 2.path=classes.dex
 0.baseType=DIRECTORY
