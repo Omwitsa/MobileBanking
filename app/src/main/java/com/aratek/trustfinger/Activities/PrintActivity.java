@@ -164,9 +164,11 @@ public class PrintActivity<versionNumber> extends AppCompatActivity {
                     Printer printer = new Printer(buffer, mConnector, db, transaction, supplierNo);
                     printer.print();
 
+
                     buffer = getCustomerPrintData(extras);
                     printer = new Printer(buffer, mConnector, db, transaction, supplierNo);
                     printer.print();
+
 
                     showMessage("", buffer.toString());
                     Intent intent = new Intent(getApplicationContext(), HomeActivity.class);

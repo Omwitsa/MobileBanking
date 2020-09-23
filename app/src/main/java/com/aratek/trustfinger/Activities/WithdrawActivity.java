@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.aratek.trustfinger.R;
 import com.aratek.trustfinger.Rest.ApiClient;
 import com.aratek.trustfinger.Rest.ApiInterface;
+import com.aratek.trustfinger.utils.MainActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -55,7 +56,7 @@ public class WithdrawActivity extends AppCompatActivity {
 
 //                    insertDataToSqlite(bal, Pinn, SupNo);
 
-                    Intent intent = new Intent(getApplicationContext(), FingeprintActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     intent.putExtra("operation", "withdraw");
                     intent.putExtra("amount", bal);
                     intent.putExtra("fingurePrint", "");

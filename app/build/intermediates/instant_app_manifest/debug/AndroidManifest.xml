@@ -58,6 +58,7 @@
         <activity android:name="com.aratek.trustfinger.Activities.AgentMemberActivity" />
         <activity android:name="com.aratek.trustfinger.Activities.HomeActivity" />
         <activity android:name="com.aratek.trustfinger.Activities.AdvanceActivity" />
+        <activity android:name="com.aratek.trustfinger.utils.Printer" />
         <activity
             android:name="com.aratek.trustfinger.Activities.MainActivity"
             android:label="@string/app_name"

@@ -37,7 +37,7 @@ public class HomeActivity extends AppCompatActivity {
         withdraw.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), WithdrawActivity.class);
                 startActivity(intent);
             }
         });

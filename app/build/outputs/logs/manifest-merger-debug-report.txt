@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:2:1-66:12
-INJECTED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:2:1-66:12
-INJECTED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:2:1-66:12
-INJECTED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:2:1-66:12
+ADDED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:2:1-67:12
+INJECTED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:2:1-67:12
+INJECTED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:2:1-67:12
+INJECTED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:2:1-67:12
 MERGED from [com.android.support:design:26.1.0] C:\Users\Kemboi\.gradle\caches\transforms-2\files-2.1\926cd1112f83b802debdf2493bbbfbf6\AndroidManifest.xml:17:1-31:12
 MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\Kemboi\.gradle\caches\transforms-2\files-2.1\abd6ed70315b4116a941f92ac26446db\AndroidManifest.xml:17:1-31:12
 MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\Kemboi\.gradle\caches\transforms-2\files-2.1\1d1510aeba2c8ab9da7599acf34a6f59\AndroidManifest.xml:2:1-11:12
@@ -20,25 +20,25 @@ MERGED from [com.android.support:support-core-utils:26.1.0] C:\Users\Kemboi\.gra
 MERGED from [com.android.support:support-core-ui:26.1.0] C:\Users\Kemboi\.gradle\caches\transforms-2\files-2.1\946d7e102e20592a53ab3b33e9998153\AndroidManifest.xml:17:1-31:12
 MERGED from [com.android.support:support-compat:26.1.0] C:\Users\Kemboi\.gradle\caches\transforms-2\files-2.1\2e83083646a8983ea6a0bf5300e920ba\AndroidManifest.xml:17:1-31:12
 MERGED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\Kemboi\.gradle\caches\transforms-2\files-2.1\e56c88ee43d1a1227756ae448e5e1894\AndroidManifest.xml:17:1-30:12
-INJECTED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:2:1-66:12
-INJECTED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:2:1-66:12
-INJECTED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:2:1-66:12
+INJECTED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:2:1-67:12
+INJECTED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:2:1-67:12
+INJECTED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:2:1-67:12
 	package
 		ADDED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:3:5-37
 		INJECTED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml
 		INJECTED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml
-		ADDED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:2:1-66:12
+		ADDED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:2:1-67:12
 		INJECTED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml
 	android:versionCode
 		INJECTED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml
-		ADDED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:2:1-66:12
+		ADDED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:2:1-67:12
 		INJECTED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:2:11-69
 application
-ADDED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:5:5-48:19
+ADDED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:5:5-49:19
 MERGED from [com.android.support:design:26.1.0] C:\Users\Kemboi\.gradle\caches\transforms-2\files-2.1\926cd1112f83b802debdf2493bbbfbf6\AndroidManifest.xml:25:5-29:19
 MERGED from [com.android.support:design:26.1.0] C:\Users\Kemboi\.gradle\caches\transforms-2\files-2.1\926cd1112f83b802debdf2493bbbfbf6\AndroidManifest.xml:25:5-29:19
 MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\Kemboi\.gradle\caches\transforms-2\files-2.1\abd6ed70315b4116a941f92ac26446db\AndroidManifest.xml:25:5-29:19
@@ -155,64 +155,68 @@ activity#com.aratek.trustfinger.Activities.AdvanceActivity
 ADDED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:35:9-64
 	android:name
 		ADDED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:35:19-61
+activity#com.aratek.trustfinger.utils.Printer
+ADDED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:36:9-51
+	android:name
+		ADDED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:36:19-48
 activity#com.aratek.trustfinger.Activities.MainActivity
-ADDED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:36:9-47:20
+ADDED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:37:9-48:20
 	android:screenOrientation
-		ADDED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:40:13-49
+		ADDED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:41:13-49
 	android:label
-		ADDED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:38:13-45
+		ADDED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:39:13-45
 	android:launchMode
-		ADDED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:39:13-48
+		ADDED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:40:13-48
 	android:windowSoftInputMode
-		ADDED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:41:13-64
+		ADDED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:42:13-64
 	android:name
-		ADDED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:37:13-52
+		ADDED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:38:13-52
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:42:13-46:29
+ADDED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:43:13-47:29
 action#android.intent.action.MAIN
-ADDED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:43:17-69
+ADDED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:44:17-69
 	android:name
-		ADDED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:43:25-66
+		ADDED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:44:25-66
 category#android.intent.category.LAUNCHER
-ADDED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:45:17-77
+ADDED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:46:17-77
 	android:name
-		ADDED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:45:27-74
+		ADDED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:46:27-74
 supports-screens
-ADDED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:50:5-54:39
+ADDED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:51:5-55:39
 	android:largeScreens
-		ADDED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:52:9-36
+		ADDED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:53:9-36
 	android:smallScreens
-		ADDED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:54:9-36
+		ADDED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:55:9-36
 	android:normalScreens
-		ADDED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:53:9-37
+		ADDED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:54:9-37
 	android:anyDensity
-		ADDED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:51:9-34
+		ADDED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:52:9-34
 uses-feature#android.hardware.usb.host
-ADDED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:55:5-57:35
+ADDED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:56:5-58:35
 	android:required
-		ADDED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:57:9-32
+		ADDED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:58:9-32
 	android:name
-		ADDED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:56:9-49
+		ADDED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:57:9-49
 uses-permission#android.permission.BLUETOOTH
-ADDED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:58:5-68
+ADDED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:59:5-68
 	android:name
-		ADDED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:58:22-65
+		ADDED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:59:22-65
 uses-permission#android.permission.BLUETOOTH_ADMIN
-ADDED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:59:5-74
+ADDED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:60:5-74
 	android:name
-		ADDED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:59:22-71
+		ADDED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:60:22-71
 uses-permission#android.permission.INTERNET
-ADDED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:60:5-67
+ADDED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:61:5-67
 	android:name
-		ADDED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:60:22-64
+		ADDED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:61:22-64
 uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
-ADDED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:62:5-81
+ADDED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:63:5-81
 	android:name
-		ADDED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:62:22-78
+		ADDED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:63:22-78
 uses-permission#android.permission.READ_EXTERNAL_STORAGE
-ADDED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:64:5-80
+ADDED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:65:5-80
 	android:name
-		ADDED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:64:22-77
+		ADDED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml:65:22-77
 uses-sdk
 INJECTED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from D:\android-2020\MobileBanking\app\src\main\AndroidManifest.xml
