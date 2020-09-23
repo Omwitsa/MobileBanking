@@ -16,6 +16,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    defaultConfig{
+        ndk{
+            abiFilter 'armeabi'
+        }
+    }
     android.applicationVariants.all {
         variant ->
             variant.outputs.all { output ->
@@ -47,6 +52,8 @@ dependencies {
     implementation 'com.android.support:recyclerview-v7:26+'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation files('libs/TrustFinger.jar')
+    implementation files('libs/AppSdkAidl.jar')
+    implementation files('libs/vanstoneSdkClient-noemv.jar')
 
     // retrofit, gson
     implementation 'com.jakewharton:butterknife:8.8.1'

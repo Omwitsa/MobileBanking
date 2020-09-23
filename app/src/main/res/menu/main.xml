@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <!-- Search Widget -->
+
+        android:id="@+id/action_settings"
+        android:title="Settings"
+        android:actionLayout="@layout/chck"
+        />
+
+</menu>

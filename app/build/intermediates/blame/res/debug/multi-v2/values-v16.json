@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\SourceCode\\Amtech\\MobileBanking\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v16\\values-v16.xml",
+            "outputFile": "D:\\android-2020\\MobileBanking\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v16\\values-v16.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\hp\\.gradle\\caches\\transforms-2\\files-2.1\\a7aa88acbd14c438122dfbc34d320639\\res\\values-v16\\values-v16.xml",
+                    "source": "C:\\Users\\Kemboi\\.gradle\\caches\\transforms-2\\files-2.1\\abd6ed70315b4116a941f92ac26446db\\res\\values-v16\\values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\hp\\.gradle\\caches\\transforms-2\\files-2.1\\57b8eb79d280db356f7c2396e2cba872\\res\\values-v16\\values-v16.xml",
+                    "source": "C:\\Users\\Kemboi\\.gradle\\caches\\transforms-2\\files-2.1\\2e83083646a8983ea6a0bf5300e920ba\\res\\values-v16\\values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

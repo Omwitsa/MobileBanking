@@ -7,6 +7,7 @@ import android.support.v7.widget.CardView;
 import android.view.View;
 
 import com.aratek.trustfinger.R;
+import com.aratek.trustfinger.utils.MainActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -36,7 +37,7 @@ public class HomeActivity extends AppCompatActivity {
         withdraw.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), WithdrawActivity.class);
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
             }
         });

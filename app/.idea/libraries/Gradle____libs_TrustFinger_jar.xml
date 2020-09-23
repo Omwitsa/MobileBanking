@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="Gradle: ./libs/TrustFinger.jar">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/libs/TrustFinger.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>

@@ -1,10 +1,13 @@
 package com.aratek.trustfinger.utils;
-
+import com.vanstone.trans.api.PrinterApi;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 import com.aratek.trustfinger.Pockdata.PocketPos;
-import com.aratek.trustfinger.utils.DateUtil;
-import com.aratek.trustfinger.utils.P25ConnectionException;
-import com.aratek.trustfinger.utils.P25Connector;
+
+
+
+
+
 
 public class Printer {
     StringBuffer _buffer;
@@ -38,6 +41,12 @@ public class Printer {
 
 
     public  void print(){
+
+        PrinterApi.PrnStr_Api("--------------------------------");
+        PrinterApi.PrnStr_Api("I accept this trade and allow it on my account");
+        PrinterApi.PrnStr_Api("----------x------------x-------");
+        PrinterApi.PrnStr_Api("\n\n");
+        PrintData();
         long milis1 = System.currentTimeMillis();
         String date1 = DateUtil.timeMilisToString(milis1, "dd-MM-yyyy");
         String time1 = DateUtil.timeMilisToString(milis1, "  HH:mm a");
@@ -60,6 +69,7 @@ public class Printer {
         content2Sb.append("                           " + "\n");
         content2Sb.append("                           " + "\n");
 
+
         byte[] content2Byte = printfont(content2Sb.toString(), com.aratek.trustfinger.utils.FontDefine.FONT_32PX, com.aratek.trustfinger.utils.FontDefine.Align_LEFT, (byte) 0x1A,
                 PocketPos.LANGUAGE_ENGLISH);
         byte[] totalByte = new byte[content2Byte.length];
@@ -68,6 +78,24 @@ public class Printer {
         offset += content2Byte.length;
         byte[] senddata = PocketPos.FramePack(PocketPos.FRAME_TOF_PRINT, totalByte, 0, totalByte.length);
         sendData(senddata, _transaction, _supplierNo);
+    }
+    public static int PrintData() {
+        int ret;
+        String Buf = null;
+        while (true) {
+            ret = PrinterApi.PrnStart_Api();
+            Log.d("aabb", "PrnStart_Api:" + ret);
+            if (ret == 2) {
+                Buf = "Return:" + ret + "	paper is not enough";
+            } else if (ret == 3) {
+                Buf = "Return:" + ret + "	too hot";
+            } else if (ret == 4) {
+                Buf = "Return:" + ret + "	PLS put it back\nPress any key to reprint";
+            } else if (ret == 0) {
+                return 0;
+            }
+            return -1;
+        }
     }
 
     private void sendData(byte[] bytes, String transaction, String supplierNo) {

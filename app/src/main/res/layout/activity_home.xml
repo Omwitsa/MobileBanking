@@ -59,7 +59,8 @@ tools:context="com.aratek.trustfinger.Activities.HomeActivity">
                 android:fontFamily="@font/mo_re"
                 android:textColor="@color/textcardColor"
                 android:textSize="14sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                tools:ignore="UnusedAttribute" />
 
             <ImageView
                 android:layout_width="wrap_content"

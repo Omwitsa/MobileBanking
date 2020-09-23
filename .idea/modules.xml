@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/AratekTrustFingerDemo.iml" filepath="$PROJECT_DIR$/.idea/modules/AratekTrustFingerDemo.iml" group="AratekTrustFingerDemo" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/app.iml" group="AratekTrustFingerDemo/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MobileBanking.iml" filepath="$PROJECT_DIR$/.idea/modules/MobileBanking.iml" group="MobileBanking" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/app.iml" group="MobileBanking/app" />
     </modules>
   </component>
 </project>
