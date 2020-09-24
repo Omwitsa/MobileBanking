@@ -141,6 +141,6 @@ public class AgentMemberActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Sorry, An error occurred", Toast.LENGTH_LONG).show();
             }
         });
-    }
 
+}
 }

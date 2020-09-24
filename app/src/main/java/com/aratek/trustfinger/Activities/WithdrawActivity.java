@@ -14,6 +14,7 @@ import com.aratek.trustfinger.R;
 import com.aratek.trustfinger.Rest.ApiClient;
 import com.aratek.trustfinger.Rest.ApiInterface;
 import com.aratek.trustfinger.utils.MainActivity;
+import com.aratek.trustfinger.utils.Transaction;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -54,9 +55,9 @@ public class WithdrawActivity extends AppCompatActivity {
                     Toast.makeText(WithdrawActivity.this, "Pin shoud have a maximum of 4 characters", Toast.LENGTH_LONG).show();
                 }else {
 
-//                    insertDataToSqlite(bal, Pinn, SupNo);
+//                   insertDataToSqlite(bal, Pinn, SupNo);
 
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), FingeprintActivity.class);
                     intent.putExtra("operation", "withdraw");
                     intent.putExtra("amount", bal);
                     intent.putExtra("fingurePrint", "");

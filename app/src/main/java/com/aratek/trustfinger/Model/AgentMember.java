@@ -2,8 +2,6 @@ package com.aratek.trustfinger.Model;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.util.Date;
-
 public class AgentMember {
     @SerializedName("surname")
     private String surname;
@@ -16,7 +14,7 @@ public class AgentMember {
     @SerializedName("gender")
     private String gender;
     @SerializedName("dob")
-    private Date dob;
+    private String dob;
     @SerializedName("finerPrint1")
     private String finerPrint1;
     @SerializedName("fingerPrint2")
@@ -24,7 +22,7 @@ public class AgentMember {
     @SerializedName("agentId")
     private String agentId;
 
-    public AgentMember(String surname, String otherName, String idNo, String mobileNo, String gender, Date dob, String finerPrint1, String fingerPrint2, String agentId) {
+    public AgentMember(String surname, String otherName, String idNo, String mobileNo, String gender, String dob, String finerPrint1, String fingerPrint2, String agentId) {
         this.surname = surname;
         this.otherName = otherName;
         this.idNo = idNo;
@@ -76,11 +74,11 @@ public class AgentMember {
         this.gender = gender;
     }
 
-    public Date getDob() {
+    public String getDob() {
         return dob;
     }
 
-    public void setDob(Date dob) {
+    public void setDob(String dob) {
         this.dob = dob;
     }
 

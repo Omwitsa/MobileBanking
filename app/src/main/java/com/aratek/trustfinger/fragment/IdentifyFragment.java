@@ -2,6 +2,7 @@ package com.aratek.trustfinger.fragment;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -52,6 +53,7 @@ import com.aratek.trustfinger.sdk.TrustFingerDevice;
 import com.aratek.trustfinger.sdk.TrustFingerException;
 import com.aratek.trustfinger.sdk.VerifyResult;
 import com.aratek.trustfinger.utils.DBHelper;
+import com.aratek.trustfinger.utils.MainActivity;
 import com.aratek.trustfinger.utils.MediaPlayerHelper;
 import com.aratek.trustfinger.utils.Transaction;
 import com.aratek.trustfinger.widget.MyListView;
@@ -94,6 +96,7 @@ public class IdentifyFragment extends BaseFragment {
     private LedCallback callback;
     private Transaction transaction;
     TransactionModel transactionModel;
+    private Context context;
     public static final String MyPREFERENCES = "POSDETAILS" ;
     SharedPreferences sharedpreferences;
     public void setLedCallback(LedCallback callback){
@@ -652,6 +655,8 @@ public class IdentifyFragment extends BaseFragment {
             isIdentifing = false;
             mIsDone = true;
             transaction.transact(transactionModel);
+
+
             return null;
         }
 

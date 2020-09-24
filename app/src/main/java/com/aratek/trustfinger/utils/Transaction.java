@@ -7,7 +7,6 @@ import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.widget.Toast;
 
-import com.aratek.trustfinger.Activities.PrintActivity;
 import com.aratek.trustfinger.Model.Response;
 import com.aratek.trustfinger.Model.TransactionModel;
 import com.aratek.trustfinger.Rest.ApiClient;
@@ -19,7 +18,7 @@ import java.util.Calendar;
 import retrofit2.Call;
 import retrofit2.Callback;
 
-public class Transaction {
+public class Transaction<_transaction> {
     private Context context;
     private TransactionModel _transaction;
     static SQLiteDatabase db;
@@ -28,7 +27,7 @@ public class Transaction {
     public static final String MyPREFERENCES = "POSDETAILS" ;
     SharedPreferences sharedpreferences;
 
-    public Transaction(Context mContext, TransactionModel transaction){
+    public Transaction(Context mContext, TransactionModel transaction) {
         context = mContext;
         _transaction = transaction;
         sharedpreferences = mContext.getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
@@ -39,11 +38,11 @@ public class Transaction {
         db.execSQL("CREATE TABLE IF NOT EXISTS deposits(Amount VARCHAR,Pin VARCHAR,Supp VARCHAR,datepp DATETIME, status VARCHAR,transdate  VARCHAR);");
         db.execSQL("CREATE TABLE IF NOT EXISTS advance(Amount VARCHAR,Pin VARCHAR,Supp VARCHAR,datepp DATETIME, status VARCHAR,transdate  VARCHAR);");
         //db.execSQL("ALTER TABLE withdrawals  ADD transdate  varchar");
+
+
     }
-
     public void transact(TransactionModel _transaction) {
-//        insertDataToSqlite(_transaction);
-
+        //insertDataToSqlite();
         if (_transaction.getOperation().equals("deposit")){
             Call<Response> call = apiService.deposit(_transaction);
             call.enqueue(new Callback<Response>() {
@@ -122,7 +121,20 @@ public class Transaction {
         }
     }
 
-    private void insertDataToSqlite(TransactionModel _transaction) {
+    private void Print(String amount) {
+        amount = amount.isEmpty() ? _transaction.getAmount().toString() : amount;
+        Double damount=Double.parseDouble(amount);
+        amount= String.format("%.2f", damount);
+        Intent intent = new Intent(context, MainActivity.class);
+        intent.putExtra("transaction", _transaction.getOperation());
+        intent.putExtra("amount", amount);
+        intent.putExtra("fingurePrint", "");
+        intent.putExtra("supplierNo", _transaction.getsNo());
+        intent.putExtra("pin", _transaction.getPin());
+        context.startActivity(intent);
+    }
+
+    public void insertDataToSqlite()  {
         String bal = String.format("%.2f", _transaction.getAmount());
         String pinn = _transaction.getPin();
         String supNo = _transaction.getsNo();
@@ -147,19 +159,7 @@ public class Transaction {
         else {
 
         }
-    }
 
-    private void Print(String amount) {
-        amount = amount.isEmpty() ? _transaction.getAmount().toString() : amount;
-        Double damount=Double.parseDouble(amount);
-        amount= String.format("%.2f", damount);
-        Intent intent = new Intent(context, PrintActivity.class);
-        intent.putExtra("transaction", _transaction.getOperation());
-        intent.putExtra("amount", amount);
-        intent.putExtra("fingurePrint", "");
-        intent.putExtra("supplierNo", _transaction.getsNo());
-        intent.putExtra("pin", _transaction.getPin());
-        context.startActivity(intent);
-    }
 
+    }
 }

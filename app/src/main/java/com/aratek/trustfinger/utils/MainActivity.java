@@ -432,9 +432,14 @@ public class MainActivity extends Activity implements OnClickListener {
 
     public void PrtCardInfo() {
         Bundle extras = getIntent().getExtras();
-        String operation = extras.getString("operation");
-        Double amount = Double.parseDouble(extras.getString("amount"));
+        String amount = extras.getString("amount");
+        String transaction = extras.getString("transaction");
         String sNo = extras.getString("supplierNo");
+        int min = 1;
+        int max = 10000;
+        Random r = new Random();
+        int i1 = r.nextInt(max - min + 1) + min;
+        String version = "MG001POS" + i1;
 
         long milis1 = System.currentTimeMillis();
         String date1 = DateUtil.timeMilisToString(milis1, "dd-MM-yyyy");
@@ -444,15 +449,33 @@ public class MainActivity extends Activity implements OnClickListener {
         PrinterApi.PrnFontSet_Api(32, 32, 0);
         PrinterApi.PrnSetGray_Api(15);
         PrinterApi.PrnLineSpaceSet_Api((short) 5, 0);
-        PrinterApi.PrnStr_Api("     K-PILLAR SACCO SOCIETY LIMITED");
-        PrinterApi.PrnStr_Api("     POS Receipt");
         PrinterApi.PrnFontSet_Api(24, 24, 0);
         PrinterApi.PrnStr_Api("                           " + "\n");
         PrinterApi.PrnStr_Api("\n" + "K-PILLAR SACCO SOCIETY LIMITED" + "\n");
-        PrinterApi.PrnStr_Api("" + operation+ "\n");
-        PrinterApi.PrnStr_Api("" + amount+ "\n");
-        PrinterApi.PrnStr_Api("" + sNo+ "\n");
-        //PrinterApi.PrnStr_Api("" + buffer.toString() + "" + "\n");
+        PrinterApi.PrnStr_Api("Agent Copy \n");
+        PrinterApi.PrnStr_Api( transaction.toUpperCase()+" RECEIPT" + "\n");
+        PrinterApi.PrnStr_Api("ReceiptNumber : "+version+ "\n");
+        PrinterApi.PrnStr_Api("Amount   :"   + amount+ "\n");
+        PrinterApi.PrnStr_Api("Account NO   :" + sNo+ "\n");
+        PrinterApi.PrnStr_Api("--------------------------" + "\n");
+        PrinterApi.PrnStr_Api("Date:" + date1 + "" + "," + "Time:" + time1 + "" + "\n");
+        PrinterApi.PrnStr_Api("--------------------------" + "\n");
+        PrinterApi.PrnStr_Api("Thankyou for your Patronage" + "\n");
+        PrinterApi.PrnStr_Api("--------------------------" + "\n");
+        PrinterApi.PrnStr_Api("DESIGNED & DEVELOPED BY" + "\n");
+        PrinterApi.PrnStr_Api("AMTECH TECHNOLOGIES LTD" + "\n");
+        PrinterApi.PrnStr_Api("www.amtechafrica.com" + "\n");
+        PrinterApi.PrnStr_Api("--------------------------" + "\n");
+        PrinterApi.PrnStr_Api("                           " + "\n");
+        PrinterApi.PrnStr_Api("                           " + "\n");
+        PrinterApi.PrnStr_Api("\n\n");
+        PrinterApi.PrnStr_Api("                           " + "\n");
+        PrinterApi.PrnStr_Api("\n" + "K-PILLAR SACCO SOCIETY LIMITED" + "\n");
+        PrinterApi.PrnStr_Api("Customer Copy \n");
+        PrinterApi.PrnStr_Api( transaction.toUpperCase()+" RECEIPT" + "\n");
+        PrinterApi.PrnStr_Api("ReceiptNumber : "+version+ "\n");
+        PrinterApi.PrnStr_Api("Amount   :"   + amount+ "\n");
+        PrinterApi.PrnStr_Api("Account NO   :" + sNo+ "\n");
         PrinterApi.PrnStr_Api("--------------------------" + "\n");
         PrinterApi.PrnStr_Api("Date:" + date1 + "" + "," + "Time:" + time1 + "" + "\n");
         PrinterApi.PrnStr_Api("--------------------------" + "\n");
@@ -466,68 +489,10 @@ public class MainActivity extends Activity implements OnClickListener {
         PrinterApi.PrnStr_Api("                           " + "\n");
         PrinterApi.PrnStr_Api("\n\n");
 
-
-
-//        PrinterApi.PrnClrBuff_Api();
-//        PrinterApi.printSetAlign_Api(0);
-//        PrinterApi.PrnFontSet_Api(32, 32, 0);
-//        PrinterApi.PrnSetGray_Api(15);
-//        PrinterApi.PrnLineSpaceSet_Api((short) 5, 0);
-//        PrinterApi.PrnStr_Api("     K-PILLAR SACCO SOCIETY LIMITED");
-//        PrinterApi.PrnStr_Api("     POS Receipt");
-//        PrinterApi.PrnFontSet_Api(24, 24, 0);
-//        PrinterApi.printSetAlign_Api(1);
-//        PrinterApi.PrnStr_Api("CARDHOLDER COPY");
-//        PrinterApi.printSetAlign_Api(0);
-//        PrinterApi.PrnStr_Api("--------------------------------");
-//
-//        PrinterApi.PrnStr_Api("MERCHANT NAME:");
-//        PrinterApi.PrnStr_Api("CARREFOUR");
-//        PrinterApi.PrnStr_Api("MERCHANT NO.: ");
-//        PrinterApi.PrnStr_Api("120401124594");
-//        PrinterApi.PrnStr_Api("TERMINAL NO.: ");
-//        PrinterApi.PrnStr_Api("TRANS TYPE.: ");
-//        PrinterApi.PrnFontSet_Api(32, 32, 0);
-//        PrinterApi.PrnStr_Api("Sale");
-//        PrinterApi.PrnFontSet_Api(24, 24, 0);
-//        PrinterApi.PrnStr_Api("PAYMENT TYPE.: ");
-//        PrinterApi.PrnStr_Api("CARDHOLDER SIGNATURE:\n\n\n\n");
-
         // when printing images, the max size of images is 384 * 600
         PrinterApi.printSetAlign_Api(1);
-        //PrinterApi.PrnLogo_Api( BitmapFactory.decodeResource(getApplicationContext().getResources(), R.drawable.feifenglogo2));
-
-        PrinterApi.PrnStr_Api("\n\n");
-//        String apkPath = "";
-//        if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-//            apkPath = MainActivity.this.getExternalFilesDir("").getAbsolutePath();
-//        } else {
-//            apkPath = MainActivity.this.getFilesDir().getAbsolutePath();
-//        }
-//        apkPath += "/logo_receipt.jpg";
-//        PrinterApi.PrnLogo_Api(apkPath.getBytes(), 1);
-
-        PrinterApi.PrnStr_Api("\n\n");
-//        Bitmap bitmap = BitmapFactory.decodeResource(getApplicationContext().getResources(), R.drawable.bb);
-//        int width = bitmap.getWidth();
-//        PrinterApi.PrnLeftIndSet_Api((short) ((384 - width) / 2));// if you want to set align when calling PrinterApi.PrnLogo_Api(bitmap), you need to use this api to set it
-//        PrinterApi.PrnLogo_Api(bitmap);
 
 
-        PrinterApi.PrnStr_Api("\n\n");
-        PrinterApi.PrnLeftIndSet_Api((short) 0);
-        PrinterApi.printSetAlign_Api(1);
-        PrinterApi.printAddBarCode_Api(1, 400, 80, true, "www.szfptech.com");
-
-        PrinterApi.PrnStr_Api("\n\n");
-        PrinterApi.printAddQrCode_Api(1, 200, "www.szfptech");
-
-        PrinterApi.PrnStr_Api("\n\n\n\n");
-
-        PrinterApi.PrnStr_Api("--------------------------------");
-        PrinterApi.PrnStr_Api("I accept this trade and allow it on my account");
-        PrinterApi.PrnStr_Api("----------x------------x-------");
-        PrinterApi.PrnStr_Api("\n\n");
         PrintData();
     }
 
