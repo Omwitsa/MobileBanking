@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.aratek.trustfinger">
 
     <application
@@ -23,7 +24,6 @@
         </activity>
         <activity android:name=".Activities.VerifyActivity" />
         <activity android:name=".Activities.PrintActivity" />
-        <activity android:name=".Activities.Reports" />
         <activity android:name=".Activities.MyListActivity" />
         <activity android:name=".Activities.WithdrawActivity" />
         <activity android:name=".Activities.RegisterActivity" />
@@ -34,6 +34,7 @@
         <activity android:name=".Activities.HomeActivity" />
         <activity android:name=".Activities.AdvanceActivity" />
         <activity android:name=".utils.Printer" />
+        <activity android:name=".Activities.Reports" />
         <activity
             android:name=".Activities.MainActivity"
             android:label="@string/app_name"

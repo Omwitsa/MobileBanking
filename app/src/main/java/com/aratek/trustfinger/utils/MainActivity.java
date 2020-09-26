@@ -405,19 +405,6 @@ public class MainActivity extends Activity implements OnClickListener {
     @Override
     public void onClick(View v) {
 
-
-//        Bundle extras = getIntent().getExtras();
-//        String transaction = extras == null ? "" : extras.getString("transaction");
-//        String supplierNo = extras == null ? "" : extras.getString("supplierNo");
-
-//        getAgencyPrintData(extras);
-//        StringBuffer buffer;
-//
-//        buffer = getCustomerPrintData(extras);
-//        showMessage("", buffer.toString());
-        //Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-        //startActivity(intent);
-
         // TODO Auto-generated method stub
         switch (v.getId()) {
             case R.id.Print:
