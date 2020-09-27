@@ -1,6 +1,6 @@
 package com.aratek.trustfinger.Rest;
 import com.aratek.trustfinger.Model.AgentMember;
-import com.aratek.trustfinger.Model.ClientModel;
+import com.aratek.trustfinger.Model.FingurePrintModel;
 import com.aratek.trustfinger.Model.MemberModel;
 import com.aratek.trustfinger.Model.ProductModel;
 import com.aratek.trustfinger.Model.Response;
@@ -17,7 +17,7 @@ public interface ApiInterface {
     Call<Response> login(@Body MemberModel memberModel);
 
     @POST("webservice/users/registerFingerPrints")
-    Call<Response> registerFingerPrints(@Body ClientModel clientModel);
+    Call<Response> registerFingerPrints(@Body FingurePrintModel fingurePrint);
 
     @POST("webservice/users/seedAdminUser")
     Call<Response> createUser(@Body MemberModel memberModel);
