@@ -1063,7 +1063,7 @@ id home
 id homeAsUp
 id icon
 id icon_group
-id idno
+id idnno
 id ifRoom
 id image
 id info

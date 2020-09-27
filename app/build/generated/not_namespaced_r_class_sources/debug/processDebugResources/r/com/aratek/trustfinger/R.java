@@ -3948,7 +3948,7 @@ public final class R {
     public static final int homeAsUp=0x7f0a0088;
     public static final int icon=0x7f0a0089;
     public static final int icon_group=0x7f0a008a;
-    public static final int idno=0x7f0a008b;
+    public static final int idnno=0x7f0a008b;
     public static final int ifRoom=0x7f0a008c;
     public static final int image=0x7f0a008d;
     public static final int info=0x7f0a008e;

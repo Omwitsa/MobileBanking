@@ -18,8 +18,8 @@
       <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/classAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/apt/debug/com/aratek/trustfinger/Activities/AgentMemberActivity_ViewBinding.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/apt/debug/com/aratek/trustfinger/Activities/AgentMemberActivity_ViewBinding.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/apk_list/debug/mainApkListPersistenceDebug/apk-list.gson" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/apk_list/debug/mainApkListPersistenceDebug/apk-list.gson" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/bundle_manifest/debug/processDebugManifest/bundle-manifest/output.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/bundle_manifest/debug/processDebugManifest/bundle-manifest/output.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/dex/debug/mergeDexDebug/out/classes.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/dex/debug/mergeDexDebug/out/classes.dex" afterDir="false" />
@@ -27,46 +27,44 @@
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/tmp/debug/file-input-save-data.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/tmp/debug/file-input-save-data.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/instant_app_manifest/debug/output.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/instant_app_manifest/debug/output.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/instant_run_merged_manifests/debug/output.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/instant_run_merged_manifests/debug/output.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/aratek/trustfinger/Activities/DepositActivity$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/aratek/trustfinger/Activities/DepositActivity$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/aratek/trustfinger/Activities/DepositActivity$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/aratek/trustfinger/Activities/DepositActivity$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/aratek/trustfinger/Activities/DepositActivity.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/aratek/trustfinger/Activities/DepositActivity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/aratek/trustfinger/Activities/WithdrawActivity$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/aratek/trustfinger/Activities/WithdrawActivity$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/aratek/trustfinger/Activities/WithdrawActivity$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/aratek/trustfinger/Activities/WithdrawActivity$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/aratek/trustfinger/Activities/WithdrawActivity.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/aratek/trustfinger/Activities/WithdrawActivity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/aratek/trustfinger/utils/Transaction$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/aratek/trustfinger/utils/Transaction$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/aratek/trustfinger/utils/Transaction$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/aratek/trustfinger/utils/Transaction$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/aratek/trustfinger/utils/Transaction$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/aratek/trustfinger/utils/Transaction$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/aratek/trustfinger/utils/Transaction$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/aratek/trustfinger/utils/Transaction$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/aratek/trustfinger/utils/Transaction.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/aratek/trustfinger/utils/Transaction.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/merged_manifests/debug/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/merged_manifests/debug/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/aratek/trustfinger/Activities/AgentMemberActivity$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/aratek/trustfinger/Activities/AgentMemberActivity$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/aratek/trustfinger/Activities/AgentMemberActivity$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/aratek/trustfinger/Activities/AgentMemberActivity$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/aratek/trustfinger/Activities/AgentMemberActivity$3$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/aratek/trustfinger/Activities/AgentMemberActivity$3$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/aratek/trustfinger/Activities/AgentMemberActivity$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/aratek/trustfinger/Activities/AgentMemberActivity$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/aratek/trustfinger/Activities/AgentMemberActivity$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/aratek/trustfinger/Activities/AgentMemberActivity$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/aratek/trustfinger/Activities/AgentMemberActivity.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/aratek/trustfinger/Activities/AgentMemberActivity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/aratek/trustfinger/Activities/Reports$1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/aratek/trustfinger/Activities/Reports$1$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/aratek/trustfinger/Activities/Reports$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/aratek/trustfinger/Activities/Reports$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/aratek/trustfinger/Activities/Reports$2$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/aratek/trustfinger/Activities/Reports$2$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/aratek/trustfinger/Activities/Reports$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/aratek/trustfinger/Activities/Reports$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/aratek/trustfinger/Activities/Reports.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/aratek/trustfinger/Activities/Reports.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/aratek/trustfinger/R$id.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/aratek/trustfinger/R$id.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/aratek/trustfinger/Rest/ApiClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/aratek/trustfinger/Rest/ApiClient.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/merged_manifests/debug/output.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/merged_manifests/debug/output.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/metadata_feature_manifest/debug/processDebugManifest/metadata-feature/output.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/metadata_feature_manifest/debug/processDebugManifest/metadata-feature/output.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/processed_res/debug/processDebugResources/out/output.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/processed_res/debug/processDebugResources/out/output.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/aratek/trustfinger/Activities/DepositActivity$1.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/aratek/trustfinger/Activities/DepositActivity$1.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/aratek/trustfinger/Activities/DepositActivity$2.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/aratek/trustfinger/Activities/DepositActivity$2.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/aratek/trustfinger/Activities/DepositActivity.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/aratek/trustfinger/Activities/DepositActivity.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/aratek/trustfinger/Activities/WithdrawActivity$1.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/aratek/trustfinger/Activities/WithdrawActivity$1.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/aratek/trustfinger/Activities/WithdrawActivity$2.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/aratek/trustfinger/Activities/WithdrawActivity$2.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/aratek/trustfinger/Activities/WithdrawActivity.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/aratek/trustfinger/Activities/WithdrawActivity.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/aratek/trustfinger/utils/Transaction$1.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/aratek/trustfinger/utils/Transaction$1.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/aratek/trustfinger/utils/Transaction$2.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/aratek/trustfinger/utils/Transaction$2.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/aratek/trustfinger/utils/Transaction$3.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/aratek/trustfinger/utils/Transaction$3.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/aratek/trustfinger/utils/Transaction$4.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/aratek/trustfinger/utils/Transaction$4.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/aratek/trustfinger/utils/Transaction.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/aratek/trustfinger/utils/Transaction.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/aratek/trustfinger/Activities/AgentMemberActivity$1.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/aratek/trustfinger/Activities/AgentMemberActivity$1.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/aratek/trustfinger/Activities/AgentMemberActivity$2.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/aratek/trustfinger/Activities/AgentMemberActivity$2.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/aratek/trustfinger/Activities/AgentMemberActivity$3$1.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/aratek/trustfinger/Activities/AgentMemberActivity$3$1.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/aratek/trustfinger/Activities/AgentMemberActivity$3.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/aratek/trustfinger/Activities/AgentMemberActivity$3.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/aratek/trustfinger/Activities/AgentMemberActivity$4.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/aratek/trustfinger/Activities/AgentMemberActivity$4.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/aratek/trustfinger/Activities/AgentMemberActivity.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/aratek/trustfinger/Activities/AgentMemberActivity.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/aratek/trustfinger/Activities/Reports$1$1.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/aratek/trustfinger/Activities/Reports$1$1.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/aratek/trustfinger/Activities/Reports$1.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/aratek/trustfinger/Activities/Reports$1.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/aratek/trustfinger/Activities/Reports$2$1.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/aratek/trustfinger/Activities/Reports$2$1.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/aratek/trustfinger/Activities/Reports$2.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/aratek/trustfinger/Activities/Reports$2.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/aratek/trustfinger/Activities/Reports.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/aratek/trustfinger/Activities/Reports.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/aratek/trustfinger/Rest/ApiClient.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/aratek/trustfinger/Rest/ApiClient.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/outputs/apk/debug/output.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/outputs/apk/debug/output.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/aratek/trustfinger/Activities/DepositActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/aratek/trustfinger/Activities/DepositActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/aratek/trustfinger/Activities/Reports.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/aratek/trustfinger/Activities/Reports.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/aratek/trustfinger/Activities/WithdrawActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/aratek/trustfinger/Activities/WithdrawActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/aratek/trustfinger/utils/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/aratek/trustfinger/utils/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/aratek/trustfinger/utils/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/aratek/trustfinger/utils/Transaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/aratek/trustfinger/Activities/AgentMemberActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/aratek/trustfinger/Activities/AgentMemberActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/aratek/trustfinger/Rest/ApiClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/aratek/trustfinger/Rest/ApiClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_agent_member.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_agent_member.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="00028003098" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -208,38 +206,38 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="105" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1600777586054" />
-    <state width="1323" height="403" key="GridCell.Tab.0.bottom" timestamp="1601039927118">
+    <state width="1323" height="2" key="GridCell.Tab.0.bottom" timestamp="1601221045014">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="403" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1601039927118" />
-    <state width="1323" height="403" key="GridCell.Tab.0.center" timestamp="1601039927117">
+    <state width="1323" height="2" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1601221045014" />
+    <state width="1323" height="2" key="GridCell.Tab.0.center" timestamp="1601221045014">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="403" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1601039927117" />
-    <state width="1323" height="403" key="GridCell.Tab.0.left" timestamp="1601039927117">
+    <state width="1323" height="2" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1601221045014" />
+    <state width="1323" height="2" key="GridCell.Tab.0.left" timestamp="1601221045014">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="403" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1601039927117" />
-    <state width="1323" height="403" key="GridCell.Tab.0.right" timestamp="1601039927117">
+    <state width="1323" height="2" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1601221045014" />
+    <state width="1323" height="2" key="GridCell.Tab.0.right" timestamp="1601221045014">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="403" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1601039927117" />
-    <state width="1323" height="222" key="GridCell.Tab.1.bottom" timestamp="1601025261906">
+    <state width="1323" height="2" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1601221045014" />
+    <state width="1323" height="2" key="GridCell.Tab.1.bottom" timestamp="1601221199551">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="222" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1601025261906" />
-    <state width="1323" height="222" key="GridCell.Tab.1.center" timestamp="1601025261905">
+    <state width="1323" height="2" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1601221199551" />
+    <state width="1323" height="2" key="GridCell.Tab.1.center" timestamp="1601221199551">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="222" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1601025261905" />
-    <state width="1323" height="222" key="GridCell.Tab.1.left" timestamp="1601025261905">
+    <state width="1323" height="2" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1601221199550" />
+    <state width="1323" height="2" key="GridCell.Tab.1.left" timestamp="1601221199550">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="222" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1601025261905" />
-    <state width="1323" height="222" key="GridCell.Tab.1.right" timestamp="1601025261905">
+    <state width="1323" height="2" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1601221199550" />
+    <state width="1323" height="2" key="GridCell.Tab.1.right" timestamp="1601221199551">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="222" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1601025261905" />
+    <state width="1323" height="2" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1601221199551" />
     <state x="246" y="112" key="caller.chooser.dialog" timestamp="1600857639142">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -248,10 +246,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="92" y="92" width="1182" height="544" key="com.android.tools.idea.avdmanager.AvdListDialog/0.0.1366.728@0.0.1366.728" timestamp="1600369541047" />
-    <state x="721" y="188" key="com.intellij.ide.util.TipDialog" timestamp="1601030573467">
+    <state x="721" y="188" key="com.intellij.ide.util.TipDialog" timestamp="1601217939189">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="721" y="188" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1601030573467" />
+    <state x="721" y="188" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1601217939189" />
     <state x="389" y="0" key="refactoring.ChangeSignatureDialog" timestamp="1601036366219">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -278,6 +276,21 @@
           <url>file://$PROJECT_DIR$/app/src/main/java/com/aratek/trustfinger/utils/Printer.java</url>
           <line>160</line>
           <option name="timeStamp" value="28" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/aratek/trustfinger/Activities/AgentMemberActivity.java</url>
+          <line>73</line>
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/aratek/trustfinger/Activities/AgentMemberActivity.java</url>
+          <line>140</line>
+          <option name="timeStamp" value="38" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/aratek/trustfinger/Activities/AgentMemberActivity.java</url>
+          <line>133</line>
+          <option name="timeStamp" value="39" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

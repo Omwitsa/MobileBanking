@@ -1062,7 +1062,7 @@ int id home 0x7f0a0087
 int id homeAsUp 0x7f0a0088
 int id icon 0x7f0a0089
 int id icon_group 0x7f0a008a
-int id idno 0x7f0a008b
+int id idnno 0x7f0a008b
 int id ifRoom 0x7f0a008c
 int id image 0x7f0a008d
 int id info 0x7f0a008e
