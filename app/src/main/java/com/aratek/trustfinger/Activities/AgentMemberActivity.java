@@ -35,12 +35,12 @@ public class AgentMemberActivity extends AppCompatActivity {
     ProgressDialog progressDoalog;
     public static final String MyPREFERENCES = "POSDETAILS" ;
     SharedPreferences sharedpreferences;
-    @BindView(R.id.surname) EditText surname;
+    @BindView(R.id.surname) EditText Surname;
     @BindView(R.id.othername) EditText othername;
-    @BindView(R.id.idno) EditText idno;
+    @BindView(R.id.idnno) EditText iddno;
     @BindView(R.id.mobile) EditText mobile;
-    @BindView(R.id.gender) Spinner gender;
-    @BindView(R.id.dob) EditText dob;
+    @BindView(R.id.gender) Spinner Gender;
+    @BindView(R.id.dob) EditText dobb;
     @BindView(R.id.submit) Button submit;
     @BindView(R.id.back) Button back;
     public String tomorrow = "";
@@ -56,20 +56,21 @@ public class AgentMemberActivity extends AppCompatActivity {
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
-        dob.setText(sdf.format(new Date()));
+        dobb.setText(sdf.format(new Date()));
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 progressDoalog.setMessage("Please wait...");
                 progressDoalog.show();
-                String Surname = surname.getText().toString();
+                String surname = Surname.getText().toString();
                 String otherName = othername.getText().toString();
-                String idNo = idno.getText().toString();
-                String Mobile = mobile.getText().toString();
-                String Gender = gender.getSelectedItem().toString();
+                String idNo = iddno.getText().toString();
+                String mobileNo = mobile.getText().toString();
+                String gender = Gender.getSelectedItem().toString();
+                String dob =(dobb.getText().toString());
                 String agentId = sharedpreferences.getString("loggedInUser", "");
 
-                AgentMember member = new AgentMember(Surname, otherName, idNo, Mobile, Gender, null, "", "", agentId);
+                AgentMember member = new AgentMember(surname, otherName, idNo, mobileNo, gender, dob, "", "", agentId);
                 register(member);
             }
         });
@@ -82,7 +83,7 @@ public class AgentMemberActivity extends AppCompatActivity {
             }
         });
 
-        dob.setOnClickListener(new View.OnClickListener() {
+        dobb.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
@@ -111,10 +112,10 @@ public class AgentMemberActivity extends AppCompatActivity {
                             dayOfMonthString = "0" + dayOfMonthString;
                         }
 
-                        dob.setText(new StringBuilder().append(year).append("-")
+                        dobb.setText(new StringBuilder().append(year).append("-")
                                 .append(monthString).append("-").append(dayOfMonthString).append(" "));
 
-                        dob.setText(new StringBuilder().append(year).append("-")
+                        dobb.setText(new StringBuilder().append(year).append("-")
                                 .append(monthString).append("-").append(dayOfMonthString).append(" "));
                     }
                 }, yy, mm, dd);

@@ -1,4 +1,0 @@
-#Sun Sep 27 19:23:18 EAT 2020
-base.0=D\:\\SourceCode\\Amtech\\MobileBanking\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\out
-path.0=classes.dex
-renamed.0=classes.dex

@@ -5,9 +5,7 @@ import com.aratek.trustfinger.Model.MemberModel;
 import com.aratek.trustfinger.Model.ProductModel;
 import com.aratek.trustfinger.Model.Response;
 import com.aratek.trustfinger.Model.TransactionModel;
-
 import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
