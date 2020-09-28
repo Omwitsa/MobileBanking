@@ -42,6 +42,7 @@ public class Transaction<_transaction> {
 
 
     }
+
     public void transact(TransactionModel _transaction) {
         //insertDataToSqlite();
         if (_transaction.getOperation().equals("deposit")){
