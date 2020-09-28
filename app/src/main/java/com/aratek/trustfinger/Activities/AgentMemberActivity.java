@@ -35,11 +35,11 @@ public class AgentMemberActivity extends AppCompatActivity {
     ProgressDialog progressDoalog;
     public static final String MyPREFERENCES = "POSDETAILS" ;
     SharedPreferences sharedpreferences;
-    @BindView(R.id.surname) EditText Surname;
+    @BindView(R.id.surname) EditText surname;
     @BindView(R.id.othername) EditText othername;
     @BindView(R.id.idnno) EditText iddno;
     @BindView(R.id.mobile) EditText mobile;
-    @BindView(R.id.gender) Spinner Gender;
+    @BindView(R.id.gender) Spinner gender;
     @BindView(R.id.dob) EditText dobb;
     @BindView(R.id.submit) Button submit;
     @BindView(R.id.back) Button back;
@@ -62,15 +62,15 @@ public class AgentMemberActivity extends AppCompatActivity {
             public void onClick(View view) {
                 progressDoalog.setMessage("Please wait...");
                 progressDoalog.show();
-                String surname = Surname.getText().toString();
+                String Surname = surname.getText().toString();
                 String otherName = othername.getText().toString();
-                String idNo = iddno.getText().toString();
-                String mobileNo = mobile.getText().toString();
-                String gender = Gender.getSelectedItem().toString();
-                String dob =(dobb.getText().toString());
-                String agentId = sharedpreferences.getString("loggedInUser", "");
+                String idno = iddno.getText().toString();
+                String mobile_number = mobile.getText().toString();
+                String Gender = gender.getSelectedItem().toString();
+                String DOB =(dobb.getText().toString());
+                String Agentid = sharedpreferences.getString("loggedInUser", "");
 
-                AgentMember member = new AgentMember(surname, otherName, idNo, mobileNo, gender, dob, "", "", agentId);
+                AgentMember member = new AgentMember(Surname, otherName, idno, mobile_number, Gender, DOB, null, null, Agentid);
                 register(member);
             }
         });
