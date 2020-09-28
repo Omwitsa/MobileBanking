@@ -25,11 +25,11 @@ public class AgentMemberActivity_ViewBinding implements Unbinder {
   public AgentMemberActivity_ViewBinding(AgentMemberActivity target, View source) {
     this.target = target;
 
-    target.Surname = Utils.findRequiredViewAsType(source, R.id.surname, "field 'Surname'", EditText.class);
+    target.surname = Utils.findRequiredViewAsType(source, R.id.surname, "field 'surname'", EditText.class);
     target.othername = Utils.findRequiredViewAsType(source, R.id.othername, "field 'othername'", EditText.class);
     target.iddno = Utils.findRequiredViewAsType(source, R.id.idnno, "field 'iddno'", EditText.class);
     target.mobile = Utils.findRequiredViewAsType(source, R.id.mobile, "field 'mobile'", EditText.class);
-    target.Gender = Utils.findRequiredViewAsType(source, R.id.gender, "field 'Gender'", Spinner.class);
+    target.gender = Utils.findRequiredViewAsType(source, R.id.gender, "field 'gender'", Spinner.class);
     target.dobb = Utils.findRequiredViewAsType(source, R.id.dob, "field 'dobb'", EditText.class);
     target.submit = Utils.findRequiredViewAsType(source, R.id.submit, "field 'submit'", Button.class);
     target.back = Utils.findRequiredViewAsType(source, R.id.back, "field 'back'", Button.class);
@@ -42,11 +42,11 @@ public class AgentMemberActivity_ViewBinding implements Unbinder {
     if (target == null) throw new IllegalStateException("Bindings already cleared.");
     this.target = null;
 
-    target.Surname = null;
+    target.surname = null;
     target.othername = null;
     target.iddno = null;
     target.mobile = null;
-    target.Gender = null;
+    target.gender = null;
     target.dobb = null;
     target.submit = null;
     target.back = null;

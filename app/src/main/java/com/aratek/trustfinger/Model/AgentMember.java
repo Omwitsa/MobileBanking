@@ -15,22 +15,22 @@ public class AgentMember {
     private String gender;
     @SerializedName("dob")
     private String dob;
-    @SerializedName("finerPrint1")
-    private String finerPrint1;
-    @SerializedName("fingerPrint2")
-    private String fingerPrint2;
+    @SerializedName("fingerprint1")
+    private String fingerprint1;
+    @SerializedName("fingerprint2")
+    private String fingerprint2;
     @SerializedName("agentId")
     private String agentId;
 
-    public AgentMember(String surname, String otherName, String idNo, String mobileNo, String gender, String dob, String finerPrint1, String fingerPrint2, String agentId) {
+    public AgentMember(String surname, String otherName, String idNo, String mobileNo, String gender, String dob, String fingerprint1, String fingerprint2, String agentId) {
         this.surname = surname;
         this.otherName = otherName;
         this.idNo = idNo;
         this.mobileNo = mobileNo;
         this.gender = gender;
         this.dob = dob;
-        this.finerPrint1 = finerPrint1;
-        this.fingerPrint2 = fingerPrint2;
+        this.fingerprint1= fingerprint1;
+        this.fingerprint2 = fingerprint2;
         this.agentId = agentId;
     }
 
@@ -82,20 +82,20 @@ public class AgentMember {
         this.dob = dob;
     }
 
-    public String getFinerPrint1() {
-        return finerPrint1;
+    public String getFingerprint1() {
+        return fingerprint1;
     }
 
-    public void setFinerPrint1(String finerPrint1) {
-        this.finerPrint1 = finerPrint1;
+    public void setFingerprint1(String fingerprint1) {
+        this.fingerprint1 = fingerprint1;
     }
 
-    public String getFingerPrint2() {
-        return fingerPrint2;
+    public String getFingerprint2() {
+        return fingerprint2;
     }
 
-    public void setFingerPrint2(String fingerPrint2) {
-        this.fingerPrint2 = fingerPrint2;
+    public void setFingerprint2(String fingerprint2) {
+        this.fingerprint2 = fingerprint2;
     }
 
     public String getAgentId() {
