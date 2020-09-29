@@ -34,6 +34,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.aratek.trustfinger.Model.FingurePrintModel;
+import com.aratek.trustfinger.Model.Response;
+import com.aratek.trustfinger.Rest.ApiClient;
+import com.aratek.trustfinger.Rest.ApiInterface;
 import com.aratek.trustfinger.utils.Config;
 import com.aratek.trustfinger.R;
 import com.aratek.trustfinger.adapter.MyListAdapter;
@@ -59,6 +63,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
+import retrofit2.Call;
+import retrofit2.Callback;
 
 
 public class EnrollFragment extends BaseFragment implements View.OnClickListener {
@@ -939,8 +946,7 @@ public class EnrollFragment extends BaseFragment implements View.OnClickListener
             LargestFingerData largestFingerData = null;
             largestFingerDataList.clear();
             callback.setLedEnable(false);
-            int mImageQualityThrethold = Integer.parseInt(mEditText_image_quality_threshold
-                    .getText().toString().trim());
+            int mImageQualityThrethold = Integer.parseInt(mEditText_image_quality_threshold.getText().toString().trim());
             do {
                 if (isCancelled()) {
                     break;
@@ -1421,6 +1427,21 @@ public class EnrollFragment extends BaseFragment implements View.OnClickListener
             return;
         }
         if (mDBHelper.insertUser(user)) {
+            ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
+            FingurePrintModel fingurePrint = new FingurePrintModel(user.getFingerData().toString(), user.getId());
+            Call<Response> call = apiService.registerFingerPrints(fingurePrint);
+            call.enqueue(new Callback<Response>() {
+                @Override
+                public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
+
+                }
+
+                @Override
+                public void onFailure(Call<Response> call, Throwable t) {
+
+                }
+            });
+
             //            getActivity().runOnUiThread(new Runnable() {
             //                @Override
             //                public void run() {

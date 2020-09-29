@@ -9,7 +9,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.aratek.trustfinger.Model.ClientModel;
 import com.aratek.trustfinger.Model.Response;
 import com.aratek.trustfinger.R;
 import com.aratek.trustfinger.Rest.ApiClient;
@@ -54,30 +53,30 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void register() {
-        ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        ClientModel clientModel = new ClientModel("", sNo.getText().toString(), pin.getText().toString());
-        Call<Response> call = apiService.registerFingerPrints(clientModel);
-        call.enqueue(new Callback<Response>() {
-            @Override
-            public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
-                progressDoalog.dismiss();
-                Response responseBody = response.body();
-                String message = responseBody.getMessage() == null ? "Sorry, An error occurred" : responseBody.getMessage();
-                if (message.equals(Constants.SUCCESS)){
-                    Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
-                    startActivity(mainIntent);
-                }
-                else {
-                    Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Response> call, Throwable t) {
-                progressDoalog.dismiss();
-                Toast.makeText(getApplicationContext(), "Sorry, An error occurred", Toast.LENGTH_LONG).show();
-            }
-        });
+//        ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
+//        ClientModel clientModel = new ClientModel("", sNo.getText().toString(), pin.getText().toString());
+//        Call<Response> call = apiService.registerFingerPrints(clientModel);
+//        call.enqueue(new Callback<Response>() {
+//            @Override
+//            public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
+//                progressDoalog.dismiss();
+//                Response responseBody = response.body();
+//                String message = responseBody.getMessage() == null ? "Sorry, An error occurred" : responseBody.getMessage();
+//                if (message.equals(Constants.SUCCESS)){
+//                    Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
+//                    startActivity(mainIntent);
+//                }
+//                else {
+//                    Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<Response> call, Throwable t) {
+//                progressDoalog.dismiss();
+//                Toast.makeText(getApplicationContext(), "Sorry, An error occurred", Toast.LENGTH_LONG).show();
+//            }
+//        });
     }
 
 }

@@ -278,9 +278,6 @@ public class MainActivity extends Activity implements OnClickListener {
     private ByteArrayOutputStream outStream;
     private byte[] data;
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

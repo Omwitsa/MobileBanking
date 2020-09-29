@@ -656,7 +656,6 @@ public class IdentifyFragment extends BaseFragment {
             mIsDone = true;
             transaction.transact(transactionModel);
 
-
             return null;
         }
 
