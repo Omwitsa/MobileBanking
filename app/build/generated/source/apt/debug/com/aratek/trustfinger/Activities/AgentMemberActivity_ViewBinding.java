@@ -30,7 +30,7 @@ public class AgentMemberActivity_ViewBinding implements Unbinder {
     target.iddno = Utils.findRequiredViewAsType(source, R.id.idnno, "field 'iddno'", EditText.class);
     target.mobile = Utils.findRequiredViewAsType(source, R.id.mobile, "field 'mobile'", EditText.class);
     target.gender = Utils.findRequiredViewAsType(source, R.id.gender, "field 'gender'", Spinner.class);
-    target.dobb = Utils.findRequiredViewAsType(source, R.id.dob, "field 'dobb'", EditText.class);
+    target.dbb = Utils.findRequiredViewAsType(source, R.id.dob, "field 'dbb'", EditText.class);
     target.submit = Utils.findRequiredViewAsType(source, R.id.submit, "field 'submit'", Button.class);
     target.back = Utils.findRequiredViewAsType(source, R.id.back, "field 'back'", Button.class);
   }
@@ -47,7 +47,7 @@ public class AgentMemberActivity_ViewBinding implements Unbinder {
     target.iddno = null;
     target.mobile = null;
     target.gender = null;
-    target.dobb = null;
+    target.dbb = null;
     target.submit = null;
     target.back = null;
   }

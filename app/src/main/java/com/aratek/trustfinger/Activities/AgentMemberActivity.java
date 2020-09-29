@@ -40,7 +40,7 @@ public class AgentMemberActivity extends AppCompatActivity {
     @BindView(R.id.idnno) EditText iddno;
     @BindView(R.id.mobile) EditText mobile;
     @BindView(R.id.gender) Spinner gender;
-    @BindView(R.id.dob) EditText dobb;
+    @BindView(R.id.dob) EditText dbb;
     @BindView(R.id.submit) Button submit;
     @BindView(R.id.back) Button back;
     public String tomorrow = "";
@@ -54,36 +54,7 @@ public class AgentMemberActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         progressDoalog = new ProgressDialog(AgentMemberActivity.this);
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-
-        dobb.setText(sdf.format(new Date()));
-        submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                progressDoalog.setMessage("Please wait...");
-                progressDoalog.show();
-                String Surname = surname.getText().toString();
-                String otherName = othername.getText().toString();
-                String idno = iddno.getText().toString();
-                String mobile_number = mobile.getText().toString();
-                String Gender = gender.getSelectedItem().toString();
-                String DOB =(dobb.getText().toString());
-                String Agentid = sharedpreferences.getString("loggedInUser", "");
-
-                AgentMember member = new AgentMember(Surname, otherName, idno, mobile_number, Gender, DOB, null, null, Agentid);
-                register(member);
-            }
-        });
-
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        dobb.setOnClickListener(new View.OnClickListener() {
+        dbb.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
@@ -112,16 +83,47 @@ public class AgentMemberActivity extends AppCompatActivity {
                             dayOfMonthString = "0" + dayOfMonthString;
                         }
 
-                        dobb.setText(new StringBuilder().append(year).append("-")
+                        dbb.setText(new StringBuilder().append(year).append("-")
                                 .append(monthString).append("-").append(dayOfMonthString).append(" "));
 
-                        dobb.setText(new StringBuilder().append(year).append("-")
-                                .append(monthString).append("-").append(dayOfMonthString).append(" "));
+
+                        String DOB=dbb.toString();
                     }
                 }, yy, mm, dd);
                 datePicker.show();
             }
         });
+
+
+
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                progressDoalog.setMessage("Please wait...");
+                progressDoalog.show();
+                String Surname = surname.getText().toString();
+                String otherName = othername.getText().toString();
+                String idno = iddno.getText().toString();
+                String mobile_number = mobile.getText().toString();
+                String Gender = gender.getSelectedItem().toString();
+                String Agentid = sharedpreferences.getString("loggedInUser", "");
+
+                AgentMember member = new AgentMember(Surname, otherName, idno, mobile_number, Gender, null, null, null, Agentid);
+                register(member);
+            }
+        });
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
     }
 
     private void register(AgentMember member) {
