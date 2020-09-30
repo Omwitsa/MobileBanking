@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 progressDoalog.setMessage("Please wait...");
                 progressDoalog.show();
-//                Login();
+               Login();
             }
         });
 

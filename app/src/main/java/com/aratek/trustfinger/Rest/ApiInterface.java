@@ -40,7 +40,7 @@ public interface ApiInterface {
 
     @POST("webservice/transacions/fetchAdvanceProducts")
     Call<List<ProductModel>> getAdvanceProcucts(@Body TransactionModel transactionModel);
-    @POST("webservice/users/fetchMemberAccounts")
+    @POST("webservice/transacions/fetchMemberAccounts")
     Call<List<String>> getUserAccounts(@Body TransactionModel transactionModel);
 
 //    @GET("webservice/k-pillar/users.php")
