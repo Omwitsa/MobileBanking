@@ -1,5 +1,4 @@
 package com.aratek.trustfinger.Model;
-
 import com.google.gson.annotations.SerializedName;
 
 public class ProductModel {
@@ -7,6 +6,11 @@ public class ProductModel {
     private String productID;
     @SerializedName("Description")
     private String description;
+
+    public ProductModel(String productID, String description) {
+        this.productID = productID;
+        this.description = description;
+    }
 
     public String getProductID() {
         return productID;

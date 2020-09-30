@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import com.aratek.trustfinger.Model.ProductModel;
@@ -14,6 +15,8 @@ import com.aratek.trustfinger.Model.TransactionModel;
 import com.aratek.trustfinger.R;
 import com.aratek.trustfinger.Rest.ApiClient;
 import com.aratek.trustfinger.Rest.ApiInterface;
+
+import java.util.ArrayList;
 import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -34,28 +37,35 @@ public class ProductsActivity extends Activity implements AdapterView.OnItemSele
         apiService = ApiClient.getClient().create(ApiInterface.class);
         progressDoalog = new ProgressDialog(getApplicationContext());
         // Spinner element
-        Spinner spinner = (Spinner) findViewById(R.id.productname);
+        final Spinner spinner = (Spinner) findViewById(R.id.productname);
         // Spinner click listener
         spinner.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
-        //List<String> val = new ArrayList<String>();
-        String accountNo = sharedpreferences.getString("account_no", "");
-        TransactionModel transaction = new TransactionModel("", 0.0, "", "", accountNo, "", "", "");
+        List<String> val = new ArrayList<String>();
+        String FingerePrint = "eebdc18";
+        //sharedpreferences.getString("account_no", "65690607002292");
+        TransactionModel transaction = new TransactionModel("", 0.0, FingerePrint, "", "", "", "", "");
         Call<List<ProductModel>> call = apiService.getAdvanceProcucts(transaction);
 
         call.enqueue(new Callback<List<ProductModel>>() {
             @Override
             public void onResponse(Call<List<ProductModel>> call, Response<List<ProductModel>> response) {
-//                List<ProductModel> products = response.body();
+                List<ProductModel> products = response.body();
+                String[] productsname = new String[products.size()];
+                for (int i = 0; i < products.size(); i++) {
+                    productsname[i] = products.get(i).getDescription();
+
 //                List<String> productDescriptions = new ArrayList<String>();
 //                products.forEach(p -> productDescriptions.add(p.getDescription()));
-//                ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(ProductsActivity.this, android.R.layout.simple_spinner_item, productDescriptions);
-//                dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//                dataAdapter = new ArrayAdapter<String>(ProductsActivity.this, android.R.layout.simple_spinner_item, productDescriptions);
-//                spinner.setAdapter(dataAdapter);
+                    ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(ProductsActivity.this, android.R.layout.simple_spinner_item, productsname);
+                    dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    dataAdapter = new ArrayAdapter<String>(ProductsActivity.this, android.R.layout.simple_spinner_item, productsname);
+                    spinner.setAdapter(dataAdapter);
+                }
             }
 
             @Override
             public void onFailure(Call<List<ProductModel>> call, Throwable t) {
+
 
             }
         });
