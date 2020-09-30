@@ -932,6 +932,7 @@ id Print
 id SHIFT
 id SYM
 id Transsdate
+id accountno
 id action0
 id action_bar
 id action_bar_activity_content
@@ -959,7 +960,6 @@ id advance
 id alertTitle
 id all
 id always
-id ammount
 id amount
 id apply_advance
 id async
@@ -1285,6 +1285,7 @@ layout abc_screen_toolbar
 layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
+layout activity_accounts
 layout activity_advance
 layout activity_agent_member
 layout activity_balance

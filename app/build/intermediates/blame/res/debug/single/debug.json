@@ -1940,6 +1940,10 @@
         "source": "C:\\Users\\Kemboi\\.gradle\\caches\\transforms-2\\files-2.1\\89a5c3935bb758b3850dc8e36307d4ad\\res\\layout-v21\\notification_template_icon_group.xml"
     },
     {
+        "merged": "D:\\android-2020\\MobileBanking\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_accounts.xml.flat",
+        "source": "D:\\android-2020\\MobileBanking\\app\\src\\main\\res\\layout\\activity_accounts.xml"
+    },
+    {
         "merged": "D:\\android-2020\\MobileBanking\\app\\build\\intermediates\\res\\merged\\debug\\drawable_bg_corner.xml.flat",
         "source": "D:\\android-2020\\MobileBanking\\app\\src\\main\\res\\drawable\\bg_corner.xml"
     },

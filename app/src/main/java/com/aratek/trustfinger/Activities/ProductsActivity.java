@@ -15,6 +15,8 @@ import com.aratek.trustfinger.Model.TransactionModel;
 import com.aratek.trustfinger.R;
 import com.aratek.trustfinger.Rest.ApiClient;
 import com.aratek.trustfinger.Rest.ApiInterface;
+
+import java.util.ArrayList;
 import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -38,10 +40,10 @@ public class ProductsActivity extends Activity implements AdapterView.OnItemSele
         final Spinner spinner = (Spinner) findViewById(R.id.productname);
         // Spinner click listener
         spinner.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
-        //List<String> val = new ArrayList<String>();
-        String accountNo = "65690607002292";
+        List<String> val = new ArrayList<String>();
+        String FingerePrint = "eebdc18";
         //sharedpreferences.getString("account_no", "65690607002292");
-        TransactionModel transaction = new TransactionModel("", 0.0, "", "", accountNo, "", "", "");
+        TransactionModel transaction = new TransactionModel("", 0.0, FingerePrint, "", "", "", "", "");
         Call<List<ProductModel>> call = apiService.getAdvanceProcucts(transaction);
 
         call.enqueue(new Callback<List<ProductModel>>() {
