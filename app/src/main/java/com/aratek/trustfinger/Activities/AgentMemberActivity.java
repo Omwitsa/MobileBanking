@@ -87,7 +87,7 @@ public class AgentMemberActivity extends AppCompatActivity {
                                 .append(monthString).append("-").append(dayOfMonthString).append(" "));
 
 
-                        String DOB=dbb.toString();
+
                     }
                 }, yy, mm, dd);
                 datePicker.show();
@@ -104,13 +104,14 @@ public class AgentMemberActivity extends AppCompatActivity {
                 progressDoalog.setMessage("Please wait...");
                 progressDoalog.show();
                 String Surname = surname.getText().toString();
-                String otherName = othername.getText().toString();
+                String other_Names = othername.getText().toString();
                 String idno = iddno.getText().toString();
                 String mobile_number = mobile.getText().toString();
+                String DOB =(dbb.getText().toString().trim());
                 String Gender = gender.getSelectedItem().toString();
                 String Agentid = sharedpreferences.getString("loggedInUser", "");
 
-                AgentMember member = new AgentMember(Surname, otherName, idno, mobile_number, Gender, null, null, null, Agentid);
+                AgentMember member = new AgentMember(Surname, other_Names, idno, mobile_number, Gender, DOB, null, null, Agentid);
                 register(member);
             }
         });

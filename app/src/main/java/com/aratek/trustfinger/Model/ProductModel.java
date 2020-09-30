@@ -8,6 +8,11 @@ public class ProductModel {
     @SerializedName("Description")
     private String description;
 
+    public ProductModel(String productID, String description) {
+        this.productID = productID;
+        this.description = description;
+    }
+
     public String getProductID() {
         return productID;
     }
