@@ -1,5 +1,4 @@
 package com.aratek.trustfinger.Model;
-
 import com.google.gson.annotations.SerializedName;
 
 public class ProductModel {

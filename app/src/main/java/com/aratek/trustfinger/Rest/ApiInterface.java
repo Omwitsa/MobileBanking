@@ -1,5 +1,4 @@
 package com.aratek.trustfinger.Rest;
-import com.aratek.trustfinger.Model.AccountModel;
 import com.aratek.trustfinger.Model.AgentMember;
 import com.aratek.trustfinger.Model.FingurePrintModel;
 import com.aratek.trustfinger.Model.MemberModel;
@@ -41,8 +40,8 @@ public interface ApiInterface {
 
     @POST("webservice/transacions/fetchAdvanceProducts")
     Call<List<ProductModel>> getAdvanceProcucts(@Body TransactionModel transactionModel);
-    @POST("webservice/users/fetchUserAccounts")
-    Call<List<AccountModel>> getUserAccounts(@Body TransactionModel transactionModel);
+    @POST("webservice/users/fetchMemberAccounts")
+    Call<List<String>> getUserAccounts(@Body TransactionModel transactionModel);
 
 //    @GET("webservice/k-pillar/users.php")
 //    Call<Response> getMembers(@Path("id") int id, @Query("api_key") String apiKey);

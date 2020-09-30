@@ -1422,7 +1422,7 @@ public class EnrollFragment extends BaseFragment implements View.OnClickListener
         user.setFirstName(mUserFirstName);
         user.setLastName(mUserLastName);
         user.setFingerData(fingerData);
-        if (mDBHelper.getUserList().size() >= 100) {
+        if (mDBHelper.getUserList().size() >= 500) {
             handleMsg("Reached the maximum capacity of database", Color.RED);
             return;
         }
