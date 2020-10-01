@@ -99,7 +99,8 @@ public class MainActivity extends AppCompatActivity {
                 progressDoalog.dismiss();
                 Response responseData = response.body();
                 if (responseData.isSuccess()){
-                    Intent homeIntent = new Intent(getApplicationContext(), HomeActivity.class);
+                    //Intent homeIntent = new Intent(getApplicationContext(), HomeActivity.class);
+                    Intent homeIntent = new Intent(getApplicationContext(), AuthenticationActivity.class);
                     startActivity(homeIntent);
                 }
                 else {

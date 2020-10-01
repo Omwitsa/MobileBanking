@@ -1,6 +1,7 @@
 package com.aratek.trustfinger.Activities;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
@@ -32,6 +33,15 @@ public class AdvanceActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         apiService = ApiClient.getClient().create(ApiInterface.class);
         progressDoalog = new ProgressDialog(AdvanceActivity.this);
+
+//        sharedpreferences = getActivity().getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+//        Bundle extras = getActivity().getIntent().getExtras();
+//        String operation = extras.getString("operation");
+//        Double amount = Double.parseDouble(extras.getString("amount"));
+//        String status = "0";
+//        String sNo = extras.getString("supplierNo");
+//        String machineId = sharedpreferences.getString("machine_id", "");
+//        String auditId = sharedpreferences.getString("loggedInUser", "");
 
         //getting device model and serial number
         String Machineid = android.os.Build.MODEL+""+ Build.SERIAL;

@@ -25,7 +25,6 @@ public class DepositActivity_ViewBinding implements Unbinder {
     this.target = target;
 
     target.amount = Utils.findRequiredViewAsType(source, R.id.amount, "field 'amount'", EditText.class);
-    target.sNo = Utils.findRequiredViewAsType(source, R.id.sNo, "field 'sNo'", EditText.class);
     target.submit = Utils.findRequiredViewAsType(source, R.id.submit, "field 'submit'", Button.class);
     target.back = Utils.findRequiredViewAsType(source, R.id.back, "field 'back'", Button.class);
   }
@@ -38,7 +37,6 @@ public class DepositActivity_ViewBinding implements Unbinder {
     this.target = null;
 
     target.amount = null;
-    target.sNo = null;
     target.submit = null;
     target.back = null;
   }

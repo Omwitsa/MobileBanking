@@ -27,18 +27,18 @@ public class AuthenticationActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), FingeprintActivity.class);
+                Intent intent = new Intent(getApplicationContext(), AccountsActivity.class);
                 startActivity(intent);
 
             }
         });
 
-//        btnSignup.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(getApplicationContext(), FingeprintActivity.class);
-//                startActivity(intent);
-//            }
-//        });
+        btnSignup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), FingeprintActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }

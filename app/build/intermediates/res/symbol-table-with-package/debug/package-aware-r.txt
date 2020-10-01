@@ -1056,6 +1056,7 @@ id fv_right_middle
 id fv_right_ring
 id fv_right_thumb
 id gender
+id get_account
 id ghost_view
 id gone
 id groups
@@ -1288,6 +1289,7 @@ layout abc_select_dialog_material
 layout activity_accounts
 layout activity_advance
 layout activity_agent_member
+layout activity_authentication
 layout activity_balance
 layout activity_deposit
 layout activity_fingeprint

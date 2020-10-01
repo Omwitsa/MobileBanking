@@ -5,7 +5,6 @@ import android.support.annotation.CallSuper;
 import android.support.annotation.UiThread;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import butterknife.Unbinder;
 import butterknife.internal.Utils;
 import com.aratek.trustfinger.R;
@@ -24,7 +23,6 @@ public class BalanceActivity_ViewBinding implements Unbinder {
   public BalanceActivity_ViewBinding(BalanceActivity target, View source) {
     this.target = target;
 
-    target.sNo = Utils.findRequiredViewAsType(source, R.id.sNo, "field 'sNo'", EditText.class);
     target.submit = Utils.findRequiredViewAsType(source, R.id.submit, "field 'submit'", Button.class);
     target.back = Utils.findRequiredViewAsType(source, R.id.back, "field 'back'", Button.class);
   }
@@ -36,7 +34,6 @@ public class BalanceActivity_ViewBinding implements Unbinder {
     if (target == null) throw new IllegalStateException("Bindings already cleared.");
     this.target = null;
 
-    target.sNo = null;
     target.submit = null;
     target.back = null;
   }

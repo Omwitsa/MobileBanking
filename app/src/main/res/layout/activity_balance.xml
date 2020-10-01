@@ -35,18 +35,18 @@ tools:context="com.aratek.trustfinger.Activities.BalanceActivity">
     android:layout_marginRight="20dp"
     android:background="@color/cardColor">
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:padding="15dp"
-        android:background="@drawable/editshape"
-        android:id="@+id/sNo"
-        android:drawablePadding="10dp"
-        android:hint="Account  Number"
-        android:textColor="@color/textcardColor"
-        android:textColorHint="@color/textcardColor"
-        android:textColorHighlight="@color/textcardColor"/>
+<!--    <EditText-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_margin="10dp"-->
+<!--        android:padding="15dp"-->
+<!--        android:background="@drawable/editshape"-->
+<!--        android:id="@+id/sNo"-->
+<!--        android:drawablePadding="10dp"-->
+<!--        android:hint="Account  Number"-->
+<!--        android:textColor="@color/textcardColor"-->
+<!--        android:textColorHint="@color/textcardColor"-->
+<!--        android:textColorHighlight="@color/textcardColor"/>-->
 </LinearLayout>
 
 <LinearLayout
@@ -58,7 +58,7 @@ tools:context="com.aratek.trustfinger.Activities.BalanceActivity">
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Next"
+        android:text="Check Balance"
         android:shadowColor="@android:color/transparent"
         android:padding="15dp"
         android:layout_marginRight="10dp"

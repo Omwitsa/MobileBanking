@@ -25,11 +25,16 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         ButterKnife.bind(this);
+        Bundle extras = getIntent().getExtras();
+        final String Account = extras.getString("supplierNo");
+
 
         deposit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Intent intent = new Intent(getApplicationContext(), DepositActivity.class);
+                intent.putExtra("supplierNo", Account);
                 startActivity(intent);
             }
         });
@@ -38,6 +43,7 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), WithdrawActivity.class);
+                intent.putExtra("supplierNo", Account);
                 startActivity(intent);
             }
         });
@@ -54,6 +60,7 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), BalanceActivity.class);
+                intent.putExtra("supplierNo", Account);
                 startActivity(intent);
             }
         });
@@ -69,8 +76,8 @@ public class HomeActivity extends AppCompatActivity {
         advance.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Intent intent = new Intent(getApplicationContext(), ProductsActivity.class);
-                Intent intent = new Intent(getApplicationContext(), AccountsActivity.class);
+                Intent intent = new Intent(getApplicationContext(), ProductsActivity.class);
+                intent.putExtra("supplierNo", Account);
                 startActivity(intent);
             }
         });

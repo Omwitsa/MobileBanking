@@ -588,6 +588,10 @@
         "source": "D:\\android-2020\\MobileBanking\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_launcher_background.png"
     },
     {
+        "merged": "D:\\android-2020\\MobileBanking\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_authentication.xml.flat",
+        "source": "D:\\android-2020\\MobileBanking\\app\\src\\main\\res\\layout\\activity_authentication.xml"
+    },
+    {
         "merged": "D:\\android-2020\\MobileBanking\\app\\build\\intermediates\\res\\merged\\debug\\layout_notification_template_media.xml.flat",
         "source": "C:\\Users\\Kemboi\\.gradle\\caches\\transforms-2\\files-2.1\\7d059f2a764defdebb310f8cc3385e8d\\res\\layout\\notification_template_media.xml"
     },

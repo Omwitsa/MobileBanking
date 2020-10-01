@@ -3,12 +3,15 @@ package com.aratek.trustfinger.Activities;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.aratek.trustfinger.Model.TransactionModel;
 import com.aratek.trustfinger.R;
@@ -18,6 +21,8 @@ import com.aratek.trustfinger.Rest.ApiInterface;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -27,15 +32,33 @@ public class AccountsActivity extends Activity implements AdapterView.OnItemSele
     ProgressDialog progressDoalog;
     public static final String MyPREFERENCES = "POSDETAILS" ;
     SharedPreferences sharedpreferences;
+    @BindView(R.id.get_account) Button submit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_accounts);
+        ButterKnife.bind(this);
 
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         apiService = ApiClient.getClient().create(ApiInterface.class);
         progressDoalog = new ProgressDialog(getApplicationContext());
+
+
+//        sharedpreferences = getActivity().getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+//        Bundle extras = getActivity().getIntent().getExtras();
+//        String operation = extras.getString("operation");
+//        Double amount = Double.parseDouble(extras.getString("amount"));
+//        String status = "0";
+//        String sNo = extras.getString("supplierNo");
+//        String machineId = sharedpreferences.getString("machine_id", "");
+//        String auditId = sharedpreferences.getString("loggedInUser", "");
+
+
+
+
+
+
         // Spinner element
         final Spinner spinner = (Spinner) findViewById(R.id.accountno);
         // Spinner click listener
@@ -73,7 +96,18 @@ public class AccountsActivity extends Activity implements AdapterView.OnItemSele
 
             }
         });
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String Acc = spinner.getSelectedItem().toString();
+                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                intent.putExtra("supplierNo", Acc);
+                startActivity(intent);
+
+            }
+        });
     }
+
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {

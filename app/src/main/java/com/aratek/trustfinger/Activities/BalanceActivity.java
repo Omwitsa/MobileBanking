@@ -1,6 +1,7 @@
 package com.aratek.trustfinger.Activities;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,7 +19,7 @@ import butterknife.ButterKnife;
 public class BalanceActivity extends AppCompatActivity {
     ApiInterface apiService;
     ProgressDialog progressDoalog;
-    @BindView(R.id.sNo) EditText sNo;
+    //@BindView(R.id.sNo) EditText sNo;
     @BindView(R.id.submit) Button submit;
     @BindView(R.id.back) Button back;
 
@@ -29,16 +30,27 @@ public class BalanceActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         apiService = ApiClient.getClient().create(ApiInterface.class);
         progressDoalog = new ProgressDialog(BalanceActivity.this);
+//        sharedpreferences = getActivity().getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+//        Bundle extras = getActivity().getIntent().getExtras();
+//        String operation = extras.getString("operation");
+//        Double amount = Double.parseDouble(extras.getString("amount"));
+//        String status = "0";
+//        String sNo = extras.getString("supplierNo");
+//        String machineId = sharedpreferences.getString("machine_id", "");
+//        String auditId = sharedpreferences.getString("loggedInUser", "");
+        Bundle extras = getIntent().getExtras();
+        assert extras != null;
+        final String Account = extras.getString("supplierNo");
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String SupNo = sNo.getText().toString();
+                //String SupNo = sNo.getText().toString();
                 Intent intent = new Intent(getApplicationContext(), FingeprintActivity.class);
                 intent.putExtra("operation", "balance");
                 intent.putExtra("amount", "0");
                 intent.putExtra("fingurePrint", "");
-                intent.putExtra("supplierNo", SupNo);
+                intent.putExtra("supplierNo", Account);
                 intent.putExtra("pin", "");
 
                 startActivity(intent);

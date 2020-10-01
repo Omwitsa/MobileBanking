@@ -29,7 +29,7 @@ public class WithdrawActivity extends AppCompatActivity {
     ApiInterface apiService;
     @BindView(R.id.amount) EditText amount;
     //    @BindView(R.id.pin) EditText pin;
-    @BindView(R.id.sNo) EditText sNo;
+    //@BindView(R.id.sNo) EditText sNo;
     @BindView(R.id.submit) Button submit;
     @BindView(R.id.back) Button back;
     static SQLiteDatabase db;
@@ -44,20 +44,32 @@ public class WithdrawActivity extends AppCompatActivity {
         progressDoalog = new ProgressDialog(WithdrawActivity.this);
         db = openOrCreateDatabase("MobileDB", Context.MODE_PRIVATE, null);
         db.execSQL("CREATE TABLE IF NOT EXISTS withdrawals(Amount VARCHAR,Pin VARCHAR,Supp VARCHAR,datepp DATETIME, status VARCHAR,transdate  VARCHAR);");
+//        sharedpreferences = getActivity().getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+//        Bundle extras = getActivity().getIntent().getExtras();
+//        String operation = extras.getString("operation");
+//        Double amount = Double.parseDouble(extras.getString("amount"));
+//        String status = "0";
+//        String sNo = extras.getString("supplierNo");
+//        String machineId = sharedpreferences.getString("machine_id", "");
+//        String auditId = sharedpreferences.getString("loggedInUser", "");
+
 
 
         //getting device model and serial number
+        Bundle extras = getIntent().getExtras();
+        assert extras != null;
+        final String Account = extras.getString("supplierNo");
         String Machineid = android.os.Build.MANUFACTURER + " " + android.os.Build.MODEL+""+ Build.SERIAL;
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 //                withdraw();
                 String bal = amount.getText().toString();
-                String SupNo = sNo.getText().toString();
+                //String SupNo = sNo.getText().toString();
 //
                 String Pinn = "";
 
-                if (bal.isEmpty() && Pinn.isEmpty() && SupNo.isEmpty() ) {
+                if (bal.isEmpty() && Pinn.isEmpty() && Account.isEmpty() ) {
                     //Snackbar.make(getView(), "Field(s) are empty !", Snackbar.LENGTH_LONG).show();
                     Toast.makeText(WithdrawActivity.this, "Fields are empty", Toast.LENGTH_LONG).show();
                 }else if(Pinn.length()>4){
@@ -65,13 +77,13 @@ public class WithdrawActivity extends AppCompatActivity {
                     Toast.makeText(WithdrawActivity.this, "Pin shoud have a maximum of 4 characters", Toast.LENGTH_LONG).show();
                 }else {
 
-                   insertDataToSqlite(bal, Pinn, SupNo);
+                   insertDataToSqlite(bal, Pinn, Account);
 
                     Intent intent = new Intent(getApplicationContext(), FingeprintActivity.class);
                     intent.putExtra("operation", "withdraw");
                     intent.putExtra("amount", bal);
                     intent.putExtra("fingurePrint", "");
-                    intent.putExtra("supplierNo", SupNo);
+                    intent.putExtra("supplierNo", Account);
                     intent.putExtra("pin", Pinn);
                     startActivity(intent);
                 }
@@ -87,13 +99,13 @@ public class WithdrawActivity extends AppCompatActivity {
         });
 
     }
-    public void insertDataToSqlite(String bal, String pinn, String supNo)  {
+    public void insertDataToSqlite(String bal, String pinn, String Account)  {
         Calendar cc = Calendar.getInstance();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String date_pp = sdf.format(cc.getTime());
         SimpleDateFormat ff = new SimpleDateFormat("yyyy-MM-dd");
         String trans= ff.format(cc.getTime());
-        db.execSQL("INSERT INTO deposits VALUES('" + bal + "','"  + pinn+ "','" + supNo + "','" + date_pp + "','0','" + trans + "');");
+        db.execSQL("INSERT INTO deposits VALUES('" + bal + "','"  + pinn+ "','" + Account + "','" + date_pp + "','0','" + trans + "');");
         Toast.makeText(WithdrawActivity.this, "Withdrawal saved successfully", Toast.LENGTH_LONG).show();
     }
 }
