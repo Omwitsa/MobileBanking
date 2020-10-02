@@ -38,8 +38,13 @@ import android.widget.PopupWindow;
 import android.widget.ProgressBar;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.aratek.trustfinger.Model.FingurePrintModel;
+import com.aratek.trustfinger.Model.Response;
 import com.aratek.trustfinger.Model.TransactionModel;
+import com.aratek.trustfinger.Rest.ApiClient;
+import com.aratek.trustfinger.Rest.ApiInterface;
 import com.aratek.trustfinger.utils.Config;
 import com.aratek.trustfinger.R;
 import com.aratek.trustfinger.adapter.MyRankListAdapter;
@@ -61,6 +66,9 @@ import com.aratek.trustfinger.widget.MyListView;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
 
 
 public class IdentifyFragment extends BaseFragment {
@@ -119,7 +127,7 @@ public class IdentifyFragment extends BaseFragment {
             String sNo = extras.getString("supplierNo");
             String machineId = sharedpreferences.getString("machine_id", "");
             String auditId = sharedpreferences.getString("loggedInUser", "");
-
+//
             transactionModel = new TransactionModel(operation, amount, "", "", sNo, status, machineId, auditId);
             transaction = new Transaction(getActivity(), transactionModel);
 
@@ -511,6 +519,26 @@ public class IdentifyFragment extends BaseFragment {
                 startTime = System.currentTimeMillis();
                 for (User user : userList) {
                     fingerData = user.getFingerData();
+                    String idno="0735028";
+//                    String datafinger=user.getFingerData().toString();
+//                    Toast.makeText(context, user.getFingerData().toString(), Toast.LENGTH_LONG).show();
+
+//                    FingurePrintModel fingurePrint = new FingurePrintModel(user.getFingerData().toString(), user.getId());
+                    //ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
+                    ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
+                    FingurePrintModel fingurePrint = new FingurePrintModel(user.getFingerData().toString(), idno);
+                    Call<Response> call = apiService.registerFingerPrints(fingurePrint);
+                    call.enqueue(new Callback<Response>() {
+                        @Override
+                        public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
+
+                        }
+
+                        @Override
+                        public void onFailure(Call<Response> call, Throwable t) {
+
+                        }
+                    });
                     if (fingerData == null) {
                         handleMsg("identify fail， no enrolled templates!", Color.RED);
                         getActivity().runOnUiThread(new Runnable() {

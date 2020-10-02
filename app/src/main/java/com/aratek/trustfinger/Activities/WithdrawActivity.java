@@ -29,7 +29,7 @@ public class WithdrawActivity extends AppCompatActivity {
     ApiInterface apiService;
     @BindView(R.id.amount) EditText amount;
     //    @BindView(R.id.pin) EditText pin;
-    //@BindView(R.id.sNo) EditText sNo;
+    @BindView(R.id.sNo) EditText sNo;
     @BindView(R.id.submit) Button submit;
     @BindView(R.id.back) Button back;
     static SQLiteDatabase db;
@@ -59,6 +59,7 @@ public class WithdrawActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         assert extras != null;
         final String Account = extras.getString("supplierNo");
+        sNo.setText(Account);
         String Machineid = android.os.Build.MANUFACTURER + " " + android.os.Build.MODEL+""+ Build.SERIAL;
         submit.setOnClickListener(new View.OnClickListener() {
             @Override

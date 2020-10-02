@@ -65,7 +65,7 @@ public class AccountsActivity extends Activity implements AdapterView.OnItemSele
         spinner.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
         List<String> val = new ArrayList<String>();
         String FingerePrint = "eebdc18";
-        //sharedpreferences.getString("account_no", "65690607002292");
+        //sharedpreferences.getString("account_no", "65690200100416");
         TransactionModel transaction = new TransactionModel("", 0.0, FingerePrint, "", "", "", "", "");
         Call<List<String>> call = apiService.getUserAccounts(transaction);
 

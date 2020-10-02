@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.aratek.trustfinger.Model.ProductModel;
@@ -18,6 +19,9 @@ import com.aratek.trustfinger.Rest.ApiInterface;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -27,11 +31,13 @@ public class ProductsActivity extends Activity implements AdapterView.OnItemSele
     ProgressDialog progressDoalog;
     public static final String MyPREFERENCES = "POSDETAILS" ;
     SharedPreferences sharedpreferences;
+    @BindView(R.id.sNo) EditText sNo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_products);
+        ButterKnife.bind(this);
 
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         apiService = ApiClient.getClient().create(ApiInterface.class);
@@ -46,8 +52,10 @@ public class ProductsActivity extends Activity implements AdapterView.OnItemSele
 //        String machineId = sharedpreferences.getString("machine_id", "");
 //        String auditId = sharedpreferences.getString("loggedInUser", "");
 
-
-
+        Bundle extras = getIntent().getExtras();
+        assert extras != null;
+        final String Account = extras.getString("supplierNo");
+        sNo.setText(Account);
 
 
 

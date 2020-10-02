@@ -26,7 +26,7 @@ public class DepositActivity extends AppCompatActivity {
     ProgressDialog progressDoalog;
     ApiInterface apiService;
     @BindView(R.id.amount) EditText amount;
-    //@BindView(R.id.sNo) EditText sNo;
+    @BindView(R.id.sNo) EditText sNo;
     //    @BindView(R.id.pin) EditText pin;
     @BindView(R.id.submit) Button submit;
     @BindView(R.id.back) Button back;
@@ -56,12 +56,13 @@ public class DepositActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         assert extras != null;
         final String Account = extras.getString("supplierNo");
+        sNo.setText(Account);
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String bal = amount.getText().toString();
-                //String SupNo = sNo.getText().toString();
+                 //String SupNo = sNo.getText().toString();
                 String Pinn = "";
 
                 if (bal.isEmpty() && Pinn.isEmpty() && Account.isEmpty() ) {

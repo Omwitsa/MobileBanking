@@ -19,7 +19,7 @@ import butterknife.ButterKnife;
 public class BalanceActivity extends AppCompatActivity {
     ApiInterface apiService;
     ProgressDialog progressDoalog;
-    //@BindView(R.id.sNo) EditText sNo;
+    @BindView(R.id.sNo) EditText sNo;
     @BindView(R.id.submit) Button submit;
     @BindView(R.id.back) Button back;
 
@@ -41,6 +41,7 @@ public class BalanceActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         assert extras != null;
         final String Account = extras.getString("supplierNo");
+        sNo.setText(Account);
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override

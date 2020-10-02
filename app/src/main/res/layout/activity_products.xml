@@ -39,6 +39,21 @@ tools:context="com.aratek.trustfinger.Activities.ProductsActivity">
         android:layout_marginRight="20dp"
         android:background="@color/cardColor">
 
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:padding="15dp"
+            android:background="@drawable/editshape"
+            android:id="@+id/sNo"
+            android:drawablePadding="10dp"
+            android:hint="Account  Number"
+            android:editable="false"
+            android:textColor="@color/textcardColor"
+            android:textColorHint="@color/textcardColor"
+            android:textColorHighlight="@color/textcardColor"
+            tools:ignore="Deprecated" />
+
 <!--        <EditText-->
 <!--            android:layout_width="match_parent"-->
 <!--            android:layout_height="wrap_content"-->
