@@ -1428,22 +1428,32 @@ public class EnrollFragment extends BaseFragment implements View.OnClickListener
         }
         if (mDBHelper.insertUser(user)) {
             FingurePrintModel newUser = mDBHelper.getUser(user.getId());
-            ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-            FingurePrintModel fingurePrint = new FingurePrintModel(newUser.getFingerPrint(), user.getId());
-            Call<Response> call = apiService.registerFingerPrints(fingurePrint);
-            call.enqueue(new Callback<Response>() {
-                @Override
-                public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
-
-                }
-
-                @Override
-                public void onFailure(Call<Response> call, Throwable t) {
-
-                }
-            });
-            loadEnrolledUsers();
+            showMessage("User Data", newUser.getFingerPrint());
+            
+//            ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
+//            FingurePrintModel fingurePrint = new FingurePrintModel(newUser.getFingerPrint(), user.getId());
+//            Call<Response> call = apiService.registerFingerPrints(fingurePrint);
+//            call.enqueue(new Callback<Response>() {
+//                @Override
+//                public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
+//
+//                }
+//
+//                @Override
+//                public void onFailure(Call<Response> call, Throwable t) {
+//
+//                }
+//            });
+//            loadEnrolledUsers();
         }
+    }
+
+    public void showMessage(String title, String message) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setCancelable(true);
+        builder.setTitle(title);
+        builder.setMessage(message);
+        builder.show();
     }
 
     private Handler mHandler = new Handler() {
