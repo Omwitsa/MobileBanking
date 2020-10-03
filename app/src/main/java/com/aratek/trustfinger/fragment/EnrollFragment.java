@@ -1427,24 +1427,21 @@ public class EnrollFragment extends BaseFragment implements View.OnClickListener
             return;
         }
         if (mDBHelper.insertUser(user)) {
-            FingurePrintModel newUser = mDBHelper.getUser(user.getId());
-            showMessage("User Data", newUser.getFingerPrint());
-            
-//            ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-//            FingurePrintModel fingurePrint = new FingurePrintModel(newUser.getFingerPrint(), user.getId());
-//            Call<Response> call = apiService.registerFingerPrints(fingurePrint);
-//            call.enqueue(new Callback<Response>() {
-//                @Override
-//                public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
-//
-//                }
-//
-//                @Override
-//                public void onFailure(Call<Response> call, Throwable t) {
-//
-//                }
-//            });
-//            loadEnrolledUsers();
+            ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
+            FingurePrintModel fingurePrint = new FingurePrintModel(user.getFingerData().toString(), user.getId());
+            Call<Response> call = apiService.registerFingerPrints(fingurePrint);
+            call.enqueue(new Callback<Response>() {
+                @Override
+                public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
+
+                }
+
+                @Override
+                public void onFailure(Call<Response> call, Throwable t) {
+
+                }
+            });
+            loadEnrolledUsers();
         }
     }
 

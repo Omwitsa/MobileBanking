@@ -108,24 +108,6 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
-    public FingurePrintModel getUser(String userId) {
-        userId = userId == null ? "" : userId;
-        SQLiteDatabase mysql = getReadableDatabase();
-        FingurePrintModel fingurePrint = null;
-            try {
-                Cursor cursor = mysql.rawQuery("select * from " + TABLE_NAME_USER + "  where " + COLUMN_NAME_USER_ID + " =? ", new String[]{userId});
-                if (cursor != null){
-                    while (cursor.moveToNext()) {
-                        fingurePrint = new FingurePrintModel(cursor.getString(3), cursor.getString(0));
-                    }
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-        return  fingurePrint;
-    }
-
     public List<User> getUserList() {
         SQLiteDatabase mysql = getReadableDatabase();
         List<User> userList = new ArrayList<User>();
