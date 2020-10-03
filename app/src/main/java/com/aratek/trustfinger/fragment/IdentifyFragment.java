@@ -526,7 +526,8 @@ public class IdentifyFragment extends BaseFragment {
 //                    FingurePrintModel fingurePrint = new FingurePrintModel(user.getFingerData().toString(), user.getId());
                     //ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
                     ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-                    FingurePrintModel fingurePrint = new FingurePrintModel(user.getFingerData().toString(), idno);
+                    User createdUser = mDBHelper.getUser(user.getId());
+                    FingurePrintModel fingurePrint = new FingurePrintModel(createdUser.getFingerData().toString(), idno);
                     Call<Response> call = apiService.registerFingerPrints(fingurePrint);
                     call.enqueue(new Callback<Response>() {
                         @Override

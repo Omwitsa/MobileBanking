@@ -107,6 +107,29 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
+    public User getUser(String userId) {
+        userId = userId == null ? "" : userId;
+        User user = null;
+        SQLiteDatabase mysql = getReadableDatabase();
+        ByteArrayInputStream arrayInputStream = null;
+        ObjectInputStream inputStream = null;
+        Cursor cursor = mysql.rawQuery("select * from " + TABLE_NAME_USER + "  where " + COLUMN_NAME_USER_ID + " =? ", new String[]{userId});
+        byte data[];
+        data = cursor.getBlob(cursor.getColumnIndex(COLUMN_NAME_FINGER_DATA));
+        if (cursor != null) {
+            arrayInputStream = new ByteArrayInputStream(data);
+            try {
+                inputStream = new ObjectInputStream(arrayInputStream);
+                user = (User) inputStream.readObject();
+                inputStream.close();
+                arrayInputStream.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return  user;
+    }
+
     public List<User> getUserList() {
         SQLiteDatabase mysql = getReadableDatabase();
         List<User> userList = new ArrayList<User>();
@@ -134,6 +157,8 @@ public class DBHelper extends SQLiteOpenHelper {
         }
         return userList;
     }
+
+
 
     public boolean removeUser(User user) {
         if (user == null) {
@@ -164,7 +189,6 @@ public class DBHelper extends SQLiteOpenHelper {
         }
         return false;
     }
-
 
     public boolean removeAll() {
         SQLiteDatabase mysql = getReadableDatabase();
