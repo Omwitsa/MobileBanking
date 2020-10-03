@@ -1427,9 +1427,9 @@ public class EnrollFragment extends BaseFragment implements View.OnClickListener
             return;
         }
         if (mDBHelper.insertUser(user)) {
-            User newUser = mDBHelper.getUser(user.getId());
+            FingurePrintModel newUser = mDBHelper.getUser(user.getId());
             ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-            FingurePrintModel fingurePrint = new FingurePrintModel(newUser.getFingerData().toString(), user.getId());
+            FingurePrintModel fingurePrint = new FingurePrintModel(newUser.getFingerPrint(), user.getId());
             Call<Response> call = apiService.registerFingerPrints(fingurePrint);
             call.enqueue(new Callback<Response>() {
                 @Override
@@ -1442,13 +1442,6 @@ public class EnrollFragment extends BaseFragment implements View.OnClickListener
 
                 }
             });
-
-            //            getActivity().runOnUiThread(new Runnable() {
-            //                @Override
-            //                public void run() {
-            //                    currentFingerView.setEnrolled(true);
-            //                }
-            //            });
             loadEnrolledUsers();
         }
     }

@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Environment;
 import android.text.TextUtils;
 
+import com.aratek.trustfinger.Model.FingurePrintModel;
 import com.aratek.trustfinger.bean.User;
 
 import java.io.ByteArrayInputStream;
@@ -107,27 +108,22 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
-    public User getUser(String userId) {
+    public FingurePrintModel getUser(String userId) {
         userId = userId == null ? "" : userId;
-        User user = null;
         SQLiteDatabase mysql = getReadableDatabase();
-        ByteArrayInputStream arrayInputStream = null;
-        ObjectInputStream inputStream = null;
-        Cursor cursor = mysql.rawQuery("select * from " + TABLE_NAME_USER + "  where " + COLUMN_NAME_USER_ID + " =? ", new String[]{userId});
-        byte data[];
-        data = cursor.getBlob(cursor.getColumnIndex(COLUMN_NAME_FINGER_DATA));
-        if (cursor != null) {
-            arrayInputStream = new ByteArrayInputStream(data);
+        FingurePrintModel fingurePrint = null;
             try {
-                inputStream = new ObjectInputStream(arrayInputStream);
-                user = (User) inputStream.readObject();
-                inputStream.close();
-                arrayInputStream.close();
+                Cursor cursor = mysql.rawQuery("select * from " + TABLE_NAME_USER + "  where " + COLUMN_NAME_USER_ID + " =? ", new String[]{userId});
+                if (cursor != null){
+                    while (cursor.moveToNext()) {
+                        fingurePrint = new FingurePrintModel(cursor.getString(3), cursor.getString(0));
+                    }
+                }
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        }
-        return  user;
+
+        return  fingurePrint;
     }
 
     public List<User> getUserList() {
