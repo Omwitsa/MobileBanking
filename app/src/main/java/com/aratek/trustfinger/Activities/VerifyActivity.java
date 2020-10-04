@@ -465,10 +465,6 @@ public class VerifyActivity extends FragmentActivity implements DeviceOpenListen
         mIdentifyFragment.setLedCallback(this);
         mDeviceInfoFragment = new DeviceInfoFragment();
         fragmnts.add(mIdentifyFragment);
-//        fragmnts.add(mCaptureFragment);
-//        fragmnts.add(mEnrollFragment);
-//        fragmnts.add(mVerifyFragment);
-//        fragmnts.add(mDeviceInfoFragment);
         titles = getResources().getStringArray(R.array.tabs_name);
         mViewPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager(), fragmnts, titles));
         mViewPager.setOffscreenPageLimit(5);
