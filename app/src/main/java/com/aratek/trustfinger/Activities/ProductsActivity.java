@@ -3,11 +3,13 @@ package com.aratek.trustfinger.Activities;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -32,6 +34,7 @@ public class ProductsActivity extends Activity implements AdapterView.OnItemSele
     public static final String MyPREFERENCES = "POSDETAILS" ;
     SharedPreferences sharedpreferences;
     @BindView(R.id.sNo) EditText sNo;
+    @BindView(R.id.apply_advance) Button submit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,15 +45,6 @@ public class ProductsActivity extends Activity implements AdapterView.OnItemSele
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         apiService = ApiClient.getClient().create(ApiInterface.class);
         progressDoalog = new ProgressDialog(getApplicationContext());
-
-//        sharedpreferences = getActivity().getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-//        Bundle extras = getActivity().getIntent().getExtras();
-//        String operation = extras.getString("operation");
-//        Double amount = Double.parseDouble(extras.getString("amount"));
-//        String status = "0";
-//        String sNo = extras.getString("supplierNo");
-//        String machineId = sharedpreferences.getString("machine_id", "");
-//        String auditId = sharedpreferences.getString("loggedInUser", "");
 
         Bundle extras = getIntent().getExtras();
         assert extras != null;
@@ -64,9 +58,10 @@ public class ProductsActivity extends Activity implements AdapterView.OnItemSele
         // Spinner click listener
         spinner.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
         List<String> val = new ArrayList<String>();
-        String FingerePrint = "eebdc18";
+        //String FingerePrint = "eebdc18";
+        String id = "0735028";
         //sharedpreferences.getString("account_no", "65690607002292");
-        TransactionModel transaction = new TransactionModel("", 0.0, FingerePrint, "", "", "", "", "");
+        TransactionModel transaction = new TransactionModel("", 0.0, "", "", id, "", "", "");
         Call<List<ProductModel>> call = apiService.getAdvanceProcucts(transaction);
 
         call.enqueue(new Callback<List<ProductModel>>() {
@@ -76,7 +71,6 @@ public class ProductsActivity extends Activity implements AdapterView.OnItemSele
                 String[] productsname = new String[products.size()];
                 for (int i = 0; i < products.size(); i++) {
                     productsname[i] = products.get(i).getDescription();
-
 //                List<String> productDescriptions = new ArrayList<String>();
 //                products.forEach(p -> productDescriptions.add(p.getDescription()));
                     ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(ProductsActivity.this, android.R.layout.simple_spinner_item, productsname);
@@ -89,6 +83,17 @@ public class ProductsActivity extends Activity implements AdapterView.OnItemSele
             @Override
             public void onFailure(Call<List<ProductModel>> call, Throwable t) {
 
+
+            }
+        });
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String Acc = spinner.getSelectedItem().toString();
+                Intent intent = new Intent(getApplicationContext(), AdvanceActivity.class);
+                intent.putExtra("supplierNo", Acc);
+                intent.putExtra("Account", Account);
+                startActivity(intent);
 
             }
         });

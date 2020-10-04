@@ -34,15 +34,8 @@ public class AdvanceActivity extends AppCompatActivity {
         apiService = ApiClient.getClient().create(ApiInterface.class);
         progressDoalog = new ProgressDialog(AdvanceActivity.this);
 
-//        sharedpreferences = getActivity().getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-//        Bundle extras = getActivity().getIntent().getExtras();
-//        String operation = extras.getString("operation");
-//        Double amount = Double.parseDouble(extras.getString("amount"));
-//        String status = "0";
-//        String sNo = extras.getString("supplierNo");
-//        String machineId = sharedpreferences.getString("machine_id", "");
-//        String auditId = sharedpreferences.getString("loggedInUser", "");
 
+        
         //getting device model and serial number
         String Machineid = android.os.Build.MODEL+""+ Build.SERIAL;
         submit.setOnClickListener(new View.OnClickListener() {

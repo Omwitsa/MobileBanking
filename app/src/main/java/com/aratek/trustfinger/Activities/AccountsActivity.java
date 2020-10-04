@@ -44,29 +44,14 @@ public class AccountsActivity extends Activity implements AdapterView.OnItemSele
         apiService = ApiClient.getClient().create(ApiInterface.class);
         progressDoalog = new ProgressDialog(getApplicationContext());
 
-
-//        sharedpreferences = getActivity().getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-//        Bundle extras = getActivity().getIntent().getExtras();
-//        String operation = extras.getString("operation");
-//        Double amount = Double.parseDouble(extras.getString("amount"));
-//        String status = "0";
-//        String sNo = extras.getString("supplierNo");
-//        String machineId = sharedpreferences.getString("machine_id", "");
-//        String auditId = sharedpreferences.getString("loggedInUser", "");
-
-
-
-
-
-
         // Spinner element
         final Spinner spinner = (Spinner) findViewById(R.id.accountno);
         // Spinner click listener
         spinner.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
         List<String> val = new ArrayList<String>();
-        String FingerePrint = "eebdc18";
+        String id = "0735028";
         //sharedpreferences.getString("account_no", "65690200100416");
-        TransactionModel transaction = new TransactionModel("", 0.0, FingerePrint, "", "", "", "", "");
+        TransactionModel transaction = new TransactionModel("", 0.0, "", "", id, "", "", "");
         Call<List<String>> call = apiService.getUserAccounts(transaction);
 
         call.enqueue(new Callback<List<String>>() {
