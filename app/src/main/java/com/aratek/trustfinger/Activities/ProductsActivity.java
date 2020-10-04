@@ -61,7 +61,7 @@ public class ProductsActivity extends Activity implements AdapterView.OnItemSele
         //String FingerePrint = "eebdc18";
         String id = "0735028";
         //sharedpreferences.getString("account_no", "65690607002292");
-        TransactionModel transaction = new TransactionModel("", 0.0, "", "", id, "", "", "");
+        TransactionModel transaction = new TransactionModel("", 0.0, "", "", id, "", "", "","","");
         Call<List<ProductModel>> call = apiService.getAdvanceProcucts(transaction);
 
         call.enqueue(new Callback<List<ProductModel>>() {

@@ -53,6 +53,8 @@ public class BalanceActivity extends AppCompatActivity {
                 intent.putExtra("fingurePrint", "");
                 intent.putExtra("supplierNo", Account);
                 intent.putExtra("pin", "");
+                intent.putExtra("accountNo", "");
+                intent.putExtra("productDescription", "");
 
                 startActivity(intent);
             }

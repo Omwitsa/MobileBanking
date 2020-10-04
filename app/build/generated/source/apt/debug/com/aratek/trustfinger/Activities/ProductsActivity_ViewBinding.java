@@ -4,6 +4,7 @@ package com.aratek.trustfinger.Activities;
 import android.support.annotation.CallSuper;
 import android.support.annotation.UiThread;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import butterknife.Unbinder;
 import butterknife.internal.Utils;
@@ -24,6 +25,7 @@ public class ProductsActivity_ViewBinding implements Unbinder {
     this.target = target;
 
     target.sNo = Utils.findRequiredViewAsType(source, R.id.sNo, "field 'sNo'", EditText.class);
+    target.submit = Utils.findRequiredViewAsType(source, R.id.apply_advance, "field 'submit'", Button.class);
   }
 
   @Override
@@ -34,5 +36,6 @@ public class ProductsActivity_ViewBinding implements Unbinder {
     this.target = null;
 
     target.sNo = null;
+    target.submit = null;
   }
 }

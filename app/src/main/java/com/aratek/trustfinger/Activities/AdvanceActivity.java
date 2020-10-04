@@ -35,35 +35,27 @@ public class AdvanceActivity extends AppCompatActivity {
         progressDoalog = new ProgressDialog(AdvanceActivity.this);
 
 
-        
+
         //getting device model and serial number
         String Machineid = android.os.Build.MODEL+""+ Build.SERIAL;
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String bal = amount.getText().toString();
-                String SupNo = sNo.getText().toString();
-                String Pinn = "";
-
-                if (bal.isEmpty() && Pinn.isEmpty() && SupNo.isEmpty() ) {
-                    //Snackbar.make(getView(), "Field(s) are empty !", Snackbar.LENGTH_LONG).show();
-                    Toast.makeText(AdvanceActivity.this, "Fields are empty", Toast.LENGTH_LONG).show();
-                }else if(Pinn.length()>4){
-                    //Snackbar.make(getView(), "Password should have a minimum of 8 characters", Snackbar.LENGTH_LONG).show();
-                    Toast.makeText(AdvanceActivity.this, "Pin shoud have a maximum of 4 characters", Toast.LENGTH_LONG).show();
-                }else {
-
-//                    insertDataToSqlite(bal, Pinn, SupNo);
+                Bundle extras = getIntent().getExtras();
+                final String Advanceproduct = extras.getString("supplierNo");
+                String Accountno = extras.getString("Account");
 
                     Intent intent = new Intent(getApplicationContext(), FingeprintActivity.class);
                     intent.putExtra("operation", "advance");
-                    intent.putExtra("amount", bal);
+                    intent.putExtra("amount", "");
                     intent.putExtra("fingurePrint", "");
-                    intent.putExtra("supplierNo", SupNo);
-                    intent.putExtra("pin", Pinn);
+                    intent.putExtra("supplierNo", "");
+                    intent.putExtra("pin", "");
+                    intent.putExtra("accountNo", Accountno);
+                    intent.putExtra("productDescription", Advanceproduct);
 
                     startActivity(intent);
-                }
+
             }
         });
 

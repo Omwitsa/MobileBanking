@@ -125,10 +125,12 @@ public class IdentifyFragment extends BaseFragment {
             Double amount = Double.parseDouble(extras.getString("amount"));
             String status = "0";
             String sNo = extras.getString("supplierNo");
+            String accountNo = extras.getString("accountNo");
+            String productDescription = extras.getString("productDescription");
             String machineId = sharedpreferences.getString("machine_id", "");
             String auditId = sharedpreferences.getString("loggedInUser", "");
 //
-            transactionModel = new TransactionModel(operation, amount, "", "", sNo, status, machineId, auditId);
+            transactionModel = new TransactionModel(operation, amount, "", "", sNo, status, machineId, auditId, productDescription, accountNo);
             transaction = new Transaction(getActivity(), transactionModel);
 
             root = inflater.inflate(R.layout.fragment_identify, container, false);
