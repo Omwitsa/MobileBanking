@@ -59,9 +59,9 @@ public class ProductsActivity extends Activity implements AdapterView.OnItemSele
         spinner.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
         List<String> val = new ArrayList<String>();
         //String FingerePrint = "eebdc18";
-        String id = "0735028";
+        //String id = "65690200100416";
         //sharedpreferences.getString("account_no", "65690607002292");
-        TransactionModel transaction = new TransactionModel("", 0.0, "", "", id, "", "", "","","");
+        TransactionModel transaction = new TransactionModel("", 0.0, "", "", "", "", "", "","",Account);
         Call<List<ProductModel>> call = apiService.getAdvanceProcucts(transaction);
 
         call.enqueue(new Callback<List<ProductModel>>() {
