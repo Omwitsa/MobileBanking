@@ -74,7 +74,7 @@ public class DepositActivity extends AppCompatActivity {
                 }else{
                     insertDataToSqlite(bal, Pinn, Account);
 
-                    Intent intent = new Intent(getApplicationContext(), FingeprintActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), VerifyActivity.class);
                     intent.putExtra("operation", "deposit");
                     intent.putExtra("amount", bal);
                     intent.putExtra("fingurePrint", "");

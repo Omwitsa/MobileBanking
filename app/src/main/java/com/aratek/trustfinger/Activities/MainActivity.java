@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
                 Response responseData = response.body();
                 if (responseData.isSuccess()){
                     //Intent homeIntent = new Intent(getApplicationContext(), HomeActivity.class);
-                    Intent homeIntent = new Intent(getApplicationContext(), AuthenticationActivity.class);
+                    Intent homeIntent = new Intent(getApplicationContext(), VerifyActivity.class);
                     startActivity(homeIntent);
                 }
                 else {

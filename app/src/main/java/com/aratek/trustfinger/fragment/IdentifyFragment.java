@@ -40,6 +40,10 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.aratek.trustfinger.Activities.AccountsActivity;
+import com.aratek.trustfinger.Activities.BalanceActivity;
+import com.aratek.trustfinger.Activities.HomeActivity;
+import com.aratek.trustfinger.Activities.Reports;
 import com.aratek.trustfinger.Model.FingurePrintModel;
 import com.aratek.trustfinger.Model.Response;
 import com.aratek.trustfinger.Model.TransactionModel;
@@ -119,19 +123,20 @@ public class IdentifyFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         if (root == null) {
-            sharedpreferences = getActivity().getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-            Bundle extras = getActivity().getIntent().getExtras();
-            String operation = extras.getString("operation");
-            Double amount = Double.parseDouble(extras.getString("amount"));
-            String status = "0";
-            String sNo = extras.getString("supplierNo");
-            String accountNo = extras.getString("accountNo");
-            String productDescription = extras.getString("productDescription");
-            String machineId = sharedpreferences.getString("machine_id", "");
-            String auditId = sharedpreferences.getString("loggedInUser", "");
+//            sharedpreferences = getActivity().getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+//            Bundle extras = getActivity().getIntent().getExtras();
+//            String operation = extras.getString("operation");
+//            Double amount = Double.parseDouble(extras.getString("amount"));
+//            String status = "0";
+//            String sNo = extras.getString("supplierNo");
+//            String accountNo = extras.getString("accountNo");
+//            String productDescription = extras.getString("productDescription");
+//            String machineId = sharedpreferences.getString("machine_id", "");
+//            String auditId = sharedpreferences.getString("loggedInUser", "");
+//            transactionModel = new TransactionModel(operation, amount, "", "", sNo, status, machineId, auditId, productDescription, accountNo);
+//            transaction = new Transaction(getActivity(), transactionModel);
 //
-            transactionModel = new TransactionModel(operation, amount, "", "", sNo, status, machineId, auditId, productDescription, accountNo);
-            transaction = new Transaction(getActivity(), transactionModel);
+
 
             root = inflater.inflate(R.layout.fragment_identify, container, false);
             sv = (ScrollView) root.findViewById(R.id.sv_content);
@@ -521,26 +526,34 @@ public class IdentifyFragment extends BaseFragment {
                 startTime = System.currentTimeMillis();
                 for (User user : userList) {
                     fingerData = user.getFingerData();
-                    String idno="0735028";
+                    String idno= user.getId();
+                    //Intent intent = new Intent(context.getApplicationContext(), Transaction.class);
+                    //intent.putExtra("id_number", idno);
+                    //startActivity(intent);
+                    Intent intent = new Intent(getActivity(), AccountsActivity.class);
+                    intent.putExtra("loadsPosition",idno);
+                    startActivity(intent);
+
+
 //                    String datafinger=user.getFingerData().toString();
 //                    Toast.makeText(context, user.getFingerData().toString(), Toast.LENGTH_LONG).show();
 
 //                    FingurePrintModel fingurePrint = new FingurePrintModel(user.getFingerData().toString(), user.getId());
                     //ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-                    ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-                    FingurePrintModel fingurePrint = new FingurePrintModel(user.getFingerData().toString(), idno);
-                    Call<Response> call = apiService.registerFingerPrints(fingurePrint);
-                    call.enqueue(new Callback<Response>() {
-                        @Override
-                        public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
-
-                        }
-
-                        @Override
-                        public void onFailure(Call<Response> call, Throwable t) {
-
-                        }
-                    });
+//                    ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
+//                    FingurePrintModel fingurePrint = new FingurePrintModel(user.getFingerData().toString(),idno);
+//                    Call<Response> call = apiService.registerFingerPrints(fingurePrint);
+//                    call.enqueue(new Callback<Response>() {
+//                        @Override
+//                        public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
+//
+//                        }
+//
+//                        @Override
+//                        public void onFailure(Call<Response> call, Throwable t) {
+//
+//                        }
+//                    });
                     if (fingerData == null) {
                         handleMsg("identify fail， no enrolled templates!", Color.RED);
                         getActivity().runOnUiThread(new Runnable() {
@@ -684,7 +697,7 @@ public class IdentifyFragment extends BaseFragment {
             mIdentifyTask = null;
             isIdentifing = false;
             mIsDone = true;
-            transaction.transact(transactionModel);
+            //transaction.transact(transactionModel);
 
             return null;
         }

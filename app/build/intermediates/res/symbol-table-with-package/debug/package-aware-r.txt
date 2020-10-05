@@ -1324,6 +1324,7 @@ layout fragment_capture
 layout fragment_device_info
 layout fragment_enroll
 layout fragment_identify
+layout fragment_transaction
 layout fragment_verify
 layout layout_fileselect2
 layout layout_image_quality

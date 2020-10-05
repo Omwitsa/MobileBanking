@@ -45,7 +45,7 @@ public class AdvanceActivity extends AppCompatActivity {
                 final String Advanceproduct = extras.getString("supplierNo");
                 String Accountno = extras.getString("Account");
 
-                    Intent intent = new Intent(getApplicationContext(), FingeprintActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), VerifyActivity.class);
                     intent.putExtra("operation", "advance");
                     intent.putExtra("amount", "");
                     intent.putExtra("fingurePrint", "");

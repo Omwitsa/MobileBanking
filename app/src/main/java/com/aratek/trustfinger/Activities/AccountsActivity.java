@@ -49,7 +49,10 @@ public class AccountsActivity extends Activity implements AdapterView.OnItemSele
         // Spinner click listener
         spinner.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
         List<String> val = new ArrayList<String>();
-        String id = "0735028";
+        //String id = "0735028";
+        Bundle extras = getIntent().getExtras();
+        assert extras != null;
+        final String id = extras.getString("loadsPosition");
         //sharedpreferences.getString("account_no", "65690200100416");
         TransactionModel transaction = new TransactionModel("", 0.0, "", "", id, "", "", "", "", "");
         Call<List<String>> call = apiService.getUserAccounts(transaction);

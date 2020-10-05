@@ -37,6 +37,7 @@ import com.aratek.trustfinger.fragment.DeviceInfoFragment;
 import com.aratek.trustfinger.fragment.EnrollFragment;
 import com.aratek.trustfinger.fragment.IdentifyFragment;
 import com.aratek.trustfinger.fragment.VerifyFragment;
+import com.aratek.trustfinger.fragment.TransactionFragment;
 import com.aratek.trustfinger.interfaces.LedCallback;
 import com.aratek.trustfinger.sdk.DeviceListener;
 import com.aratek.trustfinger.sdk.DeviceModel;
@@ -57,7 +58,7 @@ import java.util.List;
 import cn.com.syvanstone.PosManager;
 
 public class VerifyActivity extends FragmentActivity implements DeviceOpenListener, LedCallback {
-    private static final String TAG = "VerifyActivity";
+    private static final String TAG = "MainActivity";
     private static final String ACTION_USB_PERMISSION = "com.aratek.trustfinger.USB_PERMISSION";
     private Spinner mSpinner_deviceType;
     private Spinner mSpinner_usbDevice;
@@ -79,7 +80,8 @@ public class VerifyActivity extends FragmentActivity implements DeviceOpenListen
     private CaptureFragment mCaptureFragment;
     private EnrollFragment mEnrollFragment;
     private VerifyFragment mVerifyFragment;
-    private IdentifyFragment mIdentifyFragment;
+    //private IdentifyFragment mIdentifyFragment;
+    private TransactionFragment mTransactionFragment;
     private DeviceInfoFragment mDeviceInfoFragment;
     private String[] titles;
     private Handler handler = new Handler();
@@ -87,12 +89,11 @@ public class VerifyActivity extends FragmentActivity implements DeviceOpenListen
     private boolean isDeviceOpened = false;
     private MyApplication mApp;
     PosManager mPosManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fingeprint);
-//        setContentView(R.layout.activity_verify);
-
         findViews();
         initTrustFinger();
         mApp = (MyApplication) getApplication();
@@ -214,8 +215,8 @@ public class VerifyActivity extends FragmentActivity implements DeviceOpenListen
             mEnrollFragment.setDatas(mTrustFingerDevice);
         if (mVerifyFragment != null)
             mVerifyFragment.setDatas(mTrustFingerDevice);
-        if (mIdentifyFragment != null)
-            mIdentifyFragment.setDatas(mTrustFingerDevice);
+        if (mTransactionFragment != null)
+            mTransactionFragment.setDatas(mTrustFingerDevice);
         if (mDeviceInfoFragment != null)
             mDeviceInfoFragment.setDatas(mTrustFingerDevice);
     }
@@ -418,8 +419,8 @@ public class VerifyActivity extends FragmentActivity implements DeviceOpenListen
                         mVerifyFragment.resetUI();
                     }
                     if (position == 3) {
-                        mIdentifyFragment.forceStop();
-                        mIdentifyFragment.resetUI();
+                        mTransactionFragment.forceStop();
+                        mTransactionFragment.resetUI();
                     }
                     try {
                         if (mTrustFingerDevice.getDeviceModel() == DeviceModel.A600) {
@@ -461,10 +462,15 @@ public class VerifyActivity extends FragmentActivity implements DeviceOpenListen
         mEnrollFragment.setLedCallback(this);
         mVerifyFragment = new VerifyFragment();
         mVerifyFragment.setLedCallback(this);
-        mIdentifyFragment = new IdentifyFragment();
-        mIdentifyFragment.setLedCallback(this);
+        mTransactionFragment = new TransactionFragment();
+        mTransactionFragment.setLedCallback(this);
         mDeviceInfoFragment = new DeviceInfoFragment();
-        fragmnts.add(mIdentifyFragment);
+//        fragmnts.add(mCaptureFragment);
+//        fragmnts.add(mEnrollFragment);
+//        fragmnts.add(mVerifyFragment);
+        fragmnts.add(mTransactionFragment);
+  //      fragmnts.add(mIdentifyFragment);
+//        fragmnts.add(mDeviceInfoFragment);
         titles = getResources().getStringArray(R.array.tabs_name);
         mViewPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager(), fragmnts, titles));
         mViewPager.setOffscreenPageLimit(5);
@@ -518,8 +524,8 @@ public class VerifyActivity extends FragmentActivity implements DeviceOpenListen
                     mVerifyFragment.resetUI();
                 }
                 if (position != 3) {
-                    mIdentifyFragment.forceStop();
-                    mIdentifyFragment.resetUI();
+                    mTransactionFragment.forceStop();
+                    mTransactionFragment.resetUI();
                 }
                 if (position == 0) {
                     if (isDeviceOpened) {

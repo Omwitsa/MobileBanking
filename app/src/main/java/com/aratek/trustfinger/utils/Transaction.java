@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Bundle;
 import android.widget.Toast;
 
 import com.aratek.trustfinger.Model.Response;
@@ -41,9 +42,13 @@ public class Transaction<_transaction> {
         //db.execSQL("ALTER TABLE withdrawals  ADD transdate  varchar");
 
 
+
+
     }
 
+
     public void transact(TransactionModel _transaction) {
+
         //insertDataToSqlite();
         if (_transaction.getOperation().equals("deposit")){
             Call<Response> call = apiService.deposit(_transaction);

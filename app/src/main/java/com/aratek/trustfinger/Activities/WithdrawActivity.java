@@ -80,7 +80,7 @@ public class WithdrawActivity extends AppCompatActivity {
 
                    insertDataToSqlite(bal, Pinn, Account);
 
-                    Intent intent = new Intent(getApplicationContext(), FingeprintActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), VerifyActivity.class);
                     intent.putExtra("operation", "withdraw");
                     intent.putExtra("amount", bal);
                     intent.putExtra("fingurePrint", "");

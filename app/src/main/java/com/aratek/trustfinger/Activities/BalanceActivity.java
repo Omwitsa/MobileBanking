@@ -47,7 +47,7 @@ public class BalanceActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //String SupNo = sNo.getText().toString();
-                Intent intent = new Intent(getApplicationContext(), FingeprintActivity.class);
+                Intent intent = new Intent(getApplicationContext(), VerifyActivity.class);
                 intent.putExtra("operation", "balance");
                 intent.putExtra("amount", "0");
                 intent.putExtra("fingurePrint", "");
