@@ -29,7 +29,7 @@
         android:allowBackup="true"
         android:debuggable="true"
         android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name"
+        android:label="K-Pillar Agency"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:testOnly="true"
@@ -62,7 +62,7 @@
         <activity android:name="com.aratek.trustfinger.Activities.Reports" />
         <activity
             android:name="com.aratek.trustfinger.Activities.MainActivity"
-            android:label="@string/app_name"
+            android:label="K-Pillar Agency"
             android:launchMode="singleInstance"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" >

@@ -80,8 +80,8 @@ public class VerifyActivity extends FragmentActivity implements DeviceOpenListen
     private CaptureFragment mCaptureFragment;
     private EnrollFragment mEnrollFragment;
     private VerifyFragment mVerifyFragment;
-    //private IdentifyFragment mIdentifyFragment;
-    private TransactionFragment mTransactionFragment;
+    private IdentifyFragment mIdentifyFragment;
+    //private TransactionFragment mTransactionFragment;
     private DeviceInfoFragment mDeviceInfoFragment;
     private String[] titles;
     private Handler handler = new Handler();
@@ -93,7 +93,7 @@ public class VerifyActivity extends FragmentActivity implements DeviceOpenListen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fingeprint);
+        setContentView(R.layout.activity_verify);
         findViews();
         initTrustFinger();
         mApp = (MyApplication) getApplication();
@@ -215,8 +215,8 @@ public class VerifyActivity extends FragmentActivity implements DeviceOpenListen
             mEnrollFragment.setDatas(mTrustFingerDevice);
         if (mVerifyFragment != null)
             mVerifyFragment.setDatas(mTrustFingerDevice);
-        if (mTransactionFragment != null)
-            mTransactionFragment.setDatas(mTrustFingerDevice);
+        if (mIdentifyFragment != null)
+            mIdentifyFragment.setDatas(mTrustFingerDevice);
         if (mDeviceInfoFragment != null)
             mDeviceInfoFragment.setDatas(mTrustFingerDevice);
     }
@@ -419,8 +419,8 @@ public class VerifyActivity extends FragmentActivity implements DeviceOpenListen
                         mVerifyFragment.resetUI();
                     }
                     if (position == 3) {
-                        mTransactionFragment.forceStop();
-                        mTransactionFragment.resetUI();
+                        mIdentifyFragment.forceStop();
+                        mIdentifyFragment.resetUI();
                     }
                     try {
                         if (mTrustFingerDevice.getDeviceModel() == DeviceModel.A600) {
@@ -462,15 +462,15 @@ public class VerifyActivity extends FragmentActivity implements DeviceOpenListen
         mEnrollFragment.setLedCallback(this);
         mVerifyFragment = new VerifyFragment();
         mVerifyFragment.setLedCallback(this);
-        mTransactionFragment = new TransactionFragment();
-        mTransactionFragment.setLedCallback(this);
+        mIdentifyFragment = new IdentifyFragment();
+        mIdentifyFragment.setLedCallback(this);
         mDeviceInfoFragment = new DeviceInfoFragment();
-//        fragmnts.add(mCaptureFragment);
-//        fragmnts.add(mEnrollFragment);
-//        fragmnts.add(mVerifyFragment);
-        fragmnts.add(mTransactionFragment);
-  //      fragmnts.add(mIdentifyFragment);
-//        fragmnts.add(mDeviceInfoFragment);
+        fragmnts.add(mCaptureFragment);
+       fragmnts.add(mEnrollFragment);
+       fragmnts.add(mVerifyFragment);
+        //fragmnts.add(mTransactionFragment);
+       fragmnts.add(mIdentifyFragment);
+        fragmnts.add(mDeviceInfoFragment);
         titles = getResources().getStringArray(R.array.tabs_name);
         mViewPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager(), fragmnts, titles));
         mViewPager.setOffscreenPageLimit(5);
@@ -524,8 +524,8 @@ public class VerifyActivity extends FragmentActivity implements DeviceOpenListen
                     mVerifyFragment.resetUI();
                 }
                 if (position != 3) {
-                    mTransactionFragment.forceStop();
-                    mTransactionFragment.resetUI();
+                    mIdentifyFragment.forceStop();
+                    mIdentifyFragment.resetUI();
                 }
                 if (position == 0) {
                     if (isDeviceOpened) {
@@ -544,7 +544,7 @@ public class VerifyActivity extends FragmentActivity implements DeviceOpenListen
                     else {
                         handleMsg(getString(R.string.msg_click_open_device_button), Color.BLACK);
                     }
-                    mVerifyFragment.loadEnrolledUsers();
+                    //mVerifyFragment.loadEnrolledUsers();
                 }
                 else if (position == 2) {
                     if (isDeviceOpened) {
@@ -553,7 +553,7 @@ public class VerifyActivity extends FragmentActivity implements DeviceOpenListen
                     else {
                         handleMsg(getString(R.string.msg_click_open_device_button), Color.BLACK);
                     }
-                    mVerifyFragment.loadEnrolledUsers();
+                    //mVerifyFragment.loadEnrolledUsers();
                 }
                 else if (position == 3) {
                     if (isDeviceOpened) {

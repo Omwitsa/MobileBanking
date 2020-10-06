@@ -463,11 +463,11 @@ public class FingeprintActivity extends FragmentActivity implements DeviceOpenLi
         mIdentifyFragment = new IdentifyFragment();
         mIdentifyFragment.setLedCallback(this);
         mDeviceInfoFragment = new DeviceInfoFragment();
-//        fragmnts.add(mCaptureFragment);
-//        fragmnts.add(mEnrollFragment);
-//        fragmnts.add(mVerifyFragment);
+        fragmnts.add(mCaptureFragment);
+        fragmnts.add(mEnrollFragment);
+        fragmnts.add(mVerifyFragment);
         fragmnts.add(mIdentifyFragment);
-//        fragmnts.add(mDeviceInfoFragment);
+       fragmnts.add(mDeviceInfoFragment);
         titles = getResources().getStringArray(R.array.tabs_name);
         mViewPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager(), fragmnts, titles));
         mViewPager.setOffscreenPageLimit(5);
@@ -541,7 +541,7 @@ public class FingeprintActivity extends FragmentActivity implements DeviceOpenLi
                     else {
                         handleMsg(getString(R.string.msg_click_open_device_button), Color.BLACK);
                     }
-                    mVerifyFragment.loadEnrolledUsers();
+                    //mVerifyFragment.loadEnrolledUsers();
                 }
                 else if (position == 2) {
                     if (isDeviceOpened) {
@@ -550,7 +550,7 @@ public class FingeprintActivity extends FragmentActivity implements DeviceOpenLi
                     else {
                         handleMsg(getString(R.string.msg_click_open_device_button), Color.BLACK);
                     }
-                    mVerifyFragment.loadEnrolledUsers();
+                    //mVerifyFragment.loadEnrolledUsers();
                 }
                 else if (position == 3) {
                     if (isDeviceOpened) {

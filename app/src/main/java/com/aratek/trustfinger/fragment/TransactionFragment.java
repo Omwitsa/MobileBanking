@@ -76,7 +76,7 @@ import retrofit2.Callback;
 
 
 public class TransactionFragment extends BaseFragment {
-    private static final String TAG = "IdentifyFragment";
+    private static final String TAG = "TransactionFragment";
     private static final int MSG_RESET_UI = 0;
     private static final int MSG_UPDATE_IMAGE = 1;
     private static final int MSG_IDENTIFY_SUCCESS = 2;
@@ -138,7 +138,7 @@ public class TransactionFragment extends BaseFragment {
 
 
 
-            root = inflater.inflate(R.layout.fragment_identify, container, false);
+            root = inflater.inflate(R.layout.fragment_transaction, container, false);
             sv = (ScrollView) root.findViewById(R.id.sv_content);
             mImageView_fingerprint = (ImageView) root.findViewById(R.id.iv_fingerprint);
             mTextView_image_quality = (TextView) root.findViewById(R.id.tv_image_quality);
