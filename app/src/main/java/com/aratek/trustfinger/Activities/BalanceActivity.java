@@ -12,6 +12,7 @@ import android.widget.EditText;
 import com.aratek.trustfinger.R;
 import com.aratek.trustfinger.Rest.ApiClient;
 import com.aratek.trustfinger.Rest.ApiInterface;
+import com.aratek.trustfinger.utils.Transaction;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -47,7 +48,7 @@ public class BalanceActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //String SupNo = sNo.getText().toString();
-                Intent intent = new Intent(getApplicationContext(), VerifyActivity.class);
+                Intent intent = new Intent(getApplicationContext(), SubmitTransactionActivity.class);
                 intent.putExtra("operation", "balance");
                 intent.putExtra("amount", "0");
                 intent.putExtra("fingurePrint", "");

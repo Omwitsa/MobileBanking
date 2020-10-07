@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.aratek.trustfinger.R;
 import com.aratek.trustfinger.Rest.ApiClient;
 import com.aratek.trustfinger.Rest.ApiInterface;
+import com.aratek.trustfinger.utils.Transaction;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -53,6 +54,11 @@ public class DepositActivity extends AppCompatActivity {
 //        String sNo = extras.getString("supplierNo");
 //        String machineId = sharedpreferences.getString("machine_id", "");
 //        String auditId = sharedpreferences.getString("loggedInUser", "");
+
+
+
+
+
         Bundle extras = getIntent().getExtras();
         assert extras != null;
         final String Account = extras.getString("supplierNo");
@@ -74,7 +80,7 @@ public class DepositActivity extends AppCompatActivity {
                 }else{
                     insertDataToSqlite(bal, Pinn, Account);
 
-                    Intent intent = new Intent(getApplicationContext(), FingeprintActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), SubmitTransactionActivity.class);
                     intent.putExtra("operation", "deposit");
                     intent.putExtra("amount", bal);
                     intent.putExtra("fingurePrint", "");

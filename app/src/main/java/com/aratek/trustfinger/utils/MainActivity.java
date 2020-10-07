@@ -243,7 +243,9 @@
 //}
 package com.aratek.trustfinger.utils;
 
+import com.aratek.trustfinger.Activities.AuthenticationActivity;
 import com.aratek.trustfinger.Activities.HomeActivity;
+import com.aratek.trustfinger.Activities.SubmitTransactionActivity;
 import com.aratek.trustfinger.R;
 import com.vanstone.appsdk.client.ISdkStatue;
 import com.vanstone.trans.api.PrinterApi;
@@ -478,6 +480,8 @@ public class MainActivity extends Activity implements OnClickListener {
 
 
         PrintData();
+        Intent intent = new Intent(getApplicationContext(), AuthenticationActivity.class);
+        startActivity(intent);
     }
 
     public static int PrintData() {

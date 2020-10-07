@@ -1301,6 +1301,7 @@ layout activity_print
 layout activity_products
 layout activity_register
 layout activity_reports
+layout activity_submit_transaction
 layout activity_verify
 layout activity_withdraw
 layout chck

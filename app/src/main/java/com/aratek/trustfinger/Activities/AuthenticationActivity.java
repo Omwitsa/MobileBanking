@@ -23,7 +23,7 @@ public class AuthenticationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_authentication);
         ButterKnife.bind(this);
 
-        //btnSignup.setEnabled(false);
+        btnSignup.setEnabled(false);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
