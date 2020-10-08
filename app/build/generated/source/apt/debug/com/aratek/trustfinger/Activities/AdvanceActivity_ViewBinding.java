@@ -27,6 +27,7 @@ public class AdvanceActivity_ViewBinding implements Unbinder {
     target.amount = Utils.findRequiredViewAsType(source, R.id.amount, "field 'amount'", EditText.class);
     target.sNo = Utils.findRequiredViewAsType(source, R.id.sNo, "field 'sNo'", EditText.class);
     target.submit = Utils.findRequiredViewAsType(source, R.id.submit, "field 'submit'", Button.class);
+    target.Productname = Utils.findRequiredViewAsType(source, R.id.Product, "field 'Productname'", EditText.class);
     target.back = Utils.findRequiredViewAsType(source, R.id.back, "field 'back'", Button.class);
   }
 
@@ -40,6 +41,7 @@ public class AdvanceActivity_ViewBinding implements Unbinder {
     target.amount = null;
     target.sNo = null;
     target.submit = null;
+    target.Productname = null;
     target.back = null;
   }
 }

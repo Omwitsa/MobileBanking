@@ -929,6 +929,7 @@ id CTRL
 id FUNCTION
 id META
 id Print
+id Product
 id SHIFT
 id SYM
 id Transsdate

@@ -24,6 +24,7 @@ public class AdvanceActivity extends AppCompatActivity {
     @BindView(R.id.amount) EditText amount;
     @BindView(R.id.sNo) EditText sNo;
     @BindView(R.id.submit) Button submit;
+    @BindView(R.id.Product) EditText Productname;
     @BindView(R.id.back) Button back;
 
     @Override
@@ -38,24 +39,34 @@ public class AdvanceActivity extends AppCompatActivity {
 
         //getting device model and serial number
         String Machineid = android.os.Build.MODEL+""+ Build.SERIAL;
+        Bundle extras = getIntent().getExtras();
+        final String Accountno = extras.getString("supplierNo");
+        final String Advanceproduct = extras.getString("Account");
+        sNo.setText(Accountno);
+        Productname.setText(Advanceproduct);
+
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Bundle extras = getIntent().getExtras();
-                final String Advanceproduct = extras.getString("supplierNo");
-                String Accountno = extras.getString("Account");
+
+                String advamount = amount.getText().toString();
+                if (advamount.isEmpty()) {
+                    //Snackbar.make(getView(), "Field(s) are empty !", Snackbar.LENGTH_LONG).show();
+                    Toast.makeText(AdvanceActivity.this, "Enter Amount to applly ", Toast.LENGTH_LONG).show();
+                } else {
 
                     Intent intent = new Intent(getApplicationContext(), SubmitTransactionActivity.class);
                     intent.putExtra("operation", "advance");
-                    intent.putExtra("amount", "");
+                    intent.putExtra("amount", advamount);
                     intent.putExtra("fingurePrint", "");
-                    intent.putExtra("supplierNo", "");
+                    intent.putExtra("supplierNo", Accountno);
                     intent.putExtra("pin", "");
                     intent.putExtra("accountNo", Accountno);
                     intent.putExtra("productDescription", Advanceproduct);
 
                     startActivity(intent);
 
+                }
             }
         });
 

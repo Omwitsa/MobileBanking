@@ -35,6 +35,32 @@ tools:context="com.aratek.trustfinger.Activities.AdvanceActivity">
     android:padding="20dp"
     android:layout_marginRight="20dp"
     android:background="@color/cardColor">
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:padding="15dp"
+        android:background="@drawable/editshape"
+        android:id="@+id/sNo"
+        android:drawablePadding="10dp"
+        android:hint="Account  Number"
+        android:textColor="@color/textcardColor"
+        android:textColorHint="@color/textcardColor"
+        android:textColorHighlight="@color/textcardColor"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:padding="15dp"
+        android:background="@drawable/editshape"
+        android:id="@+id/Product"
+        android:drawablePadding="10dp"
+        android:hint="Product Name"
+        android:editable="false"
+        android:textColor="@color/textcardColor"
+        android:textColorHint="@color/textcardColor"
+        android:textColorHighlight="@color/textcardColor"
+        tools:ignore="Deprecated" />
 
     <EditText
         android:layout_width="match_parent"
@@ -49,32 +75,9 @@ tools:context="com.aratek.trustfinger.Activities.AdvanceActivity">
         android:textColorHint="@color/textcardColor"
         android:textColorHighlight="@color/textcardColor"/>
 
-    <!--        <EditText-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:layout_margin="10dp"-->
-    <!--            android:padding="15dp"-->
-    <!--            android:inputType="textPassword"-->
-    <!--            android:background="@drawable/editshape"-->
-    <!--            android:drawablePadding="10dp"-->
-    <!--            android:id="@+id/pin"-->
-    <!--            android:hint="Pin"-->
-    <!--            android:textColor="@color/textcardColor"-->
-    <!--            android:textColorHint="@color/textcardColor"-->
-    <!--            android:textColorHighlight="@color/textcardColor"/>-->
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:padding="15dp"
-        android:background="@drawable/editshape"
-        android:id="@+id/sNo"
-        android:drawablePadding="10dp"
-        android:hint="Account  Number"
-        android:textColor="@color/textcardColor"
-        android:textColorHint="@color/textcardColor"
-        android:textColorHighlight="@color/textcardColor"/>
+
+
 </LinearLayout>
 
 <LinearLayout
