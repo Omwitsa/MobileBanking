@@ -91,8 +91,8 @@ public class ProductsActivity extends Activity implements AdapterView.OnItemSele
             public void onClick(View view) {
                 String Acc = spinner.getSelectedItem().toString();
                 Intent intent = new Intent(getApplicationContext(), AdvanceActivity.class);
-                intent.putExtra("supplierNo", Acc);
-                intent.putExtra("Account", Account);
+                intent.putExtra("supplierNo",Account );
+                intent.putExtra("Account", Acc);
                 startActivity(intent);
 
             }

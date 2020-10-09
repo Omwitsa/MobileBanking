@@ -64,8 +64,7 @@ public class DepositActivity extends AppCompatActivity {
         final String Account = extras.getString("supplierNo");
         sNo.setText(Account);
 
-        submit.setOnClickListener(new View.OnClickListener() {
-            @Override
+        submit.setOnClickListener(new View.OnClickListener() {@Override
             public void onClick(View view) {
                 String bal = amount.getText().toString();
                  //String SupNo = sNo.getText().toString();
@@ -90,8 +89,8 @@ public class DepositActivity extends AppCompatActivity {
                     intent.putExtra("productDescription", "");
                     startActivity(intent);
                 }
-            }
-        });
+           }
+       });
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -46,7 +46,10 @@ tools:context="com.aratek.trustfinger.Activities.AdvanceActivity">
         android:hint="Account  Number"
         android:textColor="@color/textcardColor"
         android:textColorHint="@color/textcardColor"
-        android:textColorHighlight="@color/textcardColor"/>
+        android:editable="false"
+        android:textColorHighlight="@color/textcardColor"
+        tools:ignore="Deprecated"/>
+
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

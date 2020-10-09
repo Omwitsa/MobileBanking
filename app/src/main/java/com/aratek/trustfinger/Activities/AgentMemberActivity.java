@@ -110,7 +110,6 @@ public class AgentMemberActivity extends AppCompatActivity {
                 String DOB =(dbb.getText().toString().trim());
                 String Gender = gender.getSelectedItem().toString();
                 String Agentid = sharedpreferences.getString("loggedInUser", "");
-
                 AgentMember member = new AgentMember(Surname, other_Names, idno, mobile_number, Gender, DOB, null, null, Agentid);
                 register(member);
             }
@@ -145,6 +144,9 @@ public class AgentMemberActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Sorry, An error occurred", Toast.LENGTH_LONG).show();
             }
         });
+        Intent intent = new Intent(getApplicationContext(), AuthenticationActivity.class);
+        startActivity(intent);
 
 }
+
 }

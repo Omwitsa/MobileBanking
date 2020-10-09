@@ -5,11 +5,11 @@ import com.google.gson.annotations.SerializedName;
 public class AgentMember {
     @SerializedName("surname")
     private String surname;
-    @SerializedName("otherName")
+    @SerializedName("other_names")
     private String otherName;
     @SerializedName("idNo")
     private String idNo;
-    @SerializedName("mobileNo")
+    @SerializedName("mobile_number")
     private String mobileNo;
     @SerializedName("gender")
     private String gender;

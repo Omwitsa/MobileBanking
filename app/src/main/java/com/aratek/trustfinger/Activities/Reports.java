@@ -11,6 +11,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -176,6 +177,9 @@ public class Reports extends Activity implements OnClickListener {
         // when printing images, the max size of images is 384 * 600
         PrinterApi.printSetAlign_Api(1);
         PrintData();
+
+        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+        startActivity(intent);
     }
     public static int PrintData() {
         int ret;

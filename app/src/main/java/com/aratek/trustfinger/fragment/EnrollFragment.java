@@ -586,6 +586,13 @@ public class EnrollFragment extends BaseFragment implements View.OnClickListener
                     fingerData.getFingerPositions().add(position);
                     user.setFingerData(fingerData);
                     if (mDBHelper.insertUser(user)) {
+
+
+
+
+
+
+
                         loadEnrolledUsers();
                     }
                     else {

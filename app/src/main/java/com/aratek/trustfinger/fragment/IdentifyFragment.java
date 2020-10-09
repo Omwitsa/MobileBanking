@@ -42,6 +42,7 @@ import android.widget.Toast;
 
 import com.aratek.trustfinger.Activities.AccountsActivity;
 import com.aratek.trustfinger.Activities.BalanceActivity;
+import com.aratek.trustfinger.Activities.DepositActivity;
 import com.aratek.trustfinger.Activities.HomeActivity;
 import com.aratek.trustfinger.Activities.Reports;
 import com.aratek.trustfinger.Model.FingurePrintModel;
@@ -357,6 +358,17 @@ public class IdentifyFragment extends BaseFragment {
 
     private void loadIdentifyUsers(List<User> users) {
         mHandler.sendMessage(mHandler.obtainMessage(MSG_UPDATE_USER_LIST, users));
+        //int idno =users.indexOf(getId());
+//        //int idno=mUserList.indexOf(getId());
+
+
+//        String idno= String.valueOf(users.indexOf(getId()));
+//        Intent intent = new Intent(getActivity(), DepositActivity.class);
+//        intent.putExtra("loadsPosition",idno);
+//        startActivity(intent);
+
+
+
     }
 
     @Override
@@ -526,13 +538,15 @@ public class IdentifyFragment extends BaseFragment {
                 startTime = System.currentTimeMillis();
                 for (User user : userList) {
                     fingerData = user.getFingerData();
-                    String idno= user.getId();
+//                    String idno= user.getId();
+//                    Intent intent = new Intent(getActivity(), AccountsActivity.class);
+//                    intent.putExtra("loadsPosition",idno);
+//                    startActivity(intent);
+                    //String idno= user.getId();
                     //Intent intent = new Intent(context.getApplicationContext(), Transaction.class);
                     //intent.putExtra("id_number", idno);
                     //startActivity(intent);
-                    Intent intent = new Intent(getActivity(), AccountsActivity.class);
-                    intent.putExtra("loadsPosition",idno);
-                    startActivity(intent);
+
 
 
 //                    String datafinger=user.getFingerData().toString();
@@ -673,6 +687,13 @@ public class IdentifyFragment extends BaseFragment {
                 Collections.sort(mUserList);
                 for (int i = 0; i < mUserList.size(); i++) {
                     mUserList.get(i).setRank(i + 1);
+                    String idnumber= String.valueOf(mUserList.get(i).getId());
+                    Intent intent = new Intent(getActivity(), AccountsActivity.class);
+                    intent.putExtra("loadsPosition",idnumber);
+                    startActivity(intent);
+
+
+
                 }
                 mHandler.sendMessage(mHandler.obtainMessage(MSG_IDENTIFY_SUCCESS, userList.size(), (int) (endTime - startTime), mUserList.size()));
                 loadIdentifyUsers(mUserList);
@@ -698,6 +719,7 @@ public class IdentifyFragment extends BaseFragment {
             isIdentifing = false;
             mIsDone = true;
             //transaction.transact(transactionModel);
+
 
             return null;
         }
