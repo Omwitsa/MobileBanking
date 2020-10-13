@@ -3,6 +3,7 @@ package com.aratek.trustfinger.Activities;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -26,6 +27,9 @@ public class AdvanceActivity extends AppCompatActivity {
     @BindView(R.id.submit) Button submit;
     @BindView(R.id.Product) EditText Productname;
     @BindView(R.id.back) Button back;
+    public static final String MyPREFERENCES = "POSDETAILS" ;
+    SharedPreferences sharedpreferences;
+    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,14 +38,12 @@ public class AdvanceActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         apiService = ApiClient.getClient().create(ApiInterface.class);
         progressDoalog = new ProgressDialog(AdvanceActivity.this);
-
-
-
+        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        editor = sharedpreferences.edit();
         //getting device model and serial number
         String Machineid = android.os.Build.MODEL+""+ Build.SERIAL;
-        Bundle extras = getIntent().getExtras();
-        final String Accountno = extras.getString("supplierNo");
-        final String Advanceproduct = extras.getString("Account");
+        final String Accountno = sharedpreferences.getString("supplierNo", "");
+        final String Advanceproduct = sharedpreferences.getString("Account","");
         sNo.setText(Accountno);
         Productname.setText(Advanceproduct);
 
@@ -56,14 +58,14 @@ public class AdvanceActivity extends AppCompatActivity {
                 } else {
 
                     Intent intent = new Intent(getApplicationContext(), SubmitTransactionActivity.class);
-                    intent.putExtra("operation", "advance");
-                    intent.putExtra("amount", advamount);
-                    intent.putExtra("fingurePrint", "");
-                    intent.putExtra("supplierNo", Accountno);
-                    intent.putExtra("pin", "");
-                    intent.putExtra("accountNo", Accountno);
-                    intent.putExtra("productDescription", Advanceproduct);
-
+                    editor.putString("operation", "advance");
+                    editor.putString("amount", advamount);
+                    editor.putString("fingurePrint", "");
+                    editor.putString("supplierNo", Accountno);
+                    editor.putString("pin", "");
+                    editor.putString("accountNo", Accountno);
+                    editor.putString("productDescription", Advanceproduct);
+                    editor.commit();
                     startActivity(intent);
 
                 }

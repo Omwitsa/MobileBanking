@@ -3,6 +3,7 @@ package com.aratek.trustfinger.Activities;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -23,6 +24,9 @@ public class BalanceActivity extends AppCompatActivity {
     @BindView(R.id.sNo) EditText sNo;
     @BindView(R.id.submit) Button submit;
     @BindView(R.id.back) Button back;
+    public static final String MyPREFERENCES = "POSDETAILS" ;
+    SharedPreferences sharedpreferences;
+    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,17 +35,11 @@ public class BalanceActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         apiService = ApiClient.getClient().create(ApiInterface.class);
         progressDoalog = new ProgressDialog(BalanceActivity.this);
-//        sharedpreferences = getActivity().getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-//        Bundle extras = getActivity().getIntent().getExtras();
-//        String operation = extras.getString("operation");
-//        Double amount = Double.parseDouble(extras.getString("amount"));
-//        String status = "0";
-//        String sNo = extras.getString("supplierNo");
-//        String machineId = sharedpreferences.getString("machine_id", "");
-//        String auditId = sharedpreferences.getString("loggedInUser", "");
-        Bundle extras = getIntent().getExtras();
-        assert extras != null;
-        final String Account = extras.getString("supplierNo");
+
+        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        editor = sharedpreferences.edit();
+
+        final String Account = sharedpreferences.getString("supplierNo", "");
         sNo.setText(Account);
 
         submit.setOnClickListener(new View.OnClickListener() {
@@ -49,13 +47,14 @@ public class BalanceActivity extends AppCompatActivity {
             public void onClick(View view) {
                 //String SupNo = sNo.getText().toString();
                 Intent intent = new Intent(getApplicationContext(), SubmitTransactionActivity.class);
-                intent.putExtra("operation", "balance");
-                intent.putExtra("amount", "0");
-                intent.putExtra("fingurePrint", "");
-                intent.putExtra("supplierNo", Account);
-                intent.putExtra("pin", "");
-                intent.putExtra("accountNo", "");
-                intent.putExtra("productDescription", "");
+                editor.putString("operation", "balance");
+                editor.putString("amount", "0");
+                editor.putString("fingurePrint", "");
+                editor.putString("supplierNo", Account);
+                editor.putString("pin", "");
+                editor.putString("accountNo", "");
+                editor.putString("productDescription", "");
+                editor.commit();
 
                 startActivity(intent);
             }

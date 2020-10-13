@@ -3,6 +3,7 @@ package com.aratek.trustfinger.Activities;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
@@ -34,6 +35,9 @@ public class WithdrawActivity extends AppCompatActivity {
     @BindView(R.id.back) Button back;
     static SQLiteDatabase db;
     private Context context;
+    public static final String MyPREFERENCES = "POSDETAILS" ;
+    SharedPreferences sharedpreferences;
+    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,21 +48,10 @@ public class WithdrawActivity extends AppCompatActivity {
         progressDoalog = new ProgressDialog(WithdrawActivity.this);
         db = openOrCreateDatabase("MobileDB", Context.MODE_PRIVATE, null);
         db.execSQL("CREATE TABLE IF NOT EXISTS withdrawals(Amount VARCHAR,Pin VARCHAR,Supp VARCHAR,datepp DATETIME, status VARCHAR,transdate  VARCHAR);");
-//        sharedpreferences = getActivity().getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-//        Bundle extras = getActivity().getIntent().getExtras();
-//        String operation = extras.getString("operation");
-//        Double amount = Double.parseDouble(extras.getString("amount"));
-//        String status = "0";
-//        String sNo = extras.getString("supplierNo");
-//        String machineId = sharedpreferences.getString("machine_id", "");
-//        String auditId = sharedpreferences.getString("loggedInUser", "");
+        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        editor = sharedpreferences.edit();
 
-
-
-        //getting device model and serial number
-        Bundle extras = getIntent().getExtras();
-        assert extras != null;
-        final String Account = extras.getString("supplierNo");
+        final String Account = sharedpreferences.getString("supplierNo", "");
         sNo.setText(Account);
         String Machineid = android.os.Build.MANUFACTURER + " " + android.os.Build.MODEL+""+ Build.SERIAL;
         submit.setOnClickListener(new View.OnClickListener() {
@@ -81,13 +74,15 @@ public class WithdrawActivity extends AppCompatActivity {
                    insertDataToSqlite(bal, Pinn, Account);
 
                     Intent intent = new Intent(getApplicationContext(), SubmitTransactionActivity.class);
-                    intent.putExtra("operation", "withdraw");
-                    intent.putExtra("amount", bal);
-                    intent.putExtra("fingurePrint", "");
-                    intent.putExtra("supplierNo", Account);
-                    intent.putExtra("pin", Pinn);
-                    intent.putExtra("accountNo", "");
-                    intent.putExtra("productDescription", "");
+                    editor.putString("operation", "withdraw");
+                    editor.putString("amount", bal);
+                    editor.putString("fingurePrint", "");
+                    editor.putString("supplierNo", Account);
+                    editor.putString("pin", Pinn);
+                    editor.putString("accountNo", "");
+                    editor.putString("productDescription", "");
+                    editor.commit();
+
                     startActivity(intent);
                 }
             }

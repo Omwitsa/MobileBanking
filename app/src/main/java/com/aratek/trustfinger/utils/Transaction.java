@@ -28,6 +28,8 @@ public class Transaction<_transaction> {
     ProgressDialog progressDoalog;
     public static final String MyPREFERENCES = "POSDETAILS" ;
     SharedPreferences sharedpreferences;
+    SharedPreferences.Editor editor;
+
 
     public Transaction(Context mContext, TransactionModel transaction) {
         context = mContext;
@@ -35,19 +37,14 @@ public class Transaction<_transaction> {
         sharedpreferences = mContext.getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         apiService = ApiClient.getClient().create(ApiInterface.class);
         progressDoalog = new ProgressDialog(context);
-//        db = context.openOrCreateDatabase("MobileDB", Context.MODE_PRIVATE, null);
-//        db.execSQL("CREATE TABLE IF NOT EXISTS withdrawals(Amount VARCHAR,Pin VARCHAR,Supp VARCHAR,datepp DATETIME, status VARCHAR,transdate  VARCHAR);");
-//        db.execSQL("CREATE TABLE IF NOT EXISTS deposits(Amount VARCHAR,Pin VARCHAR,Supp VARCHAR,datepp DATETIME, status VARCHAR,transdate  VARCHAR);");
-//        db.execSQL("CREATE TABLE IF NOT EXISTS advance(Amount VARCHAR,Pin VARCHAR,Supp VARCHAR,datepp DATETIME, status VARCHAR,transdate  VARCHAR);");
-        //db.execSQL("ALTER TABLE withdrawals  ADD transdate  varchar");
-
-
-
+        editor = sharedpreferences.edit();
 
     }
 
 
+
     public void transact(TransactionModel _transaction) {
+        editor = sharedpreferences.edit();
 
         //insertDataToSqlite();
         if (_transaction.getOperation().equals("deposit")){
@@ -130,44 +127,18 @@ public class Transaction<_transaction> {
 
 
     private void Print(String amount) {
+
         amount = amount.isEmpty() ? _transaction.getAmount().toString() : amount;
         Double damount=Double.parseDouble(amount);
         amount= String.format("%.2f", damount);
         Intent intent = new Intent(context, MainActivity.class);
-        intent.putExtra("transaction", _transaction.getOperation());
-        intent.putExtra("amount", amount);
-        intent.putExtra("fingurePrint", "");
-        intent.putExtra("supplierNo", _transaction.getsNo());
-        intent.putExtra("pin", _transaction.getPin());
+        editor.putString("transaction", _transaction.getOperation());
+        editor.putString("amount", amount);
+        editor.putString("fingurePrint", "");
+        editor.putString("supplierNo", _transaction.getsNo());
+        editor.putString("pin", _transaction.getPin());
+        editor.commit();
         context.startActivity(intent);
     }
 
-//    public void insertDataToSqlite()  {
-//        String bal = String.format("%.2f", _transaction.getAmount());
-//        String pinn = _transaction.getPin();
-//        String supNo = _transaction.getsNo();
-//        Calendar cc = Calendar.getInstance();
-//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-//        String date_pp = sdf.format(cc.getTime());
-//        SimpleDateFormat ff = new SimpleDateFormat("yyyy-MM-dd");
-//        String trans= ff.format(cc.getTime());
-//
-//        if (_transaction.getOperation().equals("deposit")){
-//            db.execSQL("INSERT INTO deposits VALUES('" + bal + "','"  + pinn+ "','" + supNo + "','" + date_pp + "','0','" + trans + "');");
-//            Toast.makeText(context, "Deposit saved successfully", Toast.LENGTH_LONG).show();
-//        }
-//        else if (_transaction.getOperation().equals("withdraw")){
-//            db.execSQL("INSERT INTO withdrawals VALUES('" + bal + "','"  + pinn+ "','" + supNo + "','" + date_pp + "','0','" + trans + "');");
-//            Toast.makeText(context, "Withdrawal saved successfully", Toast.LENGTH_LONG).show();
-//        }
-//        else if (_transaction.getOperation().equals("advance")){
-//            db.execSQL("INSERT INTO advance VALUES('" + bal + "','"  + pinn+ "','" + supNo + "','" + date_pp + "','0','" + trans + "');");
-//            Toast.makeText(context, "Advance saved successfully", Toast.LENGTH_LONG).show();
-//        }
-//        else {
-//
-//        }
-//
-//
-//    }
 }

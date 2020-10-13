@@ -33,6 +33,7 @@ public class ProductsActivity extends Activity implements AdapterView.OnItemSele
     ProgressDialog progressDoalog;
     public static final String MyPREFERENCES = "POSDETAILS" ;
     SharedPreferences sharedpreferences;
+    SharedPreferences.Editor editor;
     @BindView(R.id.sNo) EditText sNo;
     @BindView(R.id.apply_advance) Button submit;
 
@@ -43,12 +44,11 @@ public class ProductsActivity extends Activity implements AdapterView.OnItemSele
         ButterKnife.bind(this);
 
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        editor = sharedpreferences.edit();
         apiService = ApiClient.getClient().create(ApiInterface.class);
         progressDoalog = new ProgressDialog(getApplicationContext());
 
-        Bundle extras = getIntent().getExtras();
-        assert extras != null;
-        final String Account = extras.getString("supplierNo");
+        final String Account = sharedpreferences.getString("supplierNo", "");
         sNo.setText(Account);
 
 
@@ -58,9 +58,6 @@ public class ProductsActivity extends Activity implements AdapterView.OnItemSele
         // Spinner click listener
         spinner.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
         List<String> val = new ArrayList<String>();
-        //String FingerePrint = "eebdc18";
-        //String id = "65690200100416";
-        //sharedpreferences.getString("account_no", "65690607002292");
         TransactionModel transaction = new TransactionModel("", 0.0, "", "", "", "", "", "","",Account);
         Call<List<ProductModel>> call = apiService.getAdvanceProcucts(transaction);
 
@@ -91,8 +88,10 @@ public class ProductsActivity extends Activity implements AdapterView.OnItemSele
             public void onClick(View view) {
                 String Acc = spinner.getSelectedItem().toString();
                 Intent intent = new Intent(getApplicationContext(), AdvanceActivity.class);
-                intent.putExtra("supplierNo",Account );
-                intent.putExtra("Account", Acc);
+                editor.putString("supplierNo",Account );
+                editor.putString("Account", Acc);
+                editor.commit();
+
                 startActivity(intent);
 
             }

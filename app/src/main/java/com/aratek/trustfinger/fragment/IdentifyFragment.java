@@ -112,6 +112,7 @@ public class IdentifyFragment extends BaseFragment {
     private Context context;
     public static final String MyPREFERENCES = "POSDETAILS" ;
     SharedPreferences sharedpreferences;
+    SharedPreferences.Editor editor;
     public void setLedCallback(LedCallback callback){
         this.callback = callback;
     }
@@ -124,20 +125,8 @@ public class IdentifyFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         if (root == null) {
-//            sharedpreferences = getActivity().getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-//            Bundle extras = getActivity().getIntent().getExtras();
-//            String operation = extras.getString("operation");
-//            Double amount = Double.parseDouble(extras.getString("amount"));
-//            String status = "0";
-//            String sNo = extras.getString("supplierNo");
-//            String accountNo = extras.getString("accountNo");
-//            String productDescription = extras.getString("productDescription");
-//            String machineId = sharedpreferences.getString("machine_id", "");
-//            String auditId = sharedpreferences.getString("loggedInUser", "");
-//            transactionModel = new TransactionModel(operation, amount, "", "", sNo, status, machineId, auditId, productDescription, accountNo);
-//            transaction = new Transaction(getActivity(), transactionModel);
-//
-
+            sharedpreferences = getActivity().getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+            editor = sharedpreferences.edit();
 
             root = inflater.inflate(R.layout.fragment_identify, container, false);
             sv = (ScrollView) root.findViewById(R.id.sv_content);
@@ -538,36 +527,7 @@ public class IdentifyFragment extends BaseFragment {
                 startTime = System.currentTimeMillis();
                 for (User user : userList) {
                     fingerData = user.getFingerData();
-//                    String idno= user.getId();
-//                    Intent intent = new Intent(getActivity(), AccountsActivity.class);
-//                    intent.putExtra("loadsPosition",idno);
-//                    startActivity(intent);
-                    //String idno= user.getId();
-                    //Intent intent = new Intent(context.getApplicationContext(), Transaction.class);
-                    //intent.putExtra("id_number", idno);
-                    //startActivity(intent);
 
-
-
-//                    String datafinger=user.getFingerData().toString();
-//                    Toast.makeText(context, user.getFingerData().toString(), Toast.LENGTH_LONG).show();
-
-//                    FingurePrintModel fingurePrint = new FingurePrintModel(user.getFingerData().toString(), user.getId());
-                    //ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-//                    ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-//                    FingurePrintModel fingurePrint = new FingurePrintModel(user.getFingerData().toString(),idno);
-//                    Call<Response> call = apiService.registerFingerPrints(fingurePrint);
-//                    call.enqueue(new Callback<Response>() {
-//                        @Override
-//                        public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
-//
-//                        }
-//
-//                        @Override
-//                        public void onFailure(Call<Response> call, Throwable t) {
-//
-//                        }
-//                    });
                     if (fingerData == null) {
                         handleMsg("identify fail， no enrolled templates!", Color.RED);
                         getActivity().runOnUiThread(new Runnable() {
@@ -689,7 +649,9 @@ public class IdentifyFragment extends BaseFragment {
                     mUserList.get(i).setRank(i + 1);
                     String idnumber= String.valueOf(mUserList.get(i).getId());
                     Intent intent = new Intent(getActivity(), AccountsActivity.class);
-                    intent.putExtra("loadsPosition",idnumber);
+                    editor.putString("loadsPosition", idnumber);
+                    editor.commit();
+                    //intent.putExtra("loadsPosition",idnumber);
                     startActivity(intent);
 
 

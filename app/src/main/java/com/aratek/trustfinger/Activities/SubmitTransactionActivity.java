@@ -15,6 +15,8 @@ public class SubmitTransactionActivity extends AppCompatActivity {
     private Context context;
     public static final String MyPREFERENCES = "POSDETAILS" ;
     SharedPreferences sharedpreferences;
+    SharedPreferences.Editor editor;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,13 +24,14 @@ public class SubmitTransactionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_submit_transaction);
 
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-            Bundle extras = getIntent().getExtras();
-            String operation = extras.getString("operation");
-            Double amount = Double.parseDouble(extras.getString("amount"));
+        editor = sharedpreferences.edit();
+
+            String operation = sharedpreferences.getString("operation","");
+            Double amount = Double.parseDouble(sharedpreferences.getString("amount",""));
             String status = "0";
-            String sNo = extras.getString("supplierNo");
-            String accountNo = extras.getString("accountNo");
-            String productDescription = extras.getString("productDescription");
+            String sNo = sharedpreferences.getString("supplierNo","");
+            String accountNo = sharedpreferences.getString("accountNo","");
+            String productDescription = sharedpreferences.getString("productDescription","");
             String machineId = sharedpreferences.getString("machine_id", "");
             String auditId = sharedpreferences.getString("loggedInUser", "");
             transactionModel = new TransactionModel(operation, amount, "", "", sNo, status, machineId, auditId, productDescription, accountNo);
