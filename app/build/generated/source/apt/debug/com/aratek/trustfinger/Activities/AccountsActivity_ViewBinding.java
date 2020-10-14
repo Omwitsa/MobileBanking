@@ -23,6 +23,7 @@ public class AccountsActivity_ViewBinding implements Unbinder {
   public AccountsActivity_ViewBinding(AccountsActivity target, View source) {
     this.target = target;
 
+    target.back = Utils.findRequiredViewAsType(source, R.id.back, "field 'back'", Button.class);
     target.submit = Utils.findRequiredViewAsType(source, R.id.get_account, "field 'submit'", Button.class);
   }
 
@@ -33,6 +34,7 @@ public class AccountsActivity_ViewBinding implements Unbinder {
     if (target == null) throw new IllegalStateException("Bindings already cleared.");
     this.target = null;
 
+    target.back = null;
     target.submit = null;
   }
 }

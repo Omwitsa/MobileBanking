@@ -17,6 +17,7 @@ import com.aratek.trustfinger.Model.TransactionModel;
 import com.aratek.trustfinger.R;
 import com.aratek.trustfinger.Rest.ApiClient;
 import com.aratek.trustfinger.Rest.ApiInterface;
+import com.aratek.trustfinger.fragment.IdentifyFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,11 +34,7 @@ public class AccountsActivity extends Activity implements AdapterView.OnItemSele
     public static final String MyPREFERENCES = "POSDETAILS" ;
     SharedPreferences sharedpreferences;
     SharedPreferences.Editor editor;
-
-
-
-
-
+    @BindView(R.id.back) Button back;
     @BindView(R.id.get_account) Button submit;
 
     @Override
@@ -81,16 +78,7 @@ public class AccountsActivity extends Activity implements AdapterView.OnItemSele
                 dataAdapter = new ArrayAdapter<String>(AccountsActivity.this, android.R.layout.simple_spinner_item, accounts);
                 spinner.setAdapter(dataAdapter);
 
-//                String[] accname = new String[accounts.size()];
-//                for (int i = 0; i < accounts.size(); i++) {
-//                    accname[i] = accounts.get(i);
-////                List<String> productDescriptions = new ArrayList<String>();
-////                products.forEach(p -> productDescriptions.add(p.getDescription()));
-//                    ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(AccountsActivity.this, android.R.layout.simple_spinner_item, accname);
-//                    dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//                    dataAdapter = new ArrayAdapter<String>(AccountsActivity.this, android.R.layout.simple_spinner_item, accname);
-//                    spinner.setAdapter(dataAdapter);
-//                }
+
             }
 
             @Override
@@ -108,6 +96,13 @@ public class AccountsActivity extends Activity implements AdapterView.OnItemSele
                 //intent.putExtra("supplierNo", Acc);
                 startActivity(intent);
 
+            }
+        });
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), FingeprintActivity.class);
+                startActivity(intent);
             }
         });
     }

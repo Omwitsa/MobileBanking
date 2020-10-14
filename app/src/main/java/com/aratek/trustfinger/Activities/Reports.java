@@ -30,6 +30,10 @@ import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Random;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class Reports extends Activity implements OnClickListener {
     public static final String TAG = "Reports";
         private Button mPrintReceiptBtn;
@@ -39,6 +43,7 @@ public class Reports extends Activity implements OnClickListener {
     private byte[] data;
     public static EditText Transsdate;
     SQLiteDatabase db;
+    @BindView(R.id.back) Button back;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +52,7 @@ public class Reports extends Activity implements OnClickListener {
         db=openOrCreateDatabase("MobileDB", Context.MODE_PRIVATE, null);
         Transsdate = (EditText) findViewById(R.id.Transsdate);
         mPrintReceiptBtn.setOnClickListener(this);
+        ButterKnife.bind(this);
         new Thread() {
             public void run() {
                 String CurAppDir = getApplicationContext().getFilesDir().getAbsolutePath();
@@ -96,8 +102,17 @@ public class Reports extends Activity implements OnClickListener {
                 datePicker.show();
             }
         });
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
     }
+
 
     @Override
     protected void onStart() {

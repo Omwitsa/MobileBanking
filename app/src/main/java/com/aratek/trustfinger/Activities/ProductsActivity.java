@@ -36,6 +36,7 @@ public class ProductsActivity extends Activity implements AdapterView.OnItemSele
     SharedPreferences.Editor editor;
     @BindView(R.id.sNo) EditText sNo;
     @BindView(R.id.apply_advance) Button submit;
+    @BindView(R.id.back) Button back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,6 +95,13 @@ public class ProductsActivity extends Activity implements AdapterView.OnItemSele
 
                 startActivity(intent);
 
+            }
+        });
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                startActivity(intent);
             }
         });
     }

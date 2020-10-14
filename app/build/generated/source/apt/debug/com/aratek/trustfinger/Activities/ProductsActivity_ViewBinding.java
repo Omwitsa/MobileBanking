@@ -26,6 +26,7 @@ public class ProductsActivity_ViewBinding implements Unbinder {
 
     target.sNo = Utils.findRequiredViewAsType(source, R.id.sNo, "field 'sNo'", EditText.class);
     target.submit = Utils.findRequiredViewAsType(source, R.id.apply_advance, "field 'submit'", Button.class);
+    target.back = Utils.findRequiredViewAsType(source, R.id.back, "field 'back'", Button.class);
   }
 
   @Override
@@ -37,5 +38,6 @@ public class ProductsActivity_ViewBinding implements Unbinder {
 
     target.sNo = null;
     target.submit = null;
+    target.back = null;
   }
 }

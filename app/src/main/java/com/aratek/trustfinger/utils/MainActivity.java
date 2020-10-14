@@ -254,7 +254,9 @@ import com.vanstone.utils.CommonConvert;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -279,6 +281,9 @@ public class MainActivity extends Activity implements OnClickListener {
     private InputStream inStream;
     private ByteArrayOutputStream outStream;
     private byte[] data;
+    public static final String MyPREFERENCES = "POSDETAILS" ;
+    SharedPreferences sharedpreferences;
+    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -286,6 +291,8 @@ public class MainActivity extends Activity implements OnClickListener {
         setContentView(R.layout.print);
         print = (Button) findViewById(R.id.Print);
         print.setOnClickListener(this);
+        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        editor = sharedpreferences.edit();
 
         new Thread() {
             public void run() {
@@ -352,53 +359,10 @@ public class MainActivity extends Activity implements OnClickListener {
     int i1 = r.nextInt(max - min + 1) + min;
     String version = "MG001POS" + i1;
 
-    private StringBuffer getAgencyPrintData(Bundle extras){
-        StringBuffer buffer = new StringBuffer();
-        if (extras != null) {
-            String amount = extras.getString("amount");
-            String transaction = extras.getString("transaction");
-            String fingurePrint = extras.getString("fingurePrint");
-            String supplierNo = extras.getString("supplierNo");
-            String pin = extras.getString("pin");
 
-            buffer.append("Agent Copy \n");
-            buffer.append("----------------------------- \n");
-           // buffer.append( operat.toUpperCase()+" RECEIPT" + "\n");
-            buffer.append("ReceiptNumber : "+version+ "\n");
-            buffer.append("Account No:" + supplierNo + "\n");
-            buffer.append("Amount    :" + amount + "\n");
-        }
 
-        return buffer;
-    }
-    private StringBuffer getCustomerPrintData(Bundle extras){
 
-        StringBuffer buffer = new StringBuffer();
-        if (extras != null) {
-            String amount = extras.getString("amount");
-            String transaction = extras.getString("transaction");
-            String fingurePrint = extras.getString("fingurePrint");
-            String supplierNo = extras.getString("supplierNo");
-            String pin = extras.getString("pin");
 
-            buffer.append("Customer Copy \n");
-            buffer.append("----------------------------- \n");
-            buffer.append( transaction.toUpperCase()+" RECEIPT" + "\n");
-            buffer.append("ReceiptNumber : "+version+ "\n");
-            buffer.append("Account No:" + supplierNo + "\n");
-            buffer.append("Amount    :" + amount + "\n");
-        }
-
-        return buffer;
-    }
-
-    public void showMessage(String title, String message) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setCancelable(true);
-        builder.setTitle(title);
-        builder.setMessage(message);
-        builder.show();
-    }
     //end of code
 
     @Override
@@ -417,10 +381,10 @@ public class MainActivity extends Activity implements OnClickListener {
 
 
     public void PrtCardInfo() {
-        Bundle extras = getIntent().getExtras();
-        String amount = extras.getString("amount");
-        String transaction = extras.getString("transaction");
-        String sNo = extras.getString("supplierNo");
+
+        String amount = sharedpreferences.getString("amount","");
+        String transaction = sharedpreferences.getString("transaction","");
+        String sNo = sharedpreferences.getString("supplierNo","");
         int min = 1;
         int max = 10000;
         Random r = new Random();
