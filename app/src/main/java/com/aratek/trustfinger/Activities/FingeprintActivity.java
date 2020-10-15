@@ -54,6 +54,8 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import cn.com.syvanstone.PosManager;
 
 public class FingeprintActivity extends FragmentActivity implements DeviceOpenListener, LedCallback {
@@ -87,11 +89,13 @@ public class FingeprintActivity extends FragmentActivity implements DeviceOpenLi
     private boolean isDeviceOpened = false;
     private MyApplication mApp;
     PosManager mPosManager;
+    @BindView(R.id.back) Button back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fingeprint);
+        ButterKnife.bind(this);
         findViews();
         initTrustFinger();
         mApp = (MyApplication) getApplication();
@@ -118,6 +122,13 @@ public class FingeprintActivity extends FragmentActivity implements DeviceOpenLi
 
             }
         }).start();
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), AuthenticationActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void findViews() {

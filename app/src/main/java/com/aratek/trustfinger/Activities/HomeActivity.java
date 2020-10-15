@@ -17,9 +17,7 @@ import butterknife.ButterKnife;
 public class HomeActivity extends AppCompatActivity {
     @BindView(R.id.deposit) CardView deposit;
     @BindView(R.id.withdraw) CardView withdraw;
-    @BindView(R.id.member_register) CardView memberRegister;
     @BindView(R.id.balance_enquiry) CardView balanceEnquiry;
-    @BindView(R.id.report) CardView report;
     @BindView(R.id.advance) CardView advance;
     public static final String MyPREFERENCES = "POSDETAILS" ;
     SharedPreferences sharedpreferences;
@@ -62,13 +60,7 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        memberRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), AgentMemberActivity.class);
-                startActivity(intent);
-            }
-        });
+
 
         balanceEnquiry.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,13 +73,7 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        report.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Reports.class);
-                startActivity(intent);
-            }
-        });
+
 
         advance.setOnClickListener(new View.OnClickListener() {
             @Override

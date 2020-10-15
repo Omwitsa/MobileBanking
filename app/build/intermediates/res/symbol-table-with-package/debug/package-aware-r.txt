@@ -882,6 +882,7 @@ drawable file4
 drawable filedialog_folder
 drawable filedialog_folder_up
 drawable filedialog_root
+drawable fingerprint
 drawable folder4
 drawable ic_action_fingerprint
 drawable ic_baseline_lock_24
@@ -911,6 +912,7 @@ drawable progress_2
 drawable progress_3
 drawable progress_vertical_gradient_simple_shape
 drawable rdobtn_text_selector
+drawable registration
 drawable report
 drawable signupbtnshape
 drawable success
@@ -919,6 +921,8 @@ drawable thumb01
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
 drawable top_image
+drawable users
+drawable verification
 drawable warning
 drawable withdraw
 font mo_li
@@ -1093,7 +1097,6 @@ id ly_settings
 id ly_user_list
 id masked
 id media_actions
-id member_register
 id message
 id middle
 id mini
@@ -1124,6 +1127,7 @@ id radio
 id rdoBtn_check_in_local_base
 id rdoBtn_file
 id rdoGrp_selection
+id registration
 id report
 id right
 id right_icon
@@ -1195,6 +1199,7 @@ id title_template
 id top
 id topPanel
 id touch_outside
+id trans
 id transition_current_scene
 id transition_layout_save
 id transition_position
@@ -1242,6 +1247,7 @@ id uniform
 id up
 id useLogo
 id username
+id verify
 id viewPager
 id view_offset_helper
 id visible

@@ -25,9 +25,7 @@ public class HomeActivity_ViewBinding implements Unbinder {
 
     target.deposit = Utils.findRequiredViewAsType(source, R.id.deposit, "field 'deposit'", CardView.class);
     target.withdraw = Utils.findRequiredViewAsType(source, R.id.withdraw, "field 'withdraw'", CardView.class);
-    target.memberRegister = Utils.findRequiredViewAsType(source, R.id.member_register, "field 'memberRegister'", CardView.class);
     target.balanceEnquiry = Utils.findRequiredViewAsType(source, R.id.balance_enquiry, "field 'balanceEnquiry'", CardView.class);
-    target.report = Utils.findRequiredViewAsType(source, R.id.report, "field 'report'", CardView.class);
     target.advance = Utils.findRequiredViewAsType(source, R.id.advance, "field 'advance'", CardView.class);
   }
 
@@ -40,9 +38,7 @@ public class HomeActivity_ViewBinding implements Unbinder {
 
     target.deposit = null;
     target.withdraw = null;
-    target.memberRegister = null;
     target.balanceEnquiry = null;
-    target.report = null;
     target.advance = null;
   }
 }

@@ -105,7 +105,7 @@ public class Reports extends Activity implements OnClickListener {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                Intent intent = new Intent(getApplicationContext(), AuthenticationActivity.class);
                 startActivity(intent);
             }
         });

@@ -3,8 +3,8 @@ package com.aratek.trustfinger.Activities;
 
 import android.support.annotation.CallSuper;
 import android.support.annotation.UiThread;
+import android.support.v7.widget.CardView;
 import android.view.View;
-import android.widget.Button;
 import butterknife.Unbinder;
 import butterknife.internal.Utils;
 import com.aratek.trustfinger.R;
@@ -23,8 +23,10 @@ public class AuthenticationActivity_ViewBinding implements Unbinder {
   public AuthenticationActivity_ViewBinding(AuthenticationActivity target, View source) {
     this.target = target;
 
-    target.btnLogin = Utils.findRequiredViewAsType(source, R.id.btnLogin, "field 'btnLogin'", Button.class);
-    target.btnSignup = Utils.findRequiredViewAsType(source, R.id.btnSignup, "field 'btnSignup'", Button.class);
+    target.Transactions = Utils.findRequiredViewAsType(source, R.id.trans, "field 'Transactions'", CardView.class);
+    target.registration = Utils.findRequiredViewAsType(source, R.id.registration, "field 'registration'", CardView.class);
+    target.verification = Utils.findRequiredViewAsType(source, R.id.verify, "field 'verification'", CardView.class);
+    target.report = Utils.findRequiredViewAsType(source, R.id.report, "field 'report'", CardView.class);
   }
 
   @Override
@@ -34,7 +36,9 @@ public class AuthenticationActivity_ViewBinding implements Unbinder {
     if (target == null) throw new IllegalStateException("Bindings already cleared.");
     this.target = null;
 
-    target.btnLogin = null;
-    target.btnSignup = null;
+    target.Transactions = null;
+    target.registration = null;
+    target.verification = null;
+    target.report = null;
   }
 }
