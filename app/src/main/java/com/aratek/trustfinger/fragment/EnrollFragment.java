@@ -863,26 +863,26 @@ public class EnrollFragment extends BaseFragment implements View.OnClickListener
             mEditText_user_id.startAnimation(anim);
             return false;
         }
-        if (mDBHelper.checkUserExist(mUserID)) {
-            sv.fullScroll(ScrollView.FOCUS_UP);
-            mHandler.sendMessage(mHandler.obtainMessage(MSG_ENROLL_WARNING, "This id has been " +
-                    "enrolled!"));
-            handleMsg("This id has been enrolled!", Color.RED);
-            mEditText_user_id.setHintTextColor(Color.RED);
-            Animation anim = AnimationUtils.loadAnimation(getActivity(), R.anim.shake);
-            mEditText_user_id.startAnimation(anim);
-            return false;
-        }
-        if ("".equals(mUserFirstName)) {
-            sv.fullScroll(ScrollView.FOCUS_UP);
-            mHandler.sendMessage(mHandler.obtainMessage(MSG_ENROLL_WARNING, "Please check your " +
-                    "first name!"));
-            handleMsg("Please check your first name!", Color.RED);
-            mEditText_user_first_name.setHintTextColor(Color.RED);
-            Animation anim = AnimationUtils.loadAnimation(getActivity(), R.anim.shake);
-            mEditText_user_first_name.startAnimation(anim);
-            return false;
-        }
+//        if (mDBHelper.checkUserExist(mUserID)) {
+//            sv.fullScroll(ScrollView.FOCUS_UP);
+//            mHandler.sendMessage(mHandler.obtainMessage(MSG_ENROLL_WARNING, "This id has been " +
+//                    "enrolled!"));
+//            handleMsg("This id has been enrolled!", Color.RED);
+//            mEditText_user_id.setHintTextColor(Color.RED);
+//            Animation anim = AnimationUtils.loadAnimation(getActivity(), R.anim.shake);
+//            mEditText_user_id.startAnimation(anim);
+//            return false;
+//        }
+//        if ("".equals(mUserFirstName)) {
+//            sv.fullScroll(ScrollView.FOCUS_UP);
+//            mHandler.sendMessage(mHandler.obtainMessage(MSG_ENROLL_WARNING, "Please check your " +
+//                    "first name!"));
+//            handleMsg("Please check your first name!", Color.RED);
+//            mEditText_user_first_name.setHintTextColor(Color.RED);
+//            Animation anim = AnimationUtils.loadAnimation(getActivity(), R.anim.shake);
+//            mEditText_user_first_name.startAnimation(anim);
+//            return false;
+//        }
 
         return true;
     }
