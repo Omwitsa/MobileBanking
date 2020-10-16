@@ -981,9 +981,7 @@ id bt_confirm
 id btnLogin
 id btnSignup
 id btn_connect
-id btn_connectd
 id btn_enable
-id btn_enabled
 id btn_import_user
 id btn_open_device
 id btn_print_receipt
@@ -1165,7 +1163,6 @@ id snackbar_text
 id snap
 id sp_device
 id sp_device_type
-id sp_deviced
 id sp_usb_device
 id spacer
 id split_action_bar

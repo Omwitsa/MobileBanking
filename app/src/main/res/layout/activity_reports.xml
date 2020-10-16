@@ -5,6 +5,7 @@ xmlns:tools="http://schemas.android.com/tools"
 android:orientation="vertical"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
+android:background="#ffe"
 tools:context="com.aratek.trustfinger.Activities.Reports">
 
 <android.support.v7.widget.Toolbar
@@ -17,40 +18,7 @@ tools:context="com.aratek.trustfinger.Activities.Reports">
     app:title="Agency Banking"/>
 
 
-<RelativeLayout
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:background="@drawable/customborder"
-    android:layout_margin="30dp"
-    android:padding="5dp"
-    tools:ignore="MissingConstraints">
 
-    <Button
-        android:id="@+id/btn_enabled"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:visibility="gone"
-        android:text="@string/text_enable_bluetooth" />
-
-    <Button
-        android:id="@+id/btn_connectd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/GREEN"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:text="@string/text_connect" />
-
-    <Spinner
-        android:id="@+id/sp_deviced"
-        android:layout_toLeftOf="@+id/btn_connect"
-        android:layout_alignBottom="@+id/btn_connect"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"/>
-</RelativeLayout>
 <EditText
     android:id="@+id/Transsdate"
     android:layout_width="match_parent"

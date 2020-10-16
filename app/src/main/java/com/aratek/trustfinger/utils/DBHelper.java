@@ -63,14 +63,21 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String CREATE_TBL_USER = " create table " + TABLE_NAME_USER
                 + "(_id integer primary key autoincrement,"
-                + COLUMN_NAME_USER_ID + " text NOT NULL UNIQUE,"
+                + COLUMN_NAME_USER_ID + " text NOT NULL ,"
+
                 + COLUMN_NAME_FIRST_NAME + " text NOT NULL,"
                 + COLUMN_NAME_LAST_NAME + " text,"
                 + COLUMN_NAME_FINGER_DATA + " text"
                 + ") ";
         db.execSQL(CREATE_TBL_USER);
-        db.execSQL("CREATE INDEX if not exists index_userID ON "
-                + TABLE_NAME_USER + "(" + COLUMN_NAME_USER_ID + ")");
+
+        //+ COLUMN_NAME_USER_ID + " text NOT NULL UNIQUE,"
+//        db.execSQL("CREATE INDEX if not exists index_userID ON "
+//               + TABLE_NAME_USER + "(" + COLUMN_NAME_USER_ID + ")");
+
+
+//        db.execSQL("CREATE INDEX if not exists index_userID ON "
+//                + TABLE_NAME_USER + "(" + COLUMN_NAME_USER_ID + ")");
     }
 
     @Override

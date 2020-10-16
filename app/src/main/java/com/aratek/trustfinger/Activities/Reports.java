@@ -193,7 +193,7 @@ public class Reports extends Activity implements OnClickListener {
         PrinterApi.printSetAlign_Api(1);
         PrintData();
 
-        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+        Intent intent = new Intent(getApplicationContext(), AuthenticationActivity.class);
         startActivity(intent);
     }
     public static int PrintData() {

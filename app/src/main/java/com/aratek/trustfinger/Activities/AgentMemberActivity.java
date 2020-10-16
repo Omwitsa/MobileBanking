@@ -141,7 +141,7 @@ public class AgentMemberActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<Response> call, Throwable t) {
                 progressDoalog.dismiss();
-                Toast.makeText(getApplicationContext(), "Sorry, An error occurred", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Sorry, network  error Try again", Toast.LENGTH_LONG).show();
             }
         });
         Intent intent = new Intent(getApplicationContext(), AuthenticationActivity.class);

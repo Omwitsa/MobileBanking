@@ -61,7 +61,7 @@ public class Transaction<_transaction> {
                 @Override
                 public void onFailure(Call<Response> call, Throwable t) {
                     progressDoalog.dismiss();
-                    Toast.makeText(context, "Sorry, An error occurred", Toast.LENGTH_LONG).show();
+                    Toast.makeText(context, "Sorry, network  error Try again", Toast.LENGTH_LONG).show();
                 }
             });
         }
@@ -80,7 +80,7 @@ public class Transaction<_transaction> {
                 @Override
                 public void onFailure(Call<Response> call, Throwable t) {
                     progressDoalog.dismiss();
-                    Toast.makeText(context, "Sorry, An error occurred", Toast.LENGTH_LONG).show();
+                    Toast.makeText(context, "Sorry, network  error Try again", Toast.LENGTH_LONG).show();
                 }
             });
         }
@@ -98,7 +98,7 @@ public class Transaction<_transaction> {
                 @Override
                 public void onFailure(Call<Response> call, Throwable t) {
                     progressDoalog.dismiss();
-                    Toast.makeText(context, "Sorry, An error occurred", Toast.LENGTH_LONG).show();
+                    Toast.makeText(context, "Sorry, network  error Try again", Toast.LENGTH_LONG).show();
                 }
             });
         }
@@ -115,7 +115,7 @@ public class Transaction<_transaction> {
                 @Override
                 public void onFailure(Call<Response> call, Throwable t) {
                     progressDoalog.dismiss();
-                    Toast.makeText(context, "Sorry, An error occurred", Toast.LENGTH_LONG).show();
+                    Toast.makeText(context, "Sorry, network  error Try again", Toast.LENGTH_LONG).show();
                 }
             });
         }
