@@ -182,8 +182,8 @@
         <item>Level5</item>
     </string-array>
     <string-array name="tabs_name">
-        <item>Capture</item>
-        <item>Enroll</item>
+        <item>Registration</item>
+        <item>Verification</item>
         <item>Verify</item>
         <item>Identify</item>
         <item>Device Info</item>

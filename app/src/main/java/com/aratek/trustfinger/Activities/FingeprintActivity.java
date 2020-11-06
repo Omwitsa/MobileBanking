@@ -78,11 +78,11 @@ public class FingeprintActivity extends FragmentActivity implements DeviceOpenLi
     private List<String> sp_usbDevice_datas_all = new ArrayList<String>();
     private List<String> sp_usbDevice_datas = new ArrayList<String>();
     private List<Fragment> fragmnts = new ArrayList<Fragment>();
-    private CaptureFragment mCaptureFragment;
+    //private CaptureFragment mCaptureFragment;
     private EnrollFragment mEnrollFragment;
-    private VerifyFragment mVerifyFragment;
+    //private VerifyFragment mVerifyFragment;
     private IdentifyFragment mIdentifyFragment;
-    private DeviceInfoFragment mDeviceInfoFragment;
+    //private DeviceInfoFragment mDeviceInfoFragment;
     private String[] titles;
     private Handler handler = new Handler();
     private int mDeviceId = 0;
@@ -132,15 +132,15 @@ public class FingeprintActivity extends FragmentActivity implements DeviceOpenLi
     }
 
     private void findViews() {
-        mSpinner_deviceType = (Spinner) findViewById(R.id.sp_device_type);
-        mSpinner_usbDevice = (Spinner) findViewById(R.id.sp_usb_device);
-        mButton_openClose = (Button) findViewById(R.id.btn_open_device);
-        mCheckBox_enableLed = (CheckBox) findViewById(R.id.chk_enabled_led);
-        mCheckBox_antiSpoofing = (CheckBox) findViewById(R.id.chk_anti_spoofing);
+//        mSpinner_deviceType = (Spinner) findViewById(R.id.sp_device_type);
+//        mSpinner_usbDevice = (Spinner) findViewById(R.id.sp_usb_device);
+//        mButton_openClose = (Button) findViewById(R.id.btn_open_device);
+//        mCheckBox_enableLed = (CheckBox) findViewById(R.id.chk_enabled_led);
+//        mCheckBox_antiSpoofing = (CheckBox) findViewById(R.id.chk_anti_spoofing);
         mTabLayout = (TabLayout) findViewById(R.id.tabLayout);
         mViewPager = (ViewPager) findViewById(R.id.viewPager);
-        mTextView_msg = (TextView) findViewById(R.id.tv_msg);
-        mTextView_version = (TextView) findViewById(R.id.tv_version);
+//        mTextView_msg = (TextView) findViewById(R.id.tv_msg);
+//        mTextView_version = (TextView) findViewById(R.id.tv_version);
     }
 
     private void initTrustFinger() {
@@ -148,7 +148,12 @@ public class FingeprintActivity extends FragmentActivity implements DeviceOpenLi
             mTrustFinger = TrustFinger.getInstance(this.getApplicationContext());
             //            mTextView_version.setText("v" + mTrustFinger.getSdkVersion());
             mTrustFinger.initialize();
-            mTrustFinger.setDeviceListener(new DeviceListener() {
+
+
+
+            /*Start*/
+
+                        mTrustFinger.setDeviceListener(new DeviceListener() {
                 @Override
                 public void deviceAttached(List<String> deviceList) {
                     sp_usbDevice_datas_all.clear();
@@ -178,16 +183,29 @@ public class FingeprintActivity extends FragmentActivity implements DeviceOpenLi
                     adapter_usbDevice.notifyDataSetChanged();
                     mSpinner_deviceType.setSelection(0);
                     mSpinner_usbDevice.setSelection(0);
-                    isDeviceOpened = false;
+
+
+                    isDeviceOpened = true;
+
+
                     mButton_openClose.setTextColor(Color.parseColor("#1D9F9A"));
                     mButton_openClose.setText(getString(R.string.btn_open_device));
-                    setFragmentDatas(null);
+
+
+
+                    //setFragmentDatas(null);
+
+
                     mSpinner_deviceType.setEnabled(true);
                     mSpinner_usbDevice.setEnabled(true);
                     //                mCheckBox_enableLed.setEnabled(true);
                     handleMsg("Device detached!", Color.RED);
                 }
             });
+            /*end */
+
+
+
             /*if (mTrustFinger.getDeviceCount() <= 0) {
                 showAlertDialog(false, "No fingerprint device detected!");
             }*/
@@ -218,16 +236,16 @@ public class FingeprintActivity extends FragmentActivity implements DeviceOpenLi
     }
 
     private void setFragmentDatas(TrustFingerDevice mTrustFingerDevice) {
-        if (mCaptureFragment != null)
-            mCaptureFragment.setDatas(mTrustFingerDevice);
+//        if (mCaptureFragment != null)
+//            mCaptureFragment.setDatas(mTrustFingerDevice);
         if (mEnrollFragment != null)
             mEnrollFragment.setDatas(mTrustFingerDevice);
-        if (mVerifyFragment != null)
-            mVerifyFragment.setDatas(mTrustFingerDevice);
+//        if (mVerifyFragment != null)
+//            mVerifyFragment.setDatas(mTrustFingerDevice);
         if (mIdentifyFragment != null)
             mIdentifyFragment.setDatas(mTrustFingerDevice);
-        if (mDeviceInfoFragment != null)
-            mDeviceInfoFragment.setDatas(mTrustFingerDevice);
+//        if (mDeviceInfoFragment != null)
+//            mDeviceInfoFragment.setDatas(mTrustFingerDevice);
     }
 
     private void showAlertDialog(final boolean isError, String msg) throws TrustFingerException {
@@ -257,6 +275,8 @@ public class FingeprintActivity extends FragmentActivity implements DeviceOpenLi
                     }
                 }).create().show();
     }
+
+    /* start Checked today */
 
     private void requestPermissions() {
         if (ContextCompat.checkSelfPermission(this,
@@ -297,6 +317,7 @@ public class FingeprintActivity extends FragmentActivity implements DeviceOpenLi
             run();
         }
     }
+    /* end Checked today */
 
     private void run() {
         initDatas();
@@ -378,7 +399,8 @@ public class FingeprintActivity extends FragmentActivity implements DeviceOpenLi
 
         isDeviceOpened = false;
         mButton_openClose.setText(getString(R.string.btn_open_device));
-        mButton_openClose.setOnClickListener(new View.OnClickListener() {
+        mButton_openClose.setOnClickListener(
+                new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mButton_openClose.setEnabled(false);
@@ -415,18 +437,18 @@ public class FingeprintActivity extends FragmentActivity implements DeviceOpenLi
                 }
                 else {
                     int position = mViewPager.getCurrentItem();
-                    if (position == 0) {
-                        mCaptureFragment.forceStop();
-                        mCaptureFragment.resetUI();
-                    }
+//                    if (position == 0) {
+//                        mCaptureFragment.forceStop();
+//                        mCaptureFragment.resetUI();
+//                    }
                     if (position == 1) {
                         mEnrollFragment.forceStop();
                         mEnrollFragment.resetUI();
                     }
-                    if (position == 2) {
-                        mVerifyFragment.forceStop();
-                        mVerifyFragment.resetUI();
-                    }
+//                    if (position == 2) {
+//                        mVerifyFragment.forceStop();
+//                        mVerifyFragment.resetUI();
+                    //}
                     if (position == 3) {
                         mIdentifyFragment.forceStop();
                         mIdentifyFragment.resetUI();
@@ -446,12 +468,22 @@ public class FingeprintActivity extends FragmentActivity implements DeviceOpenLi
                         mTrustFingerDevice.close();
 
                         mTrustFingerDevice = null;
+
+
                         isDeviceOpened = false;
+
+
+
                         mButton_openClose.setText(getString(R.string.btn_open_device));
                         mButton_openClose.setEnabled(true);
                         mSpinner_deviceType.setEnabled(true);
                         mSpinner_usbDevice.setEnabled(true);
+
+
                         mCheckBox_enableLed.setEnabled(false);
+
+
+
                         setFragmentDatas(null);
                         handleMsg("Device closed!", Color.RED);
                     }
@@ -465,20 +497,20 @@ public class FingeprintActivity extends FragmentActivity implements DeviceOpenLi
                 }
             }
         });
-        mCaptureFragment = new CaptureFragment();
-        mCaptureFragment.setLedCallback(this);
+//        mCaptureFragment = new CaptureFragment();
+//        mCaptureFragment.setLedCallback(this);
         mEnrollFragment = new EnrollFragment();
         mEnrollFragment.setLedCallback(this);
-        mVerifyFragment = new VerifyFragment();
-        mVerifyFragment.setLedCallback(this);
+//        mVerifyFragment = new VerifyFragment();
+//        mVerifyFragment.setLedCallback(this);
         mIdentifyFragment = new IdentifyFragment();
         mIdentifyFragment.setLedCallback(this);
-        mDeviceInfoFragment = new DeviceInfoFragment();
-        fragmnts.add(mCaptureFragment);
+//        mDeviceInfoFragment = new DeviceInfoFragment();
+//        fragmnts.add(mCaptureFragment);
         fragmnts.add(mEnrollFragment);
-        fragmnts.add(mVerifyFragment);
+//        fragmnts.add(mVerifyFragment);
         fragmnts.add(mIdentifyFragment);
-       fragmnts.add(mDeviceInfoFragment);
+//       fragmnts.add(mDeviceInfoFragment);
         titles = getResources().getStringArray(R.array.tabs_name);
         mViewPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager(), fragmnts, titles));
         mViewPager.setOffscreenPageLimit(5);
@@ -519,18 +551,18 @@ public class FingeprintActivity extends FragmentActivity implements DeviceOpenLi
 
 
                 handleMsg("", Color.BLACK);
-                if (position != 0) {
-                    mCaptureFragment.forceStop();
-                    mCaptureFragment.resetUI();
-                }
+//                if (position != 0) {
+//                    mCaptureFragment.forceStop();
+//                    mCaptureFragment.resetUI();
+//                }
                 if (position != 1) {
                     mEnrollFragment.forceStop();
                     mEnrollFragment.resetUI();
                 }
-                if (position != 2) {
-                    mVerifyFragment.forceStop();
-                    mVerifyFragment.resetUI();
-                }
+//                if (position != 2) {
+//                    mVerifyFragment.forceStop();
+//                    mVerifyFragment.resetUI();
+//                }
                 if (position != 3) {
                     mIdentifyFragment.forceStop();
                     mIdentifyFragment.resetUI();
@@ -554,15 +586,15 @@ public class FingeprintActivity extends FragmentActivity implements DeviceOpenLi
                     }
                     //mVerifyFragment.loadEnrolledUsers();
                 }
-                else if (position == 2) {
-                    if (isDeviceOpened) {
-                        handleMsg("Select a user for verification", Color.RED);
-                    }
-                    else {
-                        handleMsg(getString(R.string.msg_click_open_device_button), Color.BLACK);
-                    }
-                    //mVerifyFragment.loadEnrolledUsers();
-                }
+//                else if (position == 2) {
+//                    if (isDeviceOpened) {
+//                        handleMsg("Select a user for verification", Color.RED);
+//                    }
+//                    else {
+//                        handleMsg(getString(R.string.msg_click_open_device_button), Color.BLACK);
+//                    }
+//                    //mVerifyFragment.loadEnrolledUsers();
+//                }
                 else if (position == 3) {
                     if (isDeviceOpened) {
                         handleMsg("Confirm the settings and press Start Identify button", Color

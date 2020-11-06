@@ -205,15 +205,13 @@ public class IdentifyFragment extends BaseFragment {
             mButton_start_stop_identify.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (mTrustFingerDevice == null) {
-                        handleMsg("Device not opened", Color.RED);
-                        return;
-                    }
-                    if (!checkSettings()) {
-                        return;
-                    }
+//                    if (mTrustFingerDevice == null) {
+//                        handleMsg("Device not opened", Color.RED);
+//                        return;
+//                    }
+
                     if (mDBHelper.getUserList().isEmpty()) {
-                        handleMsg("No enrolled users!", Color.RED);
+                        //handleMsg("No enrolled users!", Color.RED);
                         return;
                     }
 
@@ -401,7 +399,7 @@ public class IdentifyFragment extends BaseFragment {
         protected void onPreExecute() {
             super.onPreExecute();
             isIdentifing = true;
-            handleMsg("Capturing", Color.BLACK);
+            //handleMsg("Capturing", Color.BLACK);
             if (mApp.isLedEnable()) {
                 ledOnRed();
             }
@@ -416,10 +414,10 @@ public class IdentifyFragment extends BaseFragment {
                 if (isCancelled()) {
                     break;
                 }
-                if (mTrustFingerDevice == null) {
-                    handleMsg("Device not opened", Color.RED);
-                    break;
-                }
+//                if (mTrustFingerDevice == null) {
+//                    handleMsg("Device not opened", Color.RED);
+//                    break;
+//                }
                 if (largestFingerData.isIsrRaise()) {
                     MediaPlayerHelper.payMedia(getContext(), R.raw.please_press_your_finger);
                     largestFingerData.setIsrRaise(false);
@@ -432,10 +430,10 @@ public class IdentifyFragment extends BaseFragment {
                         updateFingerprintImage(null);
                     }
                     else {
-                        if (mTrustFingerDevice == null) {
-                            handleMsg("Device not opened", Color.RED);
-                            break;
-                        }
+//                        if (mTrustFingerDevice == null) {
+//                            //handleMsg("Device not opened", Color.RED);
+//                            break;
+//                        }
                         fpImage_bmp = mTrustFingerDevice.rawToBmp(fpImage_Raw, mTrustFingerDevice.getImageInfo().getWidth(), mTrustFingerDevice.getImageInfo().getHeight(), mTrustFingerDevice
                                 .getImageInfo().getResolution());
                         if (fpImage_bmp == null) {
@@ -444,19 +442,19 @@ public class IdentifyFragment extends BaseFragment {
                             continue;
                         }
                         fpImage_bitmap = BitmapFactory.decodeByteArray(fpImage_bmp, 0, fpImage_bmp.length);
-                        if (mTrustFingerDevice == null) {
-                            handleMsg("Device not opened", Color.RED);
-                            break;
-                        }
+//                        if (mTrustFingerDevice == null) {
+//                            handleMsg("Device not opened", Color.RED);
+//                            break;
+//                        }
                         imageQuality = mTrustFingerDevice.rawDataQuality(fpImage_Raw);
                         publishProgress(imageQuality);
                         updateFingerprintImage(fpImage_bitmap);
                         if (imageQuality >= mImageQualityThrethold) {
                             //                        try {
-                            if (mTrustFingerDevice == null) {
-                                handleMsg("Device not opened", Color.RED);
-                                break;
-                            }
+//                            if (mTrustFingerDevice == null) {
+//                                handleMsg("Device not opened", Color.RED);
+//                                break;
+//                            }
                             fpFeatureData = mTrustFingerDevice.extractFeature(fpImage_Raw, FingerPosition.Unknown);
                             //                        } catch (TrustFingerException e) {
                             //                            fpFeatureData = null;
@@ -475,7 +473,7 @@ public class IdentifyFragment extends BaseFragment {
                                 }
                             }
                             else {
-                                handleMsg("Extract feature failed! ", Color.RED);
+                                //handleMsg("Extract feature failed! ", Color.RED);
                             }
                         }
                     }
@@ -487,7 +485,7 @@ public class IdentifyFragment extends BaseFragment {
                     }
                 }
                 catch (TrustFingerException e) {
-                    handleMsg("Capture exception: " + e.getType().toString(), Color.RED);
+                   // handleMsg("Capture exception: " + e.getType().toString(), Color.RED);
                     e.printStackTrace();
                 }
             } while (true);
@@ -510,26 +508,26 @@ public class IdentifyFragment extends BaseFragment {
             }
             try {
                 List<User> userList = mDBHelper.getUserList();
-                if (mTrustFingerDevice == null) {
-                    handleMsg("No enrolled users", Color.RED);
-                    if (mApp.isLedEnable()) {
-                        ledOff();
-                    }
-                    mIdentifyTask = null;
-                    isIdentifing = false;
-                    mIsDone = true;
-                    return null;
-                }
+//                if (mTrustFingerDevice == null) {
+//                    handleMsg("No enrolled users", Color.RED);
+//                    if (mApp.isLedEnable()) {
+//                        ledOff();
+//                    }
+//                    mIdentifyTask = null;
+//                    isIdentifing = false;
+//                    mIsDone = true;
+//                    return null;
+//                }
                 byte[] template = null;
                 FingerData fingerData;
                 String fingerPosition = null;
-                handleMsg("Identifing", Color.BLACK);
+                //handleMsg("Identifing", Color.BLACK);
                 startTime = System.currentTimeMillis();
                 for (User user : userList) {
                     fingerData = user.getFingerData();
 
                     if (fingerData == null) {
-                        handleMsg("identify fail， no enrolled templates!", Color.RED);
+                        //handleMsg("identify fail， no enrolled templates!", Color.RED);
                         getActivity().runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
@@ -581,13 +579,13 @@ public class IdentifyFragment extends BaseFragment {
 
                         }
                         if (template != null && fingerPosition != null) {
-                            if (mTrustFingerDevice == null) {
-                                handleMsg("Device not opened", Color.RED);
-                                mIdentifyTask = null;
-                                isIdentifing = false;
-                                mIsDone = true;
-                                return null;
-                            }
+//                            if (mTrustFingerDevice == null) {
+//                                handleMsg("Device not opened", Color.RED);
+//                                mIdentifyTask = null;
+//                                isIdentifing = false;
+//                                mIsDone = true;
+//                                return null;
+//                            }
                             result = mTrustFingerDevice.verify(mSecurityLevel, template, fpFeatureData);
                             if (result.error == 0) {
                                 Log.e("zhangx","result.similarity = "+result.similarity);
@@ -629,7 +627,7 @@ public class IdentifyFragment extends BaseFragment {
                     }
                 }
                 if (mUserList.isEmpty()) {
-                    handleMsg("Identify failed", Color.BLACK);
+                    //handleMsg("Identify failed", Color.BLACK);
                     mHandler.sendMessage(mHandler.obtainMessage(MSG_IDENTIFY_FAIL, userList.size(), (int) (endTime - startTime)));
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
@@ -670,13 +668,13 @@ public class IdentifyFragment extends BaseFragment {
                 });
             }
             catch (TrustFingerException e) {
-                handleMsg("Identify exception: " + e.getType().toString(), Color.RED);
+                //handleMsg("Identify exception: " + e.getType().toString(), Color.RED);
                 e.printStackTrace();
                 if (mApp.isLedEnable()) {
                     ledOff();
                 }
             }
-            handleMsg("Identify completed", Color.BLACK);
+            //handleMsg("Identify completed", Color.BLACK);
             mIdentifyTask = null;
             isIdentifing = false;
             mIsDone = true;

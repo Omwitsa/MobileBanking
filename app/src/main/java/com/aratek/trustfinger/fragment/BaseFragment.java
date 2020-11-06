@@ -28,9 +28,9 @@ public abstract class BaseFragment extends Fragment {
 
     public abstract void setDatas(TrustFingerDevice device);
 
-    public void handleMsg(String msg, int color) {
-        ((FingeprintActivity) getActivity()).handleMsg(msg, color);
-    }
+//    public void handleMsg(String msg, int color) {
+//        ((FingeprintActivity) getActivity()).handleMsg(msg, color);
+//    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {

@@ -1,6 +1,9 @@
 package com.aratek.trustfinger.Activities;
 
+import android.app.Fragment;
+import android.app.FragmentManager;
 import android.content.Intent;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
@@ -8,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.aratek.trustfinger.R;
+import com.aratek.trustfinger.fragment.IdentifyFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -28,7 +32,11 @@ public class AuthenticationActivity extends AppCompatActivity {
         Transactions.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), FingeprintActivity.class);
+
+
+
+
+             Intent intent = new Intent(getApplicationContext(), TransactionActivity.class);
                 startActivity(intent);
 
             }
@@ -37,7 +45,7 @@ public class AuthenticationActivity extends AppCompatActivity {
         verification.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), VerifyActivity.class);
+                Intent intent = new Intent(getApplicationContext(), FingeprintActivity.class);
                 startActivity(intent);
             }
         });
@@ -56,4 +64,9 @@ public class AuthenticationActivity extends AppCompatActivity {
             }
         });
     }
+
+
+
+
+
 }
