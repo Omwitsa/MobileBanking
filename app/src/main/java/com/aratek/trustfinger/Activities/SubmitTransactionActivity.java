@@ -2,12 +2,17 @@ package com.aratek.trustfinger.Activities;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.aratek.trustfinger.Model.TransactionModel;
 import com.aratek.trustfinger.R;
 import com.aratek.trustfinger.utils.Transaction;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class SubmitTransactionActivity extends AppCompatActivity {
     private Transaction transaction;
@@ -16,12 +21,15 @@ public class SubmitTransactionActivity extends AppCompatActivity {
     public static final String MyPREFERENCES = "POSDETAILS" ;
     SharedPreferences sharedpreferences;
     SharedPreferences.Editor editor;
+    static SQLiteDatabase db;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_submit_transaction);
+        db = openOrCreateDatabase("MobileDB", Context.MODE_PRIVATE, null);
+        db.execSQL("CREATE TABLE IF NOT EXISTS deposits(Amount VARCHAR,Pin VARCHAR,Supp VARCHAR,datepp DATETIME, status VARCHAR,transdate  VARCHAR);");
 
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         editor = sharedpreferences.edit();
@@ -34,11 +42,30 @@ public class SubmitTransactionActivity extends AppCompatActivity {
             String productDescription = sharedpreferences.getString("productDescription","");
             String machineId = sharedpreferences.getString("machine_id", "");
             String auditId = sharedpreferences.getString("loggedInUser", "");
+            insertDataToSqlite(operation,amount,sNo,status);
+
+
             transactionModel = new TransactionModel(operation, amount, "", "", sNo, status, machineId, auditId, productDescription, accountNo);
             transaction = new Transaction(this, transactionModel);
 
             transaction.transact(transactionModel);
 
+    }
+
+    private void insertDataToSqlite(String operation,Double amount,String sNo,String status) {
+        String bal= String.valueOf(amount);
+        Calendar cc = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String date_pp = sdf.format(cc.getTime());
+        SimpleDateFormat ff = new SimpleDateFormat("yyyy-MM-dd");
+        String trans= ff.format(cc.getTime());
+        if(operation=="deposit") {
+            db.execSQL("INSERT INTO deposits VALUES('" + bal + "','" + status + "','" + sNo + "','" + date_pp + "','0','" + trans + "');");
+            Toast.makeText(SubmitTransactionActivity.this, "Transaction saved successfully", Toast.LENGTH_LONG).show();
+        }
+//        else if (operation=="withdraw"){
+//
+//        }
     }
 
 }

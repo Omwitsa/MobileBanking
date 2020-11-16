@@ -56,12 +56,6 @@ public class AccountsActivity extends Activity implements AdapterView.OnItemSele
         //String id = "0735028";
 
 
-
-
-
-//        Bundle extras = getIntent().getExtras();
-//        assert extras != null;
-//        final String id = extras.getString("loadsPosition");
         String id = sharedpreferences.getString("loadsPosition", "");
 
         //sharedpreferences.getString("account_no", "65690200100416");
@@ -101,7 +95,7 @@ public class AccountsActivity extends Activity implements AdapterView.OnItemSele
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), FingeprintActivity.class);
+                Intent intent = new Intent(getApplicationContext(), IdentificationActivity.class);
                 startActivity(intent);
             }
         });

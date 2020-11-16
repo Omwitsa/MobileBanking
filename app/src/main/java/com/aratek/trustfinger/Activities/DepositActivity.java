@@ -50,8 +50,8 @@ public class DepositActivity extends AppCompatActivity {
         progressDoalog = new ProgressDialog(DepositActivity.this);
         //getting device model and serial number
         String Machineid = android.os.Build.MODEL+""+ Build.SERIAL;
-        db = openOrCreateDatabase("MobileDB", Context.MODE_PRIVATE, null);
-        db.execSQL("CREATE TABLE IF NOT EXISTS deposits(Amount VARCHAR,Pin VARCHAR,Supp VARCHAR,datepp DATETIME, status VARCHAR,transdate  VARCHAR);");
+//        db = openOrCreateDatabase("MobileDB", Context.MODE_PRIVATE, null);
+//        db.execSQL("CREATE TABLE IF NOT EXISTS deposits(Amount VARCHAR,Pin VARCHAR,Supp VARCHAR,datepp DATETIME, status VARCHAR,transdate  VARCHAR);");
 
         final String Account = sharedpreferences.getString("supplierNo", "");
         sNo.setText(Account);
@@ -69,9 +69,9 @@ public class DepositActivity extends AppCompatActivity {
                     //Snackbar.make(getView(), "Password should have a minimum of 8 characters", Snackbar.LENGTH_LONG).show();
                     Toast.makeText(DepositActivity.this, "Pin shoud have a maximum of 4 characters", Toast.LENGTH_LONG).show();
                 }else{
-                    insertDataToSqlite(bal, Pinn, Account);
+                    //insertDataToSqlite(bal, Pinn, Account);
 
-                    Intent intent = new Intent(getApplicationContext(), SubmitTransactionActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), ConfirmActivity.class);
                     editor.putString("operation", "deposit");
                     editor.putString("amount", bal);
                     editor.putString("fingurePrint", "");
@@ -93,15 +93,15 @@ public class DepositActivity extends AppCompatActivity {
             }
         });
     }
-    public void insertDataToSqlite(String bal, String pinn, String Account)  {
-        Calendar cc = Calendar.getInstance();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String date_pp = sdf.format(cc.getTime());
-        SimpleDateFormat ff = new SimpleDateFormat("yyyy-MM-dd");
-        String trans= ff.format(cc.getTime());
-        db.execSQL("INSERT INTO deposits VALUES('" + bal + "','"  + pinn+ "','" + Account + "','" + date_pp + "','0','" + trans + "');");
-        Toast.makeText(DepositActivity.this, "Deposit saved successfully", Toast.LENGTH_LONG).show();
-        }
+//    public void insertDataToSqlite(String bal, String pinn, String Account)  {
+//        Calendar cc = Calendar.getInstance();
+//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//        String date_pp = sdf.format(cc.getTime());
+//        SimpleDateFormat ff = new SimpleDateFormat("yyyy-MM-dd");
+//        String trans= ff.format(cc.getTime());
+//        db.execSQL("INSERT INTO deposits VALUES('" + bal + "','"  + pinn+ "','" + Account + "','" + date_pp + "','0','" + trans + "');");
+//        Toast.makeText(DepositActivity.this, "Deposit saved successfully", Toast.LENGTH_LONG).show();
+//        }
 
 
 

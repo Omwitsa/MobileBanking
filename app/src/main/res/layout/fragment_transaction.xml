@@ -216,7 +216,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:text="@string/btn_start_identify"
+            android:text="Start Verification"
             android:textSize="20sp"
             android:textStyle="bold" />
 

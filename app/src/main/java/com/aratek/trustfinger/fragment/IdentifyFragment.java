@@ -104,7 +104,7 @@ public class IdentifyFragment extends BaseFragment {
     private SecurityLevel mSecurityLevel = SecurityLevel.Level4;
     private int mIdentifyThreshold = 48;
     private View root;
-    private long startTime, endTime;
+       private long startTime, endTime;
     private LargestFingerData largestFingerData = new LargestFingerData();
     private LedCallback callback;
     private Transaction transaction;
@@ -205,13 +205,13 @@ public class IdentifyFragment extends BaseFragment {
             mButton_start_stop_identify.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-//                    if (mTrustFingerDevice == null) {
-//                        handleMsg("Device not opened", Color.RED);
-//                        return;
-//                    }
+                    if (mTrustFingerDevice == null) {
+                        handleMsg("Device not opened", Color.RED);
+                        return;
+                    }
 
                     if (mDBHelper.getUserList().isEmpty()) {
-                        //handleMsg("No enrolled users!", Color.RED);
+                        handleMsg("No enrolled users!", Color.RED);
                         return;
                     }
 
@@ -226,7 +226,7 @@ public class IdentifyFragment extends BaseFragment {
                         mTextView_tips_msg.setText("");
                         mProgressBar_image_quality.setProgress(0);
                         mButton_start_stop_identify.setText(getString(R.string.btn_stop_identify));
-                        enbleSettingsView(false);
+                        enbleSettingsView(true);
 
                     }
                     else {
@@ -247,6 +247,10 @@ public class IdentifyFragment extends BaseFragment {
         viewCreated = true;
         mDBHelper = new DBHelper(getActivity(), Config.SAVE_TO_SDCARD);
         return root;
+    }
+
+    private void handleMsg(String device_not_opened, int red) {
+
     }
 
     private void showPopupWindow() {
@@ -408,7 +412,7 @@ public class IdentifyFragment extends BaseFragment {
         @Override
         protected Void doInBackground(Void... voids) {
             largestFingerData.clear();
-            callback.setLedEnable(false);
+            callback.setLedEnable(true);
             int mImageQualityThrethold = Integer.parseInt(mEditText_image_quality_threshold.getText().toString().trim());
             do {
                 if (isCancelled()) {
@@ -508,16 +512,7 @@ public class IdentifyFragment extends BaseFragment {
             }
             try {
                 List<User> userList = mDBHelper.getUserList();
-//                if (mTrustFingerDevice == null) {
-//                    handleMsg("No enrolled users", Color.RED);
-//                    if (mApp.isLedEnable()) {
-//                        ledOff();
-//                    }
-//                    mIdentifyTask = null;
-//                    isIdentifing = false;
-//                    mIsDone = true;
-//                    return null;
-//                }
+
                 byte[] template = null;
                 FingerData fingerData;
                 String fingerPosition = null;

@@ -6,7 +6,8 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 
-import com.aratek.trustfinger.Activities.FingeprintActivity;
+//import com.aratek.trustfinger.Activities.
+        //FingeprintActivity;
 import com.aratek.trustfinger.utils.MyApplication;
 import com.aratek.trustfinger.sdk.DeviceModel;
 import com.aratek.trustfinger.sdk.LedIndex;

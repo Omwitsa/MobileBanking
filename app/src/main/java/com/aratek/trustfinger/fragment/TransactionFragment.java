@@ -42,8 +42,10 @@ import android.widget.Toast;
 
 import com.aratek.trustfinger.Activities.AccountsActivity;
 import com.aratek.trustfinger.Activities.BalanceActivity;
+import com.aratek.trustfinger.Activities.DepositActivity;
 import com.aratek.trustfinger.Activities.HomeActivity;
 import com.aratek.trustfinger.Activities.Reports;
+import com.aratek.trustfinger.Activities.SubmitTransactionActivity;
 import com.aratek.trustfinger.Model.FingurePrintModel;
 import com.aratek.trustfinger.Model.Response;
 import com.aratek.trustfinger.Model.TransactionModel;
@@ -111,6 +113,7 @@ public class TransactionFragment extends BaseFragment {
     private Context context;
     public static final String MyPREFERENCES = "POSDETAILS" ;
     SharedPreferences sharedpreferences;
+    SharedPreferences.Editor editor;
     public void setLedCallback(LedCallback callback){
         this.callback = callback;
     }
@@ -124,18 +127,7 @@ public class TransactionFragment extends BaseFragment {
                              Bundle savedInstanceState) {
         if (root == null) {
             sharedpreferences = getActivity().getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-            Bundle extras = getActivity().getIntent().getExtras();
-            String operation = extras.getString("operation");
-            Double amount = Double.parseDouble(extras.getString("amount"));
-            String status = "0";
-            String sNo = extras.getString("supplierNo");
-            String accountNo = extras.getString("accountNo");
-            String productDescription = extras.getString("productDescription");
-            String machineId = sharedpreferences.getString("machine_id", "");
-            String auditId = sharedpreferences.getString("loggedInUser", "");
-            transactionModel = new TransactionModel(operation, amount, "", "", sNo, status, machineId, auditId, productDescription, accountNo);
-            transaction = new Transaction(getActivity(), transactionModel);
-
+            editor = sharedpreferences.edit();
 
 
             root = inflater.inflate(R.layout.fragment_transaction, container, false);
@@ -219,9 +211,7 @@ public class TransactionFragment extends BaseFragment {
                         handleMsg("Device not opened", Color.RED);
                         return;
                     }
-                    if (!checkSettings()) {
-                        return;
-                    }
+
                     if (mDBHelper.getUserList().isEmpty()) {
                         handleMsg("No enrolled users!", Color.RED);
                         return;
@@ -238,7 +228,7 @@ public class TransactionFragment extends BaseFragment {
                         mTextView_tips_msg.setText("");
                         mProgressBar_image_quality.setProgress(0);
                         mButton_start_stop_identify.setText(getString(R.string.btn_stop_identify));
-                        enbleSettingsView(false);
+                        enbleSettingsView(true);
 
                     }
                     else {
@@ -259,6 +249,11 @@ public class TransactionFragment extends BaseFragment {
         viewCreated = true;
         mDBHelper = new DBHelper(getActivity(), Config.SAVE_TO_SDCARD);
         return root;
+
+    }
+
+    private void handleMsg(String device_not_opened, int red) {
+
     }
 
     private void showPopupWindow() {
@@ -357,6 +352,17 @@ public class TransactionFragment extends BaseFragment {
 
     private void loadIdentifyUsers(List<User> users) {
         mHandler.sendMessage(mHandler.obtainMessage(MSG_UPDATE_USER_LIST, users));
+        //int idno =users.indexOf(getId());
+//        //int idno=mUserList.indexOf(getId());
+
+
+//        String idno= String.valueOf(users.indexOf(getId()));
+//        Intent intent = new Intent(getActivity(), DepositActivity.class);
+//        intent.putExtra("loadsPosition",idno);
+//        startActivity(intent);
+
+
+
     }
 
     @Override
@@ -400,7 +406,7 @@ public class TransactionFragment extends BaseFragment {
         protected void onPreExecute() {
             super.onPreExecute();
             isIdentifing = true;
-            handleMsg("Capturing", Color.BLACK);
+            //handleMsg("Capturing", Color.BLACK);
             if (mApp.isLedEnable()) {
                 ledOnRed();
             }
@@ -409,16 +415,16 @@ public class TransactionFragment extends BaseFragment {
         @Override
         protected Void doInBackground(Void... voids) {
             largestFingerData.clear();
-            callback.setLedEnable(false);
+            callback.setLedEnable(true);
             int mImageQualityThrethold = Integer.parseInt(mEditText_image_quality_threshold.getText().toString().trim());
             do {
                 if (isCancelled()) {
                     break;
                 }
-                if (mTrustFingerDevice == null) {
-                    handleMsg("Device not opened", Color.RED);
-                    break;
-                }
+//                if (mTrustFingerDevice == null) {
+//                    handleMsg("Device not opened", Color.RED);
+//                    break;
+//                }
                 if (largestFingerData.isIsrRaise()) {
                     MediaPlayerHelper.payMedia(getContext(), R.raw.please_press_your_finger);
                     largestFingerData.setIsrRaise(false);
@@ -431,10 +437,10 @@ public class TransactionFragment extends BaseFragment {
                         updateFingerprintImage(null);
                     }
                     else {
-                        if (mTrustFingerDevice == null) {
-                            handleMsg("Device not opened", Color.RED);
-                            break;
-                        }
+//                        if (mTrustFingerDevice == null) {
+//                            //handleMsg("Device not opened", Color.RED);
+//                            break;
+//                        }
                         fpImage_bmp = mTrustFingerDevice.rawToBmp(fpImage_Raw, mTrustFingerDevice.getImageInfo().getWidth(), mTrustFingerDevice.getImageInfo().getHeight(), mTrustFingerDevice
                                 .getImageInfo().getResolution());
                         if (fpImage_bmp == null) {
@@ -443,19 +449,19 @@ public class TransactionFragment extends BaseFragment {
                             continue;
                         }
                         fpImage_bitmap = BitmapFactory.decodeByteArray(fpImage_bmp, 0, fpImage_bmp.length);
-                        if (mTrustFingerDevice == null) {
-                            handleMsg("Device not opened", Color.RED);
-                            break;
-                        }
+//                        if (mTrustFingerDevice == null) {
+//                            handleMsg("Device not opened", Color.RED);
+//                            break;
+//                        }
                         imageQuality = mTrustFingerDevice.rawDataQuality(fpImage_Raw);
                         publishProgress(imageQuality);
                         updateFingerprintImage(fpImage_bitmap);
                         if (imageQuality >= mImageQualityThrethold) {
                             //                        try {
-                            if (mTrustFingerDevice == null) {
-                                handleMsg("Device not opened", Color.RED);
-                                break;
-                            }
+//                            if (mTrustFingerDevice == null) {
+//                                handleMsg("Device not opened", Color.RED);
+//                                break;
+//                            }
                             fpFeatureData = mTrustFingerDevice.extractFeature(fpImage_Raw, FingerPosition.Unknown);
                             //                        } catch (TrustFingerException e) {
                             //                            fpFeatureData = null;
@@ -474,7 +480,7 @@ public class TransactionFragment extends BaseFragment {
                                 }
                             }
                             else {
-                                handleMsg("Extract feature failed! ", Color.RED);
+                                //handleMsg("Extract feature failed! ", Color.RED);
                             }
                         }
                     }
@@ -486,7 +492,7 @@ public class TransactionFragment extends BaseFragment {
                     }
                 }
                 catch (TrustFingerException e) {
-                    handleMsg("Capture exception: " + e.getType().toString(), Color.RED);
+                    // handleMsg("Capture exception: " + e.getType().toString(), Color.RED);
                     e.printStackTrace();
                 }
             } while (true);
@@ -509,25 +515,17 @@ public class TransactionFragment extends BaseFragment {
             }
             try {
                 List<User> userList = mDBHelper.getUserList();
-                if (mTrustFingerDevice == null) {
-                    handleMsg("No enrolled users", Color.RED);
-                    if (mApp.isLedEnable()) {
-                        ledOff();
-                    }
-                    mIdentifyTask = null;
-                    isIdentifing = false;
-                    mIsDone = true;
-                    return null;
-                }
+
                 byte[] template = null;
                 FingerData fingerData;
                 String fingerPosition = null;
-                handleMsg("Identifing", Color.BLACK);
+                //handleMsg("Identifing", Color.BLACK);
                 startTime = System.currentTimeMillis();
                 for (User user : userList) {
                     fingerData = user.getFingerData();
+
                     if (fingerData == null) {
-                        handleMsg("identify fail， no enrolled templates!", Color.RED);
+                        //handleMsg("identify fail， no enrolled templates!", Color.RED);
                         getActivity().runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
@@ -579,13 +577,13 @@ public class TransactionFragment extends BaseFragment {
 
                         }
                         if (template != null && fingerPosition != null) {
-                            if (mTrustFingerDevice == null) {
-                                handleMsg("Device not opened", Color.RED);
-                                mIdentifyTask = null;
-                                isIdentifing = false;
-                                mIsDone = true;
-                                return null;
-                            }
+//                            if (mTrustFingerDevice == null) {
+//                                handleMsg("Device not opened", Color.RED);
+//                                mIdentifyTask = null;
+//                                isIdentifing = false;
+//                                mIsDone = true;
+//                                return null;
+//                            }
                             result = mTrustFingerDevice.verify(mSecurityLevel, template, fpFeatureData);
                             if (result.error == 0) {
                                 Log.e("zhangx","result.similarity = "+result.similarity);
@@ -624,10 +622,34 @@ public class TransactionFragment extends BaseFragment {
                 for (int i = 0; i < userList.size(); i++) {
                     if (userList.get(i).getSimilarity() >= mIdentifyThreshold) {
                         mUserList.add(userList.get(i));
+                        String operation = sharedpreferences.getString("operation","");
+                        Double amount = Double.parseDouble(sharedpreferences.getString("amount",""));
+                        final String amt=String.format("%.2f", amount);
+                        String status = "0";
+                        String sNo = sharedpreferences.getString("supplierNo","");
+                        String accountNo = sharedpreferences.getString("accountNo","");
+                        String productDescription = sharedpreferences.getString("productDescription","");
+                        String machineId = sharedpreferences.getString("machine_id", "");
+                        String auditId = sharedpreferences.getString("loggedInUser", "");
+
+
+
+                        Intent intent = new Intent(getActivity(), SubmitTransactionActivity.class);
+                        editor.putString("operation", operation);
+                        editor.putString("amount",amt);
+                        editor.putString("machineId", machineId);
+                        editor.putString("supplierNo", sNo);
+                        editor.putString("fingurePrint", "");
+                        editor.putString("auditId", auditId);
+                        editor.putString("accountNo",accountNo);
+                        editor.putString("productDescription", productDescription);
+                        editor.commit();
+
+                        startActivity(intent);
                     }
                 }
                 if (mUserList.isEmpty()) {
-                    handleMsg("Identify failed", Color.BLACK);
+                    //handleMsg("Identify failed", Color.BLACK);
                     mHandler.sendMessage(mHandler.obtainMessage(MSG_IDENTIFY_FAIL, userList.size(), (int) (endTime - startTime)));
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
@@ -645,6 +667,11 @@ public class TransactionFragment extends BaseFragment {
                 Collections.sort(mUserList);
                 for (int i = 0; i < mUserList.size(); i++) {
                     mUserList.get(i).setRank(i + 1);
+                    //String idnumber= String.valueOf(mUserList.get(i).getId());
+
+
+
+
                 }
                 mHandler.sendMessage(mHandler.obtainMessage(MSG_IDENTIFY_SUCCESS, userList.size(), (int) (endTime - startTime), mUserList.size()));
                 loadIdentifyUsers(mUserList);
@@ -659,20 +686,22 @@ public class TransactionFragment extends BaseFragment {
                 });
             }
             catch (TrustFingerException e) {
-                handleMsg("Identify exception: " + e.getType().toString(), Color.RED);
+                //handleMsg("Identify exception: " + e.getType().toString(), Color.RED);
                 e.printStackTrace();
                 if (mApp.isLedEnable()) {
                     ledOff();
                 }
             }
-            handleMsg("Identify completed", Color.BLACK);
+            //handleMsg("Identify completed", Color.BLACK);
             mIdentifyTask = null;
             isIdentifing = false;
             mIsDone = true;
             //transaction.transact(transactionModel);
 
+
             return null;
         }
+
 
         @Override
         protected void onPostExecute(Void aVoid) {

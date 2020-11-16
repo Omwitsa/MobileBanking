@@ -182,10 +182,18 @@
         <item>Level5</item>
     </string-array>
     <string-array name="tabs_name">
-        <item>Registration</item>
-        <item>Verification</item>
-        <item>Verify</item>
-        <item>Identify</item>
-        <item>Device Info</item>
+        <item>  Registration</item>
+        <item>  Identification</item>
+        <item>  Verification</item>
+        <item> Device Info</item>
+    </string-array>
+    <string-array name="tabs_name1">
+        <item>Transaction Verification</item>
+        <item>Device  Information</item>
+    </string-array>
+    <string-array name="tabs_name2">
+        <item>Account Identification</item>
+        <item>Device  Information</item>
+
     </string-array>
 </resources>

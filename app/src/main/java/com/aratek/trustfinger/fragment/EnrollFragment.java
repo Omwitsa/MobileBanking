@@ -34,10 +34,12 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.aratek.trustfinger.Activities.FingeprintActivity;
 import com.aratek.trustfinger.Model.FingurePrintModel;
 import com.aratek.trustfinger.Model.Response;
 import com.aratek.trustfinger.Rest.ApiClient;
 import com.aratek.trustfinger.Rest.ApiInterface;
+import com.aratek.trustfinger.sdk.TrustFinger;
 import com.aratek.trustfinger.utils.Config;
 import com.aratek.trustfinger.R;
 import com.aratek.trustfinger.adapter.MyListAdapter;
@@ -80,6 +82,7 @@ public class EnrollFragment extends BaseFragment implements View.OnClickListener
     private static final int MSG_ENROLL_FAIL = 7;
     private static final int MSG_ENROLL_WARNING = 8;
     private static final int MSG_ENROLL_PROGRESS = 9;
+    private TrustFinger mTrustFinger;
 
     private ScrollView sv;
     private EditText mEditText_image_quality_threshold;
@@ -445,6 +448,9 @@ public class EnrollFragment extends BaseFragment implements View.OnClickListener
         mDBHelper = new DBHelper(getActivity(), Config.SAVE_TO_SDCARD);
         viewCreated = true;
         return root;
+    }
+
+    private void handleMsg(String device_not_opened, int red) {
     }
 
     private void showInputUserInfoDialog(final String[] strs, final byte[] feature) {
@@ -1449,7 +1455,11 @@ public class EnrollFragment extends BaseFragment implements View.OnClickListener
                 }
             });
             loadEnrolledUsers();
+
+
+
         }
+
     }
 
     public void showMessage(String title, String message) {

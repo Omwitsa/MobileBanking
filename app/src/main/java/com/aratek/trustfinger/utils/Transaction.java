@@ -31,7 +31,7 @@ public class Transaction<_transaction> {
     SharedPreferences.Editor editor;
 
 
-    public Transaction(Context mContext, TransactionModel transaction) {
+    public  Transaction(Context mContext, TransactionModel transaction) {
         context = mContext;
         _transaction = transaction;
         sharedpreferences = mContext.getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);

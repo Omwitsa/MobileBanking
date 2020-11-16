@@ -722,6 +722,9 @@ public class VerifyFragment extends BaseFragment  {
         }
     }
 
+    private void handleMsg(String capturing, int black) {
+    }
+
     private void updateFingerprintImage(Bitmap fpImage) {
         mHandler.sendMessage(mHandler.obtainMessage(MSG_UPDATE_IMAGE, fpImage));
     }

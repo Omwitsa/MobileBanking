@@ -365,7 +365,7 @@ public class CaptureFragment extends BaseFragment implements View.OnClickListene
                 mCheckBox_auto_save.setEnabled(false);
             }
             //                    enbleSettingsView(false);
-            handleMsg("Capturing", Color.BLACK);
+            //handleMsg("Capturing", Color.BLACK);
         }
     }
 
@@ -378,7 +378,7 @@ public class CaptureFragment extends BaseFragment implements View.OnClickListene
             Animation anim = AnimationUtils.loadAnimation(getActivity(), R.anim.shake);
             mEditText_image_quality_threshold.startAnimation(anim);
             mHandler.sendMessage(mHandler.obtainMessage(MSG_CAPTURE_WARNING, "The quality must between 50 and 100"));
-            handleMsg("The quality must between 50 and 100", Color.RED);
+            //handleMsg("The quality must between 50 and 100", Color.RED);
             return false;
         }
         return true;
@@ -448,7 +448,7 @@ public class CaptureFragment extends BaseFragment implements View.OnClickListene
                     mTextView_current_position.setText("");
                 }
             }
-            handleMsg("Capture stopped", Color.BLACK);
+            //handleMsg("Capture stopped", Color.BLACK);
         }
     }
 
@@ -489,7 +489,7 @@ public class CaptureFragment extends BaseFragment implements View.OnClickListene
     public void onClick(View view) {
         if (mTrustFingerDevice == null) {
             //            mHandler.sendMessage(mHandler.obtainMessage(MSG_CAPTURE_WARNING, "Device not opened"));
-            handleMsg("Device not opened", Color.RED);
+            //handleMsg("Device not opened", Color.RED);
             return;
         }
         boolean isAutoSave = (boolean) getParameterFromPreferences(Config.AUTO_SAVE, false);
@@ -568,7 +568,7 @@ public class CaptureFragment extends BaseFragment implements View.OnClickListene
                 else {
                     mCheckBox_auto_save.setEnabled(true);
                 }
-                handleMsg("Capture stopped", Color.BLACK);
+                //handleMsg("Capture stopped", Color.BLACK);
                 return;
             }
             else {
@@ -620,7 +620,7 @@ public class CaptureFragment extends BaseFragment implements View.OnClickListene
                 }
                 if (mTrustFingerDevice == null) {
                     //                    mHandler.sendMessage(mHandler.obtainMessage(MSG_CAPTURE_WARNING, "Device not opened"));
-                    handleMsg("Device not opened", Color.RED);
+                    //handleMsg("Device not opened", Color.RED);
                     break;
                 }
                 boolean isAutoSave = (boolean) getParameterFromPreferences(Config.AUTO_SAVE, false);
@@ -638,8 +638,7 @@ public class CaptureFragment extends BaseFragment implements View.OnClickListene
                     }
                     else {
                         if (mTrustFingerDevice == null) {
-                            //                        mHandler.sendMessage(mHandler.obtainMessage(MSG_CAPTURE_WARNING, "Device not opened"));
-                            handleMsg("Device not opened", Color.RED);
+                            //                        mHandler.sendMessage(mHandler.obtainMessage(MSG_CAPTURE_WARNING, "Device not opened"));/handleMsg("Device not opened", Color.RED);
                             break;
                         }
                         fpImage_bmp = mTrustFingerDevice.rawToBmp(fpImage_Raw, mTrustFingerDevice.getImageInfo().getWidth(), mTrustFingerDevice.getImageInfo().getHeight(), mTrustFingerDevice
@@ -790,6 +789,9 @@ public class CaptureFragment extends BaseFragment implements View.OnClickListene
                 }
             }
         }
+    }
+
+    private void handleMsg(String device_not_opened, int red) {
     }
 
     private void saveFingerData(byte[] fpImageData, byte[] fpFeatureData, final int imgQuality) {

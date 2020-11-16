@@ -32,11 +32,8 @@ import android.widget.Toast;
 
 import com.aratek.trustfinger.R;
 import com.aratek.trustfinger.adapter.MyPagerAdapter;
-import com.aratek.trustfinger.fragment.CaptureFragment;
 import com.aratek.trustfinger.fragment.DeviceInfoFragment;
 import com.aratek.trustfinger.fragment.EnrollFragment;
-import com.aratek.trustfinger.fragment.IdentifyFragment;
-import com.aratek.trustfinger.fragment.VerifyFragment;
 import com.aratek.trustfinger.interfaces.LedCallback;
 import com.aratek.trustfinger.sdk.DeviceListener;
 import com.aratek.trustfinger.sdk.DeviceModel;
@@ -59,7 +56,7 @@ import butterknife.ButterKnife;
 import cn.com.syvanstone.PosManager;
 
 public class FingeprintActivity extends FragmentActivity implements DeviceOpenListener, LedCallback {
-    private static final String TAG = "MainActivity";
+    private static final String TAG = "FingeprintActivity";
     private static final String ACTION_USB_PERMISSION = "com.aratek.trustfinger.USB_PERMISSION";
     private Spinner mSpinner_deviceType;
     private Spinner mSpinner_usbDevice;
@@ -80,9 +77,9 @@ public class FingeprintActivity extends FragmentActivity implements DeviceOpenLi
     private List<Fragment> fragmnts = new ArrayList<Fragment>();
     //private CaptureFragment mCaptureFragment;
     private EnrollFragment mEnrollFragment;
-    //private VerifyFragment mVerifyFragment;
-    private IdentifyFragment mIdentifyFragment;
-    //private DeviceInfoFragment mDeviceInfoFragment;
+//    private TransactionFragment mVerifyFragment;
+//    private IdentifyFragment mIdentifyFragment;
+    private DeviceInfoFragment mDeviceInfoFragment;
     private String[] titles;
     private Handler handler = new Handler();
     private int mDeviceId = 0;
@@ -90,6 +87,8 @@ public class FingeprintActivity extends FragmentActivity implements DeviceOpenLi
     private MyApplication mApp;
     PosManager mPosManager;
     @BindView(R.id.back) Button back;
+    @BindView(R.id.refresh) Button identification;
+//    @BindView(R.id.verification) Button verification;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -129,24 +128,39 @@ public class FingeprintActivity extends FragmentActivity implements DeviceOpenLi
                 startActivity(intent);
             }
         });
+        identification.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), RefreshActivity.class);
+                startActivity(intent);
+            }
+        });
+//        verification.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(getApplicationContext(), TransactionActivity.class);
+//                startActivity(intent);
+//            }
+//        });
     }
 
     private void findViews() {
-//        mSpinner_deviceType = (Spinner) findViewById(R.id.sp_device_type);
-//        mSpinner_usbDevice = (Spinner) findViewById(R.id.sp_usb_device);
-//        mButton_openClose = (Button) findViewById(R.id.btn_open_device);
-//        mCheckBox_enableLed = (CheckBox) findViewById(R.id.chk_enabled_led);
-//        mCheckBox_antiSpoofing = (CheckBox) findViewById(R.id.chk_anti_spoofing);
+        mSpinner_deviceType = (Spinner) findViewById(R.id.sp_device_type);
+        mSpinner_usbDevice = (Spinner) findViewById(R.id.sp_usb_device);
+        mButton_openClose = (Button) findViewById(R.id.btn_open_device);
+        mCheckBox_enableLed = (CheckBox) findViewById(R.id.chk_enabled_led);
+        mCheckBox_antiSpoofing = (CheckBox) findViewById(R.id.chk_anti_spoofing);
         mTabLayout = (TabLayout) findViewById(R.id.tabLayout);
         mViewPager = (ViewPager) findViewById(R.id.viewPager);
-//        mTextView_msg = (TextView) findViewById(R.id.tv_msg);
-//        mTextView_version = (TextView) findViewById(R.id.tv_version);
+        mTextView_msg = (TextView) findViewById(R.id.tv_msg);
+        mTextView_version = (TextView) findViewById(R.id.tv_version);
     }
 
-    private void initTrustFinger() {
+    public  void initTrustFinger() {
         try {
             mTrustFinger = TrustFinger.getInstance(this.getApplicationContext());
             //            mTextView_version.setText("v" + mTrustFinger.getSdkVersion());
+            //mTrustFinger.initialize();
             mTrustFinger.initialize();
 
 
@@ -198,7 +212,7 @@ public class FingeprintActivity extends FragmentActivity implements DeviceOpenLi
 
                     mSpinner_deviceType.setEnabled(true);
                     mSpinner_usbDevice.setEnabled(true);
-                    //                mCheckBox_enableLed.setEnabled(true);
+                                    mCheckBox_enableLed.setEnabled(true);
                     handleMsg("Device detached!", Color.RED);
                 }
             });
@@ -240,12 +254,13 @@ public class FingeprintActivity extends FragmentActivity implements DeviceOpenLi
 //            mCaptureFragment.setDatas(mTrustFingerDevice);
         if (mEnrollFragment != null)
             mEnrollFragment.setDatas(mTrustFingerDevice);
+
+//        if (mIdentifyFragment != null)
+//            mIdentifyFragment.setDatas(mTrustFingerDevice);
 //        if (mVerifyFragment != null)
 //            mVerifyFragment.setDatas(mTrustFingerDevice);
-        if (mIdentifyFragment != null)
-            mIdentifyFragment.setDatas(mTrustFingerDevice);
-//        if (mDeviceInfoFragment != null)
-//            mDeviceInfoFragment.setDatas(mTrustFingerDevice);
+       if (mDeviceInfoFragment != null)
+ mDeviceInfoFragment.setDatas(mTrustFingerDevice);
     }
 
     private void showAlertDialog(final boolean isError, String msg) throws TrustFingerException {
@@ -448,11 +463,11 @@ public class FingeprintActivity extends FragmentActivity implements DeviceOpenLi
 //                    if (position == 2) {
 //                        mVerifyFragment.forceStop();
 //                        mVerifyFragment.resetUI();
-                    //}
-                    if (position == 3) {
-                        mIdentifyFragment.forceStop();
-                        mIdentifyFragment.resetUI();
-                    }
+//                    }
+//                    if (position == 3) {
+//                        mIdentifyFragment.forceStop();
+//                        mIdentifyFragment.resetUI();
+//                    }
                     try {
                         if (mTrustFingerDevice.getDeviceModel() == DeviceModel.A600) {
                             if (mTrustFingerDevice.getLedStatus(LedIndex.RED) != LedStatus.CLOSE) {
@@ -501,16 +516,16 @@ public class FingeprintActivity extends FragmentActivity implements DeviceOpenLi
 //        mCaptureFragment.setLedCallback(this);
         mEnrollFragment = new EnrollFragment();
         mEnrollFragment.setLedCallback(this);
-//        mVerifyFragment = new VerifyFragment();
+//        mVerifyFragment = new TransactionFragment();
 //        mVerifyFragment.setLedCallback(this);
-        mIdentifyFragment = new IdentifyFragment();
-        mIdentifyFragment.setLedCallback(this);
-//        mDeviceInfoFragment = new DeviceInfoFragment();
+//        mIdentifyFragment = new IdentifyFragment();
+//        mIdentifyFragment.setLedCallback(this);
+        mDeviceInfoFragment = new DeviceInfoFragment();
 //        fragmnts.add(mCaptureFragment);
         fragmnts.add(mEnrollFragment);
+//        fragmnts.add(mIdentifyFragment);
 //        fragmnts.add(mVerifyFragment);
-        fragmnts.add(mIdentifyFragment);
-//       fragmnts.add(mDeviceInfoFragment);
+       fragmnts.add(mDeviceInfoFragment);
         titles = getResources().getStringArray(R.array.tabs_name);
         mViewPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager(), fragmnts, titles));
         mViewPager.setOffscreenPageLimit(5);
@@ -555,21 +570,22 @@ public class FingeprintActivity extends FragmentActivity implements DeviceOpenLi
 //                    mCaptureFragment.forceStop();
 //                    mCaptureFragment.resetUI();
 //                }
-                if (position != 1) {
+                if (position != 0) {
                     mEnrollFragment.forceStop();
                     mEnrollFragment.resetUI();
                 }
+//                if (position != 1) {
+//                    mIdentifyFragment.forceStop();
+//                    mIdentifyFragment.resetUI();
+//                }
 //                if (position != 2) {
 //                    mVerifyFragment.forceStop();
 //                    mVerifyFragment.resetUI();
 //                }
-                if (position != 3) {
-                    mIdentifyFragment.forceStop();
-                    mIdentifyFragment.resetUI();
-                }
+
                 if (position == 0) {
                     if (isDeviceOpened) {
-                        handleMsg("Confirm the settings and select a finger for capture", Color
+                        handleMsg("Fill your info and select a finger for enrollment", Color
                                 .RED);
                     }
                     else {
@@ -579,25 +595,17 @@ public class FingeprintActivity extends FragmentActivity implements DeviceOpenLi
                 }
                 else if (position == 1) {
                     if (isDeviceOpened) {
-                        handleMsg("Fill your info and select a finger for enrollment", Color.RED);
+                        handleMsg("Identify your fingerprint", Color.RED);
                     }
                     else {
                         handleMsg(getString(R.string.msg_click_open_device_button), Color.BLACK);
                     }
                     //mVerifyFragment.loadEnrolledUsers();
                 }
-//                else if (position == 2) {
-//                    if (isDeviceOpened) {
-//                        handleMsg("Select a user for verification", Color.RED);
-//                    }
-//                    else {
-//                        handleMsg(getString(R.string.msg_click_open_device_button), Color.BLACK);
-//                    }
-//                    //mVerifyFragment.loadEnrolledUsers();
-//                }
-                else if (position == 3) {
+
+                else if (position == 2) {
                     if (isDeviceOpened) {
-                        handleMsg("Confirm the settings and press Start Identify button", Color
+                        handleMsg("Verify your fingerprint to complete transaction", Color
                                 .RED);
                     }
                     else {
@@ -677,7 +685,7 @@ public class FingeprintActivity extends FragmentActivity implements DeviceOpenLi
         handleMsg("Device open success", Color.BLACK);
         mTrustFingerDevice = trustFingerDevice;
         int model = mTrustFingerDevice.getDeviceModel();
-        if (model == 400) {
+        if (model == 400 ) {
             setDeviceTypeSelection(1);
             mCheckBox_enableLed.setChecked(false);
             mCheckBox_enableLed.setEnabled(false);
@@ -706,7 +714,8 @@ public class FingeprintActivity extends FragmentActivity implements DeviceOpenLi
             setDeviceTypeSelection(2);
         }
         else {
-            setDeviceTypeSelection(0);
+            //setDeviceTypeSelection(0);
+            setDeviceTypeSelection(1);
         }
 
         if (sp_usbDevice_datas.size() > 1) {
@@ -752,17 +761,21 @@ public class FingeprintActivity extends FragmentActivity implements DeviceOpenLi
         });
     }
 
+
+
     @Override
     protected void onStop() {
         super.onStop();
     }
+
+
 
     private long exitTime = 0;
 
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
             if ((System.currentTimeMillis() - exitTime) > 2000) {
-                Toast.makeText(this, "Press twice to exit the app", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Press twice to refresh the app", Toast.LENGTH_SHORT).show();
                 exitTime = System.currentTimeMillis();
             } else {
 
@@ -779,8 +792,11 @@ public class FingeprintActivity extends FragmentActivity implements DeviceOpenLi
                 System.exit(0);
             }
             return true;
+
+
         }
         return super.onKeyDown(keyCode, event);
+
     }
 
 }
