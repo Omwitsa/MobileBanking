@@ -46,8 +46,7 @@ public class WithdrawActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         apiService = ApiClient.getClient().create(ApiInterface.class);
         progressDoalog = new ProgressDialog(WithdrawActivity.this);
-        db = openOrCreateDatabase("MobileDB", Context.MODE_PRIVATE, null);
-        db.execSQL("CREATE TABLE IF NOT EXISTS withdrawals(Amount VARCHAR,Pin VARCHAR,Supp VARCHAR,datepp DATETIME, status VARCHAR,transdate  VARCHAR);");
+
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         editor = sharedpreferences.edit();
 
@@ -71,9 +70,9 @@ public class WithdrawActivity extends AppCompatActivity {
                     Toast.makeText(WithdrawActivity.this, "Pin shoud have a maximum of 4 characters", Toast.LENGTH_LONG).show();
                 }else {
 
-                   insertDataToSqlite(bal, Pinn, Account);
+                   //insertDataToSqlite(bal, Pinn, Account);
 
-                    Intent intent = new Intent(getApplicationContext(), SubmitTransactionActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), ConfirmActivity.class);
                     editor.putString("operation", "withdraw");
                     editor.putString("amount", bal);
                     editor.putString("fingurePrint", "");
@@ -97,13 +96,5 @@ public class WithdrawActivity extends AppCompatActivity {
         });
 
     }
-    public void insertDataToSqlite(String bal, String pinn, String Account)  {
-        Calendar cc = Calendar.getInstance();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String date_pp = sdf.format(cc.getTime());
-        SimpleDateFormat ff = new SimpleDateFormat("yyyy-MM-dd");
-        String trans= ff.format(cc.getTime());
-        db.execSQL("INSERT INTO deposits VALUES('" + bal + "','"  + pinn+ "','" + Account + "','" + date_pp + "','0','" + trans + "');");
-        Toast.makeText(WithdrawActivity.this, "Withdrawal saved successfully", Toast.LENGTH_LONG).show();
-    }
+
 }

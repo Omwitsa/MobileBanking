@@ -56,7 +56,7 @@ public class AccountsActivity extends Activity implements AdapterView.OnItemSele
         //String id = "0735028";
 
 
-        String id = sharedpreferences.getString("loadsPosition", "");
+        final String id = sharedpreferences.getString("loadsPosition", "");
 
         //sharedpreferences.getString("account_no", "65690200100416");
         TransactionModel transaction = new TransactionModel("", 0.0, "", "", id, "", "", "", "", "");
@@ -86,6 +86,7 @@ public class AccountsActivity extends Activity implements AdapterView.OnItemSele
                 String Acc = spinner.getSelectedItem().toString();
                 Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                 editor.putString("supplierNo", Acc);
+                editor.putString("number",id);
                 editor.commit();
                 //intent.putExtra("supplierNo", Acc);
                 startActivity(intent);

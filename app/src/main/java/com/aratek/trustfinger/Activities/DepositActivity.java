@@ -54,6 +54,7 @@ public class DepositActivity extends AppCompatActivity {
 //        db.execSQL("CREATE TABLE IF NOT EXISTS deposits(Amount VARCHAR,Pin VARCHAR,Supp VARCHAR,datepp DATETIME, status VARCHAR,transdate  VARCHAR);");
 
         final String Account = sharedpreferences.getString("supplierNo", "");
+        final String idno = sharedpreferences.getString("number", "");
         sNo.setText(Account);
 
         submit.setOnClickListener(new View.OnClickListener() {@Override
@@ -76,6 +77,7 @@ public class DepositActivity extends AppCompatActivity {
                     editor.putString("amount", bal);
                     editor.putString("fingurePrint", "");
                     editor.putString("supplierNo", Account);
+                    editor.putString("number", idno);
                     editor.putString("pin", Pinn);
                     editor.putString("accountNo", "");
                     editor.putString("productDescription", "");
@@ -93,15 +95,7 @@ public class DepositActivity extends AppCompatActivity {
             }
         });
     }
-//    public void insertDataToSqlite(String bal, String pinn, String Account)  {
-//        Calendar cc = Calendar.getInstance();
-//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-//        String date_pp = sdf.format(cc.getTime());
-//        SimpleDateFormat ff = new SimpleDateFormat("yyyy-MM-dd");
-//        String trans= ff.format(cc.getTime());
-//        db.execSQL("INSERT INTO deposits VALUES('" + bal + "','"  + pinn+ "','" + Account + "','" + date_pp + "','0','" + trans + "');");
-//        Toast.makeText(DepositActivity.this, "Deposit saved successfully", Toast.LENGTH_LONG).show();
-//        }
+
 
 
 

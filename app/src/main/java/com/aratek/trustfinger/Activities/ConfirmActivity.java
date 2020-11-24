@@ -31,6 +31,7 @@ public class ConfirmActivity extends AppCompatActivity {
         final String ammmount=String.format("%.2f", amount);
         String status = "0";
         final String sNo = sharedpreferences.getString("supplierNo","");
+        final String idnumber = sharedpreferences.getString("number","");
         final String accountNo = sharedpreferences.getString("accountNo","");
         final String productDescription = sharedpreferences.getString("productDescription","");
         final String machineId = sharedpreferences.getString("machine_id", "");
@@ -41,7 +42,7 @@ public class ConfirmActivity extends AppCompatActivity {
     AlertDialog.Builder builder = new AlertDialog.Builder(this);
 //Setting message manually and performing action on button click
 
-        builder.setMessage("Do you want to complete  this "+operation+ "Transaction ? of KES "+amount+ "")
+        builder.setMessage("Do you want to complete  this "+operation+ "Transaction ? of KES "+ammmount+ "")
                 .setCancelable(false)
             .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
         public void onClick(DialogInterface dialog, int id) {
@@ -51,6 +52,7 @@ public class ConfirmActivity extends AppCompatActivity {
             editor.putString("amount", ammmount);
             editor.putString("machineId", machineId);
             editor.putString("supplierNo", sNo);
+            editor.putString("number", idnumber);
             editor.putString("fingurePrint", "");
             editor.putString("auditId", auditId);
             editor.putString("accountNo",accountNo);

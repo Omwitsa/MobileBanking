@@ -87,7 +87,7 @@ public class FingeprintActivity extends FragmentActivity implements DeviceOpenLi
     private MyApplication mApp;
     PosManager mPosManager;
     @BindView(R.id.back) Button back;
-    @BindView(R.id.refresh) Button identification;
+    //@BindView(R.id.refresh) Button identification;
 //    @BindView(R.id.verification) Button verification;
 
     @Override
@@ -128,20 +128,14 @@ public class FingeprintActivity extends FragmentActivity implements DeviceOpenLi
                 startActivity(intent);
             }
         });
-        identification.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), RefreshActivity.class);
-                startActivity(intent);
-            }
-        });
-//        verification.setOnClickListener(new View.OnClickListener() {
+//        identification.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
-//                Intent intent = new Intent(getApplicationContext(), TransactionActivity.class);
+//                Intent intent = new Intent(getApplicationContext(), FingeprintActivity.class);
 //                startActivity(intent);
 //            }
 //        });
+
     }
 
     private void findViews() {
@@ -566,22 +560,11 @@ public class FingeprintActivity extends FragmentActivity implements DeviceOpenLi
 
 
                 handleMsg("", Color.BLACK);
-//                if (position != 0) {
-//                    mCaptureFragment.forceStop();
-//                    mCaptureFragment.resetUI();
-//                }
                 if (position != 0) {
                     mEnrollFragment.forceStop();
                     mEnrollFragment.resetUI();
                 }
-//                if (position != 1) {
-//                    mIdentifyFragment.forceStop();
-//                    mIdentifyFragment.resetUI();
-//                }
-//                if (position != 2) {
-//                    mVerifyFragment.forceStop();
-//                    mVerifyFragment.resetUI();
-//                }
+
 
                 if (position == 0) {
                     if (isDeviceOpened) {

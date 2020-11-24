@@ -622,30 +622,10 @@ public class TransactionFragment extends BaseFragment {
                 for (int i = 0; i < userList.size(); i++) {
                     if (userList.get(i).getSimilarity() >= mIdentifyThreshold) {
                         mUserList.add(userList.get(i));
-                        String operation = sharedpreferences.getString("operation","");
-                        Double amount = Double.parseDouble(sharedpreferences.getString("amount",""));
-                        final String amt=String.format("%.2f", amount);
-                        String status = "0";
-                        String sNo = sharedpreferences.getString("supplierNo","");
-                        String accountNo = sharedpreferences.getString("accountNo","");
-                        String productDescription = sharedpreferences.getString("productDescription","");
-                        String machineId = sharedpreferences.getString("machine_id", "");
-                        String auditId = sharedpreferences.getString("loggedInUser", "");
 
 
 
-                        Intent intent = new Intent(getActivity(), SubmitTransactionActivity.class);
-                        editor.putString("operation", operation);
-                        editor.putString("amount",amt);
-                        editor.putString("machineId", machineId);
-                        editor.putString("supplierNo", sNo);
-                        editor.putString("fingurePrint", "");
-                        editor.putString("auditId", auditId);
-                        editor.putString("accountNo",accountNo);
-                        editor.putString("productDescription", productDescription);
-                        editor.commit();
 
-                        startActivity(intent);
                     }
                 }
                 if (mUserList.isEmpty()) {
@@ -667,7 +647,36 @@ public class TransactionFragment extends BaseFragment {
                 Collections.sort(mUserList);
                 for (int i = 0; i < mUserList.size(); i++) {
                     mUserList.get(i).setRank(i + 1);
-                    //String idnumber= String.valueOf(mUserList.get(i).getId());
+                    String idnumber= String.valueOf(mUserList.get(i).getId());
+
+                    String operation = sharedpreferences.getString("operation","");
+                    Double amount = Double.parseDouble(sharedpreferences.getString("amount",""));
+                    final String amt=String.format("%.2f", amount);
+                    String status = "0";
+                    String sNo = sharedpreferences.getString("supplierNo","");
+                    String idd = sharedpreferences.getString("number","");
+                    String accountNo = sharedpreferences.getString("accountNo","");
+                    String productDescription = sharedpreferences.getString("productDescription","");
+                    String machineId = sharedpreferences.getString("machine_id", "");
+                    String auditId = sharedpreferences.getString("loggedInUser", "");
+                    if(sharedpreferences.getString("number","").equals(idnumber)) {
+
+                        Intent intent = new Intent(getActivity(), SubmitTransactionActivity.class);
+                        editor.putString("operation", operation);
+                        editor.putString("amount", amt);
+                        editor.putString("machineId", machineId);
+                        editor.putString("supplierNo", sNo);
+                        editor.putString("fingurePrint", "");
+                        editor.putString("auditId", auditId);
+                        editor.putString("accountNo", accountNo);
+                        editor.putString("productDescription", productDescription);
+                        editor.commit();
+                        startActivity(intent);
+                    }
+                    else {
+                        handleMsg("ID number does not match", Color.RED);
+
+                    }
 
 
 

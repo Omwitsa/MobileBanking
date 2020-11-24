@@ -59,6 +59,7 @@ tools:context="com.aratek.trustfinger.Activities.DepositActivity">
         android:id="@+id/amount"
         android:drawablePadding="10dp"
         android:hint="Amount"
+        android:inputType="number"
         android:textColor="@color/textcardColor"
         android:textColorHint="@color/textcardColor"
         android:textColorHighlight="@color/textcardColor"/>

@@ -1,1 +1,0 @@
-[{"outputType":{"type":"INSTANT_APP_MANIFEST"},"apkData":{"type":"MAIN","splits":[],"versionCode":1,"versionName":"1.0.6","enabled":true,"outputFile":"AratekTrustFingerDemo_v1.0.6_20201116135202.apk","fullName":"debug","baseName":"debug"},"path":"AndroidManifest.xml","properties":{"packageId":"com.aratek.trustfinger.demo.aratektrustfingerdemo","split":"","minSdkVersion":"14"}}]

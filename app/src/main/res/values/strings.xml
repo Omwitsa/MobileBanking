@@ -183,8 +183,6 @@
     </string-array>
     <string-array name="tabs_name">
         <item>  Registration</item>
-        <item>  Identification</item>
-        <item>  Verification</item>
         <item> Device Info</item>
     </string-array>
     <string-array name="tabs_name1">
