@@ -1,0 +1,4 @@
+#Tue Nov 24 12:35:25 EAT 2020
+base.0=D\:\\android-2020\\MobileBanking\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\out
+path.0=classes.dex
+renamed.0=classes.dex
