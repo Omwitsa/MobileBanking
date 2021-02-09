@@ -45,7 +45,7 @@ public class SubmitTransactionActivity extends AppCompatActivity {
             String auditId = sharedpreferences.getString("loggedInUser", "");
             insertDataToSqlite(operation,amount,sNo,status);
 
-            transactionModel = new TransactionModel(operation, amount, "", "", sNo, status, machineId, auditId, productDescription, accountNo);
+            transactionModel = new TransactionModel(operation, amount, "", "", sNo, status, machineId, auditId, productDescription, "",accountNo);
             transaction = new Transaction(this, transactionModel);
 
             transaction.transact(transactionModel);

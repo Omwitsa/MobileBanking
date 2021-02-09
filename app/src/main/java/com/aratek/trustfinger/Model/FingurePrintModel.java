@@ -7,10 +7,13 @@ public class FingurePrintModel {
     private String FingerPrint;
     @SerializedName("idNo")
     private String IdNo;
+    @SerializedName("machineId")
+    private String machineId;
 
-    public FingurePrintModel(String fingerPrint, String idNo) {
+    public FingurePrintModel(String fingerPrint, String idNo,String machineId) {
         FingerPrint = fingerPrint;
         IdNo = idNo;
+        machineId = machineId;
     }
 
     public String getFingerPrint() {
@@ -27,5 +30,13 @@ public class FingurePrintModel {
 
     public void setIdNo(String idNo) {
         IdNo = idNo;
+    }
+
+    public String getmachineId() {
+        return machineId;
+    }
+
+    public void setmachineId(String machineId) {
+        machineId = machineId;
     }
 }

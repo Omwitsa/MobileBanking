@@ -21,11 +21,14 @@ public class TransactionModel {
     private String auditID;
     @SerializedName("productDescription")
     private String productDescription;
+    @SerializedName("AgencyName")
+    private String AgencyName;
     @SerializedName("accountNo")
     private String accountNo;
 
-    public TransactionModel(String operation, Double amount, String fingerePrint, String pin, String sNo, String status, String machineID, String auditID, String productDescription, String accountNo) {
+    public TransactionModel(String operation, Double amount, String fingerePrint, String pin, String sNo, String status, String machineID, String auditID, String productDescription, String AgencyName, String accountNo) {
         this.operation = operation;
+
         this.amount = amount;
         this.fingerePrint = fingerePrint;
         this.pin = pin;
@@ -34,8 +37,11 @@ public class TransactionModel {
         this.machineID = machineID;
         this.auditID = auditID;
         this.productDescription = productDescription;
+        this.AgencyName = AgencyName;
         this.accountNo = accountNo;
     }
+
+
 
     public String getOperation() {
         return operation;
@@ -107,6 +113,14 @@ public class TransactionModel {
 
     public void setProductDescription(String productDescription) {
         this.productDescription = productDescription;
+    }
+
+    public String getAgencyName() {
+        return AgencyName;
+    }
+
+    public void setAgencyName(String AgencyName) {
+        this.AgencyName = AgencyName;
     }
 
     public String getAccountNo() {

@@ -43,75 +43,78 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
         ButterKnife.bind(this);
-        seedUser();
-        btnSignup.setEnabled(false);
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                progressDoalog.setMessage("Please wait...");
-                progressDoalog.show();
-               Login();
-            }
-        });
-
-        btnSignup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
+        //seedUser();
+//        btnSignup.setEnabled(false);
+//        btnLogin.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                progressDoalog.setMessage("Please wait...");
+//                progressDoalog.show();
+//               Login();
+                Intent intent = new Intent(getApplicationContext(), IdentificationActivity.class);
                 startActivity(intent);
-            }
-        });
+                
+//            }
+//        });
+
+//        btnSignup.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
+//                startActivity(intent);
+//            }
+//        });
     }
-
-    private void seedUser() {
-        String machineId = android.os.Build.SERIAL;
-        editor.putString("machine_id", machineId);
-        editor.commit();
-
-        String username = "PosAgent";
-        String password = "Coop@2020";
-        MemberModel memberModel = new MemberModel(username, password, machineId);
-        Call<Response> call = apiService.createUser(memberModel);
-        call.enqueue(new Callback<Response>() {
-            @Override
-            public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
-
-            }
-
-            @Override
-            public void onFailure(Call<Response> call, Throwable t) {
-
-            }
-        });
-    }
-
-    private void Login() {
-        String machineId = android.os.Build.SERIAL;
-        MemberModel memberModel = new MemberModel(username.getText().toString(), password.getText().toString(), machineId);
-        SharedPreferences.Editor editor = sharedpreferences.edit();
-        editor.putString("loggedInUser", memberModel.getUsercode());
-        editor.commit();
-
-        Call<Response> call = apiService.login(memberModel);
-        call.enqueue(new Callback<Response>() {
-            @Override
-            public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
-                progressDoalog.dismiss();
-                Response responseData = response.body();
-                if (responseData.isSuccess()){
-                    Intent homeIntent = new Intent(getApplicationContext(), AuthenticationActivity.class);
-                    startActivity(homeIntent);
-                }
-                else {
-                    Toast.makeText(getApplicationContext(), responseData.getMessage(), Toast.LENGTH_LONG).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Response> call, Throwable t) {
-                progressDoalog.dismiss();
-                Toast.makeText(getApplicationContext(), "Sorry, An error occurred", Toast.LENGTH_LONG).show();
-            }
-        });
-    }
+//
+//    private void seedUser() {
+//        String machineId = android.os.Build.SERIAL;
+//        editor.putString("machine_id", machineId);
+//        editor.commit();
+//
+//        String username = "PosAgent";
+//        String password = "Coop@2020";
+//        MemberModel memberModel = new MemberModel(username, password, machineId);
+//        Call<Response> call = apiService.createUser(memberModel);
+//        call.enqueue(new Callback<Response>() {
+//            @Override
+//            public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
+//
+//            }
+//
+//            @Override
+//            public void onFailure(Call<Response> call, Throwable t) {
+//
+//            }
+//        });
+//    }
+//
+//    private void Login() {
+//        String machineId = android.os.Build.SERIAL;
+//        MemberModel memberModel = new MemberModel(username.getText().toString(), password.getText().toString(), machineId);
+//        SharedPreferences.Editor editor = sharedpreferences.edit();
+//        editor.putString("loggedInUser", memberModel.getUsercode());
+//        editor.commit();
+//
+//        Call<Response> call = apiService.login(memberModel);
+//        call.enqueue(new Callback<Response>() {
+//            @Override
+//            public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
+//                progressDoalog.dismiss();
+//                Response responseData = response.body();
+//                if (responseData.isSuccess()){
+//                    Intent homeIntent = new Intent(getApplicationContext(), AuthenticationActivity.class);
+//                    startActivity(homeIntent);
+//                }
+//                else {
+//                    Toast.makeText(getApplicationContext(), responseData.getMessage(), Toast.LENGTH_LONG).show();
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<Response> call, Throwable t) {
+//                progressDoalog.dismiss();
+//                Toast.makeText(getApplicationContext(), "Sorry, Network error occurred", Toast.LENGTH_LONG).show();
+//            }
+//        });
+//    }
 }

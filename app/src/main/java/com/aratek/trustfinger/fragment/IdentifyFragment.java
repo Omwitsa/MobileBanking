@@ -44,8 +44,10 @@ import com.aratek.trustfinger.Activities.AccountsActivity;
 import com.aratek.trustfinger.Activities.BalanceActivity;
 import com.aratek.trustfinger.Activities.DepositActivity;
 import com.aratek.trustfinger.Activities.HomeActivity;
+import com.aratek.trustfinger.Activities.IdentificationActivity;
 import com.aratek.trustfinger.Activities.Reports;
 import com.aratek.trustfinger.Model.FingurePrintModel;
+import com.aratek.trustfinger.Model.RegisterFingerprints;
 import com.aratek.trustfinger.Model.Response;
 import com.aratek.trustfinger.Model.TransactionModel;
 import com.aratek.trustfinger.Rest.ApiClient;
@@ -640,12 +642,41 @@ public class IdentifyFragment extends BaseFragment {
                 Collections.sort(mUserList);
                 for (int i = 0; i < mUserList.size(); i++) {
                     mUserList.get(i).setRank(i + 1);
-                    String idnumber= String.valueOf(mUserList.get(i).getId());
-                    Intent intent = new Intent(getActivity(), AccountsActivity.class);
-                    editor.putString("loadsPosition", idnumber);
-                    editor.commit();
-                    //intent.putExtra("loadsPosition",idnumber);
-                    startActivity(intent);
+//                    String idnumber= String.valueOf(mUserList.get(i).getId());
+//                    Intent intent = new Intent(getActivity(), AccountsActivity.class);
+//                    editor.putString("loadsPosition", idnumber);
+//                    editor.commit();
+//                    startActivity(intent);
+                    String machineId = android.os.Build.SERIAL;
+                    ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
+                    RegisterFingerprints fingerprints = new RegisterFingerprints(mUserList.get(i).getFingerData().toString(),mUserList.get(i).getId(),machineId);
+                    Call<Response> call = apiService.registerFingers(fingerprints);
+                    call.enqueue(new Callback<Response>() {
+                        @Override
+                        public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
+                            Response responseData = response.body();
+                            assert responseData != null;
+                            Toast.makeText(mApp.getApplicationContext(), responseData.getMessage(), Toast.LENGTH_LONG).show();
+                            if(response.isSuccessful())
+                            {
+                                Intent intent = new Intent(getActivity(), AccountsActivity.class);
+                                startActivity(intent);
+
+                            }
+                            else
+                                {
+                                    Intent intent = new Intent(getActivity(), IdentificationActivity.class);
+                                    startActivity(intent);
+                                }
+
+
+                        }
+
+                        @Override
+                        public void onFailure(Call<Response> call, Throwable t) {
+
+                        }
+                    });
 
 
 

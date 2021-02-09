@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.aratek.trustfinger.Activities.PosUsersActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="20dp"
+        android:orientation="vertical"
+        android:id="@+id/editingZone"
+        android:padding="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@color/cardColor">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:padding="15dp"
+        android:background="@drawable/editshape"
+        android:id="@+id/names"
+        android:hint="full names"
+        android:drawablePadding="10dp"
+        android:textColor="@color/textcardColor"
+        android:textColorHint="@color/textcardColor"
+        android:textColorHighlight="@color/textcardColor"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:padding="15dp"
+        android:background="@drawable/editshape"
+        android:id="@+id/idno"
+        android:drawablePadding="10dp"
+        android:hint="id number"
+        android:textColor="@color/textcardColor"
+        android:textColorHint="@color/textcardColor"
+        android:textColorHighlight="@color/textcardColor"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:padding="15dp"
+        android:background="@drawable/editshape"
+        android:id="@+id/phone"
+        android:drawablePadding="10dp"
+        android:hint="phone number."
+        android:textColor="@color/textcardColor"
+        android:textColorHint="@color/textcardColor"
+        android:textColorHighlight="@color/textcardColor"/>
+        <Spinner
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="10dp"
+            android:background="@drawable/editshape"
+            android:id="@+id/agency"
+            android:hint="Product name"
+            android:layout_margin="10dp"
+            android:padding="15dp"
+            android:textColor="@color/textcardColor"
+            android:textColorHint="@color/textcardColor"
+            android:textColorHighlight="@color/textcardColor" />
+
+<!--    <Spinner-->
+<!--        android:id="@+id/gender"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:drawablePadding="30dp"-->
+<!--        android:background="@drawable/editshape"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:entries="@array/shift_array"-->
+<!--        android:hint="Agency name"-->
+<!--        android:prompt="@string/container_prompt"-->
+<!--        android:layout_margin="10dp"-->
+<!--        android:padding="15dp"-->
+<!--        android:textColor="@color/textcardColor"-->
+<!--        android:textColorHint="@color/textcardColor"-->
+<!--        android:textColorHighlight="@color/textcardColor" />-->
+
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:shadowColor="@android:color/transparent"
+        android:padding="15dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="20dp"
+        android:id="@+id/submits"
+        android:background="@drawable/signupbtnshape"/>
+    </LinearLayout>
+
+
+</RelativeLayout>

@@ -966,6 +966,7 @@ id activity_chooser_view_content
 id add
 id adv
 id advance
+id agency
 id alertTitle
 id all
 id always
@@ -1074,6 +1075,7 @@ id icon
 id icon_group
 id identify
 id idnno
+id idno
 id ifRoom
 id image
 id info
@@ -1108,6 +1110,7 @@ id mobile
 id multiply
 id myFrame
 id my_toolbar
+id names
 id navigation_header_container
 id never
 id none
@@ -1123,6 +1126,7 @@ id parentPanel
 id parent_matrix
 id password
 id percent
+id phone
 id pin
 id proBar_image_quality
 id productname
@@ -1185,6 +1189,7 @@ id status_bar_latest_event_content
 id submenuarrow
 id submit
 id submit_area
+id submits
 id surname
 id sv_content
 id tabLayout
@@ -1316,6 +1321,7 @@ layout activity_home
 layout activity_identification
 layout activity_main
 layout activity_main2
+layout activity_pos_users
 layout activity_print
 layout activity_products
 layout activity_refresh

@@ -1440,8 +1440,9 @@ public class EnrollFragment extends BaseFragment implements View.OnClickListener
             return;
         }
         if (mDBHelper.insertUser(user)) {
+            String machineId = android.os.Build.SERIAL;
             ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-            FingurePrintModel fingurePrint = new FingurePrintModel(user.getFingerData().toString(), user.getId());
+            FingurePrintModel fingurePrint = new FingurePrintModel(user.getFingerData().toString(), user.getId(),machineId);
             Call<Response> call = apiService.registerFingerPrints(fingurePrint);
             call.enqueue(new Callback<Response>() {
                 @Override

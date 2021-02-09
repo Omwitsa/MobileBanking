@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.aratek.trustfinger.Model.ProductModel;
 import com.aratek.trustfinger.Model.TransactionModel;
@@ -59,7 +60,7 @@ public class ProductsActivity extends Activity implements AdapterView.OnItemSele
         // Spinner click listener
         spinner.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
         List<String> val = new ArrayList<String>();
-        TransactionModel transaction = new TransactionModel("", 0.0, "", "", "", "", "", "","",Account);
+        TransactionModel transaction = new TransactionModel("", 0.0, "", "", "", "", "", "","","",Account);
         Call<List<ProductModel>> call = apiService.getAdvanceProcucts(transaction);
 
         call.enqueue(new Callback<List<ProductModel>>() {
@@ -75,6 +76,10 @@ public class ProductsActivity extends Activity implements AdapterView.OnItemSele
                     dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     dataAdapter = new ArrayAdapter<String>(ProductsActivity.this, android.R.layout.simple_spinner_item, productsname);
                     spinner.setAdapter(dataAdapter);
+                }
+                if (productsname.length <= 0)
+                {
+                    Toast.makeText(ProductsActivity.this, "You do not have any products ", Toast.LENGTH_LONG).show();
                 }
             }
 
