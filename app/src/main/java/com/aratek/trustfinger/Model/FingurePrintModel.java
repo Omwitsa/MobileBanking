@@ -8,12 +8,12 @@ public class FingurePrintModel {
     @SerializedName("idNo")
     private String IdNo;
     @SerializedName("machineId")
-    private String machineId;
+    private String MachineId;
 
     public FingurePrintModel(String fingerPrint, String idNo,String machineId) {
         FingerPrint = fingerPrint;
         IdNo = idNo;
-        machineId = machineId;
+        MachineId=machineId;
     }
 
     public String getFingerPrint() {
@@ -33,10 +33,10 @@ public class FingurePrintModel {
     }
 
     public String getmachineId() {
-        return machineId;
+        return MachineId;
     }
 
     public void setmachineId(String machineId) {
-        machineId = machineId;
+        MachineId = machineId;
     }
 }

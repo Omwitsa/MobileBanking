@@ -19,8 +19,8 @@ public interface ApiInterface {
     @POST("webservice/users/registerFingerPrints")
     Call<Response> registerFingerPrints(@Body FingurePrintModel fingurePrint);
 
-    @POST("webservice/users/registerFingers")
-    Call<Response> registerFingers(@Body RegisterFingerprints fingerprints);
+    //@POST("webservice/users/registerFingerPrints")
+    //Call<Response> registerFingerPrints(@Body RegisterFingerprints fingerprints);
 
     @POST("webservice/users/seedAdminUser")
     Call<Response> createUser(@Body MemberModel memberModel);

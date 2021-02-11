@@ -11,14 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.Deposit2Account"></activity>
-        <activity android:name=".Activities.PosUsersActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".Activities.RegisterPhone"></activity>
         <activity android:name=".Reports.AdvancesreportActivity" />
         <activity android:name=".Reports.WithdrawalsreportActivity" />
         <activity android:name=".Reports.DepositreportActivity" />
@@ -32,6 +25,8 @@
         <activity android:name=".Activities.SubmitTransactionActivity" />
         <activity android:name=".Activities.AuthenticationActivity" />
         <activity android:name=".Activities.AccountsActivity" />
+        <activity android:name=".Activities.PosUsersActivity" />
+        <activity android:name=".Activities.Deposit2Account" />
         <activity android:name=".utils.MainActivity" />
         <activity android:name=".Activities.FingeprintActivity">
             <intent-filter>
@@ -79,11 +74,11 @@
     <uses-feature
         android:name="android.hardware.usb.host"
         android:required="true" />
-    <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <uses-permission android:name="android.permission.BLUETOOTH" />
 
 </manifest>

@@ -10,7 +10,7 @@ public class RegisterFingerprints {
     @SerializedName("fingerPrint")
     private String FingerPrint;
     @SerializedName("machineId")
-    private String machineId;
+    private String MachineId;
 
 
 
@@ -18,7 +18,7 @@ public class RegisterFingerprints {
     {
         FingerPrint = fingerPrint;
         IdNo = idNo;
-        machineId = machineId;
+        MachineId = machineId;
     }
     public String getFingerPrint() {
         return FingerPrint;
@@ -31,7 +31,7 @@ public class RegisterFingerprints {
 
     public void setIdNo(String idNo) { IdNo = idNo;}
 
-    public String getmachineId() { return machineId; }
+    public String getMachineId() { return MachineId; }
 
-    public void setmachineId(String machineId) { machineId = machineId;}
+    public void setMachineId(String machineId) { MachineId = machineId;}
 }

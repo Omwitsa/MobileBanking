@@ -4,6 +4,8 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -34,8 +36,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.aratek.trustfinger.Activities.AccountsActivity;
 import com.aratek.trustfinger.Activities.FingeprintActivity;
 import com.aratek.trustfinger.Model.FingurePrintModel;
+import com.aratek.trustfinger.Model.RegisterFingerprints;
 import com.aratek.trustfinger.Model.Response;
 import com.aratek.trustfinger.Rest.ApiClient;
 import com.aratek.trustfinger.Rest.ApiInterface;
@@ -146,6 +150,9 @@ public class EnrollFragment extends BaseFragment implements View.OnClickListener
     private View root;
     private List<LargestFingerData> largestFingerDataList = new ArrayList<>();
     private LedCallback callback;
+    public static final String MyPREFERENCES = "POSDETAILS" ;
+    SharedPreferences sharedpreferences;
+    SharedPreferences.Editor editor;
     public void setLedCallback(LedCallback callback){
         this.callback = callback;
     }
@@ -1441,12 +1448,21 @@ public class EnrollFragment extends BaseFragment implements View.OnClickListener
         }
         if (mDBHelper.insertUser(user)) {
             String machineId = android.os.Build.SERIAL;
+//            String idnumber= String.valueOf(user.getId());
+//            String fingerprint= user.getFingerData().toString();
+//            Intent intent = new Intent(getActivity(), AccountsActivity.class);
+//            editor.putString("loadsPosition", idnumber);
+//            editor.putString("loadsPosition", machineId);
+//            editor.putString("loadsPosition", fingerprint);
+//            editor.commit();
+//            startActivity(intent);
             ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
             FingurePrintModel fingurePrint = new FingurePrintModel(user.getFingerData().toString(), user.getId(),machineId);
             Call<Response> call = apiService.registerFingerPrints(fingurePrint);
             call.enqueue(new Callback<Response>() {
                 @Override
                 public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
+
 
                 }
 

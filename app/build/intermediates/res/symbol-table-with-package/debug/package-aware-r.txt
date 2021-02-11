@@ -940,6 +940,7 @@ id Product
 id SHIFT
 id SYM
 id Transsdate
+id accno
 id accountno
 id action0
 id action_bar
@@ -998,6 +999,7 @@ id btn_remove_user
 id btn_start_stop_identify
 id buttonPanel
 id cancel_action
+id cash
 id center
 id center_horizontal
 id center_vertical
@@ -1143,6 +1145,7 @@ id right
 id right_icon
 id right_side
 id sNo
+id save
 id save_image_matrix
 id save_non_transition_alpha
 id save_scale_type
@@ -1314,6 +1317,7 @@ layout activity_confirm
 layout activity_confirm_advance
 layout activity_confirm_balance
 layout activity_deposit
+layout activity_deposit2_account
 layout activity_depositreport
 layout activity_fingeprint
 layout activity_fingure_print_sample
@@ -1327,6 +1331,7 @@ layout activity_products
 layout activity_refresh
 layout activity_refreshidentify
 layout activity_register
+layout activity_register_phone
 layout activity_reports
 layout activity_submit_transaction
 layout activity_transaction

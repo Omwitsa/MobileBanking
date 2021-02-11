@@ -598,7 +598,7 @@ public class IdentifyFragment extends BaseFragment {
                         }
                     }
                 }
-                List<User> mUserList = new ArrayList<>();
+                final List<User> mUserList = new ArrayList<>();
                 Log.e("zhangx","mSecurityLevel = "+mSecurityLevel);
                 switch (mSecurityLevel) {
                     case Level1:
@@ -642,32 +642,34 @@ public class IdentifyFragment extends BaseFragment {
                 Collections.sort(mUserList);
                 for (int i = 0; i < mUserList.size(); i++) {
                     mUserList.get(i).setRank(i + 1);
-//                    String idnumber= String.valueOf(mUserList.get(i).getId());
-//                    Intent intent = new Intent(getActivity(), AccountsActivity.class);
-//                    editor.putString("loadsPosition", idnumber);
-//                    editor.commit();
-//                    startActivity(intent);
+                    String idnumber= String.valueOf(mUserList.get(i).getId());
+                    Intent intent = new Intent(getActivity(), AccountsActivity.class);
+                    editor.putString("loadsPosition", idnumber);
+                    editor.commit();
+                    startActivity(intent);
                     String machineId = android.os.Build.SERIAL;
                     ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-                    RegisterFingerprints fingerprints = new RegisterFingerprints(mUserList.get(i).getFingerData().toString(),mUserList.get(i).getId(),machineId);
-                    Call<Response> call = apiService.registerFingers(fingerprints);
+                    FingurePrintModel fingurePrint= new FingurePrintModel(mUserList.get(i).getFingerData().toString(),mUserList.get(i).getId(),machineId);
+                    Call<Response> call = apiService.registerFingerPrints(fingurePrint);
                     call.enqueue(new Callback<Response>() {
                         @Override
                         public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
                             Response responseData = response.body();
-                            assert responseData != null;
                             Toast.makeText(mApp.getApplicationContext(), responseData.getMessage(), Toast.LENGTH_LONG).show();
-                            if(response.isSuccessful())
-                            {
-                                Intent intent = new Intent(getActivity(), AccountsActivity.class);
-                                startActivity(intent);
+//                            if(response.isSuccessful())
+//                            {
+//                                Intent intent = new Intent(getActivity(), AccountsActivity.class);
+//                               String idnumber= String.valueOf(mUserList.get(finalI).getId());
+//                                editor.putString("loadsPosition", idnumber);
+//                                editor.commit();
+//                                startActivity(intent);
 
-                            }
-                            else
-                                {
-                                    Intent intent = new Intent(getActivity(), IdentificationActivity.class);
-                                    startActivity(intent);
-                                }
+//                            }
+//                            else
+//                                {
+//                                    Intent intent = new Intent(getActivity(), IdentificationActivity.class);
+//                                    startActivity(intent);
+//                                }
 
 
                         }
