@@ -647,38 +647,38 @@ public class IdentifyFragment extends BaseFragment {
                     editor.putString("loadsPosition", idnumber);
                     editor.commit();
                     startActivity(intent);
-                    String machineId = android.os.Build.SERIAL;
-                    ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-                    FingurePrintModel fingurePrint= new FingurePrintModel(mUserList.get(i).getFingerData().toString(),mUserList.get(i).getId(),machineId);
-                    Call<Response> call = apiService.registerFingerPrints(fingurePrint);
-                    call.enqueue(new Callback<Response>() {
-                        @Override
-                        public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
-                            Response responseData = response.body();
-                            Toast.makeText(mApp.getApplicationContext(), responseData.getMessage(), Toast.LENGTH_LONG).show();
-//                            if(response.isSuccessful())
-//                            {
-//                                Intent intent = new Intent(getActivity(), AccountsActivity.class);
-//                               String idnumber= String.valueOf(mUserList.get(finalI).getId());
-//                                editor.putString("loadsPosition", idnumber);
-//                                editor.commit();
-//                                startActivity(intent);
-
-//                            }
-//                            else
-//                                {
-//                                    Intent intent = new Intent(getActivity(), IdentificationActivity.class);
-//                                    startActivity(intent);
-//                                }
-
-
-                        }
-
-                        @Override
-                        public void onFailure(Call<Response> call, Throwable t) {
-
-                        }
-                    });
+//                    String machineId = android.os.Build.SERIAL;
+//                    ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
+//                    FingurePrintModel fingurePrint= new FingurePrintModel(mUserList.get(i).getFingerData().toString(),mUserList.get(i).getId(),machineId);
+//                    Call<Response> call = apiService.registerFingerPrints(fingurePrint);
+//                    call.enqueue(new Callback<Response>() {
+//                        @Override
+//                        public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
+//                            Response responseData = response.body();
+//                            Toast.makeText(mApp.getApplicationContext(), responseData.getMessage(), Toast.LENGTH_LONG).show();
+////                            if(response.isSuccessful())
+////                            {
+////                                Intent intent = new Intent(getActivity(), AccountsActivity.class);
+////                               String idnumber= String.valueOf(mUserList.get(finalI).getId());
+////                                editor.putString("loadsPosition", idnumber);
+////                                editor.commit();
+////                                startActivity(intent);
+//
+////                            }
+////                            else
+////                                {
+////                                    Intent intent = new Intent(getActivity(), IdentificationActivity.class);
+////                                    startActivity(intent);
+////                                }
+//
+//
+//                        }
+//
+//                        @Override
+//                        public void onFailure(Call<Response> call, Throwable t) {
+//
+//                        }
+//                    });
 
 
 

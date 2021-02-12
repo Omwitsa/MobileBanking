@@ -1099,10 +1099,8 @@ id listMode
 id list_item
 id lv_listview
 id lv_user_list
-id ly_file_path
 id ly_hand
 id ly_settings
-id ly_user_list
 id masked
 id media_actions
 id message
@@ -1135,11 +1133,7 @@ id productname
 id progress_circular
 id progress_horizontal
 id radio
-id rdoBtn_check_in_local_base
-id rdoBtn_file
-id rdoGrp_selection
-id registration
-id report
+id registrations
 id retry
 id right
 id right_icon
@@ -1218,12 +1212,12 @@ id transition_layout_save
 id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
+id transs
 id tv
 id tv_current_index
 id tv_current_position
 id tv_device_id
 id tv_device_type
-id tv_file_path
 id tv_fw_version
 id tv_image_dpi
 id tv_image_height
@@ -1261,6 +1255,7 @@ id up
 id useLogo
 id username
 id verify
+id verifys
 id viewPager
 id view_offset_helper
 id visible
@@ -1308,6 +1303,7 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout activity_accounts
+layout activity_admin_login2
 layout activity_advance
 layout activity_advancesreport
 layout activity_agent_member

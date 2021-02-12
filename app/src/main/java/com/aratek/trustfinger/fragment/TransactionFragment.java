@@ -623,9 +623,6 @@ public class TransactionFragment extends BaseFragment {
                     if (userList.get(i).getSimilarity() >= mIdentifyThreshold) {
                         mUserList.add(userList.get(i));
 
-
-
-
                     }
                 }
                 if (mUserList.isEmpty()) {

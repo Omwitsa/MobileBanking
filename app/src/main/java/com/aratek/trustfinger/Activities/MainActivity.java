@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         //seedUser();
 //        btnSignup.setEnabled(false);
-//        btnLogin.setOnClickListener(new View.OnClickListener() {
+//       btnLogin.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
 //                progressDoalog.setMessage("Please wait...");
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
 //               Login();
                 Intent intent = new Intent(getApplicationContext(), IdentificationActivity.class);
                 startActivity(intent);
-                
+
 //            }
 //        });
 

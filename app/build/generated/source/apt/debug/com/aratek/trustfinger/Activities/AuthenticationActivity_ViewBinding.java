@@ -24,9 +24,7 @@ public class AuthenticationActivity_ViewBinding implements Unbinder {
     this.target = target;
 
     target.Transactions = Utils.findRequiredViewAsType(source, R.id.trans, "field 'Transactions'", CardView.class);
-    target.registration = Utils.findRequiredViewAsType(source, R.id.registration, "field 'registration'", CardView.class);
     target.verification = Utils.findRequiredViewAsType(source, R.id.verify, "field 'verification'", CardView.class);
-    target.report = Utils.findRequiredViewAsType(source, R.id.report, "field 'report'", CardView.class);
   }
 
   @Override
@@ -37,8 +35,6 @@ public class AuthenticationActivity_ViewBinding implements Unbinder {
     this.target = null;
 
     target.Transactions = null;
-    target.registration = null;
     target.verification = null;
-    target.report = null;
   }
 }

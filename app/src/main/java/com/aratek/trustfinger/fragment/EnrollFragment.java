@@ -1448,20 +1448,14 @@ public class EnrollFragment extends BaseFragment implements View.OnClickListener
         }
         if (mDBHelper.insertUser(user)) {
             String machineId = android.os.Build.SERIAL;
-//            String idnumber= String.valueOf(user.getId());
-//            String fingerprint= user.getFingerData().toString();
-//            Intent intent = new Intent(getActivity(), AccountsActivity.class);
-//            editor.putString("loadsPosition", idnumber);
-//            editor.putString("loadsPosition", machineId);
-//            editor.putString("loadsPosition", fingerprint);
-//            editor.commit();
-//            startActivity(intent);
             ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
             FingurePrintModel fingurePrint = new FingurePrintModel(user.getFingerData().toString(), user.getId(),machineId);
             Call<Response> call = apiService.registerFingerPrints(fingurePrint);
             call.enqueue(new Callback<Response>() {
                 @Override
                 public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
+                    Response responseData = response.body();
+                    Toast.makeText(mApp.getApplicationContext(), responseData.getMessage(), Toast.LENGTH_LONG).show();
 
 
                 }

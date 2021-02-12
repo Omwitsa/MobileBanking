@@ -76,6 +76,10 @@
         "source": "D:\\android-2020\\MobileBanking\\app\\src\\main\\res\\drawable\\chk_text_selector.xml"
     },
     {
+        "merged": "D:\\android-2020\\MobileBanking\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_admin_login2.xml.flat",
+        "source": "D:\\android-2020\\MobileBanking\\app\\src\\main\\res\\layout\\activity_admin_login2.xml"
+    },
+    {
         "merged": "D:\\android-2020\\MobileBanking\\app\\build\\intermediates\\res\\merged\\debug\\raw_no_fingerprint_device_detected.wav.flat",
         "source": "D:\\android-2020\\MobileBanking\\app\\src\\main\\res\\raw\\no_fingerprint_device_detected.wav"
     },

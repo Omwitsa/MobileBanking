@@ -31,9 +31,9 @@
         app:layout_editor_absoluteX="0dp">
 
         <android.support.v7.widget.CardView
-            android:layout_width="0dp"
-            android:layout_height="0dp"
             android:id="@+id/trans"
+            android:layout_width="0dp"
+            android:layout_height="300dp"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:layout_marginLeft="16dp"
@@ -43,6 +43,11 @@
             app:cardCornerRadius="8dp"
             app:cardElevation="6dp">
 
+            <FrameLayout
+                android:id="@+id/myFrame"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -51,38 +56,33 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/fingerprint" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Transactions "
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/mo_re"
+                    android:text="Transactions "
                     android:textColor="@color/textcardColor"
                     android:textSize="14sp"
                     android:textStyle="bold"
                     tools:ignore="UnusedAttribute" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:background="@drawable/fingerprint"/>
             </LinearLayout>
-
-            <FrameLayout
-                android:id="@+id/myFrame"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
 
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
+            android:id="@+id/verify"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="300dp"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:layout_marginLeft="16dp"
-            android:id="@+id/registration"
             android:layout_marginRight="16dp"
             android:layout_marginBottom="16dp"
             android:background="@color/cardColor"
@@ -97,101 +97,103 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/verification" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Membership"
-                    android:textColor="@color/textcardColor"
-                    android:textSize="14sp"
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/mo_re"
-                    android:textStyle="bold"/>
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:background="@drawable/membership"/>
-            </LinearLayout>
-        </android.support.v7.widget.CardView>
-
-        <android.support.v7.widget.CardView
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginBottom="16dp"
-            android:id="@+id/verify"
-            android:background="@color/cardColor"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="6dp">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_margin="16dp"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:text="Registration"
                     android:textColor="@color/textcardColor"
                     android:textSize="14sp"
-                    android:layout_marginTop="8dp"
-                    android:fontFamily="@font/mo_re"
-                    android:textStyle="bold"/>
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:background="@drawable/verification"/>
+                    android:textStyle="bold" />
             </LinearLayout>
         </android.support.v7.widget.CardView>
 
-        <android.support.v7.widget.CardView
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:id="@+id/report"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginBottom="16dp"
-            android:background="@color/cardColor"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="6dp">
+<!--        <android.support.v7.widget.CardView-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="0dp"-->
+<!--            android:layout_rowWeight="1"-->
+<!--            android:layout_columnWeight="1"-->
+<!--            android:layout_marginLeft="16dp"-->
+<!--            android:id="@+id/registration"-->
+<!--            android:layout_marginRight="16dp"-->
+<!--            android:layout_marginBottom="16dp"-->
+<!--            android:background="@color/cardColor"-->
+<!--            app:cardCornerRadius="8dp"-->
+<!--            app:cardElevation="6dp">-->
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_margin="16dp"
-                android:gravity="center"
-                android:orientation="vertical">
+<!--            <LinearLayout-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center_horizontal|center_vertical"-->
+<!--                android:layout_margin="16dp"-->
+<!--                android:gravity="center"-->
+<!--                android:orientation="vertical">-->
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Reports"
-                    android:textColor="@color/textcardColor"
-                    android:textSize="14sp"
-                    android:layout_marginTop="4dp"
-                    android:fontFamily="@font/mo_re"
-                    android:textStyle="bold"/>
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Membership"-->
+<!--                    android:textColor="@color/textcardColor"-->
+<!--                    android:textSize="14sp"-->
+<!--                    android:layout_marginTop="8dp"-->
+<!--                    android:fontFamily="@font/mo_re"-->
+<!--                    android:textStyle="bold"/>-->
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:background="@drawable/report"/>
-            </LinearLayout>
-        </android.support.v7.widget.CardView>
+<!--                <ImageView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center_horizontal"-->
+<!--                    android:background="@drawable/membership"/>-->
+<!--            </LinearLayout>-->
+<!--        </android.support.v7.widget.CardView>-->
+
+
+
+<!--        <android.support.v7.widget.CardView-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="0dp"-->
+<!--            android:id="@+id/report"-->
+<!--            android:layout_rowWeight="1"-->
+<!--            android:layout_columnWeight="1"-->
+<!--            android:layout_marginLeft="16dp"-->
+<!--            android:layout_marginRight="16dp"-->
+<!--            android:layout_marginBottom="16dp"-->
+<!--            android:background="@color/cardColor"-->
+<!--            app:cardCornerRadius="8dp"-->
+<!--            app:cardElevation="6dp">-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center_horizontal|center_vertical"-->
+<!--                android:layout_margin="16dp"-->
+<!--                android:gravity="center"-->
+<!--                android:orientation="vertical">-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Reports"-->
+<!--                    android:textColor="@color/textcardColor"-->
+<!--                    android:textSize="14sp"-->
+<!--                    android:layout_marginTop="4dp"-->
+<!--                    android:fontFamily="@font/mo_re"-->
+<!--                    android:textStyle="bold"/>-->
+
+<!--                <ImageView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center_horizontal"-->
+<!--                    android:background="@drawable/report"/>-->
+<!--            </LinearLayout>-->
+<!--        </android.support.v7.widget.CardView>-->
 
     </GridLayout>
 

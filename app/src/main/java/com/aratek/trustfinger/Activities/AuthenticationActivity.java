@@ -18,9 +18,9 @@ import butterknife.ButterKnife;
 
 public class AuthenticationActivity extends AppCompatActivity {
     @BindView(R.id.trans) CardView Transactions;
-    @BindView(R.id.registration) CardView registration;
+    //@BindView(R.id.registration) CardView registration;
     @BindView(R.id.verify) CardView verification;
-    @BindView(R.id.report) CardView report;
+//    @BindView(R.id.report) CardView report;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +32,7 @@ public class AuthenticationActivity extends AppCompatActivity {
         Transactions.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-             Intent intent = new Intent(getApplicationContext(), IdentificationActivity.class);
+             Intent intent = new Intent(getApplicationContext(), AdminLoginActivity.class);
                 startActivity(intent);
 
             }
@@ -45,20 +45,20 @@ public class AuthenticationActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        registration.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), AgentMemberActivity.class);
-                startActivity(intent);
-            }
-        });
-        report.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Reports.class);
-                startActivity(intent);
-            }
-        });
+//        registration.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(getApplicationContext(), AdminLoginActivity.class);
+//                startActivity(intent);
+//            }
+//        });
+//        report.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(getApplicationContext(), Reports.class);
+//                startActivity(intent);
+//            }
+//        });
     }
 
 
