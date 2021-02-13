@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
 //                progressDoalog.setMessage("Please wait...");
 //                progressDoalog.show();
 //               Login();
-                Intent intent = new Intent(getApplicationContext(), IdentificationActivity.class);
+                Intent intent = new Intent(getApplicationContext(), AdminLoginActivity.class);
                 startActivity(intent);
 
 //            }

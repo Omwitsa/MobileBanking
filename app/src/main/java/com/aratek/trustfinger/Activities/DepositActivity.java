@@ -68,7 +68,7 @@ public class DepositActivity extends AppCompatActivity {
                     Toast.makeText(DepositActivity.this, "Fields are empty", Toast.LENGTH_LONG).show();
                 }else if(Pinn.length()>4){
                     //Snackbar.make(getView(), "Password should have a minimum of 8 characters", Snackbar.LENGTH_LONG).show();
-                    Toast.makeText(DepositActivity.this, "Pin shoud have a maximum of 4 characters", Toast.LENGTH_LONG).show();
+                    Toast.makeText(DepositActivity.this, "Pin should have a maximum of 4 characters", Toast.LENGTH_LONG).show();
                 }else{
                     //insertDataToSqlite(bal, Pinn, Account);
 

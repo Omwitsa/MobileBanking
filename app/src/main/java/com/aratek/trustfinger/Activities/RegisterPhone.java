@@ -43,7 +43,7 @@ public class RegisterPhone extends AppCompatActivity {
         String IsAdmin = sharedpreferences.getString("loadrole", "");
 //        Toast.makeText(RegisterPhone.this,id,Toast.LENGTH_LONG).show();
 //        Toast.makeText(RegisterPhone.this,IsAdmin,Toast.LENGTH_LONG).show();
-        if(IsAdmin=="True")
+        if(IsAdmin=="False")
         {
             registration.setEnabled(false);
         }
