@@ -58,7 +58,7 @@ import java.util.List;
 import cn.com.syvanstone.PosManager;
 
 public class VerifyActivity extends FragmentActivity implements DeviceOpenListener, LedCallback {
-    private static final String TAG = "MainActivity";
+    private static final String TAG = "VerifyActivity";
     private static final String ACTION_USB_PERMISSION = "com.aratek.trustfinger.USB_PERMISSION";
     private Spinner mSpinner_deviceType;
     private Spinner mSpinner_usbDevice;
