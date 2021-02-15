@@ -27,6 +27,7 @@
         <activity android:name=".Activities.AuthenticationActivity" />
         <activity android:name=".Activities.AccountsActivity" />
         <activity android:name=".Activities.PosUsersActivity" />
+        <activity android:name=".Activities.IdentificationActivity" />
         <activity android:name=".Activities.Deposit2Account" />
         <activity android:name=".utils.MainActivity" />
         <activity android:name=".Activities.FingeprintActivity">
@@ -53,7 +54,7 @@
         <activity android:name=".utils.Printer" />
         <activity android:name=".Activities.Reports" />
         <activity
-            android:name=".Activities.IdentificationActivity"
+            android:name=".Activities.MainActivity"
             android:label="K-Pillar Agency"
             android:launchMode="singleInstance"
             android:screenOrientation="portrait"

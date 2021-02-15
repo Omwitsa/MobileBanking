@@ -77,7 +77,7 @@ public class FingeprintActivity extends FragmentActivity implements DeviceOpenLi
     private List<Fragment> fragmnts = new ArrayList<Fragment>();
     //private CaptureFragment mCaptureFragment;
     private EnrollFragment mEnrollFragment;
-//    private TransactionFragment mVerifyFragment;
+//   private TransactionFragment mVerifyFragment;
 //    private IdentifyFragment mIdentifyFragment;
     private DeviceInfoFragment mDeviceInfoFragment;
     private String[] titles;

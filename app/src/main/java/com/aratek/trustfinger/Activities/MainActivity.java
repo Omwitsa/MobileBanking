@@ -11,7 +11,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.aratek.trustfinger.Model.AgencyModel;
 import com.aratek.trustfinger.Model.LoadData;
+import com.aratek.trustfinger.Model.LoginModel;
 import com.aratek.trustfinger.Model.MemberModel;
 import com.aratek.trustfinger.Model.Response;
 import com.aratek.trustfinger.R;
@@ -24,7 +26,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 
 public class MainActivity extends AppCompatActivity {
-    public static final String MyPREFERENCES = "POSDETAILS" ;
+    public static final String MyPREFERENCES = "POSDETAILS";
     SharedPreferences sharedpreferences;
     SharedPreferences.Editor editor;
     ProgressDialog progressDoalog;
@@ -42,40 +44,75 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main2);
         ButterKnife.bind(this);
 
-               Login();
+        Login();
 
     }
 
 
     private void Login() {
         String machineId = android.os.Build.SERIAL;
-        LoadData loadData = new LoadData( machineId);
         SharedPreferences.Editor editor = sharedpreferences.edit();
-        editor.putString("loggedInUser", loadData.getMachineId());
         editor.commit();
 
+
+        ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
+        LoadData loadData = new LoadData(machineId);
         Call<Response> call = apiService.passwordLogin(loadData);
         call.enqueue(new Callback<Response>() {
             @Override
             public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
-                progressDoalog.dismiss();
                 Response responseData = response.body();
-                String feedback=responseData.getMessage();
-                if (feedback=="True"){
-                    Intent homeIntent = new Intent(getApplicationContext(), IdentificationActivity.class);
-                    startActivity(homeIntent);
-                }
-                else {
+                String feedback = responseData.getMessage();
+                String datas="Complete";
+
+                if (!feedback.equals(datas)) {
                     Intent homeIntent = new Intent(getApplicationContext(), LoginAdminActivity.class);
                     startActivity(homeIntent);
+                } else {
+                    Intent homeIntent = new Intent(getApplicationContext(), FingeprintActivity.class);
+                    startActivity(homeIntent);
                 }
+
             }
 
             @Override
             public void onFailure(Call<Response> call, Throwable t) {
                 progressDoalog.dismiss();
-                Toast.makeText(getApplicationContext(), "Sorry, Network error occurred", Toast.LENGTH_LONG).show();
+              Toast.makeText(getApplicationContext(), "Sorry, Network error occurred", Toast.LENGTH_LONG).show();
+
             }
         });
     }
 }
+
+
+
+
+
+
+
+//        Call<Response> call = apiService.passwordLogin(loadData);
+//        call.enqueue(new Callback<Response>() {
+//            @Override
+//            public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
+//                progressDoalog.dismiss();
+//                Response responseData = response.body();
+//                String feedback=responseData.getMessage();
+//                if (feedback=="True"){
+//                    Intent homeIntent = new Intent(getApplicationContext(), IdentificationActivity.class);
+//                    startActivity(homeIntent);
+//                }
+//                else {
+//                    Intent homeIntent = new Intent(getApplicationContext(), LoginAdminActivity.class);
+//                    startActivity(homeIntent);
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<Response> call, Throwable t) {
+//                progressDoalog.dismiss();
+//                Toast.makeText(getApplicationContext(), "Sorry, Network error occurred", Toast.LENGTH_LONG).show();
+//            }
+//        });
+//    }
+//}

@@ -32,6 +32,7 @@
         android:label="K-Pillar Agency"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:testOnly="true"
         android:theme="@style/AppTheme" >
         <activity android:name="com.aratek.trustfinger.Activities.LoginAdminActivity" />
         <activity android:name="com.aratek.trustfinger.Activities.AdminLoginActivity" />
@@ -49,6 +50,7 @@
         <activity android:name="com.aratek.trustfinger.Activities.AuthenticationActivity" />
         <activity android:name="com.aratek.trustfinger.Activities.AccountsActivity" />
         <activity android:name="com.aratek.trustfinger.Activities.PosUsersActivity" />
+        <activity android:name="com.aratek.trustfinger.Activities.IdentificationActivity" />
         <activity android:name="com.aratek.trustfinger.Activities.Deposit2Account" />
         <activity android:name="com.aratek.trustfinger.utils.MainActivity" />
         <activity android:name="com.aratek.trustfinger.Activities.FingeprintActivity" >
@@ -75,7 +77,7 @@
         <activity android:name="com.aratek.trustfinger.utils.Printer" />
         <activity android:name="com.aratek.trustfinger.Activities.Reports" />
         <activity
-            android:name="com.aratek.trustfinger.Activities.IdentificationActivity"
+            android:name="com.aratek.trustfinger.Activities.MainActivity"
             android:label="K-Pillar Agency"
             android:launchMode="singleInstance"
             android:screenOrientation="portrait"

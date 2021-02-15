@@ -77,10 +77,10 @@ public class VerifyActivity extends FragmentActivity implements DeviceOpenListen
     private List<String> sp_usbDevice_datas_all = new ArrayList<String>();
     private List<String> sp_usbDevice_datas = new ArrayList<String>();
     private List<Fragment> fragmnts = new ArrayList<Fragment>();
-    private CaptureFragment mCaptureFragment;
-    private EnrollFragment mEnrollFragment;
+    //private CaptureFragment mCaptureFragment;
+   // private EnrollFragment mEnrollFragment;
     private VerifyFragment mVerifyFragment;
-    private IdentifyFragment mIdentifyFragment;
+    //private IdentifyFragment mIdentifyFragment;
     //private TransactionFragment mTransactionFragment;
     private DeviceInfoFragment mDeviceInfoFragment;
     private String[] titles;
@@ -209,14 +209,14 @@ public class VerifyActivity extends FragmentActivity implements DeviceOpenListen
     }
 
     private void setFragmentDatas(TrustFingerDevice mTrustFingerDevice) {
-        if (mCaptureFragment != null)
-            mCaptureFragment.setDatas(mTrustFingerDevice);
-        if (mEnrollFragment != null)
-            mEnrollFragment.setDatas(mTrustFingerDevice);
+//        if (mCaptureFragment != null)
+//            mCaptureFragment.setDatas(mTrustFingerDevice);
+//        if (mEnrollFragment != null)
+//            mEnrollFragment.setDatas(mTrustFingerDevice);
         if (mVerifyFragment != null)
             mVerifyFragment.setDatas(mTrustFingerDevice);
-        if (mIdentifyFragment != null)
-            mIdentifyFragment.setDatas(mTrustFingerDevice);
+//        if (mIdentifyFragment != null)
+//            mIdentifyFragment.setDatas(mTrustFingerDevice);
         if (mDeviceInfoFragment != null)
             mDeviceInfoFragment.setDatas(mTrustFingerDevice);
     }
@@ -406,22 +406,22 @@ public class VerifyActivity extends FragmentActivity implements DeviceOpenListen
                 }
                 else {
                     int position = mViewPager.getCurrentItem();
-                    if (position == 0) {
-                        mCaptureFragment.forceStop();
-                        mCaptureFragment.resetUI();
-                    }
-                    if (position == 1) {
-                        mEnrollFragment.forceStop();
-                        mEnrollFragment.resetUI();
-                    }
+//                    if (position == 0) {
+//                        mCaptureFragment.forceStop();
+//                        mCaptureFragment.resetUI();
+//                    }
+//                    if (position == 1) {
+//                        mEnrollFragment.forceStop();
+//                        mEnrollFragment.resetUI();
+//                    }
                     if (position == 2) {
                         mVerifyFragment.forceStop();
                         mVerifyFragment.resetUI();
                     }
-                    if (position == 3) {
-                        mIdentifyFragment.forceStop();
-                        mIdentifyFragment.resetUI();
-                    }
+//                    if (position == 3) {
+//                        mIdentifyFragment.forceStop();
+//                        mIdentifyFragment.resetUI();
+//                    }
                     try {
                         if (mTrustFingerDevice.getDeviceModel() == DeviceModel.A600) {
                             if (mTrustFingerDevice.getLedStatus(LedIndex.RED) != LedStatus.CLOSE) {
@@ -456,20 +456,20 @@ public class VerifyActivity extends FragmentActivity implements DeviceOpenListen
                 }
             }
         });
-        mCaptureFragment = new CaptureFragment();
-        mCaptureFragment.setLedCallback(this);
-        mEnrollFragment = new EnrollFragment();
-        mEnrollFragment.setLedCallback(this);
+//        mCaptureFragment = new CaptureFragment();
+//        mCaptureFragment.setLedCallback(this);
+//        mEnrollFragment = new EnrollFragment();
+//        mEnrollFragment.setLedCallback(this);
         mVerifyFragment = new VerifyFragment();
         mVerifyFragment.setLedCallback(this);
-        mIdentifyFragment = new IdentifyFragment();
-        mIdentifyFragment.setLedCallback(this);
+//        mIdentifyFragment = new IdentifyFragment();
+//        mIdentifyFragment.setLedCallback(this);
         mDeviceInfoFragment = new DeviceInfoFragment();
-        fragmnts.add(mCaptureFragment);
-       fragmnts.add(mEnrollFragment);
+//        fragmnts.add(mCaptureFragment);
+//       fragmnts.add(mEnrollFragment);
        fragmnts.add(mVerifyFragment);
         //fragmnts.add(mTransactionFragment);
-       fragmnts.add(mIdentifyFragment);
+//       fragmnts.add(mIdentifyFragment);
         fragmnts.add(mDeviceInfoFragment);
         titles = getResources().getStringArray(R.array.tabs_name);
         mViewPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager(), fragmnts, titles));
@@ -511,22 +511,22 @@ public class VerifyActivity extends FragmentActivity implements DeviceOpenListen
 
 
                 handleMsg("", Color.BLACK);
-                if (position != 0) {
-                    mCaptureFragment.forceStop();
-                    mCaptureFragment.resetUI();
-                }
-                if (position != 1) {
-                    mEnrollFragment.forceStop();
-                    mEnrollFragment.resetUI();
-                }
+//                if (position != 0) {
+//                    mCaptureFragment.forceStop();
+//                    mCaptureFragment.resetUI();
+//                }
+//                if (position != 1) {
+//                    mEnrollFragment.forceStop();
+//                    mEnrollFragment.resetUI();
+//                }
                 if (position != 2) {
                     mVerifyFragment.forceStop();
                     mVerifyFragment.resetUI();
                 }
-                if (position != 3) {
-                    mIdentifyFragment.forceStop();
-                    mIdentifyFragment.resetUI();
-                }
+//                if (position != 3) {
+//                    mIdentifyFragment.forceStop();
+//                    mIdentifyFragment.resetUI();
+//                }
                 if (position == 0) {
                     if (isDeviceOpened) {
                         handleMsg("Confirm the settings and select a finger for capture", Color

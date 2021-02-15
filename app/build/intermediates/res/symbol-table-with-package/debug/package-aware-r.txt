@@ -987,7 +987,6 @@ id bottom
 id bt_cancle
 id bt_confirm
 id btnLogin
-id btnSignup
 id btn_connect
 id btn_enable
 id btn_import_user

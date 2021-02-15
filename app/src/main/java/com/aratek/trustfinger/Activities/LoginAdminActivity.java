@@ -67,16 +67,17 @@ public class LoginAdminActivity extends AppCompatActivity {
                 progressDoalog.dismiss();
                 Response responseData = response.body();
                 String status = responseData.getMessage();
-                if(status=="True")
+                String datas="Complete";
+                if(!status.equals(datas))
                 {
-                    Intent homeIntent = new Intent(getApplicationContext(), FingeprintActivity.class);
-                    startActivity(homeIntent);
-
+                    Toast.makeText(getApplicationContext(), "Sorry you are not authorised to use this device", Toast.LENGTH_LONG).show();
 
                 }
                 else
                     {
-                        Toast.makeText(getApplicationContext(), "Sorry you are not authorised to use this device,contact System Administrator", Toast.LENGTH_LONG).show();
+                        Intent homeIntent = new Intent(getApplicationContext(), FingeprintActivity.class);
+                        startActivity(homeIntent);
+
                     }
             }
 

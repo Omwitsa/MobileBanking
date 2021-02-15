@@ -72,11 +72,6 @@ public class AccountsActivity extends Activity implements AdapterView.OnItemSele
                 dataAdapter = new ArrayAdapter<String>(AccountsActivity.this, android.R.layout.simple_spinner_item, accounts);
                 spinner.setAdapter(dataAdapter);
 
-
-
-
-
-
             }
 
             @Override
