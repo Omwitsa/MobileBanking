@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.aratek.trustfinger.Model.LoadData;
 import com.aratek.trustfinger.Model.MemberModel;
 import com.aratek.trustfinger.Model.Response;
 import com.aratek.trustfinger.R;
@@ -28,10 +29,7 @@ public class MainActivity extends AppCompatActivity {
     SharedPreferences.Editor editor;
     ProgressDialog progressDoalog;
     ApiInterface apiService;
-    @BindView(R.id.username) EditText username;
-    @BindView(R.id.password) EditText password;
-    @BindView(R.id.btnLogin) Button btnLogin;
-    @BindView(R.id.btnSignup) Button btnSignup;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,78 +41,41 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
         ButterKnife.bind(this);
-        //seedUser();
-//        btnSignup.setEnabled(false);
-//       btnLogin.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                progressDoalog.setMessage("Please wait...");
-//                progressDoalog.show();
-//               Login();
-                Intent intent = new Intent(getApplicationContext(), AdminLoginActivity.class);
-                startActivity(intent);
 
-//            }
-//        });
+               Login();
 
-//        btnSignup.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
-//                startActivity(intent);
-//            }
-//        });
     }
-//
-//    private void seedUser() {
-//        String machineId = android.os.Build.SERIAL;
-//        editor.putString("machine_id", machineId);
-//        editor.commit();
-//
-//        String username = "PosAgent";
-//        String password = "Coop@2020";
-//        MemberModel memberModel = new MemberModel(username, password, machineId);
-//        Call<Response> call = apiService.createUser(memberModel);
-//        call.enqueue(new Callback<Response>() {
-//            @Override
-//            public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
-//
-//            }
-//
-//            @Override
-//            public void onFailure(Call<Response> call, Throwable t) {
-//
-//            }
-//        });
-//    }
-//
-//    private void Login() {
-//        String machineId = android.os.Build.SERIAL;
-//        MemberModel memberModel = new MemberModel(username.getText().toString(), password.getText().toString(), machineId);
-//        SharedPreferences.Editor editor = sharedpreferences.edit();
-//        editor.putString("loggedInUser", memberModel.getUsercode());
-//        editor.commit();
-//
-//        Call<Response> call = apiService.login(memberModel);
-//        call.enqueue(new Callback<Response>() {
-//            @Override
-//            public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
-//                progressDoalog.dismiss();
-//                Response responseData = response.body();
-//                if (responseData.isSuccess()){
-//                    Intent homeIntent = new Intent(getApplicationContext(), AuthenticationActivity.class);
-//                    startActivity(homeIntent);
-//                }
-//                else {
-//                    Toast.makeText(getApplicationContext(), responseData.getMessage(), Toast.LENGTH_LONG).show();
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<Response> call, Throwable t) {
-//                progressDoalog.dismiss();
-//                Toast.makeText(getApplicationContext(), "Sorry, Network error occurred", Toast.LENGTH_LONG).show();
-//            }
-//        });
-//    }
+
+
+    private void Login() {
+        String machineId = android.os.Build.SERIAL;
+        LoadData loadData = new LoadData( machineId);
+        SharedPreferences.Editor editor = sharedpreferences.edit();
+        editor.putString("loggedInUser", loadData.getMachineId());
+        editor.commit();
+
+        Call<Response> call = apiService.passwordLogin(loadData);
+        call.enqueue(new Callback<Response>() {
+            @Override
+            public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
+                progressDoalog.dismiss();
+                Response responseData = response.body();
+                String feedback=responseData.getMessage();
+                if (feedback=="True"){
+                    Intent homeIntent = new Intent(getApplicationContext(), IdentificationActivity.class);
+                    startActivity(homeIntent);
+                }
+                else {
+                    Intent homeIntent = new Intent(getApplicationContext(), LoginAdminActivity.class);
+                    startActivity(homeIntent);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Response> call, Throwable t) {
+                progressDoalog.dismiss();
+                Toast.makeText(getApplicationContext(), "Sorry, Network error occurred", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
 }

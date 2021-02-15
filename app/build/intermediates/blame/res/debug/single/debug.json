@@ -2276,6 +2276,10 @@
         "source": "C:\\Users\\Kemboi\\.gradle\\caches\\transforms-2\\files-2.1\\f8a84a1edf046708747e1d56f6270848\\res\\layout\\abc_list_menu_item_radio.xml"
     },
     {
+        "merged": "D:\\android-2020\\MobileBanking\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_login_admin.xml.flat",
+        "source": "D:\\android-2020\\MobileBanking\\app\\src\\main\\res\\layout\\activity_login_admin.xml"
+    },
+    {
         "merged": "D:\\android-2020\\MobileBanking\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_register.xml.flat",
         "source": "D:\\android-2020\\MobileBanking\\app\\src\\main\\res\\layout\\activity_register.xml"
     },

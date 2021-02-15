@@ -43,6 +43,7 @@ public class PosUsersActivity extends Activity implements AdapterView.OnItemSele
     @BindView(R.id.names) EditText fname;
     @BindView(R.id.idno) EditText idnos;
     @BindView(R.id.phone) EditText phones;
+    @BindView(R.id.admin) Spinner admin;
     @BindView(R.id.agency) Spinner agencys;
     @BindView(R.id.submits) Button submit;
 
@@ -95,9 +96,10 @@ public class PosUsersActivity extends Activity implements AdapterView.OnItemSele
                         String idno = idnos.getText().toString();
                         String phone = phones.getText().toString();
                         String machineId = android.os.Build.SERIAL;
+                        String admins = admin.getSelectedItem().toString();
                         String agency = agencys.getSelectedItem().toString();
                         String agentid = sharedpreferences.getString("loggedInUser", "");
-                        AgencyModel members =  new AgencyModel( names,  idno, phone, machineId, agency, agentid,"");
+                        AgencyModel members =  new AgencyModel( names,  idno, phone, machineId,admins, agency, agentid,"");
                         create(members);
 
                     }

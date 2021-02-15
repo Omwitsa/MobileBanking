@@ -56,6 +56,20 @@
         android:textColorHint="@color/textcardColor"
         android:textColorHighlight="@color/textcardColor"/>
         <Spinner
+            android:id="@+id/admin"
+            android:layout_width="match_parent"
+            android:drawablePadding="30dp"
+            android:background="@drawable/editshape"
+            android:layout_height="wrap_content"
+            android:entries="@array/shift_role"
+            android:hint="Admin"
+            android:prompt="@string/container_prompt"
+            android:layout_margin="10dp"
+            android:padding="15dp"
+            android:textColor="@color/textcardColor"
+            android:textColorHint="@color/textcardColor"
+            android:textColorHighlight="@color/textcardColor" />
+        <Spinner
 
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

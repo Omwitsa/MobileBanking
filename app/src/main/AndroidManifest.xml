@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.AdminLoginActivity"></activity>
+        <activity android:name=".Activities.LoginAdminActivity"></activity>
+        <activity android:name=".Activities.AdminLoginActivity" />
         <activity android:name=".Activities.RegisterPhone" />
         <activity android:name=".Reports.AdvancesreportActivity" />
         <activity android:name=".Reports.WithdrawalsreportActivity" />
@@ -52,7 +53,7 @@
         <activity android:name=".utils.Printer" />
         <activity android:name=".Activities.Reports" />
         <activity
-        android:name=".Activities.IdentificationActivity"
+            android:name=".Activities.IdentificationActivity"
             android:label="K-Pillar Agency"
             android:launchMode="singleInstance"
             android:screenOrientation="portrait"
@@ -74,11 +75,11 @@
     <uses-feature
         android:name="android.hardware.usb.host"
         android:required="true" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
-
     <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
 </manifest>

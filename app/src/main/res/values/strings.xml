@@ -148,6 +148,10 @@
         <item>Female</item>
         <item>Other</item>
     </string-array>
+    <string-array name="shift_role">
+        <item>Operator</item>
+        <item>Administrator</item>
+    </string-array>
     <string-array name="feature_format">
         <item>Aratek Bione</item>
         <item>ISO 19794-2:2005</item>

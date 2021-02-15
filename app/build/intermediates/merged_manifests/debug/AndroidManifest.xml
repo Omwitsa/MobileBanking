@@ -18,11 +18,11 @@
         android:name="android.hardware.usb.host"
         android:required="true" />
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:name="com.aratek.trustfinger.utils.MyApplication"
@@ -32,8 +32,8 @@
         android:label="K-Pillar Agency"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:testOnly="true"
         android:theme="@style/AppTheme" >
+        <activity android:name="com.aratek.trustfinger.Activities.LoginAdminActivity" />
         <activity android:name="com.aratek.trustfinger.Activities.AdminLoginActivity" />
         <activity android:name="com.aratek.trustfinger.Activities.RegisterPhone" />
         <activity android:name="com.aratek.trustfinger.Reports.AdvancesreportActivity" />

@@ -12,16 +12,19 @@ public class AgencyModel {
     private String machineId;
     @SerializedName("agency")
     private String agency;
+    @SerializedName("admins")
+    private String admins;
     @SerializedName("agentid")
     private String agentid;
     @SerializedName("Fingerprint")
     private String Fingerprint;
 
-    public AgencyModel(String names, String idno,String phone,String machineId,String agency,String agentid,String Fingerprint) {
+    public AgencyModel(String names, String idno,String phone,String machineId,String admins,String agency,String agentid,String Fingerprint) {
         this.names = names;
         this.idno = idno;
         this.phone = phone;
         this.machineId = machineId;
+        this.admins = admins;
         this.agency = agency;
         this.agentid = agentid;
         this.Fingerprint = Fingerprint;
@@ -57,6 +60,14 @@ public class AgencyModel {
 
     public void setMachineId(String machineId) {
         this.machineId = machineId;
+    }
+
+    public String getAdmins() {
+        return admins;
+    }
+
+    public void setAdmins(String admins) {
+        this.admins = admins;
     }
 
     public String getAgency() {
