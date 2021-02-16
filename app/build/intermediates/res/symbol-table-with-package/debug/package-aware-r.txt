@@ -1253,6 +1253,7 @@ id tv_version
 id tvd
 id uniform
 id up
+id updates
 id useLogo
 id username
 id verify
@@ -1327,6 +1328,7 @@ layout activity_pos_users
 layout activity_print
 layout activity_products
 layout activity_refresh
+layout activity_refresh_enroll
 layout activity_refreshidentify
 layout activity_register
 layout activity_register_phone

@@ -653,10 +653,9 @@ public class VerifyFragment extends BaseFragment {
                         @Override
                         public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
                             Response responseData = response.body();
-                             String role=responseData.getMessage();
+                            String role=responseData.getMessage();
                             activation(role,idnumber);
-
-//                            Toast.makeText(mApp.getApplicationContext(), responseData.getMessage(), Toast.LENGTH_LONG).show();
+                            //Toast.makeText(mApp.getApplicationContext(), responseData.getMessage(), Toast.LENGTH_LONG).show();
 
 
 

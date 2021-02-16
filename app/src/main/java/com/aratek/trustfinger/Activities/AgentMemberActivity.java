@@ -118,7 +118,7 @@ public class AgentMemberActivity extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), AuthenticationActivity.class);
+                Intent intent = new Intent(getApplicationContext(), RegisterPhone.class);
                 startActivity(intent);
             }
         });
@@ -144,8 +144,6 @@ public class AgentMemberActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Sorry, network  error Try again", Toast.LENGTH_LONG).show();
             }
         });
-        Intent intent = new Intent(getApplicationContext(), AuthenticationActivity.class);
-        startActivity(intent);
 
 }
 

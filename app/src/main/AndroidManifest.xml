@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.LoginAdminActivity"></activity>
+        <activity android:name=".Activities.RefreshEnrollActivity"></activity>
+        <activity android:name=".Activities.LoginAdminActivity" />
         <activity android:name=".Activities.AdminLoginActivity" />
         <activity android:name=".Activities.RegisterPhone" />
         <activity android:name=".Reports.AdvancesreportActivity" />
@@ -76,11 +77,11 @@
     <uses-feature
         android:name="android.hardware.usb.host"
         android:required="true" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.INTERNET" />
-
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
 </manifest>

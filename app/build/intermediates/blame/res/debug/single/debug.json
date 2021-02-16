@@ -1624,6 +1624,10 @@
         "source": "D:\\android-2020\\MobileBanking\\app\\src\\main\\res\\drawable\\btn_text_selector.xml"
     },
     {
+        "merged": "D:\\android-2020\\MobileBanking\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_refresh_enroll.xml.flat",
+        "source": "D:\\android-2020\\MobileBanking\\app\\src\\main\\res\\layout\\activity_refresh_enroll.xml"
+    },
+    {
         "merged": "D:\\android-2020\\MobileBanking\\app\\build\\intermediates\\res\\merged\\debug\\layout_dialog_set_user.xml.flat",
         "source": "D:\\android-2020\\MobileBanking\\app\\src\\main\\res\\layout\\dialog_set_user.xml"
     },

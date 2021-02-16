@@ -26,6 +26,7 @@ public class RegisterPhone_ViewBinding implements Unbinder {
     target.Transactions = Utils.findRequiredViewAsType(source, R.id.transs, "field 'Transactions'", CardView.class);
     target.registration = Utils.findRequiredViewAsType(source, R.id.registrations, "field 'registration'", CardView.class);
     target.verification = Utils.findRequiredViewAsType(source, R.id.verifys, "field 'verification'", CardView.class);
+    target.Fingerprints = Utils.findRequiredViewAsType(source, R.id.updates, "field 'Fingerprints'", CardView.class);
   }
 
   @Override
@@ -38,5 +39,6 @@ public class RegisterPhone_ViewBinding implements Unbinder {
     target.Transactions = null;
     target.registration = null;
     target.verification = null;
+    target.Fingerprints = null;
   }
 }

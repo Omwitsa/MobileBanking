@@ -29,6 +29,7 @@ public class RegisterPhone extends AppCompatActivity {
     @BindView(R.id.transs) CardView Transactions;
     @BindView(R.id.registrations) CardView registration;
     @BindView(R.id.verifys) CardView verification;
+    @BindView(R.id.updates) CardView Fingerprints;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,9 +42,10 @@ public class RegisterPhone extends AppCompatActivity {
 
         String id = sharedpreferences.getString("loadsPosition", "");
         String IsAdmin = sharedpreferences.getString("loadrole", "");
+        String confirm="False";
 //        Toast.makeText(RegisterPhone.this,id,Toast.LENGTH_LONG).show();
 //        Toast.makeText(RegisterPhone.this,IsAdmin,Toast.LENGTH_LONG).show();
-        if(IsAdmin=="False")
+        if(IsAdmin.equals(confirm))
         {
             registration.setEnabled(false);
         }
@@ -68,6 +70,13 @@ public class RegisterPhone extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), PosUsersActivity.class);
+                startActivity(intent);
+            }
+        });
+        Fingerprints.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), VerifyActivity.class);
                 startActivity(intent);
             }
         });

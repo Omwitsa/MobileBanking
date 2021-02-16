@@ -154,44 +154,44 @@
 
 
 
-<!--                <android.support.v7.widget.CardView-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="0dp"-->
-<!--                    android:id="@+id/report"-->
-<!--                    android:layout_rowWeight="1"-->
-<!--                    android:layout_columnWeight="1"-->
-<!--                    android:layout_marginLeft="16dp"-->
-<!--                    android:layout_marginRight="16dp"-->
-<!--                    android:layout_marginBottom="16dp"-->
-<!--                    android:background="@color/cardColor"-->
-<!--                    app:cardCornerRadius="8dp"-->
-<!--                    app:cardElevation="6dp">-->
+                <android.support.v7.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:id="@+id/updates"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@color/cardColor"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="6dp">
 
-<!--                    <LinearLayout-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_gravity="center_horizontal|center_vertical"-->
-<!--                        android:layout_margin="16dp"-->
-<!--                        android:gravity="center"-->
-<!--                        android:orientation="vertical">-->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal|center_vertical"
+                        android:layout_margin="16dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
 
-<!--                        <TextView-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:text="Reports"-->
-<!--                            android:textColor="@color/textcardColor"-->
-<!--                            android:textSize="14sp"-->
-<!--                            android:layout_marginTop="4dp"-->
-<!--                            android:fontFamily="@font/mo_re"-->
-<!--                            android:textStyle="bold"/>-->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Enroll Fingerprints"
+                            android:textColor="@color/textcardColor"
+                            android:textSize="14sp"
+                            android:layout_marginTop="4dp"
+                            android:fontFamily="@font/mo_re"
+                            android:textStyle="bold"/>
 
-<!--                        <ImageView-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:layout_gravity="center_horizontal"-->
-<!--                            android:background="@drawable/report"/>-->
-<!--                    </LinearLayout>-->
-<!--                </android.support.v7.widget.CardView>-->
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:background="@drawable/fingerprint"/>
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
 
     </GridLayout>
 
