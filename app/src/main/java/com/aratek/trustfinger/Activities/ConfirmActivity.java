@@ -35,7 +35,7 @@ public class ConfirmActivity extends AppCompatActivity {
         final String accountNo = sharedpreferences.getString("accountNo","");
         final String productDescription = sharedpreferences.getString("productDescription","");
         final String machineId = sharedpreferences.getString("machine_id", "");
-        final String auditId = sharedpreferences.getString("loggedInUser", "");
+        final String auditId = sharedpreferences.getString("agentId", "");
 
 
 

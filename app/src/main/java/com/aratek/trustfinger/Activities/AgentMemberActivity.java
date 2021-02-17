@@ -54,6 +54,7 @@ public class AgentMemberActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         progressDoalog = new ProgressDialog(AgentMemberActivity.this);
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        final String idn = sharedpreferences.getString("agentId", "");
         dbb.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -109,7 +110,7 @@ public class AgentMemberActivity extends AppCompatActivity {
                 String mobile_number = mobile.getText().toString();
                 String DOB =(dbb.getText().toString().trim());
                 String Gender = gender.getSelectedItem().toString();
-                String Agentid = sharedpreferences.getString("loggedInUser", "");
+                String Agentid = sharedpreferences.getString("agentId", "");
                 AgentMember member = new AgentMember(Surname, other_Names, idno, mobile_number, Gender, DOB, null, null, Agentid);
                 register(member);
             }

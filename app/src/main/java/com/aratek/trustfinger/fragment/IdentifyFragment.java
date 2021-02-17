@@ -643,8 +643,10 @@ public class IdentifyFragment extends BaseFragment {
                 for (int i = 0; i < mUserList.size(); i++) {
                     mUserList.get(i).setRank(i + 1);
                     String idnumber= String.valueOf(mUserList.get(i).getId());
+                    final String id = sharedpreferences.getString("loadsAgentId", "");
                     Intent intent = new Intent(getActivity(), AccountsActivity.class);
                     editor.putString("loadsPosition", idnumber);
+                    editor.putString("agentId", id);
                     editor.commit();
                     startActivity(intent);
 //                    String machineId = android.os.Build.SERIAL;

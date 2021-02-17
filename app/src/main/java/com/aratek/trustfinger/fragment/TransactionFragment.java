@@ -655,7 +655,7 @@ public class TransactionFragment extends BaseFragment {
                     String accountNo = sharedpreferences.getString("accountNo","");
                     String productDescription = sharedpreferences.getString("productDescription","");
                     String machineId = sharedpreferences.getString("machine_id", "");
-                    String auditId = sharedpreferences.getString("loggedInUser", "");
+                    String auditId = sharedpreferences.getString("agentId", "");
                     if(sharedpreferences.getString("number","").equals(idnumber)) {
 
                         Intent intent = new Intent(getActivity(), SubmitTransactionActivity.class);

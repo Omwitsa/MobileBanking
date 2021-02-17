@@ -40,7 +40,7 @@ public class RegisterPhone extends AppCompatActivity {
         editor = sharedpreferences.edit();
         String machineId = android.os.Build.SERIAL;
 
-        String id = sharedpreferences.getString("loadsPosition", "");
+        final String id = sharedpreferences.getString("loadsAgentId", "");
         String IsAdmin = sharedpreferences.getString("loadrole", "");
         String confirm="False";
 //        Toast.makeText(RegisterPhone.this,id,Toast.LENGTH_LONG).show();
@@ -54,6 +54,8 @@ public class RegisterPhone extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), IdentificationActivity.class);
+                editor.putString("loadsAgentId", id);
+                editor.commit();
                 startActivity(intent);
 
             }
@@ -63,6 +65,8 @@ public class RegisterPhone extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), AgentMemberActivity.class);
+                editor.putString("loadsAgentId", id);
+                editor.commit();
                 startActivity(intent);
             }
         });
@@ -70,6 +74,8 @@ public class RegisterPhone extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), PosUsersActivity.class);
+                editor.putString("loadsAgentId", id);
+                editor.commit();
                 startActivity(intent);
             }
         });
@@ -77,6 +83,8 @@ public class RegisterPhone extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), VerifyActivity.class);
+                editor.putString("loadsAgentId", id);
+                editor.commit();
                 startActivity(intent);
             }
         });

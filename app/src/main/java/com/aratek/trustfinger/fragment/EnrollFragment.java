@@ -1447,15 +1447,19 @@ public class EnrollFragment extends BaseFragment implements View.OnClickListener
             return;
         }
         if (mDBHelper.insertUser(user)) {
+            sharedpreferences = getActivity().getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+            editor = sharedpreferences.edit();
+            final String id = sharedpreferences.getString("loadsPosition", "");
             String machineId = android.os.Build.SERIAL;
             ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-            FingurePrintModel fingurePrint = new FingurePrintModel(user.getFingerData().toString(), user.getId(),machineId);
+            FingurePrintModel fingurePrint = new FingurePrintModel(user.getFingerData().toString(), user.getId(),machineId,id);
             Call<Response> call = apiService.registerFingerPrints(fingurePrint);
             call.enqueue(new Callback<Response>() {
                 @Override
                 public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
                     Response responseData = response.body();
                     Toast.makeText(mApp.getApplicationContext(), responseData.getMessage(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(mApp.getApplicationContext(), id, Toast.LENGTH_LONG).show();
 
 
                 }

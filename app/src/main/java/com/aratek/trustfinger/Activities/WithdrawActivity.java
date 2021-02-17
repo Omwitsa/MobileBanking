@@ -51,6 +51,7 @@ public class WithdrawActivity extends AppCompatActivity {
         editor = sharedpreferences.edit();
 
         final String Account = sharedpreferences.getString("supplierNo", "");
+        final String idn = sharedpreferences.getString("agentId", "");
         sNo.setText(Account);
         String Machineid = android.os.Build.MANUFACTURER + " " + android.os.Build.MODEL+""+ Build.SERIAL;
         submit.setOnClickListener(new View.OnClickListener() {
@@ -78,6 +79,7 @@ public class WithdrawActivity extends AppCompatActivity {
                     editor.putString("fingurePrint", "");
                     editor.putString("supplierNo", Account);
                     editor.putString("pin", Pinn);
+                    editor.putString("agentId", idn);
                     editor.putString("accountNo", "");
                     editor.putString("productDescription", "");
                     editor.commit();

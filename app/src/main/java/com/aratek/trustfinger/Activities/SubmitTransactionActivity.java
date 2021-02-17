@@ -42,7 +42,7 @@ public class SubmitTransactionActivity extends AppCompatActivity {
             String accountNo = sharedpreferences.getString("accountNo","");
             String productDescription = sharedpreferences.getString("productDescription","");
             String machineId = sharedpreferences.getString("machine_id", "");
-            String auditId = sharedpreferences.getString("loggedInUser", "");
+            String auditId = sharedpreferences.getString("agentId", "");
             insertDataToSqlite(operation,amount,sNo,status);
 
             transactionModel = new TransactionModel(operation, amount, "", "", sNo, status, machineId, auditId, productDescription, "",accountNo);

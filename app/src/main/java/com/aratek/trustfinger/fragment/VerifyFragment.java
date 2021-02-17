@@ -737,7 +737,7 @@ public class VerifyFragment extends BaseFragment {
 
     private void activation(String role, String idnumber) {
             Intent intent = new Intent(getActivity(), RegisterPhone.class);
-            editor.putString("loadsPosition", idnumber);
+            editor.putString("loadsAgentId", idnumber);
             editor.putString("loadrole", role);
             editor.commit();
             startActivity(intent);

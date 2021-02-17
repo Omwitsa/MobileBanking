@@ -98,7 +98,7 @@ public class PosUsersActivity extends Activity implements AdapterView.OnItemSele
                         String machineId = android.os.Build.SERIAL;
                         String admins = admin.getSelectedItem().toString();
                         String agency = agencys.getSelectedItem().toString();
-                        String agentid = sharedpreferences.getString("loggedInUser", "");
+                        String agentid = sharedpreferences.getString("loadsPosition", "");
                         AgencyModel members =  new AgencyModel( names,  idno, phone, machineId,admins, agency, agentid,"");
                         create(members);
 
