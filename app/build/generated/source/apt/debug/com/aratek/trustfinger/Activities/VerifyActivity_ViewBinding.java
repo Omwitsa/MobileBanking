@@ -23,7 +23,7 @@ public class VerifyActivity_ViewBinding implements Unbinder {
   public VerifyActivity_ViewBinding(VerifyActivity target, View source) {
     this.target = target;
 
-    target.back = Utils.findRequiredViewAsType(source, R.id.back, "field 'back'", Button.class);
+    target.back = Utils.findRequiredViewAsType(source, R.id.backss, "field 'back'", Button.class);
   }
 
   @Override

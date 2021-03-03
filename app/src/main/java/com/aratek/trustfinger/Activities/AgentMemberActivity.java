@@ -107,11 +107,12 @@ public class AgentMemberActivity extends AppCompatActivity {
                 String Surname = surname.getText().toString();
                 String other_Names = othername.getText().toString();
                 String idno = iddno.getText().toString();
+                String machineId = android.os.Build.SERIAL;
                 String mobile_number = mobile.getText().toString();
                 String DOB =(dbb.getText().toString().trim());
                 String Gender = gender.getSelectedItem().toString();
                 String Agentid = sharedpreferences.getString("agentId", "");
-                AgentMember member = new AgentMember(Surname, other_Names, idno, mobile_number, Gender, DOB, null, null, Agentid);
+                AgentMember member = new AgentMember(Surname, other_Names, idno,machineId, mobile_number, Gender, DOB, null, null, Agentid);
                 register(member);
             }
         });

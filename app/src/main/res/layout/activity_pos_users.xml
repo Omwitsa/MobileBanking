@@ -69,19 +69,19 @@
             android:textColor="@color/textcardColor"
             android:textColorHint="@color/textcardColor"
             android:textColorHighlight="@color/textcardColor" />
-        <Spinner
+<!--        <Spinner-->
 
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawablePadding="10dp"
-            android:background="@drawable/editshape"
-            android:id="@+id/agency"
-            android:hint="Product name"
-            android:layout_margin="10dp"
-            android:padding="15dp"
-            android:textColor="@color/textcardColor"
-            android:textColorHint="@color/textcardColor"
-            android:textColorHighlight="@color/textcardColor" />
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:drawablePadding="10dp"-->
+<!--            android:background="@drawable/editshape"-->
+<!--            android:id="@+id/agency"-->
+<!--            android:hint="Product name"-->
+<!--            android:layout_margin="10dp"-->
+<!--            android:padding="15dp"-->
+<!--            android:textColor="@color/textcardColor"-->
+<!--            android:textColorHint="@color/textcardColor"-->
+<!--            android:textColorHighlight="@color/textcardColor" />-->
 
 <!--    <Spinner-->
 <!--        android:id="@+id/gender"-->

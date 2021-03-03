@@ -29,7 +29,6 @@ public class PosUsersActivity_ViewBinding implements Unbinder {
     target.idnos = Utils.findRequiredViewAsType(source, R.id.idno, "field 'idnos'", EditText.class);
     target.phones = Utils.findRequiredViewAsType(source, R.id.phone, "field 'phones'", EditText.class);
     target.admin = Utils.findRequiredViewAsType(source, R.id.admin, "field 'admin'", Spinner.class);
-    target.agencys = Utils.findRequiredViewAsType(source, R.id.agency, "field 'agencys'", Spinner.class);
     target.submit = Utils.findRequiredViewAsType(source, R.id.submits, "field 'submit'", Button.class);
   }
 
@@ -44,7 +43,6 @@ public class PosUsersActivity_ViewBinding implements Unbinder {
     target.idnos = null;
     target.phones = null;
     target.admin = null;
-    target.agencys = null;
     target.submit = null;
   }
 }

@@ -9,6 +9,8 @@ public class AgentMember {
     private String otherName;
     @SerializedName("idNo")
     private String idNo;
+    @SerializedName("machineId")
+    private String machineId;
     @SerializedName("mobile_number")
     private String mobileNo;
     @SerializedName("gender")
@@ -22,10 +24,11 @@ public class AgentMember {
     @SerializedName("agentId")
     private String agentId;
 
-    public AgentMember(String surname, String otherName, String idNo, String mobileNo, String gender, String dob, String fingerprint1, String fingerprint2, String agentId) {
+    public AgentMember(String surname, String otherName, String idNo,String machineId, String mobileNo, String gender, String dob, String fingerprint1, String fingerprint2, String agentId) {
         this.surname = surname;
         this.otherName = otherName;
         this.idNo = idNo;
+        this.machineId = machineId;
         this.mobileNo = mobileNo;
         this.gender = gender;
         this.dob = dob;
@@ -56,6 +59,15 @@ public class AgentMember {
 
     public void setIdNo(String idNo) {
         this.idNo = idNo;
+    }
+
+
+    public String getMachineId() {
+        return machineId;
+    }
+
+    public void setMachineId(String machineId) {
+        this.machineId = machineId;
     }
 
     public String getMobileNo() {

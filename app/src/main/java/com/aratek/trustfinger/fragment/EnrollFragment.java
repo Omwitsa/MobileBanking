@@ -1459,7 +1459,7 @@ public class EnrollFragment extends BaseFragment implements View.OnClickListener
                 public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
                     Response responseData = response.body();
                     Toast.makeText(mApp.getApplicationContext(), responseData.getMessage(), Toast.LENGTH_LONG).show();
-                    Toast.makeText(mApp.getApplicationContext(), id, Toast.LENGTH_LONG).show();
+
 
 
                 }

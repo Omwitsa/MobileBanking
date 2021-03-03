@@ -3,6 +3,7 @@ package com.aratek.trustfinger.Activities;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -34,6 +35,7 @@ public class SubmitTransactionActivity extends AppCompatActivity {
         db.execSQL("CREATE TABLE IF NOT EXISTS advances (Amount VARCHAR,Pin VARCHAR,Supp VARCHAR,datepp DATETIME, status VARCHAR,transdate  VARCHAR);");
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         editor = sharedpreferences.edit();
+        String MachineID = android.os.Build.SERIAL;
 
             String operation = sharedpreferences.getString("operation","");
             Double amount = Double.parseDouble(sharedpreferences.getString("amount",""));
@@ -41,11 +43,11 @@ public class SubmitTransactionActivity extends AppCompatActivity {
             String sNo = sharedpreferences.getString("supplierNo","");
             String accountNo = sharedpreferences.getString("accountNo","");
             String productDescription = sharedpreferences.getString("productDescription","");
-            String machineId = sharedpreferences.getString("machine_id", "");
+            //String machineId = sharedpreferences.getString("machine_id", "");
             String auditId = sharedpreferences.getString("agentId", "");
-            insertDataToSqlite(operation,amount,sNo,status);
+            //insertDataToSqlite(operation,amount,sNo,status);
 
-            transactionModel = new TransactionModel(operation, amount, "", "", sNo, status, machineId, auditId, productDescription, "",accountNo);
+            transactionModel = new TransactionModel(operation, amount, "", "", sNo, status, MachineID, auditId, productDescription, "",accountNo);
             transaction = new Transaction(this, transactionModel);
 
             transaction.transact(transactionModel);

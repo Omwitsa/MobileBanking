@@ -65,7 +65,7 @@ public class ConfirmActivity extends AppCompatActivity {
         public void onClick(DialogInterface dialog, int id) {
             //  Action for 'NO' Button
             dialog.cancel();
-            Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+            Intent intent = new Intent(getApplicationContext(), RegisterPhone.class);
             startActivity(intent);
         }
     });

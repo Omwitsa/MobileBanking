@@ -12,7 +12,7 @@ public class RefreshEnrollActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_refresh_enroll);
-        Intent intent = new Intent(getApplicationContext(), VerifyActivity.class);
+        Intent intent = new Intent(getApplicationContext(), FingeprintActivity.class);
         startActivity(intent);
     }
 }

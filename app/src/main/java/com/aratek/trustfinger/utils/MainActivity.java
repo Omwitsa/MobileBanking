@@ -244,7 +244,10 @@
 package com.aratek.trustfinger.utils;
 
 import com.aratek.trustfinger.Activities.AuthenticationActivity;
+import com.aratek.trustfinger.Activities.ConfirmActivity;
 import com.aratek.trustfinger.Activities.HomeActivity;
+import com.aratek.trustfinger.Activities.IdentificationActivity;
+import com.aratek.trustfinger.Activities.RegisterPhone;
 import com.aratek.trustfinger.Activities.SubmitTransactionActivity;
 import com.aratek.trustfinger.R;
 import com.vanstone.appsdk.client.ISdkStatue;
@@ -277,6 +280,7 @@ import java.util.Random;
 public class MainActivity extends Activity implements OnClickListener {
     public static final String TAG = "MainActivity";
     Button print;
+    Button back;
     int pflag = 0;
     private InputStream inStream;
     private ByteArrayOutputStream outStream;
@@ -290,6 +294,14 @@ public class MainActivity extends Activity implements OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.print);
         print = (Button) findViewById(R.id.Print);
+        back = (Button) findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), RegisterPhone.class);
+                startActivity(intent);
+            }
+        });
         print.setOnClickListener(this);
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         editor = sharedpreferences.edit();
@@ -444,7 +456,7 @@ public class MainActivity extends Activity implements OnClickListener {
 
 
         PrintData();
-        Intent intent = new Intent(getApplicationContext(), AuthenticationActivity.class);
+        Intent intent = new Intent(getApplicationContext(), RegisterPhone.class);
         startActivity(intent);
     }
 

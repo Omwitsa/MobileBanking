@@ -77,8 +77,8 @@ public class FingeprintActivity extends FragmentActivity implements DeviceOpenLi
     private List<String> sp_usbDevice_datas = new ArrayList<String>();
     private List<Fragment> fragmnts = new ArrayList<Fragment>();
     //private CaptureFragment mCaptureFragment;
-    //private EnrollFragment mEnrollFragment;
-    private VerifyFragment mVerifyFragment;
+    private EnrollFragment mEnrollFragment;
+    //private VerifyFragment mVerifyFragment;
     //    private IdentifyFragment mIdentifyFragment;
     private DeviceInfoFragment mDeviceInfoFragment;
     private String[] titles;
@@ -87,14 +87,15 @@ public class FingeprintActivity extends FragmentActivity implements DeviceOpenLi
     private boolean isDeviceOpened = false;
     private MyApplication mApp;
     PosManager mPosManager;
-    //@BindView(R.id.back) Button back;
+    @BindView(R.id.backs) Button back;
+    @BindView(R.id.login) Button login;
     //@BindView(R.id.refresh) Button identification;
 //    @BindView(R.id.verification) Button verification;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_verify);
+        setContentView(R.layout.activity_fingeprint);
         ButterKnife.bind(this);
         findViews();
         initTrustFinger();
@@ -122,20 +123,20 @@ public class FingeprintActivity extends FragmentActivity implements DeviceOpenLi
 
             }
         }).start();
-//        back.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(getApplicationContext(), AuthenticationActivity.class);
-//                startActivity(intent);
-//            }
-//        });
-//        identification.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(getApplicationContext(), FingeprintActivity.class);
-//                startActivity(intent);
-//            }
-//        });
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), RefreshEnrollActivity.class);
+                startActivity(intent);
+            }
+        });
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), VerifyActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
@@ -247,13 +248,13 @@ public class FingeprintActivity extends FragmentActivity implements DeviceOpenLi
     private void setFragmentDatas(TrustFingerDevice mTrustFingerDevice) {
 //        if (mCaptureFragment != null)
 //            mCaptureFragment.setDatas(mTrustFingerDevice);
-//        if (mEnrollFragment != null)
-//            mEnrollFragment.setDatas(mTrustFingerDevice);
+        if (mEnrollFragment != null)
+            mEnrollFragment.setDatas(mTrustFingerDevice);
 
 //        if (mIdentifyFragment != null)
 //            mIdentifyFragment.setDatas(mTrustFingerDevice);
-        if (mVerifyFragment != null)
-            mVerifyFragment.setDatas(mTrustFingerDevice);
+//        if (mVerifyFragment != null)
+//            mVerifyFragment.setDatas(mTrustFingerDevice);
         if (mDeviceInfoFragment != null)
             mDeviceInfoFragment.setDatas(mTrustFingerDevice);
     }
@@ -451,14 +452,14 @@ public class FingeprintActivity extends FragmentActivity implements DeviceOpenLi
 //                        mCaptureFragment.forceStop();
 //                        mCaptureFragment.resetUI();
 //                    }
-//                            if (position == 1) {
-//                                mEnrollFragment.forceStop();
-//                                mEnrollFragment.resetUI();
-//                            }
-                            if (position == 2) {
-                                mVerifyFragment.forceStop();
-                                mVerifyFragment.resetUI();
+                            if (position == 1) {
+                                mEnrollFragment.forceStop();
+                                mEnrollFragment.resetUI();
                             }
+//                            if (position == 2) {
+//                                mVerifyFragment.forceStop();
+//                                mVerifyFragment.resetUI();
+//                            }
 //                    if (position == 3) {
 //                        mIdentifyFragment.forceStop();
 //                        mIdentifyFragment.resetUI();
@@ -509,17 +510,17 @@ public class FingeprintActivity extends FragmentActivity implements DeviceOpenLi
                 });
 //        mCaptureFragment = new CaptureFragment();
 //        mCaptureFragment.setLedCallback(this);
-        // mEnrollFragment = new EnrollFragment();
-        // mEnrollFragment.setLedCallback(this);
-        mVerifyFragment = new VerifyFragment();
-        mVerifyFragment.setLedCallback(this);
+         mEnrollFragment = new EnrollFragment();
+         mEnrollFragment.setLedCallback(this);
+//        mVerifyFragment = new VerifyFragment();
+//        mVerifyFragment.setLedCallback(this);
 //        mIdentifyFragment = new IdentifyFragment();
 //        mIdentifyFragment.setLedCallback(this);
         mDeviceInfoFragment = new DeviceInfoFragment();
 //        fragmnts.add(mCaptureFragment);
-        //      fragmnts.add(mEnrollFragment);
+              fragmnts.add(mEnrollFragment);
 //        fragmnts.add(mIdentifyFragment);
-        fragmnts.add(mVerifyFragment);
+        //fragmnts.add(mVerifyFragment);
         fragmnts.add(mDeviceInfoFragment);
         titles = getResources().getStringArray(R.array.tabs_name);
         mViewPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager(), fragmnts, titles));
@@ -562,8 +563,8 @@ public class FingeprintActivity extends FragmentActivity implements DeviceOpenLi
 
                 handleMsg("", Color.BLACK);
                 if (position != 0) {
-                    mVerifyFragment.forceStop();
-                    mVerifyFragment.resetUI();
+                    mEnrollFragment.forceStop();
+                    mEnrollFragment.resetUI();
                 }
 
 

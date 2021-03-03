@@ -75,6 +75,7 @@ public class LoginAdminActivity extends AppCompatActivity {
                 }
                 else
                     {
+                        Toast.makeText(getApplicationContext(),status, Toast.LENGTH_LONG).show();
                         Intent homeIntent = new Intent(getApplicationContext(), VerifyActivity.class);
                         startActivity(homeIntent);
 

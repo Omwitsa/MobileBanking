@@ -654,12 +654,12 @@ public class VerifyFragment extends BaseFragment {
                         public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
                             Response responseData = response.body();
                             String role=responseData.getMessage();
-                            activation(role,idnumber);
-                            //Toast.makeText(mApp.getApplicationContext(), responseData.getMessage(), Toast.LENGTH_LONG).show();
 
-
-
-
+                            String admin="You are not an Administrator";
+                            if (!role.equals(admin))
+                            {
+                                activation(role,idnumber);
+                            }
 
 
                         }

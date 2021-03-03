@@ -53,7 +53,7 @@ public class RegisterPhone extends AppCompatActivity {
         Transactions.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), IdentificationActivity.class);
+                Intent intent = new Intent(getApplicationContext(), ChoiceActivity.class);
                 editor.putString("loadsAgentId", id);
                 editor.commit();
                 startActivity(intent);
@@ -82,7 +82,7 @@ public class RegisterPhone extends AppCompatActivity {
         Fingerprints.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), VerifyActivity.class);
+                Intent intent = new Intent(getApplicationContext(), FingeprintActivity.class);
                 editor.putString("loadsAgentId", id);
                 editor.commit();
                 startActivity(intent);

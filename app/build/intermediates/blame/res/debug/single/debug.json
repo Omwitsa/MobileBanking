@@ -692,6 +692,10 @@
         "source": "D:\\android-2020\\MobileBanking\\app\\src\\main\\res\\drawable\\et_text_selector.xml"
     },
     {
+        "merged": "D:\\android-2020\\MobileBanking\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_choice.xml.flat",
+        "source": "D:\\android-2020\\MobileBanking\\app\\src\\main\\res\\layout\\activity_choice.xml"
+    },
+    {
         "merged": "D:\\android-2020\\MobileBanking\\app\\build\\intermediates\\res\\merged\\debug\\layout_abc_dialog_title_material.xml.flat",
         "source": "C:\\Users\\Kemboi\\.gradle\\caches\\transforms-2\\files-2.1\\f8a84a1edf046708747e1d56f6270848\\res\\layout\\abc_dialog_title_material.xml"
     },
@@ -1202,6 +1206,10 @@
     {
         "merged": "D:\\android-2020\\MobileBanking\\app\\build\\intermediates\\res\\merged\\debug\\drawable_abc_ratingbar_small_material.xml.flat",
         "source": "C:\\Users\\Kemboi\\.gradle\\caches\\transforms-2\\files-2.1\\f8a84a1edf046708747e1d56f6270848\\res\\drawable\\abc_ratingbar_small_material.xml"
+    },
+    {
+        "merged": "D:\\android-2020\\MobileBanking\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_refresh_verify.xml.flat",
+        "source": "D:\\android-2020\\MobileBanking\\app\\src\\main\\res\\layout\\activity_refresh_verify.xml"
     },
     {
         "merged": "D:\\android-2020\\MobileBanking\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_btn_switch_to_on_mtrl_00001.9.png.flat",

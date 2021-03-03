@@ -44,7 +44,7 @@ public class PosUsersActivity extends Activity implements AdapterView.OnItemSele
     @BindView(R.id.idno) EditText idnos;
     @BindView(R.id.phone) EditText phones;
     @BindView(R.id.admin) Spinner admin;
-    @BindView(R.id.agency) Spinner agencys;
+    //@BindView(R.id.agency) Spinner agencys;
     @BindView(R.id.submits) Button submit;
 
     @Override
@@ -58,35 +58,35 @@ public class PosUsersActivity extends Activity implements AdapterView.OnItemSele
         progressDoalog = new ProgressDialog(getApplicationContext());
 
         // Spinner element
-        final Spinner spinner = (Spinner) findViewById(R.id.agency);
+        //final Spinner spinner = (Spinner) findViewById(R.id.agency);
         String machineId = android.os.Build.SERIAL;
         // Spinner click listener
-        spinner.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
-        List<String> val = new ArrayList<String>();
+//        spinner.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
+//        List<String> val = new ArrayList<String>();
         //final String id = sharedpreferences.getString("loadsPosition", "");
 
         //sharedpreferences.getString("account_no", "65690200100416");
         TransactionModel transaction = new TransactionModel("", 0.0, "", "", "", "", machineId, "", "", "","");
         Call<List<String>> call = apiService.getAgency(transaction);
 
-        call.enqueue(new Callback<List<String>>() {
-            @Override
-            public void onResponse(Call<List<String>> call, Response<List<String>> response) {
-                List<String> accounts = response.body();
-
-                ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(PosUsersActivity.this, android.R.layout.simple_spinner_item, accounts);
-                dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                dataAdapter = new ArrayAdapter<String>(PosUsersActivity.this, android.R.layout.simple_spinner_item, accounts);
-                spinner.setAdapter(dataAdapter);
-
-            }
-
-            @Override
-            public void onFailure(Call<List<String>> call, Throwable t) {
-
-            }
-
-        });
+//        call.enqueue(new Callback<List<String>>() {
+//            @Override
+//            public void onResponse(Call<List<String>> call, Response<List<String>> response) {
+//                List<String> accounts = response.body();
+//
+//                ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(PosUsersActivity.this, android.R.layout.simple_spinner_item, accounts);
+//                dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//                dataAdapter = new ArrayAdapter<String>(PosUsersActivity.this, android.R.layout.simple_spinner_item, accounts);
+//                spinner.setAdapter(dataAdapter);
+//
+//            }
+//
+//            @Override
+//            public void onFailure(Call<List<String>> call, Throwable t) {
+//
+//            }
+//
+//        });
                 submit.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -97,7 +97,7 @@ public class PosUsersActivity extends Activity implements AdapterView.OnItemSele
                         String phone = phones.getText().toString();
                         String machineId = android.os.Build.SERIAL;
                         String admins = admin.getSelectedItem().toString();
-                        String agency = agencys.getSelectedItem().toString();
+                        String agency = "";
                         String agentid = sharedpreferences.getString("loadsPosition", "");
                         AgencyModel members =  new AgencyModel( names,  idno, phone, machineId,admins, agency, agentid,"");
                         create(members);
@@ -122,7 +122,7 @@ public class PosUsersActivity extends Activity implements AdapterView.OnItemSele
                                 Toast.makeText(getApplicationContext(), "Sorry, network  error Try again", Toast.LENGTH_LONG).show();
                             }
                         });
-                        Intent intent = new Intent(getApplicationContext(), AuthenticationActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), RegisterPhone.class);
                         startActivity(intent);
                     }
                 });

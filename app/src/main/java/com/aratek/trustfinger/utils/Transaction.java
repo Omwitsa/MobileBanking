@@ -9,6 +9,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.aratek.trustfinger.Activities.ConfirmActivity;
+import com.aratek.trustfinger.Activities.LoginAdminActivity;
+import com.aratek.trustfinger.Activities.RegisterPhone;
+import com.aratek.trustfinger.Activities.SubmitTransactionActivity;
 import com.aratek.trustfinger.Model.Response;
 import com.aratek.trustfinger.Model.TransactionModel;
 import com.aratek.trustfinger.Rest.ApiClient;
@@ -54,8 +58,18 @@ public class Transaction<_transaction> {
                 public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
                     progressDoalog.dismiss();
                     Response responseData = response.body();
-                    String message = responseData.getMessage() == null ? "Sorry, Invalid username or password" : responseData.getMessage();
-                    Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+                    String feedback = responseData.getMessage();
+                    String datas="Deposit successful";
+                    if (!feedback.equals(datas)) {
+                        Toast.makeText(context, feedback, Toast.LENGTH_LONG).show();
+                        Intent homeIntent = new Intent(context, RegisterPhone.class);
+                        context.startActivity(homeIntent);
+                    }
+                    else
+                        {
+                            Toast.makeText(context, feedback, Toast.LENGTH_LONG).show();
+
+                        }
                 }
 
                 @Override
@@ -71,10 +85,19 @@ public class Transaction<_transaction> {
                 @Override
                 public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
                     progressDoalog.dismiss();
-
                     Response responseData = response.body();
-                    String message = responseData.getMessage() == null ? "Sorry, Invalid username or password" : responseData.getMessage();
-                    Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+                    String feedback = responseData.getMessage();
+                    String datas="Withdrawal successful";
+                    if (!feedback.equals(datas)) {
+                        Toast.makeText(context, feedback, Toast.LENGTH_LONG).show();
+                        Intent homeIntent = new Intent(context, RegisterPhone.class);
+                        context.startActivity(homeIntent);
+                    }
+                    else
+                    {
+                        Toast.makeText(context, feedback, Toast.LENGTH_LONG).show();
+
+                    }
                 }
 
                 @Override

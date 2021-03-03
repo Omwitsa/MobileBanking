@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Wed Feb 17 11:01:25 EAT 2021
+#Wed Mar 03 20:04:09 EAT 2021
 4.path=lib/armeabi/libA90JavahCore.so
 8.set=NATIVE_RESOURCE
 6.path=lib/armeabi/libTrustFinger.so

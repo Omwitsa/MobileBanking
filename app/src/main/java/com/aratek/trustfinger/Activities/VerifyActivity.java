@@ -36,6 +36,7 @@ import com.aratek.trustfinger.R;
 import com.aratek.trustfinger.adapter.MyPagerAdapter;
 import com.aratek.trustfinger.fragment.DeviceInfoFragment;
 import com.aratek.trustfinger.fragment.EnrollFragment;
+import com.aratek.trustfinger.fragment.VerifyFragment;
 import com.aratek.trustfinger.interfaces.LedCallback;
 import com.aratek.trustfinger.sdk.DeviceListener;
 import com.aratek.trustfinger.sdk.DeviceModel;
@@ -78,7 +79,8 @@ public class VerifyActivity extends FragmentActivity implements DeviceOpenListen
     private List<String> sp_usbDevice_datas = new ArrayList<String>();
     private List<Fragment> fragmnts = new ArrayList<Fragment>();
     //private CaptureFragment mCaptureFragment;
-    private EnrollFragment mEnrollFragment;
+    private VerifyFragment mVerifyFragment;
+    //private EnrollFragment mEnrollFragment;
 //   private TransactionFragment mVerifyFragment;
 //    private IdentifyFragment mIdentifyFragment;
     private DeviceInfoFragment mDeviceInfoFragment;
@@ -88,14 +90,15 @@ public class VerifyActivity extends FragmentActivity implements DeviceOpenListen
     private boolean isDeviceOpened = false;
     private MyApplication mApp;
     PosManager mPosManager;
-    @BindView(R.id.back) Button back;
+    @BindView(R.id.backss) Button back;
+    //@BindView(R.id.login) Button login;
     //@BindView(R.id.refresh) Button identification;
 //    @BindView(R.id.verification) Button verification;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fingeprint);
+        setContentView(R.layout.activity_verify);
         ButterKnife.bind(this);
         findViews();
         initTrustFinger();
@@ -127,11 +130,11 @@ public class VerifyActivity extends FragmentActivity implements DeviceOpenListen
             @Override
             public void onClick(View view) {
                 System.exit(0);
-                Intent intent = new Intent(getApplicationContext(), RefreshEnrollActivity.class);
+                Intent intent = new Intent(getApplicationContext(), RefreshVerifyActivity.class);
                 startActivity(intent);
             }
         });
-//        identification.setOnClickListener(new View.OnClickListener() {
+//        login.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
 //                Intent intent = new Intent(getApplicationContext(), FingeprintActivity.class);
@@ -249,13 +252,13 @@ public class VerifyActivity extends FragmentActivity implements DeviceOpenListen
     private void setFragmentDatas(TrustFingerDevice mTrustFingerDevice) {
 //        if (mCaptureFragment != null)
 //            mCaptureFragment.setDatas(mTrustFingerDevice);
-        if (mEnrollFragment != null)
-            mEnrollFragment.setDatas(mTrustFingerDevice);
+//        if (mEnrollFragment != null)
+//            mEnrollFragment.setDatas(mTrustFingerDevice);
 
 //        if (mIdentifyFragment != null)
 //            mIdentifyFragment.setDatas(mTrustFingerDevice);
-//        if (mVerifyFragment != null)
-//            mVerifyFragment.setDatas(mTrustFingerDevice);
+        if (mVerifyFragment != null)
+            mVerifyFragment.setDatas(mTrustFingerDevice);
        if (mDeviceInfoFragment != null)
  mDeviceInfoFragment.setDatas(mTrustFingerDevice);
     }
@@ -453,14 +456,14 @@ public class VerifyActivity extends FragmentActivity implements DeviceOpenListen
 //                        mCaptureFragment.forceStop();
 //                        mCaptureFragment.resetUI();
 //                    }
-                    if (position == 1) {
-                        mEnrollFragment.forceStop();
-                        mEnrollFragment.resetUI();
-                    }
-//                    if (position == 2) {
-//                        mVerifyFragment.forceStop();
-//                        mVerifyFragment.resetUI();
+//                    if (position == 1) {
+//                        mEnrollFragment.forceStop();
+//                        mEnrollFragment.resetUI();
 //                    }
+                    if (position == 2) {
+                        mVerifyFragment.forceStop();
+                        mVerifyFragment.resetUI();
+                   }
 //                    if (position == 3) {
 //                        mIdentifyFragment.forceStop();
 //                        mIdentifyFragment.resetUI();
@@ -511,17 +514,17 @@ public class VerifyActivity extends FragmentActivity implements DeviceOpenListen
         });
 //        mCaptureFragment = new CaptureFragment();
 //        mCaptureFragment.setLedCallback(this);
-        mEnrollFragment = new EnrollFragment();
-        mEnrollFragment.setLedCallback(this);
-//        mVerifyFragment = new TransactionFragment();
-//        mVerifyFragment.setLedCallback(this);
+//        mEnrollFragment = new EnrollFragment();
+//        mEnrollFragment.setLedCallback(this);
+        mVerifyFragment = new VerifyFragment();
+        mVerifyFragment.setLedCallback(this);
 //        mIdentifyFragment = new IdentifyFragment();
 //        mIdentifyFragment.setLedCallback(this);
         mDeviceInfoFragment = new DeviceInfoFragment();
 //        fragmnts.add(mCaptureFragment);
-        fragmnts.add(mEnrollFragment);
+ //       fragmnts.add(mEnrollFragment);
 //        fragmnts.add(mIdentifyFragment);
-//        fragmnts.add(mVerifyFragment);
+      fragmnts.add(mVerifyFragment);
        fragmnts.add(mDeviceInfoFragment);
         titles = getResources().getStringArray(R.array.tabs_name);
         mViewPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager(), fragmnts, titles));
@@ -564,8 +567,8 @@ public class VerifyActivity extends FragmentActivity implements DeviceOpenListen
 
                 handleMsg("", Color.BLACK);
                 if (position != 0) {
-                    mEnrollFragment.forceStop();
-                    mEnrollFragment.resetUI();
+                    mVerifyFragment.forceStop();
+                    mVerifyFragment.resetUI();
                 }
 
 

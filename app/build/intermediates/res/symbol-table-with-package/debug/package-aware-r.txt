@@ -969,7 +969,6 @@ id add
 id admin
 id adv
 id advance
-id agency
 id alertTitle
 id all
 id always
@@ -978,6 +977,8 @@ id apply_advance
 id async
 id auto
 id back
+id backs
+id backss
 id balance_enquiry
 id barrier
 id beginning
@@ -1098,10 +1099,14 @@ id line1
 id line3
 id listMode
 id list_item
+id login
 id lv_listview
 id lv_user_list
 id ly_hand
 id ly_settings
+id main1
+id main2
+id main3
 id masked
 id media_actions
 id message
@@ -1120,6 +1125,7 @@ id notification_background
 id notification_main_column
 id notification_main_column_container
 id othername
+id pack
 id packed
 id parallax
 id parent
@@ -1311,6 +1317,7 @@ layout activity_advancesreport
 layout activity_agent_member
 layout activity_authentication
 layout activity_balance
+layout activity_choice
 layout activity_confirm
 layout activity_confirm_advance
 layout activity_confirm_balance
@@ -1329,6 +1336,7 @@ layout activity_print
 layout activity_products
 layout activity_refresh
 layout activity_refresh_enroll
+layout activity_refresh_verify
 layout activity_refreshidentify
 layout activity_register
 layout activity_register_phone

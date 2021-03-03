@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -44,6 +45,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main2);
         ButterKnife.bind(this);
 
+
+
+
         Login();
 
     }
@@ -51,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void Login() {
         String machineId = android.os.Build.SERIAL;
+        String MachineID = android.os.Build.MODEL+""+ Build.SERIAL;
         SharedPreferences.Editor editor = sharedpreferences.edit();
         editor.commit();
 
@@ -69,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
                     Intent homeIntent = new Intent(getApplicationContext(), LoginAdminActivity.class);
                     startActivity(homeIntent);
                 } else {
-                    Intent homeIntent = new Intent(getApplicationContext(), FingeprintActivity.class);
+                    Intent homeIntent = new Intent(getApplicationContext(), VerifyActivity.class);
                     startActivity(homeIntent);
                 }
 
