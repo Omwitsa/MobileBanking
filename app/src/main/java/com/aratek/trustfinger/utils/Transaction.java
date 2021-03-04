@@ -45,8 +45,6 @@ public class Transaction<_transaction> {
 
     }
 
-
-
     public void transact(TransactionModel _transaction) {
         editor = sharedpreferences.edit();
 
@@ -61,15 +59,11 @@ public class Transaction<_transaction> {
                     String feedback = responseData.getMessage();
                     String datas="Deposit successful";
                     if (!feedback.equals(datas)) {
-                        Toast.makeText(context, feedback, Toast.LENGTH_LONG).show();
                         Intent homeIntent = new Intent(context, RegisterPhone.class);
                         context.startActivity(homeIntent);
-                    }
-                    else
-                        {
-                            Toast.makeText(context, feedback, Toast.LENGTH_LONG).show();
 
-                        }
+                    }
+                    Toast.makeText(context, feedback, Toast.LENGTH_LONG).show();
                 }
 
                 @Override
@@ -89,15 +83,12 @@ public class Transaction<_transaction> {
                     String feedback = responseData.getMessage();
                     String datas="Withdrawal successful";
                     if (!feedback.equals(datas)) {
-                        Toast.makeText(context, feedback, Toast.LENGTH_LONG).show();
                         Intent homeIntent = new Intent(context, RegisterPhone.class);
                         context.startActivity(homeIntent);
                     }
-                    else
-                    {
+
                         Toast.makeText(context, feedback, Toast.LENGTH_LONG).show();
 
-                    }
                 }
 
                 @Override

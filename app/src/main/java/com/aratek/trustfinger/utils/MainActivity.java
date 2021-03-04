@@ -293,6 +293,7 @@ public class MainActivity extends Activity implements OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.print);
+
         print = (Button) findViewById(R.id.Print);
         back = (Button) findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
@@ -313,6 +314,7 @@ public class MainActivity extends Activity implements OnClickListener {
                     @Override
                     public void sdkInitSuccessed() {
                         pflag = 1;
+                        PrtCardInfo();
                     }
 
                     @Override
@@ -363,17 +365,11 @@ public class MainActivity extends Activity implements OnClickListener {
     }
     //my code
 
-
-
     int min = 1;
     int max = 10000;
     Random r = new Random();
     int i1 = r.nextInt(max - min + 1) + min;
     String version = "MG001POS" + i1;
-
-
-
-
 
     //end of code
 
@@ -384,12 +380,19 @@ public class MainActivity extends Activity implements OnClickListener {
         switch (v.getId()) {
             case R.id.Print:
                 if (pflag == 1)
-                    PrtCardInfo();
+                    //PrtCardInfo();
+                PrintInfo();
                 else
                     Toast.makeText(MainActivity.this, "Not prepare well!", Toast.LENGTH_SHORT).show();
                 break;
         }
     }
+public void PrintInfo()
+{
+
+
+
+}
 
 
     public void PrtCardInfo() {

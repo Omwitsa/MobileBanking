@@ -66,8 +66,8 @@ public class PosUsersActivity extends Activity implements AdapterView.OnItemSele
         //final String id = sharedpreferences.getString("loadsPosition", "");
 
         //sharedpreferences.getString("account_no", "65690200100416");
-        TransactionModel transaction = new TransactionModel("", 0.0, "", "", "", "", machineId, "", "", "","");
-        Call<List<String>> call = apiService.getAgency(transaction);
+//        TransactionModel transaction = new TransactionModel("", 0.0, "", "", "", "", machineId, "", "", "","");
+//        Call<List<String>> call = apiService.getAgency(transaction);
 
 //        call.enqueue(new Callback<List<String>>() {
 //            @Override
