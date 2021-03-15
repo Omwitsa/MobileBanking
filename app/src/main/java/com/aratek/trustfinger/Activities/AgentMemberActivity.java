@@ -54,7 +54,7 @@ public class AgentMemberActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         progressDoalog = new ProgressDialog(AgentMemberActivity.this);
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-        final String idn = sharedpreferences.getString("agentId", "");
+        final String idn = sharedpreferences.getString("loadsAgentId", "");
         dbb.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -111,8 +111,8 @@ public class AgentMemberActivity extends AppCompatActivity {
                 String mobile_number = mobile.getText().toString();
                 String DOB =(dbb.getText().toString().trim());
                 String Gender = gender.getSelectedItem().toString();
-                String Agentid = sharedpreferences.getString("agentId", "");
-                AgentMember member = new AgentMember(Surname, other_Names, idno,machineId, mobile_number, Gender, DOB, null, null, Agentid);
+                String agentid = sharedpreferences.getString("loadsAgentId", "");
+                AgentMember member = new AgentMember(Surname, other_Names, idno,machineId, mobile_number, Gender, DOB, null, null, agentid);
                 register(member);
             }
         });
@@ -138,6 +138,8 @@ public class AgentMemberActivity extends AppCompatActivity {
                 progressDoalog.dismiss();
                 Response responseData = response.body();
                 Toast.makeText(getApplicationContext(), responseData.getMessage(), Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(getApplicationContext(), FingerPrintsupdateActivity.class);
+                startActivity(intent);
             }
 
             @Override

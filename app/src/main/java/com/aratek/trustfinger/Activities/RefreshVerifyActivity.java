@@ -12,7 +12,7 @@ public class RefreshVerifyActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_refresh_verify);
-        Intent intent = new Intent(getApplicationContext(), FingeprintActivity.class);
+        Intent intent = new Intent(getApplicationContext(), VerifyActivity.class);
         startActivity(intent);
     }
 }

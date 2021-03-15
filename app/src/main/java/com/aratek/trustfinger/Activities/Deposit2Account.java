@@ -43,7 +43,7 @@ public class Deposit2Account extends AppCompatActivity {
 
         apiService = ApiClient.getClient().create(ApiInterface.class);
         progressDoalog = new ProgressDialog(Deposit2Account.this);
-        final String auditId = sharedpreferences.getString("agentId", "");
+        final String auditId = sharedpreferences.getString("AgentId", "");
         final String permit="Allow";
 
         submit.setOnClickListener(new View.OnClickListener() {@Override

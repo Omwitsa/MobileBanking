@@ -57,10 +57,11 @@ public class AccountsActivity extends Activity implements AdapterView.OnItemSele
 
 
         final String id = sharedpreferences.getString("loadsPosition", "");
-        final String ids = sharedpreferences.getString("agentId", "");
+        final String ids = sharedpreferences.getString("agentID", "");
+        String machineId = android.os.Build.SERIAL;
 
         //sharedpreferences.getString("account_no", "65690200100416");
-        TransactionModel transaction = new TransactionModel("", 0.0, "", "", id, "", "", "", "", "","");
+        TransactionModel transaction = new TransactionModel("", 0.0, "", "", id, "", machineId, "", "", "","");
         Call<List<String>> call = apiService.getUserAccounts(transaction);
 
         call.enqueue(new Callback<List<String>>() {
@@ -72,6 +73,11 @@ public class AccountsActivity extends Activity implements AdapterView.OnItemSele
                 dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 dataAdapter = new ArrayAdapter<String>(AccountsActivity.this, android.R.layout.simple_spinner_item, accounts);
                 spinner.setAdapter(dataAdapter);
+
+                if (spinner.getCount()<=0)
+                {
+                    Toast.makeText(AccountsActivity.this, "You details could not be verified please,register your fingerprints", Toast.LENGTH_LONG).show();
+                }
 
             }
 
@@ -87,7 +93,7 @@ public class AccountsActivity extends Activity implements AdapterView.OnItemSele
                 Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                 editor.putString("supplierNo", Acc);
                 editor.putString("number",id);
-                editor.putString("agentId",ids);
+                editor.putString("agtId",ids);
                 editor.commit();
                 //intent.putExtra("supplierNo", Acc);
                 startActivity(intent);

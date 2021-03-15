@@ -36,7 +36,7 @@ public class HomeActivity extends AppCompatActivity {
 
         final String Account = sharedpreferences.getString("supplierNo", "");
         final String id_number=sharedpreferences.getString("number", "");
-        final String idSs=sharedpreferences.getString("agentId", "");
+        final String idSs=sharedpreferences.getString("agtId", "");
 
 
         deposit.setOnClickListener(new View.OnClickListener() {
@@ -46,7 +46,7 @@ public class HomeActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), DepositActivity.class);
                 editor.putString("supplierNo", Account);
                 editor.putString("number",id_number);
-                editor.putString("agentId",idSs);
+                editor.putString("agtId",idSs);
                 editor.commit();
                 //intent.putExtra("supplierNo", Account);
                 startActivity(intent);
@@ -59,7 +59,7 @@ public class HomeActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), WithdrawActivity.class);
                 editor.putString("supplierNo", Account);
                 editor.putString("number",id_number);
-                editor.putString("agentId",idSs);
+                editor.putString("agtId",idSs);
                 editor.commit();
                 //intent.putExtra("supplierNo", Account);
                 startActivity(intent);
@@ -74,7 +74,7 @@ public class HomeActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), BalanceActivity.class);
                 editor.putString("supplierNo", Account);
                 editor.putString("number",id_number);
-                editor.putString("agentId",idSs);
+                editor.putString("agtId",idSs);
                 editor.commit();
                 //intent.putExtra("supplierNo", Account);
                 startActivity(intent);
@@ -89,7 +89,7 @@ public class HomeActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), ProductsActivity.class);
                 editor.putString("supplierNo", Account);
                 editor.putString("number",id_number);
-                editor.putString("agentId",idSs);
+                editor.putString("agtId",idSs);
                 editor.commit();
                 //intent.putExtra("supplierNo", Account);
                 startActivity(intent);

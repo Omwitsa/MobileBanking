@@ -28,8 +28,8 @@ android:orientation="vertical">
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Login"
-        android:id="@+id/login"
+        android:text="Register FingerPrints"
+        android:id="@+id/loginss"
         android:shadowColor="@android:color/transparent"
         android:padding="15dp"
         android:layout_marginRight="10dp"

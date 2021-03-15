@@ -40,22 +40,15 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.aratek.trustfinger.Activities.AccountsActivity;
-import com.aratek.trustfinger.Activities.BalanceActivity;
-import com.aratek.trustfinger.Activities.DepositActivity;
-import com.aratek.trustfinger.Activities.HomeActivity;
 import com.aratek.trustfinger.Activities.IdentificationActivity;
-import com.aratek.trustfinger.Activities.RegisterPhone;
-import com.aratek.trustfinger.Activities.Reports;
-import com.aratek.trustfinger.Model.FingurePrintModel;
+import com.aratek.trustfinger.Activities.RolesActivity;
+import com.aratek.trustfinger.Activities.VerifyActivity;
 import com.aratek.trustfinger.Model.LoginModel;
-import com.aratek.trustfinger.Model.RegisterFingerprints;
 import com.aratek.trustfinger.Model.Response;
 import com.aratek.trustfinger.Model.TransactionModel;
+import com.aratek.trustfinger.R;
 import com.aratek.trustfinger.Rest.ApiClient;
 import com.aratek.trustfinger.Rest.ApiInterface;
-import com.aratek.trustfinger.utils.Config;
-import com.aratek.trustfinger.R;
 import com.aratek.trustfinger.adapter.MyRankListAdapter;
 import com.aratek.trustfinger.bean.FingerData;
 import com.aratek.trustfinger.bean.LargestFingerData;
@@ -66,8 +59,8 @@ import com.aratek.trustfinger.sdk.SecurityLevel;
 import com.aratek.trustfinger.sdk.TrustFingerDevice;
 import com.aratek.trustfinger.sdk.TrustFingerException;
 import com.aratek.trustfinger.sdk.VerifyResult;
+import com.aratek.trustfinger.utils.Config;
 import com.aratek.trustfinger.utils.DBHelper;
-import com.aratek.trustfinger.utils.MainActivity;
 import com.aratek.trustfinger.utils.MediaPlayerHelper;
 import com.aratek.trustfinger.utils.Transaction;
 import com.aratek.trustfinger.widget.MyListView;
@@ -654,12 +647,19 @@ public class VerifyFragment extends BaseFragment {
                         public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
                             Response responseData = response.body();
                             String role=responseData.getMessage();
-
-                            String admin="You are not an Administrator";
-                            if (!role.equals(admin))
+                            String active="False";
+                            String admin="True";
+                            String permission="You are not an Administrator";
+                            if (role.equals(permission))
                             {
-                                activation(role,idnumber);
+//                                Intent intent = new Intent(getActivity(), FingeprintActivity.class);
+//                                startActivity(intent);
+                                //Toast.makeText(context, role, Toast.LENGTH_LONG).show();
+                                Toast.makeText(mApp.getApplicationContext(), responseData.getMessage(), Toast.LENGTH_LONG).show();
                             }
+                            else if (role.equals(active) ||role.equals(admin))
+                            activation(role,idnumber);
+                            Toast.makeText(mApp.getApplicationContext(), responseData.getMessage(), Toast.LENGTH_LONG).show();
 
 
                         }
@@ -669,11 +669,6 @@ public class VerifyFragment extends BaseFragment {
 
                         }
                     });
-
-
-
-
-
 
                 }
                 mHandler.sendMessage(mHandler.obtainMessage(MSG_IDENTIFY_SUCCESS, userList.size(), (int) (endTime - startTime), mUserList.size()));
@@ -736,7 +731,7 @@ public class VerifyFragment extends BaseFragment {
     }
 
     private void activation(String role, String idnumber) {
-            Intent intent = new Intent(getActivity(), RegisterPhone.class);
+            Intent intent = new Intent(getActivity(), RolesActivity.class);
             editor.putString("loadsAgentId", idnumber);
             editor.putString("loadrole", role);
             editor.commit();

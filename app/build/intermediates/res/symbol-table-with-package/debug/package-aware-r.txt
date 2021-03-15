@@ -1099,12 +1099,16 @@ id line1
 id line3
 id listMode
 id list_item
-id login
+id loginss
 id lv_listview
 id lv_user_list
 id ly_hand
 id ly_settings
 id main1
+id main11
+id main12
+id main13
+id main14
 id main2
 id main3
 id masked
@@ -1325,6 +1329,7 @@ layout activity_deposit
 layout activity_deposit2_account
 layout activity_depositreport
 layout activity_fingeprint
+layout activity_finger_printsupdate
 layout activity_fingure_print_sample
 layout activity_home
 layout activity_identification
@@ -1341,6 +1346,7 @@ layout activity_refreshidentify
 layout activity_register
 layout activity_register_phone
 layout activity_reports
+layout activity_roles
 layout activity_submit_transaction
 layout activity_transaction
 layout activity_verify

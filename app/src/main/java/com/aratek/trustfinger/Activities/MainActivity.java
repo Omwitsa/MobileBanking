@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
                     Intent homeIntent = new Intent(getApplicationContext(), LoginAdminActivity.class);
                     startActivity(homeIntent);
                 } else {
-                    Intent homeIntent = new Intent(getApplicationContext(), VerifyActivity.class);
+                    Intent homeIntent = new Intent(getApplicationContext(), FingeprintActivity.class);
                     startActivity(homeIntent);
                 }
 

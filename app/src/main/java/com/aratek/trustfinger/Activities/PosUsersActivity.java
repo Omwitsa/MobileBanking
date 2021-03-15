@@ -98,7 +98,7 @@ public class PosUsersActivity extends Activity implements AdapterView.OnItemSele
                         String machineId = android.os.Build.SERIAL;
                         String admins = admin.getSelectedItem().toString();
                         String agency = "";
-                        String agentid = sharedpreferences.getString("loadsPosition", "");
+                        String agentid = sharedpreferences.getString("loadsAgentId", "");
                         AgencyModel members =  new AgencyModel( names,  idno, phone, machineId,admins, agency, agentid,"");
                         create(members);
 
@@ -114,6 +114,8 @@ public class PosUsersActivity extends Activity implements AdapterView.OnItemSele
                                 progressDoalog.dismiss();
                                 com.aratek.trustfinger.Model.Response responseData = response.body();
                                 Toast.makeText(getApplicationContext(), responseData.getMessage(), Toast.LENGTH_LONG).show();
+                                Intent intent = new Intent(getApplicationContext(), VerifyActivity.class);
+                                startActivity(intent);
                             }
 
                             @Override
@@ -122,7 +124,7 @@ public class PosUsersActivity extends Activity implements AdapterView.OnItemSele
                                 Toast.makeText(getApplicationContext(), "Sorry, network  error Try again", Toast.LENGTH_LONG).show();
                             }
                         });
-                        Intent intent = new Intent(getApplicationContext(), RegisterPhone.class);
+                        Intent intent = new Intent(getApplicationContext(), FingerPrintsupdateActivity.class);
                         startActivity(intent);
                     }
                 });

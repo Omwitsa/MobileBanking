@@ -42,19 +42,28 @@ public class RegisterPhone extends AppCompatActivity {
 
         final String id = sharedpreferences.getString("loadsAgentId", "");
         String IsAdmin = sharedpreferences.getString("loadrole", "");
+        String IsTeller = sharedpreferences.getString("loadTeller", "");
         String confirm="False";
+        String lock="You are not an Administrator";
+        String OperatorAdmin="True";
 //        Toast.makeText(RegisterPhone.this,id,Toast.LENGTH_LONG).show();
 //        Toast.makeText(RegisterPhone.this,IsAdmin,Toast.LENGTH_LONG).show();
-        if(IsAdmin.equals(confirm))
+        if(IsAdmin.equals(confirm) && IsTeller.equals(OperatorAdmin))
         {
             registration.setEnabled(false);
+        }
+        if(IsAdmin.equals(OperatorAdmin) && IsTeller.equals(confirm))
+        {
+            Transactions.setEnabled(false);
+            verification.setEnabled(false);
+            Fingerprints.setEnabled(false);
         }
 
         Transactions.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), ChoiceActivity.class);
-                editor.putString("loadsAgentId", id);
+                editor.putString("NewsAgentId", id);
                 editor.commit();
                 startActivity(intent);
 
@@ -82,7 +91,7 @@ public class RegisterPhone extends AppCompatActivity {
         Fingerprints.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), FingeprintActivity.class);
+                Intent intent = new Intent(getApplicationContext(), FingerPrintsupdateActivity.class);
                 editor.putString("loadsAgentId", id);
                 editor.commit();
                 startActivity(intent);

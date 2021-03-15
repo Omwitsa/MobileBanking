@@ -55,7 +55,7 @@ public class DepositActivity extends AppCompatActivity {
 
         final String Account = sharedpreferences.getString("supplierNo", "");
         final String idno = sharedpreferences.getString("number", "");
-        final String idn = sharedpreferences.getString("agentId", "");
+        final String idn = sharedpreferences.getString("agtId", "");
         sNo.setText(Account);
 
         submit.setOnClickListener(new View.OnClickListener() {@Override

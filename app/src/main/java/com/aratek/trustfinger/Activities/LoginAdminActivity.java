@@ -70,13 +70,13 @@ public class LoginAdminActivity extends AppCompatActivity {
                 String admins="Login Successfull";
                 if(!status.equals(admins))
                 {
-                    Toast.makeText(getApplicationContext(), "Sorry you are not authorised to use this device", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), status, Toast.LENGTH_LONG).show();
 
                 }
                 else
                     {
                         Toast.makeText(getApplicationContext(),status, Toast.LENGTH_LONG).show();
-                        Intent homeIntent = new Intent(getApplicationContext(), VerifyActivity.class);
+                        Intent homeIntent = new Intent(getApplicationContext(), FingerPrintsupdateActivity.class);
                         startActivity(homeIntent);
 
                     }

@@ -655,7 +655,7 @@ public class TransactionFragment extends BaseFragment {
                     String accountNo = sharedpreferences.getString("accountNo","");
                     String productDescription = sharedpreferences.getString("productDescription","");
                     String machineId = sharedpreferences.getString("machine_id", "");
-                    String auditId = sharedpreferences.getString("agentId", "");
+                    String auditsId = sharedpreferences.getString("auditId", "");
                     if(sharedpreferences.getString("number","").equals(idnumber)) {
 
                         Intent intent = new Intent(getActivity(), SubmitTransactionActivity.class);
@@ -664,7 +664,7 @@ public class TransactionFragment extends BaseFragment {
                         editor.putString("machineId", machineId);
                         editor.putString("supplierNo", sNo);
                         editor.putString("fingurePrint", "");
-                        editor.putString("auditId", auditId);
+                        editor.putString("AuditId", auditsId);
                         editor.putString("accountNo", accountNo);
                         editor.putString("productDescription", productDescription);
                         editor.commit();

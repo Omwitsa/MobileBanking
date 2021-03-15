@@ -8,6 +8,7 @@ import com.aratek.trustfinger.Model.MemberModel;
 import com.aratek.trustfinger.Model.ProductModel;
 import com.aratek.trustfinger.Model.RegisterFingerprints;
 import com.aratek.trustfinger.Model.Response;
+import com.aratek.trustfinger.Model.TellerDate;
 import com.aratek.trustfinger.Model.TransactionModel;
 import java.util.List;
 import retrofit2.Call;
@@ -18,11 +19,20 @@ public interface ApiInterface {
     @POST("webservice/users/login")
     Call<Response> login(@Body MemberModel memberModel);
 
-    @POST("webservice/users/registerFingerPrints")
-    Call<Response> registerFingerPrints(@Body FingurePrintModel fingurePrint);
+    @POST("webservice/users/existingMembersFingerPrints")
+    Call<Response> existingMembersFingerPrints(@Body FingurePrintModel fingurePrint);
+
+    @POST("webservice/users/newMembersFingerPrints")
+    Call<Response> newMembersFingerPrints(@Body FingurePrintModel fingurePrint);
+
+    @POST("webservice/users/OperatorsFingerPrints")
+    Call<Response> OperatorsFingerPrints(@Body FingurePrintModel fingurePrint);
 
     @POST("webservice/users/adminLogin")
     Call<Response> adminLogin(@Body LoginModel loginModel);
+
+    @POST("webservice/users/TellerStatus")
+    Call<Response> TellerStatus(@Body TellerDate tellerDate);
 
     @POST("webservice/users/passwordLogin")
     Call<Response> passwordLogin(@Body LoadData loadData);
@@ -41,7 +51,7 @@ public interface ApiInterface {
     @POST("webservice/transacions/balance")
     Call<Response> getBalance(@Body TransactionModel transactionModel);
 
-    @POST("webservice/transacions/applyAdvance")
+    @POST("webservice/transacions/calculateAdvance")
     Call<Response> applyAdvance(@Body TransactionModel transactionModel);
 
     @POST("webservice/transacions/sychTransactions")

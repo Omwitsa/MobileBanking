@@ -24,7 +24,7 @@ public class FingeprintActivity_ViewBinding implements Unbinder {
     this.target = target;
 
     target.back = Utils.findRequiredViewAsType(source, R.id.backs, "field 'back'", Button.class);
-    target.login = Utils.findRequiredViewAsType(source, R.id.login, "field 'login'", Button.class);
+    target.login = Utils.findRequiredViewAsType(source, R.id.loginss, "field 'login'", Button.class);
   }
 
   @Override
