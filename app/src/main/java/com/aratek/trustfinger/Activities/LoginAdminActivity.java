@@ -56,7 +56,7 @@ public class LoginAdminActivity extends AppCompatActivity {
         private void Login() {
         String machineId = android.os.Build.SERIAL;
         MemberModel memberModel = new MemberModel(username.getText().toString(), password.getText().toString(), machineId);
-        SharedPreferences.Editor editor = sharedpreferences.edit();
+        final SharedPreferences.Editor editor = sharedpreferences.edit();
         editor.putString("loggedInUser", memberModel.getUsercode());
         editor.commit();
 
@@ -68,6 +68,7 @@ public class LoginAdminActivity extends AppCompatActivity {
                 Response responseData = response.body();
                 String status = responseData.getMessage();
                 String admins="Login Successfull";
+                String Permission="SuperAdmin";
                 if(!status.equals(admins))
                 {
                     Toast.makeText(getApplicationContext(), status, Toast.LENGTH_LONG).show();
@@ -76,7 +77,9 @@ public class LoginAdminActivity extends AppCompatActivity {
                 else
                     {
                         Toast.makeText(getApplicationContext(),status, Toast.LENGTH_LONG).show();
-                        Intent homeIntent = new Intent(getApplicationContext(), FingerPrintsupdateActivity.class);
+                        Intent homeIntent = new Intent(getApplicationContext(), FingeprintActivity.class);
+                        editor.putString("LoadPermission", Permission);
+                        editor.commit();
                         startActivity(homeIntent);
 
                     }

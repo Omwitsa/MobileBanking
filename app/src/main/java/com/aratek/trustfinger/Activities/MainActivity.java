@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void Login() {
         String machineId = android.os.Build.SERIAL;
-        String MachineID = android.os.Build.MODEL+""+ Build.SERIAL;
+        //String MachineID = android.os.Build.MODEL+""+ Build.SERIAL;
         SharedPreferences.Editor editor = sharedpreferences.edit();
         editor.commit();
 
@@ -71,9 +71,11 @@ public class MainActivity extends AppCompatActivity {
                 String datas="Complete";
 
                 if (!feedback.equals(datas)) {
+                    //Toast.makeText(getApplicationContext(), "Sorry, Network error occurred", Toast.LENGTH_LONG).show();
                     Intent homeIntent = new Intent(getApplicationContext(), LoginAdminActivity.class);
                     startActivity(homeIntent);
                 } else {
+                    //Toast.makeText(getApplicationContext(), feedback, Toast.LENGTH_LONG).show();
                     Intent homeIntent = new Intent(getApplicationContext(), FingeprintActivity.class);
                     startActivity(homeIntent);
                 }
@@ -83,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<Response> call, Throwable t) {
                 progressDoalog.dismiss();
-              Toast.makeText(getApplicationContext(), "Sorry, Network error occurred", Toast.LENGTH_LONG).show();
+              //Toast.makeText(getApplicationContext(), "Sorry, Network error occurred", Toast.LENGTH_LONG).show();
 
             }
         });

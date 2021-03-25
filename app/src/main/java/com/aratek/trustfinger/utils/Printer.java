@@ -151,8 +151,8 @@ public class Printer extends Activity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.print);
-        print = (Button) findViewById(R.id.Print);
-        print.setOnClickListener(this);
+        //print = (Button) findViewById(R.id.Print);
+        //print.setOnClickListener(this);
 
 
         new Thread() {
@@ -215,14 +215,14 @@ public class Printer extends Activity implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         // TODO Auto-generated method stub
-        switch (v.getId()) {
-            case R.id.Print:
-                if (pflag == 1)
-                    print();
-                else
-                    Toast.makeText(Printer.this, "Not prepare well!", Toast.LENGTH_SHORT).show();
-                break;
-        }
+//        switch (v.getId()) {
+//            case R.id.Print:
+//                if (pflag == 1)
+//                    print();
+//                else
+//                    Toast.makeText(Printer.this, "Not prepare well!", Toast.LENGTH_SHORT).show();
+//                break;
+//        }
 
 
     }

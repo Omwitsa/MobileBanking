@@ -3,6 +3,8 @@ package com.aratek.trustfinger.Activities;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
@@ -30,6 +32,7 @@ public class RegisterPhone extends AppCompatActivity {
     @BindView(R.id.registrations) CardView registration;
     @BindView(R.id.verifys) CardView verification;
     @BindView(R.id.updates) CardView Fingerprints;
+    @BindView(R.id.logout) CardView Logout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,6 +98,17 @@ public class RegisterPhone extends AppCompatActivity {
                 editor.putString("loadsAgentId", id);
                 editor.commit();
                 startActivity(intent);
+            }
+        });
+        Logout.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+            @Override
+            public void onClick(View view) {
+//                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+//                editor.clear();
+//                startActivity(intent);
+                finishAndRemoveTask();
+                //System.exit(0);
             }
         });
 

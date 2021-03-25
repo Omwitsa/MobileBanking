@@ -28,25 +28,40 @@ public class FingerPrintsupdateActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         editor = sharedpreferences.edit();
-        final String idw = sharedpreferences.getString("NewsAgentId", "");
-        final String memberExist="Exists";
+        final String Change = sharedpreferences.getString("LoadPermission", "");
+        final String IdNumber = sharedpreferences.getString("agentID", "");
+        final String FirstName = sharedpreferences.getString("agentFirstName", "");
+        final String SecondName = sharedpreferences.getString("agentSecondName", "");
+
+         String Changes="SuperAdmin";
+
         final String NewMember="New";
         final String OperatorMember="Operator";
+        if(Changes.equals(Change))
+        {
+            Exist.setEnabled(false);
+            news.setEnabled(false);
+        }
+        else {
+            admin.setEnabled(false);
+        }
         
         Exist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), VerifyActivity.class);
-                editor.putString("MemberFinger", memberExist);
-                editor.commit();
+                Intent intent = new Intent(getApplicationContext(), EnquiryActivity.class);
                 startActivity(intent);
             }
         });
         news.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), VerifyActivity.class);
+
+                Intent intent = new Intent(getApplicationContext(), AgentMembersFingerPrintActivity.class);
                 editor.putString("NewFinger", NewMember);
+                editor.putString("NewId", IdNumber);
+                editor.putString("NewFirstName", FirstName);
+                editor.putString("NewSecondName", SecondName);
                 editor.commit();
                 startActivity(intent);
             }
@@ -54,8 +69,11 @@ public class FingerPrintsupdateActivity extends AppCompatActivity {
         admin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), VerifyActivity.class);
+                Intent intent = new Intent(getApplicationContext(), OperatoerFingerprintActivity.class);
                 editor.putString("AdminFinger", OperatorMember);
+                editor.putString("NewId", IdNumber);
+                editor.putString("NewFirstName", FirstName);
+                editor.putString("NewSecondName", SecondName);
                 editor.commit();
                 startActivity(intent);
             }
@@ -63,7 +81,7 @@ public class FingerPrintsupdateActivity extends AppCompatActivity {
         Back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), FingeprintActivity.class);
+                Intent intent = new Intent(getApplicationContext(), RegisterPhone.class);
 //                editor.putString("AgentId", idw);
 //                editor.commit();
                 startActivity(intent);

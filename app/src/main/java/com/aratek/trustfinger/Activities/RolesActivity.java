@@ -42,7 +42,7 @@ public class RolesActivity extends AppCompatActivity {
                 String role=responseData.getMessage();
                 if(!role.equals(null))
                 {
-         Toast.makeText(getApplicationContext(), role, Toast.LENGTH_LONG).show();
+         //Toast.makeText(getApplicationContext(), role, Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(getApplicationContext(), RegisterPhone.class);
                 editor.putString("loadsAgentId", ids);
                 editor.putString("loadTeller", role);

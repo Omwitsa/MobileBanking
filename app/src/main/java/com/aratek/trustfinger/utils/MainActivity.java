@@ -294,16 +294,16 @@ public class MainActivity extends Activity implements OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.print);
 
-        print = (Button) findViewById(R.id.Print);
-        back = (Button) findViewById(R.id.back);
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), RegisterPhone.class);
-                startActivity(intent);
-            }
-        });
-        print.setOnClickListener(this);
+        //print = (Button) findViewById(R.id.Print);
+        //back = (Button) findViewById(R.id.back);
+//        back.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(getApplicationContext(), RegisterPhone.class);
+//                startActivity(intent);
+//            }
+//        });
+        //print.setOnClickListener(this);
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         editor = sharedpreferences.edit();
 
@@ -377,15 +377,15 @@ public class MainActivity extends Activity implements OnClickListener {
     public void onClick(View v) {
 
         // TODO Auto-generated method stub
-        switch (v.getId()) {
-            case R.id.Print:
-                if (pflag == 1)
-                    //PrtCardInfo();
-                PrintInfo();
-                else
-                    Toast.makeText(MainActivity.this, "Not prepare well!", Toast.LENGTH_SHORT).show();
-                break;
-        }
+//        switch (v.getId()) {
+//            case R.id.Print:
+//                if (pflag == 1)
+//                    //PrtCardInfo();
+//                PrintInfo();
+//                else
+//                    Toast.makeText(MainActivity.this, "Not prepare well!", Toast.LENGTH_SHORT).show();
+//                break;
+//        }
     }
 public void PrintInfo()
 {

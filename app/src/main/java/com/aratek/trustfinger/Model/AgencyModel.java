@@ -4,6 +4,8 @@ import com.google.gson.annotations.SerializedName;
 public class AgencyModel {
     @SerializedName("names")
     private String names;
+    @SerializedName("lastname")
+    private String lastname;
     @SerializedName("idno")
     private String idno;
     @SerializedName("phone")
@@ -19,8 +21,9 @@ public class AgencyModel {
     @SerializedName("Fingerprint")
     private String Fingerprint;
 
-    public AgencyModel(String names, String idno,String phone,String machineId,String admins,String agency,String agentid,String Fingerprint) {
+    public AgencyModel(String names,String lastname, String idno,String phone,String machineId,String admins,String agency,String agentid,String Fingerprint) {
         this.names = names;
+        this.lastname = lastname;
         this.idno = idno;
         this.phone = phone;
         this.machineId = machineId;
@@ -37,6 +40,18 @@ public class AgencyModel {
     public void setNames(String names) {
         this.names = names;
     }
+
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+
+
 
     public String getIdno() {
         return idno;
@@ -87,7 +102,7 @@ public class AgencyModel {
     }
 
     public String getFingerprint() {
-        return agentid;
+        return Fingerprint;
     }
     public void setFingerprint(String Fingerprint) { this.Fingerprint = Fingerprint;
     }

@@ -5,7 +5,7 @@
     android:versionName="1.0.6" >
 
     <uses-sdk
-        android:minSdkVersion="14"
+        android:minSdkVersion="16"
         android:targetSdkVersion="26" />
 
     <supports-screens
@@ -32,7 +32,12 @@
         android:label="K-Pillar Agency"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:testOnly="true"
         android:theme="@style/AppTheme" >
+        <activity android:name="com.aratek.trustfinger.Activities.EnquiryActivity" />
+        <activity android:name="com.aratek.trustfinger.Activities.DatabaseConnectionActivity" />
+        <activity android:name="com.aratek.trustfinger.Activities.AgentMembersFingerPrintActivity" />
+        <activity android:name="com.aratek.trustfinger.Activities.OperatoerFingerprintActivity" />
         <activity android:name="com.aratek.trustfinger.Activities.FingerPrintsupdateActivity" />
         <activity android:name="com.aratek.trustfinger.Activities.RolesActivity" />
         <activity android:name="com.aratek.trustfinger.Activities.ChoiceActivity" />

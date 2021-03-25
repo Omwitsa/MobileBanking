@@ -896,6 +896,7 @@ drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable input_outline_grey
 drawable logo
+drawable logout
 drawable membership
 drawable navigation_empty_icon
 drawable nofinger
@@ -936,7 +937,6 @@ id ALT
 id CTRL
 id FUNCTION
 id META
-id Print
 id Product
 id SHIFT
 id SYM
@@ -999,6 +999,7 @@ id btn_print_receipt
 id btn_remove_all
 id btn_remove_user
 id btn_start_stop_identify
+id button
 id buttonPanel
 id cancel_action
 id cash
@@ -1099,7 +1100,8 @@ id line1
 id line3
 id listMode
 id list_item
-id loginss
+id login
+id logout
 id lv_listview
 id lv_user_list
 id ly_hand
@@ -1121,6 +1123,7 @@ id multiply
 id myFrame
 id my_toolbar
 id names
+id names2
 id navigation_header_container
 id never
 id none
@@ -1128,6 +1131,7 @@ id normal
 id notification_background
 id notification_main_column
 id notification_main_column_container
+id number
 id othername
 id pack
 id packed
@@ -1200,12 +1204,16 @@ id submit_area
 id submits
 id surname
 id sv_content
+id switchUser
 id tabLayout
 id tabMode
 id text
 id text2
 id textSpacerNoButtons
 id textSpacerNoTitle
+id textView
+id textView1
+id textView2
 id text_input_password_toggle
 id text_itemlist_spinner2
 id textinput_counter
@@ -1319,15 +1327,18 @@ layout activity_admin_login2
 layout activity_advance
 layout activity_advancesreport
 layout activity_agent_member
+layout activity_agent_members_finger_print
 layout activity_authentication
 layout activity_balance
 layout activity_choice
 layout activity_confirm
 layout activity_confirm_advance
 layout activity_confirm_balance
+layout activity_database_connection
 layout activity_deposit
 layout activity_deposit2_account
 layout activity_depositreport
+layout activity_enquiry
 layout activity_fingeprint
 layout activity_finger_printsupdate
 layout activity_fingure_print_sample
@@ -1336,6 +1347,7 @@ layout activity_identification
 layout activity_login_admin
 layout activity_main
 layout activity_main2
+layout activity_operatoer_fingerprint
 layout activity_pos_users
 layout activity_print
 layout activity_products
@@ -1369,10 +1381,12 @@ layout design_navigation_menu_item
 layout design_text_input_password_icon
 layout dialog_set_user
 layout filedialogitem
+layout fragment_agent_members
 layout fragment_capture
 layout fragment_device_info
 layout fragment_enroll
 layout fragment_identify
+layout fragment_operator
 layout fragment_transaction
 layout fragment_verify
 layout layout_fileselect2

@@ -655,11 +655,11 @@ public class VerifyFragment extends BaseFragment {
 //                                Intent intent = new Intent(getActivity(), FingeprintActivity.class);
 //                                startActivity(intent);
                                 //Toast.makeText(context, role, Toast.LENGTH_LONG).show();
-                                Toast.makeText(mApp.getApplicationContext(), responseData.getMessage(), Toast.LENGTH_LONG).show();
+                                //Toast.makeText(mApp.getApplicationContext(), responseData.getMessage(), Toast.LENGTH_LONG).show();
                             }
                             else if (role.equals(active) ||role.equals(admin))
                             activation(role,idnumber);
-                            Toast.makeText(mApp.getApplicationContext(), responseData.getMessage(), Toast.LENGTH_LONG).show();
+                            //Toast.makeText(mApp.getApplicationContext(), responseData.getMessage(), Toast.LENGTH_LONG).show();
 
 
                         }

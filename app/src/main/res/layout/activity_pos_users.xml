@@ -24,11 +24,23 @@
         android:padding="15dp"
         android:background="@drawable/editshape"
         android:id="@+id/names"
-        android:hint="full names"
+        android:hint="Surname"
         android:drawablePadding="10dp"
         android:textColor="@color/textcardColor"
         android:textColorHint="@color/textcardColor"
         android:textColorHighlight="@color/textcardColor"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:padding="15dp"
+            android:background="@drawable/editshape"
+            android:id="@+id/names2"
+            android:hint="Othernames"
+            android:drawablePadding="10dp"
+            android:textColor="@color/textcardColor"
+            android:textColorHint="@color/textcardColor"
+            android:textColorHighlight="@color/textcardColor"/>
 
     <EditText
         android:layout_width="match_parent"
@@ -39,6 +51,8 @@
         android:id="@+id/idno"
         android:drawablePadding="10dp"
         android:hint="id number"
+        android:inputType="number"
+        android:maxLength="8"
         android:textColor="@color/textcardColor"
         android:textColorHint="@color/textcardColor"
         android:textColorHighlight="@color/textcardColor"/>
@@ -52,6 +66,8 @@
         android:id="@+id/phone"
         android:drawablePadding="10dp"
         android:hint="phone number."
+        android:inputType="number"
+        android:maxLength="10"
         android:textColor="@color/textcardColor"
         android:textColorHint="@color/textcardColor"
         android:textColorHighlight="@color/textcardColor"/>

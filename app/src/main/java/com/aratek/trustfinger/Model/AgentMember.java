@@ -3,25 +3,25 @@ package com.aratek.trustfinger.Model;
 import com.google.gson.annotations.SerializedName;
 
 public class AgentMember {
-    @SerializedName("surname")
+    @SerializedName("Surname")
     private String surname;
-    @SerializedName("other_names")
+    @SerializedName("other_Names")
     private String otherName;
-    @SerializedName("idNo")
+    @SerializedName("idno")
     private String idNo;
-    @SerializedName("machineId")
+    @SerializedName("MachineId")
     private String machineId;
     @SerializedName("mobile_number")
     private String mobileNo;
-    @SerializedName("gender")
+    @SerializedName("Gender")
     private String gender;
-    @SerializedName("dob")
+    @SerializedName("DOB")
     private String dob;
-    @SerializedName("fingerprint1")
+    @SerializedName("FingerPrint1")
     private String fingerprint1;
-    @SerializedName("fingerprint2")
+    @SerializedName("FingerPrint2")
     private String fingerprint2;
-    @SerializedName("agentId")
+    @SerializedName("Agentid")
     private String agentId;
 
     public AgentMember(String surname, String otherName, String idNo,String machineId, String mobileNo, String gender, String dob, String fingerprint1, String fingerprint2, String agentId) {

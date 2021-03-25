@@ -35,6 +35,7 @@ public class AgentMemberActivity extends AppCompatActivity {
     ProgressDialog progressDoalog;
     public static final String MyPREFERENCES = "POSDETAILS" ;
     SharedPreferences sharedpreferences;
+    SharedPreferences.Editor editor;
     @BindView(R.id.surname) EditText surname;
     @BindView(R.id.othername) EditText othername;
     @BindView(R.id.idnno) EditText iddno;
@@ -54,6 +55,7 @@ public class AgentMemberActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         progressDoalog = new ProgressDialog(AgentMemberActivity.this);
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        editor = sharedpreferences.edit();
         final String idn = sharedpreferences.getString("loadsAgentId", "");
         dbb.setOnClickListener(new View.OnClickListener() {
 
@@ -104,16 +106,31 @@ public class AgentMemberActivity extends AppCompatActivity {
 
                 progressDoalog.setMessage("Please wait...");
                 progressDoalog.show();
-                String Surname = surname.getText().toString();
-                String other_Names = othername.getText().toString();
-                String idno = iddno.getText().toString();
-                String machineId = android.os.Build.SERIAL;
-                String mobile_number = mobile.getText().toString();
-                String DOB =(dbb.getText().toString().trim());
-                String Gender = gender.getSelectedItem().toString();
-                String agentid = sharedpreferences.getString("loadsAgentId", "");
-                AgentMember member = new AgentMember(Surname, other_Names, idno,machineId, mobile_number, Gender, DOB, null, null, agentid);
+                final String Surname = surname.getText().toString();
+                final String other_Names = othername.getText().toString();
+                final String idno = iddno.getText().toString();
+                final String MachineId = android.os.Build.SERIAL;
+                final String mobile_number = mobile.getText().toString();
+                final String DOB =(dbb.getText().toString().trim());
+                final String FingerPrint1="";
+                final String FingerPrint2="";
+                final String Gender = gender.getSelectedItem().toString();
+                final String Agentid = sharedpreferences.getString("loadsAgentId", "");
+                AgentMember member = new AgentMember(Surname, other_Names, idno,MachineId, mobile_number, Gender, DOB, FingerPrint1, FingerPrint2, Agentid);
                 register(member);
+                nectAction(Surname,other_Names,idno);
+            }
+
+            private void nectAction(String surname, String other_Names, String idno) {
+                String Data="Member Registered successfully";
+                Intent intent = new Intent(getApplicationContext(), FingerPrintsupdateActivity.class);
+                editor.putString("agentID",idno);
+                editor.putString("LoadPermission",Data );
+                editor.putString("agentFirstName", surname);
+                editor.putString("agentSecondName", other_Names);
+                editor.commit();
+
+                startActivity(intent);
             }
         });
 
@@ -136,16 +153,22 @@ public class AgentMemberActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
                 progressDoalog.dismiss();
-                Response responseData = response.body();
-                Toast.makeText(getApplicationContext(), responseData.getMessage(), Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(getApplicationContext(), FingerPrintsupdateActivity.class);
-                startActivity(intent);
+
+                com.aratek.trustfinger.Model.Response responseData = response.body();
+                assert responseData != null;
+                String role=responseData.getMessage();
+                String Data="Member Registered successfully";
+                Toast.makeText(getApplicationContext(), role, Toast.LENGTH_LONG).show();
+                if(!role.equals(Data)) {
+                    Toast.makeText(getApplicationContext(), role, Toast.LENGTH_LONG).show();
+
+                }
             }
 
             @Override
             public void onFailure(Call<Response> call, Throwable t) {
                 progressDoalog.dismiss();
-                Toast.makeText(getApplicationContext(), "Sorry, network  error Try again", Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplicationContext(), "Sorry, network  error Try again", Toast.LENGTH_LONG).show();
             }
         });
 

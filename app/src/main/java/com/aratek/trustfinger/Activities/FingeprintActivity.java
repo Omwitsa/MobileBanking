@@ -88,7 +88,7 @@ public class FingeprintActivity extends FragmentActivity implements DeviceOpenLi
     private MyApplication mApp;
     PosManager mPosManager;
     @BindView(R.id.backs) Button back;
-    @BindView(R.id.loginss) Button login;
+    @BindView(R.id.login) Button login;
     //@BindView(R.id.refresh) Button identification;
 //    @BindView(R.id.verification) Button verification;
 

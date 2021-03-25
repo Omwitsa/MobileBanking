@@ -58,18 +58,27 @@ public class Transaction<_transaction> {
                     Response responseData = response.body();
                     String feedback = responseData.getMessage();
                     String datas="Deposit successful";
-                    if (!feedback.equals(datas)) {
-                        Intent homeIntent = new Intent(context, RegisterPhone.class);
-                        context.startActivity(homeIntent);
+                    if (feedback.equals(datas))
+                    {
+                        Toast.makeText(context, feedback, Toast.LENGTH_LONG).show();
+
 
                     }
-                    Toast.makeText(context, feedback, Toast.LENGTH_LONG).show();
+                    else
+                        {
+                            Toast.makeText(context, feedback, Toast.LENGTH_LONG).show();
+                            Intent homeIntent = new Intent(context, RegisterPhone.class);
+                            context.startActivity(homeIntent);
+
+                        }
+
+
                 }
 
                 @Override
                 public void onFailure(Call<Response> call, Throwable t) {
                     progressDoalog.dismiss();
-                    Toast.makeText(context, "Sorry, network  error Try again", Toast.LENGTH_LONG).show();
+                    //Toast.makeText(context, "Sorry, network  error Try again", Toast.LENGTH_LONG).show();
                 }
             });
         }
@@ -81,20 +90,23 @@ public class Transaction<_transaction> {
                     progressDoalog.dismiss();
                     Response responseData = response.body();
                     String feedback = responseData.getMessage();
-                    String datas="Withdrawal successful";
-                    if (!feedback.equals(datas)) {
-                        Intent homeIntent = new Intent(context, RegisterPhone.class);
-                        context.startActivity(homeIntent);
-                    }
-
+                    String datas = "Withdrawal successful";
+                    if (feedback.equals(datas)) {
                         Toast.makeText(context, feedback, Toast.LENGTH_LONG).show();
 
+                    } else {
+
+                        Toast.makeText(context, feedback, Toast.LENGTH_LONG).show();
+                        Intent homeIntent = new Intent(context, RegisterPhone.class);
+                        context.startActivity(homeIntent);
+
+                    }
                 }
 
                 @Override
                 public void onFailure(Call<Response> call, Throwable t) {
                     progressDoalog.dismiss();
-                    Toast.makeText(context, "Sorry, network  error Try again", Toast.LENGTH_LONG).show();
+                    //Toast.makeText(context, "Sorry, network  error Try again", Toast.LENGTH_LONG).show();
                 }
             });
         }
@@ -112,7 +124,7 @@ public class Transaction<_transaction> {
                 @Override
                 public void onFailure(Call<Response> call, Throwable t) {
                     progressDoalog.dismiss();
-                    Toast.makeText(context, "Sorry, network  error Try again", Toast.LENGTH_LONG).show();
+                    //Toast.makeText(context, "Sorry, network  error Try again", Toast.LENGTH_LONG).show();
                 }
             });
         }
@@ -129,7 +141,7 @@ public class Transaction<_transaction> {
                 @Override
                 public void onFailure(Call<Response> call, Throwable t) {
                     progressDoalog.dismiss();
-                    Toast.makeText(context, "Sorry, network  error Try again", Toast.LENGTH_LONG).show();
+                    //Toast.makeText(context, "Sorry, network  error Try again", Toast.LENGTH_LONG).show();
                 }
             });
         }
@@ -141,6 +153,13 @@ public class Transaction<_transaction> {
 
 
     private void Print(String amount) {
+        if(amount.isEmpty())
+        {
+            Intent intent = new Intent(context.getApplicationContext(), RegisterPhone.class);
+            Toast.makeText(context, "Sorry, network  error Try again", Toast.LENGTH_LONG).show();
+            context.startActivity(intent);
+
+        }
 
         amount = amount.isEmpty() ? _transaction.getAmount().toString() : amount;
         Double damount=Double.parseDouble(amount);

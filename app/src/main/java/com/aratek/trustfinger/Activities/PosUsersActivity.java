@@ -41,6 +41,7 @@ public class PosUsersActivity extends Activity implements AdapterView.OnItemSele
     SharedPreferences sharedpreferences;
     SharedPreferences.Editor editor;
     @BindView(R.id.names) EditText fname;
+    @BindView(R.id.names2) EditText lname;
     @BindView(R.id.idno) EditText idnos;
     @BindView(R.id.phone) EditText phones;
     @BindView(R.id.admin) Spinner admin;
@@ -93,15 +94,27 @@ public class PosUsersActivity extends Activity implements AdapterView.OnItemSele
 
 
                         String names = fname.getText().toString();
+                        String lastname = lname.getText().toString();
                         String idno = idnos.getText().toString();
                         String phone = phones.getText().toString();
                         String machineId = android.os.Build.SERIAL;
                         String admins = admin.getSelectedItem().toString();
                         String agency = "";
                         String agentid = sharedpreferences.getString("loadsAgentId", "");
-                        AgencyModel members =  new AgencyModel( names,  idno, phone, machineId,admins, agency, agentid,"");
+                        AgencyModel members =  new AgencyModel( names, lastname, idno, phone, machineId,admins, agency, agentid,"");
                         create(members);
+                        createOperator(names,idno);
 
+                    }
+
+                    private void createOperator(String names, String idno) {
+                        String Data="SuperAdmin";
+                        Intent intent = new Intent(getApplicationContext(), FingerPrintsupdateActivity.class);
+                        editor.putString("agentID", idno);
+                        editor.putString("LoadPermission",Data );
+                        editor.putString("agentFirstName", names);
+                        editor.putString("agentSecondName", names);
+                        startActivity(intent);
                     }
 
                     private void create(AgencyModel members) {
@@ -112,23 +125,29 @@ public class PosUsersActivity extends Activity implements AdapterView.OnItemSele
                             @Override
                             public void onResponse(Call<com.aratek.trustfinger.Model.Response> call, retrofit2.Response<com.aratek.trustfinger.Model.Response> response) {
                                 progressDoalog.dismiss();
+                               // com.aratek.trustfinger.Model.Response responseData = response.body();
                                 com.aratek.trustfinger.Model.Response responseData = response.body();
-                                Toast.makeText(getApplicationContext(), responseData.getMessage(), Toast.LENGTH_LONG).show();
-                                Intent intent = new Intent(getApplicationContext(), VerifyActivity.class);
-                                startActivity(intent);
+                                assert responseData != null;
+                                String role=responseData.getMessage();
+                                String datas=" Operator Registered successfully";
+
+                                if(!role.equals(datas)) {
+                                    Toast.makeText(getApplicationContext(), role, Toast.LENGTH_LONG).show();
+
+                                }
                             }
 
                             @Override
                             public void onFailure(Call<com.aratek.trustfinger.Model.Response> call, Throwable t) {
                                 progressDoalog.dismiss();
-                                Toast.makeText(getApplicationContext(), "Sorry, network  error Try again", Toast.LENGTH_LONG).show();
+                                //Toast.makeText(getApplicationContext(), "Sorry, network  error Try again", Toast.LENGTH_LONG).show();
                             }
                         });
-                        Intent intent = new Intent(getApplicationContext(), FingerPrintsupdateActivity.class);
-                        startActivity(intent);
                     }
                 });
 }
+
+
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {

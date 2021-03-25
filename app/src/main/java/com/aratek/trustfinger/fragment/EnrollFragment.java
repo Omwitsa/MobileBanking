@@ -38,6 +38,9 @@ import android.widget.Toast;
 
 import com.aratek.trustfinger.Activities.AccountsActivity;
 import com.aratek.trustfinger.Activities.FingeprintActivity;
+import com.aratek.trustfinger.Activities.FingerPrintsupdateActivity;
+import com.aratek.trustfinger.Activities.FingerPrintsupdateActivity_ViewBinding;
+import com.aratek.trustfinger.Activities.RolesActivity;
 import com.aratek.trustfinger.Model.FingurePrintModel;
 import com.aratek.trustfinger.Model.RegisterFingerprints;
 import com.aratek.trustfinger.Model.Response;
@@ -188,8 +191,11 @@ public class EnrollFragment extends BaseFragment implements View.OnClickListener
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
         if (root == null) {
+            sharedpreferences = getActivity().getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+            editor = sharedpreferences.edit();
             root = inflater.inflate(R.layout.fragment_enroll, container, false);
 
             sv = (ScrollView) root.findViewById(R.id.sv_content);
@@ -257,15 +263,19 @@ public class EnrollFragment extends BaseFragment implements View.OnClickListener
             mFingerView_left_little.setOnClickListener(this);
 
             mFingerView_right_thumb.setOnClickListener(this);
-            mFingerView_right_thumb.setEnabled(false);
+            //mFingerView_right_thumb.setEnabled(false);
             mFingerView_right_index.setOnClickListener(this);
-            mFingerView_right_index.setEnabled(false);
+            //mFingerView_right_index.setEnabled(false);
             mFingerView_right_middle.setOnClickListener(this);
-            mFingerView_right_middle.setEnabled(false);
+            //mFingerView_right_middle.setEnabled(false);
             mFingerView_right_ring.setOnClickListener(this);
-            mFingerView_right_ring.setEnabled(false);
+            //mFingerView_right_ring.setEnabled(false);
             mFingerView_right_little.setOnClickListener(this);
-            mFingerView_right_little.setEnabled(false);
+            //mFingerView_right_little.setEnabled(false);
+
+//            mEditText_user_id.setText("");
+//            mEditText_user_first_name.setText("");
+//            mEditText_user_last_name.setText("");
 
             mTextView_current_position = (TextView) root.findViewById(R.id.tv_current_index);
 
@@ -1455,16 +1465,9 @@ public class EnrollFragment extends BaseFragment implements View.OnClickListener
             return;
         }
         if (mDBHelper.insertUser(user)) {
-            sharedpreferences = getActivity().getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-            editor = sharedpreferences.edit();
+
             final String id = sharedpreferences.getString("loadsPosition", "");
-            final String exist1 = sharedpreferences.getString("MemberFinger", "");
-            final String new1 = sharedpreferences.getString("NewFinger", "");
-            final String admin1 = sharedpreferences.getString("AdminFinger", "");
-            String exists = "Exists";
-            String news = "New";
-            String admins = "Operator";
-            if (exist1.equals(exists)) {
+
                 String machineId = android.os.Build.SERIAL;
                 ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
                 FingurePrintModel fingurePrint = new FingurePrintModel(user.getFingerData().toString(), user.getId(), machineId, id);
@@ -1474,6 +1477,8 @@ public class EnrollFragment extends BaseFragment implements View.OnClickListener
                     public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
                         Response responseData = response.body();
                         Toast.makeText(mApp.getApplicationContext(), responseData.getMessage(), Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(getActivity(), FingerPrintsupdateActivity.class);
+                        startActivity(intent);
                     }
 
                     @Override
@@ -1483,48 +1488,6 @@ public class EnrollFragment extends BaseFragment implements View.OnClickListener
                 });
                 loadEnrolledUsers();
 
-
-            }
-            else if(new1.equals(news))
-            {
-                String machineId = android.os.Build.SERIAL;
-                ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-                FingurePrintModel fingurePrint = new FingurePrintModel(user.getFingerData().toString(), user.getId(), machineId, id);
-                Call<Response> call = apiService.newMembersFingerPrints(fingurePrint);
-                call.enqueue(new Callback<Response>() {
-                    @Override
-                    public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
-                        Response responseData = response.body();
-                        Toast.makeText(mApp.getApplicationContext(), responseData.getMessage(), Toast.LENGTH_LONG).show();
-                    }
-
-                    @Override
-                    public void onFailure(Call<Response> call, Throwable t) {
-
-                    }
-                });
-                loadEnrolledUsers();
-            }
-            else if(admin1.equals(admins))
-            {
-                String machineId = android.os.Build.SERIAL;
-                ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-                FingurePrintModel fingurePrint = new FingurePrintModel(user.getFingerData().toString(), user.getId(), machineId, id);
-                Call<Response> call = apiService.OperatorsFingerPrints(fingurePrint);
-                call.enqueue(new Callback<Response>() {
-                    @Override
-                    public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
-                        Response responseData = response.body();
-                        Toast.makeText(mApp.getApplicationContext(), responseData.getMessage(), Toast.LENGTH_LONG).show();
-                    }
-
-                    @Override
-                    public void onFailure(Call<Response> call, Throwable t) {
-
-                    }
-                });
-                loadEnrolledUsers();
-            }
         }
 
 
