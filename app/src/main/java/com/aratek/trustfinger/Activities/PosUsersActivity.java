@@ -103,7 +103,7 @@ public class PosUsersActivity extends Activity implements AdapterView.OnItemSele
                         String agentid = sharedpreferences.getString("loadsAgentId", "");
                         AgencyModel members =  new AgencyModel( names, lastname, idno, phone, machineId,admins, agency, agentid,"");
                         create(members);
-                        createOperator(names,idno);
+                        //createOperator(names,idno);
 
                     }
 
@@ -131,8 +131,10 @@ public class PosUsersActivity extends Activity implements AdapterView.OnItemSele
                                 String role=responseData.getMessage();
                                 String datas=" Operator Registered successfully";
 
-                                if(!role.equals(datas)) {
+                                if(role.equals(datas)) {
                                     Toast.makeText(getApplicationContext(), role, Toast.LENGTH_LONG).show();
+                                    Intent intent = new Intent(getApplicationContext(), FingerPrintsupdateActivity.class);
+                                    startActivity(intent);
 
                                 }
                             }

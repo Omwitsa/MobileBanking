@@ -262,21 +262,19 @@ public class OperatorFragment extends BaseFragment implements View.OnClickListen
             mFingerView_left_little.setOnClickListener(this);
 
             mFingerView_right_thumb.setOnClickListener(this);
-            mFingerView_right_thumb.setEnabled(false);
+            //mFingerView_right_thumb.setEnabled(false);
             mFingerView_right_index.setOnClickListener(this);
-            mFingerView_right_index.setEnabled(false);
+            //mFingerView_right_index.setEnabled(false);
             mFingerView_right_middle.setOnClickListener(this);
-            mFingerView_right_middle.setEnabled(false);
+            //mFingerView_right_middle.setEnabled(false);
             mFingerView_right_ring.setOnClickListener(this);
-            mFingerView_right_ring.setEnabled(false);
+            //mFingerView_right_ring.setEnabled(false);
             mFingerView_right_little.setOnClickListener(this);
-            mFingerView_right_little.setEnabled(false);
+            //mFingerView_right_little.setEnabled(false);
 
             final String IdNumber = sharedpreferences.getString("NewId", "");
             final String FirstName = sharedpreferences.getString("NewFirstName", "");
             final String SecondName = sharedpreferences.getString("NewSecondName", "");
-
-
                 mEditText_user_id.setText(IdNumber);
                 mEditText_user_first_name.setText(FirstName);
                 mEditText_user_last_name.setText(SecondName);

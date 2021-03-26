@@ -273,9 +273,12 @@ public class EnrollFragment extends BaseFragment implements View.OnClickListener
             mFingerView_right_little.setOnClickListener(this);
             //mFingerView_right_little.setEnabled(false);
 
-//            mEditText_user_id.setText("");
-//            mEditText_user_first_name.setText("");
-//            mEditText_user_last_name.setText("");
+            final String IdNumber = sharedpreferences.getString("NewId", "");
+            final String FirstName = sharedpreferences.getString("NewFirstName", "");
+            final String SecondName = sharedpreferences.getString("NewSecondName", "");
+            mEditText_user_id.setText(IdNumber);
+            mEditText_user_first_name.setText(FirstName);
+            mEditText_user_last_name.setText(SecondName);
 
             mTextView_current_position = (TextView) root.findViewById(R.id.tv_current_index);
 

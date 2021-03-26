@@ -118,7 +118,7 @@ public class AgentMemberActivity extends AppCompatActivity {
                 final String Agentid = sharedpreferences.getString("loadsAgentId", "");
                 AgentMember member = new AgentMember(Surname, other_Names, idno,MachineId, mobile_number, Gender, DOB, FingerPrint1, FingerPrint2, Agentid);
                 register(member);
-                nectAction(Surname,other_Names,idno);
+                //nectAction(Surname,other_Names,idno);
             }
 
             private void nectAction(String surname, String other_Names, String idno) {
@@ -159,8 +159,10 @@ public class AgentMemberActivity extends AppCompatActivity {
                 String role=responseData.getMessage();
                 String Data="Member Registered successfully";
                 Toast.makeText(getApplicationContext(), role, Toast.LENGTH_LONG).show();
-                if(!role.equals(Data)) {
+                if(role.equals(Data)) {
                     Toast.makeText(getApplicationContext(), role, Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(getApplicationContext(), FingerPrintsupdateActivity.class);
+                    startActivity(intent);
 
                 }
             }

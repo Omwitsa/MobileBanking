@@ -97,29 +97,3 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
-//        Call<Response> call = apiService.passwordLogin(loadData);
-//        call.enqueue(new Callback<Response>() {
-//            @Override
-//            public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
-//                progressDoalog.dismiss();
-//                Response responseData = response.body();
-//                String feedback=responseData.getMessage();
-//                if (feedback=="True"){
-//                    Intent homeIntent = new Intent(getApplicationContext(), IdentificationActivity.class);
-//                    startActivity(homeIntent);
-//                }
-//                else {
-//                    Intent homeIntent = new Intent(getApplicationContext(), LoginAdminActivity.class);
-//                    startActivity(homeIntent);
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<Response> call, Throwable t) {
-//                progressDoalog.dismiss();
-//                Toast.makeText(getApplicationContext(), "Sorry, Network error occurred", Toast.LENGTH_LONG).show();
-//            }
-//        });
-//    }
-//}

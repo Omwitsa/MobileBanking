@@ -33,6 +33,7 @@ public class RegisterPhone extends AppCompatActivity {
     @BindView(R.id.verifys) CardView verification;
     @BindView(R.id.updates) CardView Fingerprints;
     @BindView(R.id.logout) CardView Logout;
+    @BindView(R.id.switchUser) CardView SwitchUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +61,15 @@ public class RegisterPhone extends AppCompatActivity {
             Transactions.setEnabled(false);
             verification.setEnabled(false);
             Fingerprints.setEnabled(false);
+        }
+        if(IsAdmin.equals("") && IsTeller.equals(""))
+        {
+            registration.setEnabled(false);
+            Transactions.setEnabled(false);
+            verification.setEnabled(false);
+            Fingerprints.setEnabled(false);
+            SwitchUser.setEnabled(false);
+            Logout.setEnabled(false);
         }
 
         Transactions.setOnClickListener(new View.OnClickListener() {
@@ -107,11 +117,20 @@ public class RegisterPhone extends AppCompatActivity {
 //                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
 //                editor.clear();
 //                startActivity(intent);
-                finishAndRemoveTask();
+                finishAffinity();
                 //System.exit(0);
             }
         });
+        SwitchUser.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), FingeprintActivity.class);
+                editor.clear();
+                startActivity(intent);
 
+            }
+        });
 
 
     }

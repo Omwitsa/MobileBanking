@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.aratek.trustfinger.Activities.EnquiryActivity">
+    tools:context="com.aratek.trustfinger.Activities.AgentMemberEnquiryActivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -23,15 +23,13 @@
             android:layout_margin="10dp"
             android:padding="15dp"
             android:background="@drawable/editshape"
-            android:id="@+id/number"
+            android:id="@+id/number11"
             android:hint="ID Number "
             android:inputType="number"
             android:drawablePadding="10dp"
             android:textColor="@color/textcardColor"
             android:textColorHint="@color/textcardColor"
             android:textColorHighlight="@color/textcardColor"/>
-
-
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -42,10 +40,10 @@
             android:layout_marginLeft="10dp"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="20dp"
-            android:id="@+id/submit"
+            android:id="@+id/submit11"
             android:background="@drawable/signupbtnshape"/>
         <TextView
-            android:id="@+id/text_id1"
+            android:id="@+id/text_id3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="ID number"
@@ -54,7 +52,7 @@
             android:textColorHighlight="@android:color/primary_text_dark"
             android:layout_centerVertical="true" />
         <TextView
-            android:id="@+id/text_first1"
+            android:id="@+id/text_first3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Surname"
@@ -63,7 +61,7 @@
             android:textSize="30dp"
             android:layout_centerVertical="true" />
         <TextView
-            android:id="@+id/text_second1"
+            android:id="@+id/text_second3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="OtherNames "
@@ -74,15 +72,18 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Next"
+            android:text="Enquire"
             android:shadowColor="@android:color/transparent"
             android:padding="15dp"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="20dp"
-            android:id="@+id/next"
+            android:id="@+id/buttonagent"
             android:background="@drawable/signupbtnshape"/>
+
+
+
     </LinearLayout>
 
 

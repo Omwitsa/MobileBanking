@@ -77,7 +77,7 @@ public class LoginAdminActivity extends AppCompatActivity {
                 else
                     {
                         Toast.makeText(getApplicationContext(),status, Toast.LENGTH_LONG).show();
-                        Intent homeIntent = new Intent(getApplicationContext(), FingeprintActivity.class);
+                        Intent homeIntent = new Intent(getApplicationContext(), AdminEnquiryActivity.class);
                         editor.putString("LoadPermission", Permission);
                         editor.commit();
                         startActivity(homeIntent);

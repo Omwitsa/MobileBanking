@@ -1,6 +1,7 @@
 package com.aratek.trustfinger.Rest;
 import com.aratek.trustfinger.Model.AgencyModel;
 import com.aratek.trustfinger.Model.AgentMember;
+import com.aratek.trustfinger.Model.AgentNameModel;
 import com.aratek.trustfinger.Model.FingurePrintModel;
 import com.aratek.trustfinger.Model.FirstNameModel;
 import com.aratek.trustfinger.Model.LoadData;
@@ -28,9 +29,11 @@ public interface ApiInterface {
     @POST("webservice/users/existingFirstName")
     Call<Response> existingFirstName(@Body FirstNameModel FirstName);
 
-
     @POST("webservice/users/existingSecondName")
     Call<Response> existingSecondName(@Body SecondNameModel SecondName);
+
+    @POST("webservice/users/agentMembersSecondName")
+    Call<Response> agentMembersSecondName(@Body AgentNameModel AgentName);
 
     @POST("webservice/users/newMembersFingerPrints")
     Call<Response> newMembersFingerPrints(@Body FingurePrintModel fingurePrint);
