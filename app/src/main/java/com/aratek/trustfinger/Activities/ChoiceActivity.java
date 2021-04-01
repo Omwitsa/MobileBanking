@@ -58,4 +58,8 @@ public class ChoiceActivity extends AppCompatActivity {
             }
         });
     }
+    @Override
+    public void onBackPressed() {
+        return;
+    }
 }

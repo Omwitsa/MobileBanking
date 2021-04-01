@@ -26,6 +26,7 @@
             android:id="@+id/number"
             android:hint="ID Number "
             android:inputType="number"
+            android:maxLength="8"
             android:drawablePadding="10dp"
             android:textColor="@color/textcardColor"
             android:textColorHint="@color/textcardColor"
@@ -43,6 +44,7 @@
             android:layout_marginBottom="10dp"
             android:layout_marginTop="20dp"
             android:id="@+id/submit"
+            android:textColor="@color/white"
             android:background="@drawable/signupbtnshape"/>
         <TextView
             android:id="@+id/text_id1"
@@ -81,7 +83,21 @@
             android:layout_marginLeft="10dp"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="20dp"
+            android:textColor="@color/white"
             android:id="@+id/next"
+            android:background="@drawable/signupbtnshape"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Next"
+            android:shadowColor="@android:color/transparent"
+            android:padding="15dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="20dp"
+            android:id="@+id/nextBack"
+            android:textColor="@color/white"
             android:background="@drawable/signupbtnshape"/>
     </LinearLayout>
 

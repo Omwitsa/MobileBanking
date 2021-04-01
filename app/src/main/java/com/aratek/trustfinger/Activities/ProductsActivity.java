@@ -120,4 +120,8 @@ public class ProductsActivity extends Activity implements AdapterView.OnItemSele
     public void onNothingSelected(AdapterView<?> adapterView) {
 
     }
+    @Override
+    public void onBackPressed() {
+        return;
+    }
 }

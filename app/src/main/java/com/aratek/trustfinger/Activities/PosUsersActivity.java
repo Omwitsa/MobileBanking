@@ -5,33 +5,23 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.aratek.trustfinger.Model.AgencyModel;
-import com.aratek.trustfinger.Model.AgentMember;
-import com.aratek.trustfinger.Model.TransactionModel;
 import com.aratek.trustfinger.R;
 import com.aratek.trustfinger.Rest.ApiClient;
 import com.aratek.trustfinger.Rest.ApiInterface;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Callback;
-import retrofit2.Response;
-
-import static com.aratek.trustfinger.Activities.MainActivity.MyPREFERENCES;
 
 public class PosUsersActivity extends Activity implements AdapterView.OnItemSelectedListener {
 
@@ -130,7 +120,7 @@ public class PosUsersActivity extends Activity implements AdapterView.OnItemSele
                                 assert responseData != null;
                                 String role=responseData.getMessage();
                                 String datas=" Operator Registered successfully";
-
+                                Toast.makeText(getApplicationContext(), role, Toast.LENGTH_LONG).show();
                                 if(role.equals(datas)) {
                                     Toast.makeText(getApplicationContext(), role, Toast.LENGTH_LONG).show();
                                     Intent intent = new Intent(getApplicationContext(), FingerPrintsupdateActivity.class);
@@ -159,5 +149,9 @@ public class PosUsersActivity extends Activity implements AdapterView.OnItemSele
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
+    }
+    @Override
+    public void onBackPressed() {
+        return;
     }
 }

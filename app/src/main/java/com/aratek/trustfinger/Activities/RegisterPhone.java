@@ -3,24 +3,13 @@ package com.aratek.trustfinger.Activities;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Build;
-import android.support.annotation.RequiresApi;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.view.View;
-import android.widget.Toast;
 
-import com.aratek.trustfinger.Model.AgentMember;
-import com.aratek.trustfinger.Model.FingurePrintModel;
-import com.aratek.trustfinger.Model.RegisterFingerprints;
-import com.aratek.trustfinger.Model.Response;
 import com.aratek.trustfinger.R;
-import com.aratek.trustfinger.Rest.ApiClient;
-import com.aratek.trustfinger.Rest.ApiInterface;
 
-import retrofit2.Call;
-import retrofit2.Callback;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -32,8 +21,8 @@ public class RegisterPhone extends AppCompatActivity {
     @BindView(R.id.registrations) CardView registration;
     @BindView(R.id.verifys) CardView verification;
     @BindView(R.id.updates) CardView Fingerprints;
-    @BindView(R.id.logout) CardView Logout;
-    @BindView(R.id.switchUser) CardView SwitchUser;
+//    @BindView(R.id.logout) CardView Logout;
+//    @BindView(R.id.switchUser) CardView SwitchUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,8 +57,8 @@ public class RegisterPhone extends AppCompatActivity {
             Transactions.setEnabled(false);
             verification.setEnabled(false);
             Fingerprints.setEnabled(false);
-            SwitchUser.setEnabled(false);
-            Logout.setEnabled(false);
+//            SwitchUser.setEnabled(false);
+//            Logout.setEnabled(false);
         }
 
         Transactions.setOnClickListener(new View.OnClickListener() {
@@ -110,28 +99,37 @@ public class RegisterPhone extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        Logout.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-            @Override
-            public void onClick(View view) {
+//        Logout.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+////                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+////                editor.clear();
+////                startActivity(intent);
+//                //finishAffinity(); // Close all activites
+//                //System.exit(0);  // Releasing resources
+//
 //                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-//                editor.clear();
+//                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                intent.putExtra("EXIT", true);
 //                startActivity(intent);
-                finishAffinity();
-                //System.exit(0);
-            }
-        });
-        SwitchUser.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), FingeprintActivity.class);
-                editor.clear();
-                startActivity(intent);
+//
+//            }
+//        });
+//        SwitchUser.setOnClickListener(new View.OnClickListener() {
+//            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+//                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                intent.putExtra("EXIT", true);
+//                startActivity(intent);
+//            }
+//        });
 
-            }
-        });
 
-
+    }
+    @Override
+    public void onBackPressed() {
+        return;
     }
 }

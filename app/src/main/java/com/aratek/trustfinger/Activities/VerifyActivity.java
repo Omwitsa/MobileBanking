@@ -11,6 +11,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
@@ -18,9 +19,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
-import android.os.Bundle;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
@@ -36,7 +35,6 @@ import com.aratek.trustfinger.R;
 import com.aratek.trustfinger.adapter.MyPagerAdapter;
 import com.aratek.trustfinger.fragment.DeviceInfoFragment;
 import com.aratek.trustfinger.fragment.EnrollFragment;
-import com.aratek.trustfinger.fragment.VerifyFragment;
 import com.aratek.trustfinger.interfaces.LedCallback;
 import com.aratek.trustfinger.sdk.DeviceListener;
 import com.aratek.trustfinger.sdk.DeviceModel;
@@ -104,12 +102,16 @@ public class VerifyActivity extends FragmentActivity implements DeviceOpenListen
         initTrustFinger();
         mApp = (MyApplication) getApplication();
 
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             requestPermissions();
         }
         else {
+
+
             run();
         }
+
 
         new Thread(new Runnable() {
             @Override
@@ -127,12 +129,14 @@ public class VerifyActivity extends FragmentActivity implements DeviceOpenListen
 
             }
         }).start();
+
+        //Refresh();
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                System.exit(0);
-                Intent intent = new Intent(getApplicationContext(), RefreshVerifyActivity.class);
+                Intent intent = new Intent(getApplicationContext(), FingerPrintsupdateActivity.class);
                 startActivity(intent);
+
             }
         });
 //        login.setOnClickListener(new View.OnClickListener() {
@@ -143,6 +147,14 @@ public class VerifyActivity extends FragmentActivity implements DeviceOpenListen
 //            }
 //        });
 
+    }
+
+
+
+    private void Refresh() {
+        System.exit(0);
+        Intent intent = new Intent(getApplicationContext(), RefreshVerifyActivity.class);
+        startActivity(intent);
     }
 
     private void findViews() {
@@ -228,9 +240,13 @@ public class VerifyActivity extends FragmentActivity implements DeviceOpenListen
         catch (TrustFingerException e) {
             handleMsg("TrustFinger getInstance Exception: " + e.getType().toString() + "", Color
                     .RED);
-            /*if (e.getType().toString().equals("DEVICE_NOT_FOUND")) {
+            System.exit(0);
+            Intent intent = new Intent(getApplicationContext(), RefreshVerifyActivity.class);
+            startActivity(intent);
+            if (e.getType().toString().equals("DEVICE_NOT_FOUND")) {
                 showAlertDialog(true, "No fingerprint device detected!");
-            }*/
+
+            }
             e.printStackTrace();
         }
         catch (ArrayIndexOutOfBoundsException e) {
@@ -749,6 +765,7 @@ public class VerifyActivity extends FragmentActivity implements DeviceOpenListen
 
 
 
+
     @Override
     protected void onStop() {
         super.onStop();
@@ -758,32 +775,35 @@ public class VerifyActivity extends FragmentActivity implements DeviceOpenListen
 
     private long exitTime = 0;
 
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
-            if ((System.currentTimeMillis() - exitTime) > 2000) {
-                Toast.makeText(this, "Press twice to refresh the app", Toast.LENGTH_SHORT).show();
-                exitTime = System.currentTimeMillis();
-            } else {
-
-                int  ret =  mPosManager.fingerSwitchOff();
-
-                Log.e("TrustFinger", "ret: " + ret
-                );
-                try {
-                    Thread.sleep(1500);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-                System.exit(0);
-            }
-            return true;
-
-
-        }
-        return super.onKeyDown(keyCode, event);
-
-    }
-
+//    public boolean onKeyDown(int keyCode, KeyEvent event) {
+//        if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
+//            if ((System.currentTimeMillis() - exitTime) > 2000) {
+//                Toast.makeText(this, "Press twice to refresh the app", Toast.LENGTH_SHORT).show();
+//                exitTime = System.currentTimeMillis();
+//            } else {
+//
+//                int  ret =  mPosManager.fingerSwitchOff();
+//
+//                Log.e("TrustFinger", "ret: " + ret
+//                );
+//                try {
+//                    Thread.sleep(1500);
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//
+//                System.exit(0);
+//            }
+//            return false;
+//
+//
+//        }
+//        return super.onKeyDown(keyCode, event);
+//
+//    }
+@Override
+public void onBackPressed() {
+    return;
+}
 }
 

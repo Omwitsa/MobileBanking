@@ -6,8 +6,6 @@
     android:background="#dadada"
     android:orientation="vertical">
 
-
-
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content">
@@ -21,7 +19,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Refresh"
+        android:text="Back"
         android:id="@+id/backss"
         android:shadowColor="@android:color/transparent"
         android:padding="15dp"

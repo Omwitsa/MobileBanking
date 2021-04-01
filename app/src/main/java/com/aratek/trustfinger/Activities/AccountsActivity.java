@@ -17,7 +17,6 @@ import com.aratek.trustfinger.Model.TransactionModel;
 import com.aratek.trustfinger.R;
 import com.aratek.trustfinger.Rest.ApiClient;
 import com.aratek.trustfinger.Rest.ApiInterface;
-import com.aratek.trustfinger.fragment.IdentifyFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -118,5 +117,9 @@ public class AccountsActivity extends Activity implements AdapterView.OnItemSele
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
+    }
+    @Override
+    public void onBackPressed() {
+        return;
     }
 }

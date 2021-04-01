@@ -67,19 +67,24 @@ public class LoginAdminActivity extends AppCompatActivity {
                 progressDoalog.dismiss();
                 Response responseData = response.body();
                 String status = responseData.getMessage();
+                String[] roleList = status.split(",");
+                String name1 = roleList[0];
+                String name2 = roleList[1];
+
                 String admins="Login Successfull";
                 String Permission="SuperAdmin";
-                if(!status.equals(admins))
+                if(!name1.equals(admins))
                 {
-                    Toast.makeText(getApplicationContext(), status, Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), name1, Toast.LENGTH_LONG).show();
 
                 }
                 else
                     {
-                        Toast.makeText(getApplicationContext(),status, Toast.LENGTH_LONG).show();
-                        Intent homeIntent = new Intent(getApplicationContext(), AdminEnquiryActivity.class);
-                        editor.putString("LoadPermission", Permission);
-                        editor.commit();
+                        Toast.makeText(getApplicationContext(),name1, Toast.LENGTH_LONG).show();
+                        Intent homeIntent = new Intent(getApplicationContext(), FingeprintActivity.class);
+                         editor.putString("LoadPermission", Permission);
+//                        editor.putString("LoadAdminID", name2);
+//                        editor.commit();
                         startActivity(homeIntent);
 
                     }
@@ -92,5 +97,9 @@ public class LoginAdminActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Sorry, Network error occurred", Toast.LENGTH_LONG).show();
             }
         });
+    }
+    @Override
+    public void onBackPressed() {
+        return;
     }
 }

@@ -70,6 +70,10 @@ public class ConfirmBalanceActivity extends AppCompatActivity {
         alert.setTitle("Confirmation of the Transaction");
         alert.show();
     }
+    @Override
+    public void onBackPressed() {
+        return;
+    }
 
 
 }

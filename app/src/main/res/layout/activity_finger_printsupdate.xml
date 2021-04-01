@@ -6,8 +6,6 @@
         android:layout_height="match_parent"
     tools:context="com.aratek.trustfinger.Activities.FingerPrintsupdateActivity">
 
-
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -19,26 +17,27 @@
                 android:layout_height="wrap_content"
                 android:text="Existing Members Fingerprints"
                 android:shadowColor="@android:color/transparent"
-                android:padding="40dp"
+                android:padding="30dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="100dp"
                 android:id="@+id/main11"
                 android:background="@drawable/buttonshape"/>
+
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="new Members Fingerprints"
                 android:id="@+id/main12"
                 android:shadowColor="@android:color/transparent"
-                android:padding="40dp"
+                android:padding="30dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="0dp"
-                android:background="@drawable/signupbtnshape"
-                android:textColor="@color/white"/>
+                android:background="@drawable/buttonshape"
+                android:textColor="@color/black"/>
 
             <Button
                 android:layout_width="match_parent"
@@ -46,7 +45,7 @@
                 android:text="Operators Fingerprints"
                 android:id="@+id/main13"
                 android:shadowColor="@android:color/transparent"
-                android:padding="40dp"
+                android:padding="30dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginBottom="10dp"
@@ -59,13 +58,26 @@
                 android:text="Back"
                 android:id="@+id/main14"
                 android:shadowColor="@android:color/transparent"
-                android:padding="40dp"
+                android:padding="30dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="0dp"
                 android:background="@drawable/signupbtnshape"
                 android:textColor="@color/white"/>
+<!--            <Button-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Switch User"-->
+<!--                android:id="@+id/main125"-->
+<!--                android:shadowColor="@android:color/transparent"-->
+<!--                android:padding="30dp"-->
+<!--                android:layout_marginRight="10dp"-->
+<!--                android:layout_marginLeft="10dp"-->
+<!--                android:layout_marginBottom="10dp"-->
+<!--                android:layout_marginTop="0dp"-->
+<!--                android:background="@drawable/buttonshape"-->
+<!--                android:textColor="@color/black"/>-->
 
         </LinearLayout>
 

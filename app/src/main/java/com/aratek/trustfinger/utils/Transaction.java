@@ -1,25 +1,17 @@
 package com.aratek.trustfinger.utils;
 
-import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
-import android.os.Bundle;
 import android.widget.Toast;
 
-import com.aratek.trustfinger.Activities.ConfirmActivity;
-import com.aratek.trustfinger.Activities.LoginAdminActivity;
 import com.aratek.trustfinger.Activities.RegisterPhone;
-import com.aratek.trustfinger.Activities.SubmitTransactionActivity;
 import com.aratek.trustfinger.Model.Response;
 import com.aratek.trustfinger.Model.TransactionModel;
 import com.aratek.trustfinger.Rest.ApiClient;
 import com.aratek.trustfinger.Rest.ApiInterface;
-
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -35,6 +27,7 @@ public class Transaction<_transaction> {
     SharedPreferences.Editor editor;
 
 
+
     public  Transaction(Context mContext, TransactionModel transaction) {
         context = mContext;
         _transaction = transaction;
@@ -45,7 +38,7 @@ public class Transaction<_transaction> {
 
     }
 
-    public void transact(TransactionModel _transaction) {
+    public void transact(final TransactionModel _transaction) {
         editor = sharedpreferences.edit();
 
         //insertDataToSqlite();
@@ -57,16 +50,33 @@ public class Transaction<_transaction> {
                     progressDoalog.dismiss();
                     Response responseData = response.body();
                     String feedback = responseData.getMessage();
-                    String datas="Deposit successful";
-                    if (feedback.equals(datas))
+
+                    String[] roleList = feedback.split(",");
+                    String name1 = roleList[0];
+                    String name2 = roleList[1];
+                    String datas="Deposit Successfull";
+                    if (name1.equals(datas))
                     {
-                        Toast.makeText(context, feedback, Toast.LENGTH_LONG).show();
+                        Toast.makeText(context, name1, Toast.LENGTH_LONG).show();
+                        String amount="";
+                        amount =  _transaction.getAmount().toString();
+                        Double damount=Double.parseDouble(amount);
+                        amount= String.format("%.2f", damount);
+                        Intent intent = new Intent(context, MainActivity.class);
+                        editor.putString("transaction", _transaction.getOperation());
+                        editor.putString("amount", amount);
+                        editor.putString("fingurePrint", "");
+                        editor.putString("Vno", name2);
+                        editor.putString("supplierNo", _transaction.getsNo());
+                        editor.putString("pin", _transaction.getPin());
+                        editor.commit();
+                        context.startActivity(intent);
 
 
                     }
-                    else
+                    else if(!name1.equals(datas))
                         {
-                            Toast.makeText(context, feedback, Toast.LENGTH_LONG).show();
+                            Toast.makeText(context, name1, Toast.LENGTH_LONG).show();
                             Intent homeIntent = new Intent(context, RegisterPhone.class);
                             context.startActivity(homeIntent);
 
@@ -78,6 +88,8 @@ public class Transaction<_transaction> {
                 @Override
                 public void onFailure(Call<Response> call, Throwable t) {
                     progressDoalog.dismiss();
+                    Intent homeIntent = new Intent(context, RegisterPhone.class);
+                    context.startActivity(homeIntent);
                     //Toast.makeText(context, "Sorry, network  error Try again", Toast.LENGTH_LONG).show();
                 }
             });
@@ -90,13 +102,30 @@ public class Transaction<_transaction> {
                     progressDoalog.dismiss();
                     Response responseData = response.body();
                     String feedback = responseData.getMessage();
+                    String[] roleList = feedback.split(",");
+                    String name1 = roleList[0];
+                    String name2 = roleList[1];
                     String datas = "Withdrawal successful";
-                    if (feedback.equals(datas)) {
-                        Toast.makeText(context, feedback, Toast.LENGTH_LONG).show();
+                    if (name1.equals(datas)) {
+                        Toast.makeText(context, name1, Toast.LENGTH_LONG).show();
+                        Toast.makeText(context, name1, Toast.LENGTH_LONG).show();
+                        String amount="";
+                        amount =  _transaction.getAmount().toString();
+                        Double damount=Double.parseDouble(amount);
+                        amount= String.format("%.2f", damount);
+                        Intent intent = new Intent(context, MainActivity.class);
+                        editor.putString("transaction", _transaction.getOperation());
+                        editor.putString("amount", amount);
+                        editor.putString("fingurePrint", "");
+                        editor.putString("Vno", name2);
+                        editor.putString("supplierNo", _transaction.getsNo());
+                        editor.putString("pin", _transaction.getPin());
+                        editor.commit();
+                        context.startActivity(intent);
 
-                    } else {
+                    } else if(!name1.equals(datas)) {
 
-                        Toast.makeText(context, feedback, Toast.LENGTH_LONG).show();
+                        Toast.makeText(context, name1, Toast.LENGTH_LONG).show();
                         Intent homeIntent = new Intent(context, RegisterPhone.class);
                         context.startActivity(homeIntent);
 
@@ -106,6 +135,8 @@ public class Transaction<_transaction> {
                 @Override
                 public void onFailure(Call<Response> call, Throwable t) {
                     progressDoalog.dismiss();
+                    Intent homeIntent = new Intent(context, RegisterPhone.class);
+                    context.startActivity(homeIntent);
                     //Toast.makeText(context, "Sorry, network  error Try again", Toast.LENGTH_LONG).show();
                 }
             });
@@ -124,6 +155,8 @@ public class Transaction<_transaction> {
                 @Override
                 public void onFailure(Call<Response> call, Throwable t) {
                     progressDoalog.dismiss();
+                    Intent homeIntent = new Intent(context, RegisterPhone.class);
+                    context.startActivity(homeIntent);
                     //Toast.makeText(context, "Sorry, network  error Try again", Toast.LENGTH_LONG).show();
                 }
             });
@@ -135,43 +168,44 @@ public class Transaction<_transaction> {
                 public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
                     progressDoalog.dismiss();
                     Response responseData = response.body();
-                    Toast.makeText(context, responseData.getMessage(), Toast.LENGTH_LONG).show();
+                    String feedback = responseData.getMessage();
+                    Toast.makeText(context, feedback, Toast.LENGTH_LONG).show();
+                    Intent homeIntent = new Intent(context, RegisterPhone.class);
+                    context.startActivity(homeIntent);
+
                 }
 
                 @Override
                 public void onFailure(Call<Response> call, Throwable t) {
                     progressDoalog.dismiss();
+                    Intent homeIntent = new Intent(context, RegisterPhone.class);
+                    context.startActivity(homeIntent);
                     //Toast.makeText(context, "Sorry, network  error Try again", Toast.LENGTH_LONG).show();
                 }
             });
         }
 
-        if (!_transaction.getOperation().equals("balance")){
+        if (_transaction.getOperation().equals("balance")){
             Print("");
         }
     }
 
 
     private void Print(String amount) {
-        if(amount.isEmpty())
-        {
-            Intent intent = new Intent(context.getApplicationContext(), RegisterPhone.class);
-            Toast.makeText(context, "Sorry, network  error Try again", Toast.LENGTH_LONG).show();
-            context.startActivity(intent);
-
-        }
-
         amount = amount.isEmpty() ? _transaction.getAmount().toString() : amount;
         Double damount=Double.parseDouble(amount);
         amount= String.format("%.2f", damount);
+        String version = "Balance";
         Intent intent = new Intent(context, MainActivity.class);
         editor.putString("transaction", _transaction.getOperation());
         editor.putString("amount", amount);
         editor.putString("fingurePrint", "");
+        editor.putString("Vno", version);
         editor.putString("supplierNo", _transaction.getsNo());
         editor.putString("pin", _transaction.getPin());
         editor.commit();
         context.startActivity(intent);
+
     }
 
 }

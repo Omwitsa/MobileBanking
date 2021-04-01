@@ -243,34 +243,24 @@
 //}
 package com.aratek.trustfinger.utils;
 
-import com.aratek.trustfinger.Activities.AuthenticationActivity;
-import com.aratek.trustfinger.Activities.ConfirmActivity;
-import com.aratek.trustfinger.Activities.HomeActivity;
-import com.aratek.trustfinger.Activities.IdentificationActivity;
-import com.aratek.trustfinger.Activities.RegisterPhone;
-import com.aratek.trustfinger.Activities.SubmitTransactionActivity;
-import com.aratek.trustfinger.R;
-import com.vanstone.appsdk.client.ISdkStatue;
-import com.vanstone.trans.api.PrinterApi;
-import com.vanstone.trans.api.SystemApi;
-import com.vanstone.utils.CommonConvert;
-
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.os.Environment;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
+
+import com.aratek.trustfinger.Activities.RegisterPhone;
+import com.aratek.trustfinger.R;
+import com.vanstone.appsdk.client.ISdkStatue;
+import com.vanstone.trans.api.PrinterApi;
+import com.vanstone.trans.api.SystemApi;
+import com.vanstone.utils.CommonConvert;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -400,11 +390,7 @@ public void PrintInfo()
         String amount = sharedpreferences.getString("amount","");
         String transaction = sharedpreferences.getString("transaction","");
         String sNo = sharedpreferences.getString("supplierNo","");
-        int min = 1;
-        int max = 10000;
-        Random r = new Random();
-        int i1 = r.nextInt(max - min + 1) + min;
-        String version = "MG001POS" + i1;
+        String RCP = sharedpreferences.getString("Vno","");
 
         long milis1 = System.currentTimeMillis();
         String date1 = DateUtil.timeMilisToString(milis1, "dd-MM-yyyy");
@@ -419,7 +405,7 @@ public void PrintInfo()
         PrinterApi.PrnStr_Api("\n" + "K-PILLAR SACCO SOCIETY LIMITED" + "\n");
         PrinterApi.PrnStr_Api("Agent Copy \n");
         PrinterApi.PrnStr_Api( transaction.toUpperCase()+" RECEIPT" + "\n");
-        PrinterApi.PrnStr_Api("ReceiptNumber : "+version+ "\n");
+        PrinterApi.PrnStr_Api("ReceiptNumber :" +RCP+ "\n");
         PrinterApi.PrnStr_Api("Amount   :"   + amount+ "\n");
         PrinterApi.PrnStr_Api("Account NO   :" + sNo+ "\n");
         PrinterApi.PrnStr_Api("--------------------------" + "\n");
@@ -438,7 +424,7 @@ public void PrintInfo()
         PrinterApi.PrnStr_Api("\n" + "K-PILLAR SACCO SOCIETY LIMITED" + "\n");
         PrinterApi.PrnStr_Api("Customer Copy \n");
         PrinterApi.PrnStr_Api( transaction.toUpperCase()+" RECEIPT" + "\n");
-        PrinterApi.PrnStr_Api("ReceiptNumber : "+version+ "\n");
+        PrinterApi.PrnStr_Api("ReceiptNumber : "+RCP+ "\n");
         PrinterApi.PrnStr_Api("Amount   :"   + amount+ "\n");
         PrinterApi.PrnStr_Api("Account NO   :" + sNo+ "\n");
         PrinterApi.PrnStr_Api("--------------------------" + "\n");

@@ -3,11 +3,9 @@ package com.aratek.trustfinger.Activities;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.Toast;
+import android.support.v7.app.AppCompatActivity;
 
-import com.aratek.trustfinger.Model.LoginModel;
 import com.aratek.trustfinger.Model.Response;
 import com.aratek.trustfinger.Model.TellerDate;
 import com.aratek.trustfinger.R;
@@ -63,5 +61,9 @@ public class RolesActivity extends AppCompatActivity {
 
             }
         });
+    }
+    @Override
+    public void onBackPressed() {
+        return;
     }
 }

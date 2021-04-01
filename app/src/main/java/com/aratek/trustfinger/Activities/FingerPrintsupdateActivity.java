@@ -3,8 +3,8 @@ package com.aratek.trustfinger.Activities;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
@@ -21,6 +21,7 @@ public class FingerPrintsupdateActivity extends AppCompatActivity {
     @BindView(R.id.main12) Button news;
     @BindView(R.id.main13) Button admin;
     @BindView(R.id.main14) Button Back;
+//    @BindView(R.id.main125) Button anotherUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,7 +36,7 @@ public class FingerPrintsupdateActivity extends AppCompatActivity {
 //        final String SecondName = sharedpreferences.getString("agentSecondName", "");
           String Tellers="True";
         String notTellers="False";
-//         String Changes="SuperAdmin";
+        String Changes="SuperAdmin";
 //
 //        final String NewMember="New";
 //        final String OperatorMember="Operator";
@@ -47,6 +48,13 @@ public class FingerPrintsupdateActivity extends AppCompatActivity {
         if (IsTeller.equals(Tellers))
         {
             admin.setEnabled(false);
+        }
+        if (Change.equals(Changes))
+        {
+            admin.setEnabled(true);
+            Exist.setEnabled(false);
+            news.setEnabled(false);
+//            anotherUser.setEnabled(true);
         }
         
         Exist.setOnClickListener(new View.OnClickListener() {
@@ -90,5 +98,18 @@ public class FingerPrintsupdateActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+//        anotherUser.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+//                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                intent.putExtra("EXIT", true);
+//                startActivity(intent);
+//            }
+//        });
+    }
+    @Override
+    public void onBackPressed() {
+        return;
     }
 }

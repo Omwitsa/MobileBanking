@@ -44,6 +44,7 @@ public class AdvanceActivity extends AppCompatActivity {
         String Machineid = android.os.Build.MODEL+""+ Build.SERIAL;
         final String Accountno = sharedpreferences.getString("supplierNo", "");
         final String Advanceproduct = sharedpreferences.getString("Account","");
+        final String idn = sharedpreferences.getString("agtId", "");
         sNo.setText(Accountno);
         Productname.setText(Advanceproduct);
 
@@ -57,12 +58,13 @@ public class AdvanceActivity extends AppCompatActivity {
                     Toast.makeText(AdvanceActivity.this, "Enter Amount to applly ", Toast.LENGTH_LONG).show();
                 } else {
 
-                    Intent intent = new Intent(getApplicationContext(), SubmitTransactionActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), ConfirmActivity.class);
                     editor.putString("operation", "advance");
                     editor.putString("amount", advamount);
                     editor.putString("fingurePrint", "");
                     editor.putString("supplierNo", Accountno);
                     editor.putString("pin", "");
+                    editor.putString("agentId", idn);
                     editor.putString("accountNo", Accountno);
                     editor.putString("productDescription", Advanceproduct);
                     editor.commit();
@@ -79,5 +81,9 @@ public class AdvanceActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+    @Override
+    public void onBackPressed() {
+        return;
     }
 }

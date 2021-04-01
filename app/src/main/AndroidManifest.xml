@@ -11,7 +11,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.AgentMemberEnquiryActivity"></activity>
+        <activity android:name=".Activities.LoginActivity"></activity>
+        <activity android:name=".Activities.LogoutActivity" />
+        <activity android:name=".Activities.RefreshFingerprintActivity" />
+        <activity android:name=".Activities.RefreshOperatorFingerprintActivity" />
+        <activity android:name=".Activities.RefreshAgentMembersActivity" />
+        <activity android:name=".Activities.SuperAdminEnquiryActivity" />
+        <activity android:name=".Activities.AgentMemberEnquiryActivity" />
         <activity android:name=".Activities.AdminEnquiryActivity" />
         <activity android:name=".Activities.EnquiryActivity" />
         <activity android:name=".Activities.DatabaseConnectionActivity" />
@@ -87,11 +93,11 @@
     <uses-feature
         android:name="android.hardware.usb.host"
         android:required="true" />
-    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
-
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

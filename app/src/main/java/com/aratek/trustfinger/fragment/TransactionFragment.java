@@ -38,20 +38,9 @@ import android.widget.PopupWindow;
 import android.widget.ProgressBar;
 import android.widget.ScrollView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.aratek.trustfinger.Activities.AccountsActivity;
-import com.aratek.trustfinger.Activities.BalanceActivity;
-import com.aratek.trustfinger.Activities.DepositActivity;
-import com.aratek.trustfinger.Activities.HomeActivity;
-import com.aratek.trustfinger.Activities.Reports;
 import com.aratek.trustfinger.Activities.SubmitTransactionActivity;
-import com.aratek.trustfinger.Model.FingurePrintModel;
-import com.aratek.trustfinger.Model.Response;
 import com.aratek.trustfinger.Model.TransactionModel;
-import com.aratek.trustfinger.Rest.ApiClient;
-import com.aratek.trustfinger.Rest.ApiInterface;
-import com.aratek.trustfinger.utils.Config;
 import com.aratek.trustfinger.R;
 import com.aratek.trustfinger.adapter.MyRankListAdapter;
 import com.aratek.trustfinger.bean.FingerData;
@@ -63,8 +52,8 @@ import com.aratek.trustfinger.sdk.SecurityLevel;
 import com.aratek.trustfinger.sdk.TrustFingerDevice;
 import com.aratek.trustfinger.sdk.TrustFingerException;
 import com.aratek.trustfinger.sdk.VerifyResult;
+import com.aratek.trustfinger.utils.Config;
 import com.aratek.trustfinger.utils.DBHelper;
-import com.aratek.trustfinger.utils.MainActivity;
 import com.aratek.trustfinger.utils.MediaPlayerHelper;
 import com.aratek.trustfinger.utils.Transaction;
 import com.aratek.trustfinger.widget.MyListView;
@@ -72,9 +61,6 @@ import com.aratek.trustfinger.widget.MyListView;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
 
 
 public class TransactionFragment extends BaseFragment {
@@ -655,6 +641,8 @@ public class TransactionFragment extends BaseFragment {
                     String accountNo = sharedpreferences.getString("accountNo","");
                     String productDescription = sharedpreferences.getString("productDescription","");
                     String machineId = sharedpreferences.getString("machine_id", "");
+                    String Nm = sharedpreferences.getString("name", "");
+                    String DepositID = sharedpreferences.getString("DidNumber", "");
                     String auditsId = sharedpreferences.getString("auditId", "");
                     if(sharedpreferences.getString("number","").equals(idnumber)) {
 
@@ -664,6 +652,8 @@ public class TransactionFragment extends BaseFragment {
                         editor.putString("machineId", machineId);
                         editor.putString("supplierNo", sNo);
                         editor.putString("fingurePrint", "");
+                        editor.putString("name", "");
+                        editor.putString("DidNumber", "");
                         editor.putString("AuditId", auditsId);
                         editor.putString("accountNo", accountNo);
                         editor.putString("productDescription", productDescription);

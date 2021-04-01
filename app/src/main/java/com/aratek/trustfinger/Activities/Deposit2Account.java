@@ -5,9 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
-import android.os.Build;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,6 +24,8 @@ public class Deposit2Account extends AppCompatActivity {
     ApiInterface apiService;
     @BindView(R.id.cash) EditText amount;
     @BindView(R.id.accno) EditText Acc;
+    @BindView(R.id.name) EditText Name;
+    @BindView(R.id.ID) EditText IdNumber;
     @BindView(R.id.save) Button submit;
     @BindView(R.id.pack) Button back;
     static SQLiteDatabase db;
@@ -50,10 +51,12 @@ public class Deposit2Account extends AppCompatActivity {
         public void onClick(View view) {
             String bal = amount.getText().toString();
             String sNo = Acc.getText().toString();
+            String NamE = Name.getText().toString();
+            String ID = IdNumber.getText().toString();
             String Pinn = "";
             String MachineID = android.os.Build.SERIAL;
 
-            if (bal.isEmpty() && Pinn.isEmpty() && sNo.isEmpty() ) {
+            if (bal.isEmpty() && Pinn.isEmpty() && sNo.isEmpty()&& NamE.isEmpty()&& ID.isEmpty() ) {
                 //Snackbar.make(getView(), "Field(s) are empty !", Snackbar.LENGTH_LONG).show();
                 Toast.makeText(Deposit2Account.this, "Fields are empty", Toast.LENGTH_LONG).show();
             }else if(Pinn.length()>4){
@@ -70,6 +73,8 @@ public class Deposit2Account extends AppCompatActivity {
                 editor.putString("supplierNo", sNo);
                 editor.putString("number", "");
                 editor.putString("pin", Pinn);
+                editor.putString("name", NamE);
+                editor.putString("DidNumber", ID);
                 editor.putString("machineId", MachineID);
                 editor.putString("auditId", auditId);
                 editor.putString("accountNo", "");
@@ -87,6 +92,10 @@ public class Deposit2Account extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+    @Override
+    public void onBackPressed() {
+        return;
     }
 
 }

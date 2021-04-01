@@ -11,6 +11,7 @@ import com.aratek.trustfinger.Model.ProductModel;
 import com.aratek.trustfinger.Model.RegisterFingerprints;
 import com.aratek.trustfinger.Model.Response;
 import com.aratek.trustfinger.Model.SecondNameModel;
+import com.aratek.trustfinger.Model.SuperAdminModel;
 import com.aratek.trustfinger.Model.TellerDate;
 import com.aratek.trustfinger.Model.TransactionModel;
 import java.util.List;
@@ -28,6 +29,9 @@ public interface ApiInterface {
 
     @POST("webservice/users/existingFirstName")
     Call<Response> existingFirstName(@Body FirstNameModel FirstName);
+
+    @POST("webservice/users/superAdminDetails")
+    Call<Response> superAdminDetails(@Body SuperAdminModel FirstName);
 
     @POST("webservice/users/existingSecondName")
     Call<Response> existingSecondName(@Body SecondNameModel SecondName);

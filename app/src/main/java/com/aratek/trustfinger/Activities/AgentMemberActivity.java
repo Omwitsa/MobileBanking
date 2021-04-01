@@ -5,8 +5,8 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -22,7 +22,6 @@ import com.aratek.trustfinger.Rest.ApiInterface;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -175,5 +174,9 @@ public class AgentMemberActivity extends AppCompatActivity {
         });
 
 }
+    @Override
+    public void onBackPressed() {
+        return;
+    }
 
 }

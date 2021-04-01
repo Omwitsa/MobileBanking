@@ -4,17 +4,15 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.aratek.trustfinger.Model.AgentMember;
 import com.aratek.trustfinger.Model.AgentNameModel;
-import com.aratek.trustfinger.Model.FirstNameModel;
 import com.aratek.trustfinger.Model.Response;
 import com.aratek.trustfinger.R;
 import com.aratek.trustfinger.Rest.ApiClient;
@@ -33,6 +31,7 @@ public class AgentMemberEnquiryActivity extends AppCompatActivity {
     SharedPreferences.Editor editor;
     @BindView(R.id.submit11) Button Enquiry;
     @BindView(R.id.buttonagent) Button Agent;
+    @BindView(R.id.buttonBack1) Button buttonBackk;
     @BindView(R.id.number11) EditText IdNumber;
     private TextView textView1;
     private TextView textView2;
@@ -40,6 +39,7 @@ public class AgentMemberEnquiryActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        progressDoalog = new ProgressDialog(AgentMemberEnquiryActivity.this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agent_member_enquiry);
         ButterKnife.bind(this);
@@ -50,18 +50,27 @@ public class AgentMemberEnquiryActivity extends AppCompatActivity {
         textView1 = findViewById(R.id.text_id3);
         textView2 = findViewById(R.id.text_first3);
         textView3 = findViewById(R.id.text_second3);
-
+        buttonBackk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent homeIntent = new Intent(getApplicationContext(), FingerPrintsupdateActivity.class);
+                startActivity(homeIntent);
+            }
+        });
 
 
         Enquiry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+
+                final String IDNo = IdNumber.getText().toString();
+               if(IDNo.isEmpty())
+               {
+                   Toast.makeText(AgentMemberEnquiryActivity.this, "Please enter your ID number", Toast.LENGTH_LONG).show();
+               }
                 progressDoalog.setMessage("Please wait...");
                 progressDoalog.show();
-                final String IDNo = IdNumber.getText().toString();
-                //FirstNameModel FirstName = new FirstNameModel(IDNo);
-                //register(FirstName);
                 FirstName(IDNo);
 
             }
@@ -84,17 +93,20 @@ public class AgentMemberEnquiryActivity extends AppCompatActivity {
                         com.aratek.trustfinger.Model.Response responseData = response.body();
                         assert responseData != null;
                         String role = responseData.getMessage();
-                        String[] roleList = role.split(",");
-                        String name1 = roleList[0];
-                        String name2 = roleList[1];
-                        Toast.makeText(getApplicationContext(), "User exists", Toast.LENGTH_LONG).show();
-                        textView1.setText(idNo);
-                        textView2.setText(name1);
-                        textView3.setText(name2);
-                        AgentClass(idNo,name1,name2);
+                        if (role.equals("You are not registered")) {
+                            Toast.makeText(getApplicationContext(), role, Toast.LENGTH_LONG).show();
+
+                        } else {
+                            String[] roleList = role.split(",");
+                            String name1 = roleList[0];
+                            String name2 = roleList[1];
+                            textView1.setText(idNo);
+                            textView2.setText(name1);
+                            textView3.setText(name2);
+                            AgentClass(idNo, name1, name2);
 
 
-
+                        }
                     }
 
                     @Override
@@ -105,7 +117,6 @@ public class AgentMemberEnquiryActivity extends AppCompatActivity {
                 });
             }
 
-
         });
     }
 
@@ -113,6 +124,11 @@ public class AgentMemberEnquiryActivity extends AppCompatActivity {
         Agent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(idNo.isEmpty()&&name1.isEmpty()&&name2.isEmpty())
+                {
+                    Toast.makeText(AgentMemberEnquiryActivity.this, "Your details are Missing,Search again ", Toast.LENGTH_LONG).show();
+                }
+                else {
                 final String memberExist = "Exists";
                 Intent homeIntent = new Intent(getApplicationContext(), AgentMembersFingerPrintActivity.class);
                 editor.putString("MemberFinger", memberExist);
@@ -122,7 +138,12 @@ public class AgentMemberEnquiryActivity extends AppCompatActivity {
                 editor.commit();
                 startActivity(homeIntent);
             }
+            }
 
     });
 }
+    @Override
+    public void onBackPressed() {
+        return;
+    }
 }

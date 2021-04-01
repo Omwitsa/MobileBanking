@@ -3,13 +3,12 @@ package com.aratek.trustfinger.Activities;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.view.View;
 
 import com.aratek.trustfinger.R;
-import com.aratek.trustfinger.utils.MainActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -19,6 +18,7 @@ public class HomeActivity extends AppCompatActivity {
     @BindView(R.id.withdraw) CardView withdraw;
     @BindView(R.id.balance_enquiry) CardView balanceEnquiry;
     @BindView(R.id.advance) CardView advance;
+    @BindView(R.id.bacck) CardView BacCk;
     public static final String MyPREFERENCES = "POSDETAILS" ;
     SharedPreferences sharedpreferences;
     SharedPreferences.Editor editor;
@@ -95,5 +95,17 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        BacCk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), RegisterPhone.class);
+                startActivity(intent);
+
+            }
+        });
+    }
+    @Override
+    public void onBackPressed() {
+        return;
     }
 }

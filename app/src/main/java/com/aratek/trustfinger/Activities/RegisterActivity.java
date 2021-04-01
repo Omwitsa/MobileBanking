@@ -2,23 +2,16 @@ package com.aratek.trustfinger.Activities;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
-import com.aratek.trustfinger.Model.Response;
 import com.aratek.trustfinger.R;
-import com.aratek.trustfinger.Rest.ApiClient;
-import com.aratek.trustfinger.Rest.ApiInterface;
-import com.aratek.trustfinger.utils.Constants;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import retrofit2.Call;
-import retrofit2.Callback;
 
 public class RegisterActivity extends AppCompatActivity {
     ProgressDialog progressDoalog;
@@ -77,6 +70,10 @@ public class RegisterActivity extends AppCompatActivity {
 //                Toast.makeText(getApplicationContext(), "Sorry, An error occurred", Toast.LENGTH_LONG).show();
 //            }
 //        });
+    }
+    @Override
+    public void onBackPressed() {
+        return;
     }
 
 }

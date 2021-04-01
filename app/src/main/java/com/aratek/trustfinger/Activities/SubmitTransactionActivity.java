@@ -3,9 +3,8 @@ package com.aratek.trustfinger.Activities;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
-import android.os.Build;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 import com.aratek.trustfinger.Model.TransactionModel;
@@ -43,11 +42,12 @@ public class SubmitTransactionActivity extends AppCompatActivity {
             String sNo = sharedpreferences.getString("supplierNo","");
             String accountNo = sharedpreferences.getString("accountNo","");
             String productDescription = sharedpreferences.getString("productDescription","");
-            //String machineId = sharedpreferences.getString("machine_id", "");
+            String Nm = sharedpreferences.getString("name", "");
+            String DepositID = sharedpreferences.getString("DidNumber", "");
             String auditID = sharedpreferences.getString("AuditId", "");
             //insertDataToSqlite(operation,amount,sNo,status);
 
-            transactionModel = new TransactionModel(operation, amount, "", "", sNo, status, MachineID, auditID, productDescription, "",accountNo);
+            transactionModel = new TransactionModel(operation, amount, "", "", sNo,Nm,DepositID,status, MachineID, auditID, productDescription, "",accountNo);
             transaction = new Transaction(this, transactionModel);
 
             transaction.transact(transactionModel);
@@ -77,6 +77,10 @@ else if(sharedpreferences.getString("operation","").equals("withdraw"))
             Toast.makeText(SubmitTransactionActivity.this, "Advance saved successfully", Toast.LENGTH_LONG).show();
         }
 
+    }
+    @Override
+    public void onBackPressed() {
+        return;
     }
 
 

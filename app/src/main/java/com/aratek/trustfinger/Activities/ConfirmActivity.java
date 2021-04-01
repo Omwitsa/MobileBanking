@@ -5,13 +5,10 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Build;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 import com.aratek.trustfinger.R;
-
-import static com.aratek.trustfinger.Activities.DepositActivity.MyPREFERENCES;
 
 public class ConfirmActivity extends AppCompatActivity {
     public static final String MyPREFERENCES = "POSDETAILS" ;
@@ -75,4 +72,8 @@ public class ConfirmActivity extends AppCompatActivity {
         alert.setTitle("Confirmation of the Transaction");
         alert.show();
 }
+    @Override
+    public void onBackPressed() {
+        return;
+    }
 }

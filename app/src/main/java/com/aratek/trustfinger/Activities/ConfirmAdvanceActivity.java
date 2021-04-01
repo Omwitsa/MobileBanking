@@ -70,4 +70,8 @@ public class ConfirmAdvanceActivity extends AppCompatActivity {
         alert.setTitle("Confirmation of the Transaction");
         alert.show();
     }
+    @Override
+    public void onBackPressed() {
+        return;
+    }
     }
