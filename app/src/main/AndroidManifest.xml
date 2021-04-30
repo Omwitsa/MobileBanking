@@ -1,53 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.aratek.trustfinger">
+    package="com.larry.trustfinger">
 
     <application
-        android:name=".utils.MyApplication"
+        android:name="com.larry.trustfinger.utils.MyApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
-        android:label="K-Pillar Agency"
+        android:label="K-PILLAR"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.LoginActivity"></activity>
-        <activity android:name=".Activities.LogoutActivity" />
-        <activity android:name=".Activities.RefreshFingerprintActivity" />
-        <activity android:name=".Activities.RefreshOperatorFingerprintActivity" />
-        <activity android:name=".Activities.RefreshAgentMembersActivity" />
-        <activity android:name=".Activities.SuperAdminEnquiryActivity" />
-        <activity android:name=".Activities.AgentMemberEnquiryActivity" />
-        <activity android:name=".Activities.AdminEnquiryActivity" />
-        <activity android:name=".Activities.EnquiryActivity" />
-        <activity android:name=".Activities.DatabaseConnectionActivity" />
-        <activity android:name=".Activities.AgentMembersFingerPrintActivity" />
-        <activity android:name=".Activities.OperatoerFingerprintActivity" />
-        <activity android:name=".Activities.FingerPrintsupdateActivity" />
-        <activity android:name=".Activities.RolesActivity" />
-        <activity android:name=".Activities.ChoiceActivity" />
-        <activity android:name=".Activities.RefreshVerifyActivity" />
-        <activity android:name=".Activities.RefreshEnrollActivity" />
-        <activity android:name=".Activities.LoginAdminActivity" />
-        <activity android:name=".Activities.AdminLoginActivity" />
-        <activity android:name=".Activities.RegisterPhone" />
-        <activity android:name=".Reports.AdvancesreportActivity" />
-        <activity android:name=".Reports.WithdrawalsreportActivity" />
-        <activity android:name=".Reports.DepositreportActivity" />
-        <activity android:name=".Activities.ConfirmAdvanceActivity" />
-        <activity android:name=".Activities.ConfirmBalanceActivity" />
-        <activity android:name=".Activities.RefreshidentifyActivity" />
-        <activity android:name=".Activities.RefreshActivity" />
-        <activity android:name=".Activities.ConfirmActivity" />
-        <activity android:name=".Activities.TransactionActivity" />
-        <activity android:name=".Activities.SubmitTransactionActivity" />
-        <activity android:name=".Activities.AuthenticationActivity" />
-        <activity android:name=".Activities.AccountsActivity" />
-        <activity android:name=".Activities.PosUsersActivity" />
-        <activity android:name=".Activities.IdentificationActivity" />
-        <activity android:name=".Activities.Deposit2Account" />
-        <activity android:name=".utils.MainActivity" />
-        <activity android:name=".Activities.FingeprintActivity">
+        <activity android:name="com.larry.trustfinger.Activities.TransActionEnquiryActivity"></activity>
+        <activity android:name="com.larry.trustfinger.Activities.LoginActivity" />
+        <activity android:name="com.larry.trustfinger.Activities.LogoutActivity" />
+        <activity android:name="com.larry.trustfinger.Activities.RefreshFingerprintActivity" />
+        <activity android:name="com.larry.trustfinger.Activities.RefreshOperatorFingerprintActivity" />
+        <activity android:name="com.larry.trustfinger.Activities.RefreshAgentMembersActivity" />
+        <activity android:name="com.larry.trustfinger.Activities.SuperAdminEnquiryActivity" />
+        <activity android:name="com.larry.trustfinger.Activities.AgentMemberEnquiryActivity" />
+        <activity android:name="com.larry.trustfinger.Activities.AdminEnquiryActivity" />
+        <activity android:name="com.larry.trustfinger.Activities.EnquiryActivity" />
+        <activity android:name="com.larry.trustfinger.Activities.DatabaseConnectionActivity" />
+        <activity android:name="com.larry.trustfinger.Activities.AgentMembersFingerPrintActivity" />
+        <activity android:name="com.larry.trustfinger.Activities.OperatoerFingerprintActivity" />
+        <activity android:name="com.larry.trustfinger.Activities.FingerPrintsupdateActivity" />
+        <activity android:name="com.larry.trustfinger.Activities.RolesActivity" />
+        <activity android:name="com.larry.trustfinger.Activities.ChoiceActivity" />
+        <activity android:name="com.larry.trustfinger.Activities.RefreshVerifyActivity" />
+        <activity android:name="com.larry.trustfinger.Activities.RefreshEnrollActivity" />
+        <activity android:name="com.larry.trustfinger.Activities.LoginAdminActivity" />
+        <activity android:name="com.larry.trustfinger.Activities.AdminLoginActivity" />
+        <activity android:name="com.larry.trustfinger.Activities.RegisterPhone" />
+        <activity android:name="com.larry.trustfinger.Reports.AdvancesreportActivity" />
+        <activity android:name="com.larry.trustfinger.Reports.WithdrawalsreportActivity" />
+        <activity android:name="com.larry.trustfinger.Reports.DepositreportActivity" />
+        <activity android:name="com.larry.trustfinger.Activities.ConfirmAdvanceActivity" />
+        <activity android:name="com.larry.trustfinger.Activities.ConfirmBalanceActivity" />
+        <activity android:name="com.larry.trustfinger.Activities.RefreshidentifyActivity" />
+        <activity android:name="com.larry.trustfinger.Activities.RefreshActivity" />
+        <activity android:name="com.larry.trustfinger.Activities.ConfirmActivity" />
+        <activity android:name="com.larry.trustfinger.Activities.TransactionActivity" />
+        <activity android:name="com.larry.trustfinger.Activities.SubmitTransactionActivity" />
+        <activity android:name="com.larry.trustfinger.Activities.AccountsActivity" />
+        <activity android:name="com.larry.trustfinger.Activities.PosUsersActivity" />
+        <activity android:name="com.larry.trustfinger.Activities.IdentificationActivity" />
+        <activity android:name="com.larry.trustfinger.Activities.Deposit2Account" />
+        <activity android:name="com.larry.trustfinger.utils.MainActivity" />
+        <activity android:name="com.larry.trustfinger.Activities.FingeprintActivity">
             <intent-filter>
                 <action android:name="android.hardware.usb.action.USB_DEVICE_DETACHED" />
                 <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
@@ -57,21 +57,21 @@
                 android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"
                 android:resource="@xml/device_filter" />
         </activity>
-        <activity android:name=".Activities.VerifyActivity" />
-        <activity android:name=".Activities.PrintActivity" />
-        <activity android:name=".Activities.MyListActivity" />
-        <activity android:name=".Activities.WithdrawActivity" />
-        <activity android:name=".Activities.RegisterActivity" />
-        <activity android:name=".Activities.ProductsActivity" />
-        <activity android:name=".Activities.DepositActivity" />
-        <activity android:name=".Activities.BalanceActivity" />
-        <activity android:name=".Activities.AgentMemberActivity" />
-        <activity android:name=".Activities.HomeActivity" />
-        <activity android:name=".Activities.AdvanceActivity" />
-        <activity android:name=".utils.Printer" />
-        <activity android:name=".Activities.Reports" />
+        <activity android:name="com.larry.trustfinger.Activities.VerifyActivity" />
+        <activity android:name="com.larry.trustfinger.Activities.PrintActivity" />
+        <activity android:name="com.larry.trustfinger.Activities.MyListActivity" />
+        <activity android:name="com.larry.trustfinger.Activities.WithdrawActivity" />
+        <activity android:name="com.larry.trustfinger.Activities.RegisterActivity" />
+        <activity android:name="com.larry.trustfinger.Activities.ProductsActivity" />
+        <activity android:name="com.larry.trustfinger.Activities.DepositActivity" />
+        <activity android:name="com.larry.trustfinger.Activities.BalanceActivity" />
+        <activity android:name="com.larry.trustfinger.Activities.AgentMemberActivity" />
+        <activity android:name="com.larry.trustfinger.Activities.HomeActivity" />
+        <activity android:name="com.larry.trustfinger.Activities.AdvanceActivity" />
+        <activity android:name="com.larry.trustfinger.utils.Printer" />
+        <activity android:name="com.larry.trustfinger.Activities.Reports" />
         <activity
-            android:name=".Activities.MainActivity"
+            android:name="com.larry.trustfinger.Activities.MainActivity"
             android:label="K-Pillar Agency"
             android:launchMode="singleInstance"
             android:screenOrientation="portrait"
@@ -93,11 +93,11 @@
     <uses-feature
         android:name="android.hardware.usb.host"
         android:required="true" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
-
     <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
 </manifest>

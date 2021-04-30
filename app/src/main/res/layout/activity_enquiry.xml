@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.aratek.trustfinger.Activities.EnquiryActivity">
+    tools:context="com.larry.trustfinger.Activities.EnquiryActivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -17,6 +17,16 @@
         android:layout_marginRight="20dp"
         android:background="@color/cardColor">
 
+        <TextView
+            android:id="@+id/text_Ttl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Search Existing Member to Update Fingerprint"
+            android:textSize="13sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textColorHighlight="@android:color/primary_text_dark"
+            android:layout_centerVertical="true" />
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -51,7 +61,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="ID number"
-            android:textSize="30dp"
+            android:textSize="20dp"
             android:textColor="@android:color/holo_blue_dark"
             android:textColorHighlight="@android:color/primary_text_dark"
             android:layout_centerVertical="true" />
@@ -62,17 +72,63 @@
             android:text="Surname"
             android:textColor="@android:color/holo_blue_dark"
             android:textColorHighlight="@android:color/primary_text_dark"
-            android:textSize="30dp"
+            android:textSize="20dp"
             android:layout_centerVertical="true" />
         <TextView
             android:id="@+id/text_second1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="OtherNames "
-            android:textSize="30dp"
+            android:textSize="20sp"
             android:textColor="@android:color/holo_blue_dark"
             android:textColorHighlight="@android:color/primary_text_dark"
             android:layout_centerVertical="true" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btnLogin"
+            android:layout_marginTop="10dp"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tvIAlwaysHaveAccount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btnLogin"
+                android:textSize="20dp"
+                android:textColor="@android:color/holo_blue_dark"
+                android:text="FingerPrint Count:" />
+
+            <TextView
+                android:id="@+id/tvCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="#ff9800"
+                android:layout_toRightOf="@id/tvIAlwaysHaveAccount"
+                android:layout_marginLeft="15dp"
+                android:text="count" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btnLogin"
+            android:layout_marginTop="10dp"
+            android:gravity="center">
+            <TextView
+                android:id="@+id/FPrintnames"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="#ff9800"
+                android:layout_toRightOf="@id/tvIAlwaysHaveAccount"
+                android:layout_marginLeft="15dp"
+                android:text="Left,Right" />
+
+        </LinearLayout>
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -89,7 +145,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Next"
+            android:text="Back"
             android:shadowColor="@android:color/transparent"
             android:padding="15dp"
             android:layout_marginRight="10dp"
@@ -102,4 +158,4 @@
     </LinearLayout>
 
 
-</RelativeLayout>
+</ScrollView>

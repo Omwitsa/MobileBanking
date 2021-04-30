@@ -3,17 +3,27 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 26
     defaultConfig {
-        applicationId "com.aratek.trustfinger.demo.aratektrustfingerdemo"
+        //applicationId "com.aratek.trustfinger.demo.aratektrustfingerdemo"
+        applicationId "com.larry.bankingAgency"
         minSdkVersion 16
         targetSdkVersion 26
         versionCode 1
         versionName "1.0.6"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+//    signingConfigs {
+//        release {
+//            storeFile file("Apk.keystore")
+//            storePassword "Meru2015@@##"
+//            keyAlias "MyKey"
+//            keyPassword "Meru2015@@##"
+//        }
+//    }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            //signingConfig signingConfigs.release
         }
     }
     defaultConfig{
@@ -25,6 +35,7 @@ android {
         variant ->
             variant.outputs.all { output ->
                 outputFileName = "AratekTrustFingerDemo_v${defaultConfig.versionName}_${buildTime()}.apk"
+                //outputFileName = "K-pillar_Application_V${defaultConfig.versionName}_${buildTime()}.apk"
             }
     }
     lintOptions {

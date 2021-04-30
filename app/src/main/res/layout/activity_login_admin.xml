@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.MainActivity"
+    tools:context="com.larry.trustfinger.Activities.LoginAdminActivity"
     android:orientation="vertical"
     android:gravity="center"
     android:background="@drawable/back"
@@ -25,6 +25,7 @@
         android:drawableLeft="@drawable/ic_baseline_person_24"
         android:drawablePadding="10dp"
         android:hint="Username"
+        android:inputType="text"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         android:textColorHighlight="@color/white"/>
@@ -89,17 +90,18 @@
         android:id="@+id/btnLogin"
         android:background="@drawable/buttonshape"/>
 
-<!--    <Button-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="Sign Up"-->
-<!--        android:id="@+id/btnSignup"-->
-<!--        android:shadowColor="@android:color/transparent"-->
-<!--        android:padding="15dp"-->
-<!--        android:layout_marginRight="10dp"-->
-<!--        android:layout_marginLeft="10dp"-->
-<!--        android:layout_marginBottom="10dp"-->
-<!--        android:layout_marginTop="0dp"-->
-<!--        android:background="@drawable/signupbtnshape"-->
-<!--        android:textColor="@color/white"/>-->
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Back"
+        android:id="@+id/btnBack"
+        android:shadowColor="@android:color/transparent"
+        android:padding="15dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="0dp"
+        android:background="@drawable/signupbtnshape"
+        android:textColor="@color/white"/>
+
 </LinearLayout>

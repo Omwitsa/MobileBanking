@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#dadada"
     android:orientation="vertical">
-    tools:context="com.aratek.trustfinger.Activities.IdentificationActivity">
+    tools:context="com.larry.trustfinger.Activities.IdentificationActivity">
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content">

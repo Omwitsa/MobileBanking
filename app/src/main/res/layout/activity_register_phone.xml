@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.aratek.trustfinger.Activities.RegisterPhone">
+    tools:context="com.larry.trustfinger.Activities.RegisterPhone">
 
     <View
         android:layout_width="match_parent"
@@ -66,6 +66,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/image001"
                     android:layout_gravity="center_horizontal"
                     android:background="@drawable/transactions" />
             </LinearLayout>
@@ -107,6 +108,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/image002"
                     android:layout_gravity="center_horizontal"
                     android:background="@drawable/registration" />
             </LinearLayout>
@@ -147,6 +149,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/image003"
                     android:layout_gravity="center_horizontal"
                     android:background="@drawable/registration" />
             </LinearLayout>
@@ -188,6 +191,7 @@
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:id="@+id/image004"
                             android:layout_gravity="center_horizontal"
                             android:background="@drawable/fingerprint"/>
                     </LinearLayout>

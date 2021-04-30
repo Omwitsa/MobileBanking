@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.larry.trustfinger.Activities.TransActionEnquiryActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="20dp"
+        android:orientation="vertical"
+        android:id="@+id/editingZone"
+        android:padding="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@color/cardColor">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:padding="15dp"
+            android:editable="false"
+            android:cursorVisible="false"
+            android:focusable="false"
+            android:background="@drawable/editshape"
+            android:id="@+id/number10099"
+            android:hint="Account Number "
+            android:inputType="number"
+            android:drawablePadding="10dp"
+            android:textColor="@color/textcardColor"
+            android:textColorHint="@color/textcardColor"
+            android:textColorHighlight="@color/textcardColor"
+            tools:ignore="Deprecated" />
+
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Check"
+            android:shadowColor="@android:color/transparent"
+            android:padding="15dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="20dp"
+            android:id="@+id/submit091"
+            android:textColor="@color/white"
+            android:background="@drawable/signupbtnshape"/>
+        <TextView
+            android:id="@+id/text_id230"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Agency Name"
+            android:textSize="20dp"
+            android:textColor="@android:color/holo_blue_dark"
+            android:textColorHighlight="@android:color/primary_text_dark"
+            android:layout_centerVertical="true" />
+        <TextView
+            android:id="@+id/text_id289"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Account Name"
+            android:textSize="20dp"
+            android:textColor="@android:color/holo_blue_dark"
+            android:textColorHighlight="@android:color/primary_text_dark"
+            android:layout_centerVertical="true" />
+
+        <TextView
+            android:id="@+id/text_first278"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="Account No"
+            android:textColor="@android:color/holo_blue_dark"
+            android:textColorHighlight="@android:color/primary_text_dark"
+            android:textSize="20dp" />
+        <TextView
+            android:id="@+id/text_sec631ond2ssss1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="Activity"
+            android:textColor="@android:color/holo_blue_dark"
+            android:textColorHighlight="@android:color/primary_text_dark"
+            android:textSize="20dp" />
+        <TextView
+            android:id="@+id/text_second952"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Amount "
+            android:textSize="20dp"
+            android:textColor="@android:color/holo_blue_dark"
+            android:textColorHighlight="@android:color/primary_text_dark"
+            android:layout_centerVertical="true" />
+        <TextView
+            android:id="@+id/text_second2278s"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Receipt No "
+            android:textSize="20dp"
+            android:textColor="@android:color/holo_blue_dark"
+            android:textColorHighlight="@android:color/primary_text_dark"
+            android:layout_centerVertical="true" />
+        <TextView
+            android:id="@+id/text_second2s3057s"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TransAction Date "
+            android:textSize="20dp"
+            android:textColor="@android:color/holo_blue_dark"
+            android:textColorHighlight="@android:color/primary_text_dark"
+            android:layout_centerVertical="true" />
+        <TextView
+            android:id="@+id/text_secon65d2sss"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Deposited By"
+            android:textSize="20dp"
+            android:textColor="@android:color/holo_blue_dark"
+            android:textColorHighlight="@android:color/primary_text_dark"
+            android:layout_centerVertical="true" />
+        <TextView
+            android:id="@+id/text_sec631ond2ssss"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Reference "
+            android:textSize="20dp"
+            android:textColor="@android:color/holo_blue_dark"
+            android:textColorHighlight="@android:color/primary_text_dark"
+            android:layout_centerVertical="true" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Print"
+            android:shadowColor="@android:color/transparent"
+            android:padding="15dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="20dp"
+            android:id="@+id/buttonnnadmin"
+            android:textColor="@color/white"
+            android:background="@drawable/signupbtnshape"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Back"
+            android:shadowColor="@android:color/transparent"
+            android:padding="15dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="20dp"
+            android:id="@+id/buttoonBack"
+            android:textColor="@color/white"
+            android:background="@drawable/signupbtnshape"/>
+    </LinearLayout>
+    </RelativeLayout>>
+
+</ScrollView>

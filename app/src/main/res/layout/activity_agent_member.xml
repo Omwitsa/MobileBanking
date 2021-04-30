@@ -4,7 +4,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
-tools:context="com.aratek.trustfinger.Activities.AgentMemberActivity">
+tools:context="com.larry.trustfinger.Activities.AgentMemberActivity">
 
 <RelativeLayout
     android:layout_width="match_parent"
@@ -46,7 +46,7 @@ tools:context="com.aratek.trustfinger.Activities.AgentMemberActivity">
             android:padding="15dp"
             android:background="@drawable/editshape"
             android:id="@+id/surname"
-            android:inputType="text"
+            android:inputType="textCapCharacters"
             android:drawablePadding="10dp"
             android:hint="Surname"
             android:textColor="@color/textcardColor"
@@ -60,7 +60,7 @@ tools:context="com.aratek.trustfinger.Activities.AgentMemberActivity">
             android:padding="15dp"
             android:background="@drawable/editshape"
             android:id="@+id/othername"
-            android:inputType="text"
+            android:inputType="textCapCharacters"
             android:drawablePadding="10dp"
             android:hint="Other Name"
             android:textColor="@color/textcardColor"
@@ -134,7 +134,7 @@ tools:context="com.aratek.trustfinger.Activities.AgentMemberActivity">
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Next"
+            android:text="Save"
             android:shadowColor="@android:color/transparent"
             android:padding="15dp"
             android:layout_marginRight="10dp"

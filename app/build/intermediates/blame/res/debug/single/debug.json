@@ -136,6 +136,10 @@
         "source": "D:\\android-2020\\MobileBanking\\app\\src\\main\\res\\drawable-v24\\back.jpg"
     },
     {
+        "merged": "D:\\android-2020\\MobileBanking\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_transact.PNG.flat",
+        "source": "D:\\android-2020\\MobileBanking\\app\\src\\main\\res\\drawable-v24\\transact.PNG"
+    },
+    {
         "merged": "D:\\android-2020\\MobileBanking\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_ic_menu_share_mtrl_alpha.png.flat",
         "source": "C:\\Users\\Kemboi\\.gradle\\caches\\transforms-2\\files-2.1\\f8a84a1edf046708747e1d56f6270848\\res\\drawable-mdpi-v4\\abc_ic_menu_share_mtrl_alpha.png"
     },
@@ -258,6 +262,10 @@
     {
         "merged": "D:\\android-2020\\MobileBanking\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_operator.xml.flat",
         "source": "D:\\android-2020\\MobileBanking\\app\\src\\main\\res\\layout\\fragment_operator.xml"
+    },
+    {
+        "merged": "D:\\android-2020\\MobileBanking\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_trans_action_enquiry.xml.flat",
+        "source": "D:\\android-2020\\MobileBanking\\app\\src\\main\\res\\layout\\activity_trans_action_enquiry.xml"
     },
     {
         "merged": "D:\\android-2020\\MobileBanking\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_scrubber_track_mtrl_alpha.9.png.flat",
@@ -634,10 +642,6 @@
     {
         "merged": "D:\\android-2020\\MobileBanking\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_launcher_background.png.flat",
         "source": "D:\\android-2020\\MobileBanking\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_launcher_background.png"
-    },
-    {
-        "merged": "D:\\android-2020\\MobileBanking\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_authentication.xml.flat",
-        "source": "D:\\android-2020\\MobileBanking\\app\\src\\main\\res\\layout\\activity_authentication.xml"
     },
     {
         "merged": "D:\\android-2020\\MobileBanking\\app\\build\\intermediates\\res\\merged\\debug\\layout_notification_template_media.xml.flat",
@@ -1758,6 +1762,10 @@
     {
         "merged": "D:\\android-2020\\MobileBanking\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_refresh_fingerprint.xml.flat",
         "source": "D:\\android-2020\\MobileBanking\\app\\src\\main\\res\\layout\\activity_refresh_fingerprint.xml"
+    },
+    {
+        "merged": "D:\\android-2020\\MobileBanking\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_test.xml.flat",
+        "source": "D:\\android-2020\\MobileBanking\\app\\src\\main\\res\\layout\\fragment_test.xml"
     },
     {
         "merged": "D:\\android-2020\\MobileBanking\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_ic_menu_share_mtrl_alpha.png.flat",

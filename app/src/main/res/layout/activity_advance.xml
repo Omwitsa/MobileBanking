@@ -4,7 +4,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
-tools:context="com.aratek.trustfinger.Activities.AdvanceActivity">
+tools:context="com.larry.trustfinger.Activities.AdvanceActivity">
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -68,8 +68,37 @@ tools:context="com.aratek.trustfinger.Activities.AdvanceActivity">
         android:textColorHint="@color/textcardColor"
         android:textColorHighlight="@color/textcardColor"
         tools:ignore="Deprecated" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnLogin"
+        android:layout_marginTop="10dp"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/tvNameA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btnLogin"
+            android:textSize="20dp"
+            android:textColor="@android:color/holo_blue_dark"
+            android:text="Maximum :" />
+
+        <TextView
+            android:id="@+id/tvAmt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textColor="#ff9800"
+            android:layout_toRightOf="@id/tvIAlwaysHaveAccount"
+            android:layout_marginLeft="15dp"
+            android:text="Amount" />
+
+    </LinearLayout>
 
     <EditText
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -78,6 +107,7 @@ tools:context="com.aratek.trustfinger.Activities.AdvanceActivity">
         android:id="@+id/amount"
         android:drawablePadding="10dp"
         android:hint="Amount"
+        android:inputType="number"
         android:textColor="@color/textcardColor"
         android:textColorHint="@color/textcardColor"
         android:textColorHighlight="@color/textcardColor"/>

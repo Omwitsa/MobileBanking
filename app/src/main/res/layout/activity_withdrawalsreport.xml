@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffe"
-    tools:context="com.aratek.trustfinger.Reports.WithdrawalsreportActivity">
+    tools:context="com.larry.trustfinger.Reports.WithdrawalsreportActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/my_toolbar"

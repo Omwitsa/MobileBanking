@@ -23,6 +23,7 @@ public class PosManager {
         mPosManager = pm;
     }
 
+
     @Override
     public void handleMessage(Message msg) {
         if (mPosManager.mNativeContext == 0) {
@@ -82,6 +83,12 @@ public class PosManager {
     public static PosManager create() {
         if (instance == null) {
             instance = new PosManager();
+        }
+        return instance;
+    }
+    public static PosManager reset() {
+        if (instance == new PosManager()) {
+            instance =null ;
         }
         return instance;
     }
